@@ -27,7 +27,10 @@ workflows:
   version: 2
   flutter-ui-kit-workflow:
     jobs:
+      - build
       - update-version:
+          requires:
+            - build
           filters:
             branches:
-              only: auto-tag-release
+              only: master
