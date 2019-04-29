@@ -3,24 +3,22 @@ import 'package:flutter/material.dart';
 
 import 'button_common.dart';
 
-class PlainButton extends StatefulWidget {
+class TextButton extends StatefulWidget {
   final String text;
   final FutureCallback onPressed;
-  final bool narrow;
 
-  PlainButton(
+  TextButton(
     this.text, {
     @required this.onPressed,
-    this.narrow = false,
     Key key,
   })  : assert(text != null),
         super(key: key);
 
   @override
-  _PlainButtonState createState() => _PlainButtonState();
+  _TextButtonState createState() => _TextButtonState();
 }
 
-class _PlainButtonState extends State<PlainButton> with ButtonMixin {
+class _TextButtonState extends State<TextButton> with ButtonMixin {
   bool _enabled = true;
   bool _pressing = false;
 
@@ -42,14 +40,13 @@ class _PlainButtonState extends State<PlainButton> with ButtonMixin {
               pressing: _pressing,
               onPressed: widget.onPressed,
             ),
-            fontSize: getFontSize(narrow: widget.narrow),
+            fontSize: 13.0,
           ),
         ),
         onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
             ? null
             : () => disableButtonWhileOnPressedExecutes(
                 setEnabled: _setEnabled, onPressed: widget.onPressed),
-        padding: getPadding(narrow: widget.narrow),
         textColor: AppColor.green,
       ),
     );

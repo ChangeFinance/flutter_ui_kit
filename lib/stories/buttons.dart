@@ -6,7 +6,7 @@ import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/outlined_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_kit/widgets/plain_button.dart';
+import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 class Buttons extends StatelessWidget {
   @override
@@ -17,7 +17,7 @@ class Buttons extends StatelessWidget {
         children: [
           _filledButtonStory(),
           _outlinedButtonStory(),
-          _plainButtonStory(),
+          _textButtonStory(),
         ],
       ),
     );
@@ -163,14 +163,13 @@ class Buttons extends StatelessWidget {
     );
   }
 
-  Widget _plainButtonStory() {
+  Widget _textButtonStory() {
     return ExpandableStory(
       title: 'Plain Button',
       child: PropsExplorer(
         initialProps: const <String, dynamic>{
           'text': 'Activate',
           'enabled': true,
-          'narrow': false,
           'taskDuration': 300,
         },
         formBuilder: (context, props, updateProp) {
@@ -194,11 +193,6 @@ class Buttons extends StatelessWidget {
                 updateProp: updateProp,
                 propKey: 'enabled',
               ),
-              BoolPropUpdater(
-                props: props,
-                updateProp: updateProp,
-                propKey: 'narrow',
-              ),
             ],
           );
         },
@@ -216,10 +210,9 @@ class Buttons extends StatelessWidget {
             };
           }
 
-          return PlainButton(
+          return TextButton(
             props['text'],
             onPressed: onPressed,
-            narrow: props['narrow'],
           );
         },
       ),
