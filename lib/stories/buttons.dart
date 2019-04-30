@@ -165,7 +165,7 @@ class Buttons extends StatelessWidget {
 
   Widget _textButtonStory() {
     return ExpandableStory(
-      title: 'Plain Button',
+      title: 'Text Button',
       child: PropsExplorer(
         initialProps: const <String, dynamic>{
           'text': 'Activate',
