@@ -30,7 +30,7 @@ class Buttons extends StatelessWidget {
         initialProps: const <String, dynamic>{
           'text': 'Activate',
           'enabled': true,
-          'fullWidth': true,
+          'fullWidth': false,
           'narrow': false,
           'taskDuration': 300,
         },
@@ -100,7 +100,7 @@ class Buttons extends StatelessWidget {
         initialProps: const <String, dynamic>{
           'text': 'Activate',
           'enabled': true,
-          'fullWidth': true,
+          'fullWidth': false,
           'narrow': false,
           'taskDuration': 300,
         },

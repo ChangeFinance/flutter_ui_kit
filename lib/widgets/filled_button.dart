@@ -12,7 +12,7 @@ class FilledButton extends StatefulWidget {
   FilledButton(
     this.text, {
     @required this.onPressed,
-    this.fullWidth = true,
+    this.fullWidth = false,
     this.narrow = false,
     Key key,
   })  : assert(text != null),

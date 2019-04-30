@@ -22,5 +22,4 @@ to
 ```
   flutter_ui_kit:
     path: /Users/almeynman/code/change/flutter_ui_kit
-
 ```
