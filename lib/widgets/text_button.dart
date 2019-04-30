@@ -40,7 +40,7 @@ class _TextButtonState extends State<TextButton> with ButtonMixin {
               pressing: _pressing,
               onPressed: widget.onPressed,
             ),
-            fontSize: 13.0,
+            fontSize: 12.0,
           ),
         ),
         onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
