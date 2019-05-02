@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
 
 class PopoverModal {
-  void showPopover(
+  Future<T> showPopover<T>(
     BuildContext context,
     Widget child,
   ) {
-    showModalBottomSheet<void>(
+    return showModalBottomSheet<T>(
         context: context,
         builder: (BuildContext context) {
           return new Container(

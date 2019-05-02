@@ -74,7 +74,7 @@ class Popover extends StatelessWidget {
   }
 
   void _onExampleOnePressed(BuildContext context) {
-    popover.showPopover(
+    popover.showPopover<void>(
         context,
         Padding(
           padding: const EdgeInsets.all(30.0),
@@ -95,7 +95,7 @@ class Popover extends StatelessWidget {
   }
 
   void _onExampleTwoPressed(BuildContext context) {
-    popover.showPopover(
+    popover.showPopover<void>(
         context,
         Padding(
           padding: const EdgeInsets.all(30.0),
@@ -117,7 +117,7 @@ class Popover extends StatelessWidget {
   }
 
   void _onExampleThreePressed(BuildContext context) {
-    popover.showPopover(
+    final result = popover.showPopover<String>(
         context,
         Padding(
           padding: const EdgeInsets.only(
@@ -138,18 +138,39 @@ class Popover extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: FilledButton(
                   'Ok',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context, 'Ok button');
+                  },
                   fullWidth: true,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextButton('Cancel', onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pop(context, 'Cancel button');
                 }),
               )
             ],
           ),
         ));
+
+    result.then((value) {
+      value ??= 'Nothing';
+      showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('You clicked'),
+              content: Text(value),
+              actions: <Widget>[
+                FlatButton(
+                    child: const Text('Thats nice'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    })
+              ],
+            );
+          });
+    });
   }
 }
