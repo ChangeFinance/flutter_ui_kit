@@ -19,6 +19,7 @@ During development you can add local version of this lib to changeapp by substit
 
 to
 
+
 ```
   flutter_ui_kit:
     path: /Users/almeynman/code/change/flutter_ui_kit
