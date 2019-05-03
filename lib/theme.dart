@@ -36,5 +36,6 @@ ButtonThemeData _buttonTheme = ButtonThemeData(
   buttonColor: primaryColor,
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
   disabledColor: AppColor.mediumGrey,
-  highlightColor: AppColor.darkerGreen
+  highlightColor: AppColor.darkerGreen,
+  minWidth: 48.0,
 );
