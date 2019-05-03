@@ -56,6 +56,16 @@ void main() {
       underlyingMaterialButtonType: OutlineButton,
     );
 
+    testPaddingProp(
+      group: group,
+      setUp: setUp,
+      testWidgets: testWidgets,
+      buttonText: buttonText,
+      buildButton: ({EdgeInsetsGeometry padding}) =>
+          OutlinedButton(buttonText, onPressed: () {}, padding: padding),
+      underlyingMaterialButtonType: OutlineButton,
+    );
+
     testFontSize(
       group: group,
       setUp: setUp,

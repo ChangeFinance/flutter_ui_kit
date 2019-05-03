@@ -169,6 +169,36 @@ void testNarrowProp({
   });
 }
 
+void testPaddingProp({
+  Function group,
+  Function setUp,
+  Function testWidgets,
+  String buttonText,
+  Function buildButton,
+  Type underlyingMaterialButtonType,
+}) {
+  group('padding prop', () {
+    testWidgets('if padding is passed, overwrite default', (WidgetTester tester) async {
+      const padding = const EdgeInsets.all(8.0);
+      await tester.pumpWidget(wrapInMaterialApp(buildButton(padding: padding)));
+      final button =
+          // ignore: avoid_as
+          find.byType(underlyingMaterialButtonType).evaluate().single.widget
+              as MaterialButton;
+      expect(button.padding, padding);
+    });
+
+    testWidgets('if padding is null, defaults to', (WidgetTester tester) async {
+      await tester.pumpWidget(wrapInMaterialApp(buildButton(padding: null)));
+      final button =
+          // ignore: avoid_as
+          find.byType(underlyingMaterialButtonType).evaluate().single.widget
+              as MaterialButton;
+      expect(button.padding.vertical, 2 * ButtonStyleConstants.wideVerticalPadding);
+    });
+  });
+}
+
 void testFontSize({
   Function group,
   Function setUp,

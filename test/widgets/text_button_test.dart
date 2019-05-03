@@ -35,5 +35,15 @@ void main() {
           TextButton(buttonText, onPressed: onPressed),
       underlyingMaterialButtonType: FlatButton,
     );
+
+    testPaddingProp(
+      group: group,
+      setUp: setUp,
+      testWidgets: testWidgets,
+      buttonText: buttonText,
+      buildButton: ({EdgeInsetsGeometry padding}) =>
+          TextButton(buttonText, onPressed: () {}, padding: padding),
+      underlyingMaterialButtonType: FlatButton,
+    );
   });
 }

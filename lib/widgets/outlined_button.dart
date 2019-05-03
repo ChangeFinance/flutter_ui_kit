@@ -10,7 +10,6 @@ class OutlinedButton extends StatefulWidget {
   final bool narrow;
   final EdgeInsetsGeometry padding;
 
-
   OutlinedButton(
     this.text, {
     @required this.onPressed,
@@ -43,14 +42,15 @@ class _OutlinedButtonState extends State<OutlinedButton> with ButtonMixin {
         child: OutlineButton(
           child: Text(
             widget.text,
-            style: TextStyle(
-              color: getTextColorOnWhiteBackground(
-                enabled: _enabled,
-                pressing: _pressing,
-                onPressed: widget.onPressed,
-              ),
-              fontSize: getFontSize(narrow: widget.narrow, fullWidth: widget.fullWidth),
-            ),
+            style: Theme.of(context).textTheme.body1.copyWith(
+                  color: getTextColorOnWhiteBackground(
+                    enabled: _enabled,
+                    pressing: _pressing,
+                    onPressed: widget.onPressed,
+                  ),
+                  fontSize: getFontSize(
+                      narrow: widget.narrow, fullWidth: widget.fullWidth),
+                ),
           ),
           onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
               ? null

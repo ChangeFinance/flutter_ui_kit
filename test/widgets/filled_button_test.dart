@@ -47,6 +47,16 @@ void main() {
       underlyingMaterialButtonType: RaisedButton,
     );
 
+    testPaddingProp(
+      group: group,
+      setUp: setUp,
+      testWidgets: testWidgets,
+      buttonText: buttonText,
+      buildButton: ({EdgeInsetsGeometry padding}) =>
+          FilledButton(buttonText, onPressed: () {}, padding: padding),
+      underlyingMaterialButtonType: RaisedButton,
+    );
+
     testFontSize(
       group: group,
       setUp: setUp,

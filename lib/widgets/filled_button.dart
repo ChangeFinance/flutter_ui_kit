@@ -35,7 +35,8 @@ class _FilledButtonState extends State<FilledButton> with ButtonMixin {
         child: Text(
           widget.text,
           style: Theme.of(context).textTheme.body1.copyWith(
-            color: AppColor.deepWhite
+            color: AppColor.deepWhite,
+            fontSize: getFontSize(narrow: widget.narrow, fullWidth: widget.fullWidth)
           ),
         ),
         onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
