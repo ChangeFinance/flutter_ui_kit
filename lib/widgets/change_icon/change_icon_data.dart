@@ -1,24 +1,24 @@
-import 'change_icon_state.dart';
+import 'change_icon_type.dart';
 
 class ChangeIconData {
   final String _iconName;
-  final ChangeIconState _state;
+  final ChangeIconType _state;
 
   const ChangeIconData(this._iconName, this._state);
 
   String getIconPath() {
-    return 'assets/icons/${_iconName}_${_getStateString(_state)}.svg';
+    return 'lib/assets/icons/${_iconName}_${_getStateString(_state)}.svg';
   }
 
-  String _getStateString(ChangeIconState state) {
+  String _getStateString(ChangeIconType state) {
     var stateString = '';
 
     switch(state) {
-      case ChangeIconState.enabled:
+      case ChangeIconType.enabled:
         stateString = 'enabled';
         break;
 
-      case ChangeIconState.disabled:
+      case ChangeIconType.disabled:
         stateString = 'disabled';
         break;
     }

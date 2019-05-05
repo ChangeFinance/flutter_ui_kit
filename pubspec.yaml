@@ -62,4 +62,4 @@ flutter:
 
   assets:
     - assets/update-app.svg
-    - assets/icons/
+    - lib/assets/icons/

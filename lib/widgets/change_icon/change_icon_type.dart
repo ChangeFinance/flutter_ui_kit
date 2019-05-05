@@ -1,0 +1,3 @@
+enum ChangeIconType {
+  enabled, disabled
+}

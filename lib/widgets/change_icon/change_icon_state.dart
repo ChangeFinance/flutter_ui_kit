@@ -1,3 +1,0 @@
-enum ChangeIconState {
-  enabled, disabled
-}
