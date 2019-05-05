@@ -40,7 +40,7 @@ class ChangeIconState extends State<ChangeIcon> {
         });
       });
     else {
-      final resource = Resource('package:flutter_ui_kit/${_iconData.getIconPath()}');
+      final resource = new Resource('package:flutter_ui_kit/${_iconData.getIconPath()}');
       resource.readAsString(encoding: utf8).then((contents) {
         setState(() {
           _svgContents = contents;
