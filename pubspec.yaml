@@ -26,6 +26,7 @@ dev_dependencies:
     sdk: flutter
   recase: ^2.0.1
   mockito: ^4.0.0
+  flutter_svg: ^0.12.4
 
 
 # For information on the generic Dart part of this file, see the
@@ -61,3 +62,4 @@ flutter:
 
   assets:
     - assets/update-app.svg
+    - assets/icons/
