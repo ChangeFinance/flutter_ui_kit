@@ -7,7 +7,7 @@ class ChangeIconData {
   const ChangeIconData(this._iconName, this._state);
 
   String getIconPath() {
-    return 'assets/icons/${_iconName}_${_getStateString(_state)}.svg';
+    return '${_iconName}_${_getStateString(_state)}.svg';
   }
 
   String _getStateString(ChangeIconType state) {

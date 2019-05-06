@@ -27,7 +27,7 @@ dev_dependencies:
   recase: ^2.0.1
   mockito: ^4.0.0
   flutter_svg: ^0.12.4
-  resource: ^2.1.5
+  package_info: ^0.4.0+3
 
 
 # For information on the generic Dart part of this file, see the
