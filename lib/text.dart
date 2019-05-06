@@ -14,21 +14,21 @@ class AppText {
   static const TextStyle header1 = TextStyle(
       fontSize: 30.0,
       fontFamily: 'Circular',
-      fontWeight: FontWeight.w800,
+      fontWeight: FontWeight.bold,
       letterSpacing: 0,
       color: AppColor.deepBlack);
 
   static const TextStyle header2 = TextStyle(
       fontSize: 24.0,
       fontFamily: 'Circular',
-      fontWeight: FontWeight.w800,
+      fontWeight: FontWeight.bold,
       letterSpacing: 0,
       color: AppColor.deepBlack);
 
   static const TextStyle header3 = TextStyle(
       fontSize: 16.0,
       fontFamily: 'Circular',
-      fontWeight: FontWeight.w800,
+      fontWeight: FontWeight.bold,
       letterSpacing: 0,
       color: AppColor.deepBlack);
 
