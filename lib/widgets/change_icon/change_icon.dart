@@ -34,7 +34,9 @@ class ChangeIconState extends State<ChangeIcon> {
     PackageInfo.fromPlatform().then((packageInfo) {
       print(packageInfo.packageName);
       var iconPath = '';
-      if (packageInfo.packageName == 'com.example.changeUiKit')
+      if (
+          packageInfo.packageName == 'com.example.changeUiKit' || packageInfo.packageName == 'com.getchange.flutter_ui_kit'
+      )
         iconPath = 'lib/assets/icons/${_iconData.getIconPath()}';
       else
         iconPath = 'packages/flutter_ui_kit/assets/icons/${_iconData.getIconPath()}';
