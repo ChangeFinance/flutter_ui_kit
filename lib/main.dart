@@ -22,7 +22,7 @@ void main() {
           AppCards(),
           Popover(),
           Layouts(),
-          IconsStory()
+          Iconography()
         ],
       ),
     ),

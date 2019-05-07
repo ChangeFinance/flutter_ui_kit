@@ -23,9 +23,8 @@ class ChangeIconState extends State<ChangeIcon> {
 
   ChangeIconData _iconData;
   String _svgContents;
-  final bool isStandAloneMode;
 
-  ChangeIconState(this._iconData, { this.isStandAloneMode =  false});
+  ChangeIconState(this._iconData);
 
   @override
   void initState() {

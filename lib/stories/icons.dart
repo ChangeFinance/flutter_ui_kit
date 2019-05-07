@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/widgets/change_app_icons.dart';
 
-class IconsStory extends StatelessWidget {
+class Iconography extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
