@@ -8,23 +8,20 @@ import 'change_icon_data.dart';
 
 class ChangeIcon extends StatefulWidget {
 
-  final ChangeIconData _iconData;
+  final ChangeIconData iconData;
 
-  const ChangeIcon(this._iconData);
+  const ChangeIcon(this.iconData);
 
   @override
   State<StatefulWidget> createState() {
-    return ChangeIconState(_iconData);
+    return ChangeIconState();
   }
 }
 
 
 class ChangeIconState extends State<ChangeIcon> {
 
-  ChangeIconData _iconData;
   String _svgContents;
-
-  ChangeIconState(this._iconData);
 
   @override
   void initState() {
@@ -36,9 +33,9 @@ class ChangeIconState extends State<ChangeIcon> {
       if (
           packageInfo.packageName == 'com.example.changeUiKit' || packageInfo.packageName == 'com.getchange.flutter_ui_kit'
       )
-        iconPath = 'lib/assets/icons/${_iconData.getIconPath()}';
+        iconPath = 'lib/assets/icons/${widget.iconData.getIconPath()}';
       else
-        iconPath = 'packages/flutter_ui_kit/assets/icons/${_iconData.getIconPath()}';
+        iconPath = 'packages/flutter_ui_kit/assets/icons/${widget.iconData.getIconPath()}';
 
       rootBundle.loadString(iconPath).then((svgValue) {
         setState(() {
