@@ -35,7 +35,12 @@ class IconsStory extends StatelessWidget {
           _feesEnabled(),
           _cryptoConversionEnabled(),
           _cardPaymentEnabled(),
-          _walletEnabled()
+          _walletEnabled(),
+          _pricesEnabled(),
+          _cardEnabled(),
+          _navSettingsEnabled(),
+          _arrowForwardEnabled(),
+          _arrowBackEnabled()
         ],
       ),
     );
@@ -61,7 +66,10 @@ class IconsStory extends StatelessWidget {
           _feesDisabled(),
           _cryptoConversionDisabled(),
           _cardPaymentDisabled(),
-          _walletDisabled()
+          _walletDisabled(),
+          _pricesDisabled(),
+          _cardDisabled(),
+          _navSettingsDisabled()
         ],
       ),
     );
@@ -189,6 +197,61 @@ class IconsStory extends StatelessWidget {
     );
   }
 
+  Widget _pricesEnabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
+            Center(child: ChangeAppIcons.prices),
+            const Text('Prices')
+          ],
+        )
+    );
+  }
+
+  Widget _cardEnabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
+            Center(child: ChangeAppIcons.card),
+            const Text('Card')
+          ],
+        )
+    );
+  }
+
+  Widget _navSettingsEnabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
+            Center(child: ChangeAppIcons.nav_settings),
+            const Text('Settings (Navigation)')
+          ],
+        )
+    );
+  }
+
+  Widget _arrowForwardEnabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
+            Center(child: ChangeAppIcons.arrow_forward),
+            const Text('Arrow Forward')
+          ],
+        )
+    );
+  }
+
+  Widget _arrowBackEnabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
+            Center(child: ChangeAppIcons.arrow_back),
+            const Text('Arrow Back')
+          ],
+        )
+    );
+  }
+
   Widget _roundupDisabled() {
     return Card(
         child: Column(
@@ -306,6 +369,39 @@ class IconsStory extends StatelessWidget {
           children: <Widget>[
             Center(child: ChangeAppIcons.wallet_disabled),
             const Text('Wallet')
+          ],
+        )
+    );
+  }
+
+  Widget _pricesDisabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
+            Center(child: ChangeAppIcons.prices_disabled),
+            const Text('Prices')
+          ],
+        )
+    );
+  }
+
+  Widget _cardDisabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
+            Center(child: ChangeAppIcons.card_disabled),
+            const Text('Card')
+          ],
+        )
+    );
+  }
+
+  Widget _navSettingsDisabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
+            Center(child: ChangeAppIcons.nav_settings_disabled),
+            const Text('Settings (Navigation)')
           ],
         )
     );

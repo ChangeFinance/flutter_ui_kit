@@ -159,4 +159,60 @@ class ChangeAppIcons {
           ChangeIconType.disabled
       )
   );
+
+  static const ChangeIcon prices = ChangeIcon(
+      const ChangeIconData(
+          'prices',
+          ChangeIconType.enabled
+      )
+  );
+
+  static const ChangeIcon prices_disabled = ChangeIcon(
+      const ChangeIconData(
+          'prices',
+          ChangeIconType.disabled
+      )
+  );
+
+  static const ChangeIcon card = ChangeIcon(
+      const ChangeIconData(
+          'card',
+          ChangeIconType.enabled
+      )
+  );
+
+  static const ChangeIcon card_disabled = ChangeIcon(
+      const ChangeIconData(
+          'card',
+          ChangeIconType.disabled
+      )
+  );
+
+  static const ChangeIcon nav_settings = ChangeIcon(
+      const ChangeIconData(
+          'nav_settings',
+          ChangeIconType.enabled
+      )
+  );
+
+  static const ChangeIcon nav_settings_disabled = ChangeIcon(
+      const ChangeIconData(
+          'nav_settings',
+          ChangeIconType.disabled
+      )
+  );
+
+  static const ChangeIcon arrow_forward = ChangeIcon(
+      const ChangeIconData(
+          'arrow_forward',
+          ChangeIconType.enabled
+      )
+  );
+
+  static const ChangeIcon arrow_back = ChangeIcon(
+      const ChangeIconData(
+          'arrow_back',
+          ChangeIconType.enabled
+      )
+  );
 }
