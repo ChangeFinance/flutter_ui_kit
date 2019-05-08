@@ -14,12 +14,11 @@ class ChangeIcon extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return ChangeIconState();
+    return _ChangeIconState();
   }
 }
 
-
-class ChangeIconState extends State<ChangeIcon> {
+class _ChangeIconState extends State<ChangeIcon> {
 
   String _svgContents;
 
