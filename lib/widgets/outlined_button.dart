@@ -58,7 +58,7 @@ class _OutlinedButtonState extends State<OutlinedButton> with ButtonMixin {
                   setEnabled: _setEnabled, onPressed: widget.onPressed),
           padding: widget.padding ?? getPadding(narrow: widget.narrow),
           textColor: AppColor.green,
-          borderSide: BorderSide(color: AppColor.green),
+          borderSide: const BorderSide(color: AppColor.green),
           highlightedBorderColor: AppColor.green,
           disabledBorderColor: AppColor.mediumGrey,
         ),
