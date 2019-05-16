@@ -87,7 +87,7 @@ class Layouts extends StatelessWidget {
                               autofocus: true,
                               onSaved: (String value) {},
                             )),
-                        FilledButton('SEND', fullWidth: true, onPressed: (){print('you clicked send');}),
+                        FilledButton('SEND', fullWidth: true, onPressed: (){ print('you clicked send'); }),
                         dismissible: true)));
           },
           fullWidth: false,
