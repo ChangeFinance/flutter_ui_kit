@@ -41,16 +41,6 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: OpenSans
-      fonts:
-        - asset: lib/fonts/OpenSans-Regular.ttf
-          weight: 400
-        - asset: lib/fonts/OpenSans-SemiBold.ttf
-          weight: 600
-        - asset: lib/fonts/OpenSans-Bold.ttf
-          weight: 700
-        - asset: lib/fonts/OpenSans-ExtraBold.ttf
-          weight: 800
     - family: CryptoFont
       fonts:
         - asset: lib/fonts/cryptofont-webfont.ttf

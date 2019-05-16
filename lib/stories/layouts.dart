@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
+import 'package:flutter_ui_kit/widgets/layout/generic_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/utility_template.dart';
 
 class Layouts extends StatelessWidget {
+  static const String utilityLayoutRoute = '/utility-layout-page';
+  static const String dismissibleLayoutRoute = '/dismissible-layout-page';
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,6 +17,7 @@ class Layouts extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             _utilityLayout(context),
+            _dismissibleLayout(context),
           ],
         ),
       ),
@@ -54,5 +59,41 @@ class Layouts extends StatelessWidget {
     );
   }
 
-  static const String utilityLayoutRoute = '/utility-layout-page';
+  Widget _dismissibleLayout(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: Center(
+        child: FilledButton(
+          'I\'m all about that close button',
+          onPressed: () {
+            Navigator.push<dynamic>(
+                context,
+                MaterialPageRoute<dynamic>(
+                    settings: const RouteSettings(name: dismissibleLayoutRoute),
+                    builder: (_) => GenericTemplate(
+                        'How can we make Change better?',
+                        Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: TextFormField(
+                              decoration: const InputDecoration(
+                                labelText: 'Give us your feedback',
+                                labelStyle: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.black,
+                                    height: -1.0),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.grey)),
+                              ),
+                              autofocus: true,
+                              onSaved: (String value) {},
+                            )),
+                        FilledButton('SEND', fullWidth: true, onPressed: (){print('you clicked send');}),
+                        dismissible: true)));
+          },
+          fullWidth: false,
+          narrow: false,
+        ),
+      ),
+    );
+  }
 }
