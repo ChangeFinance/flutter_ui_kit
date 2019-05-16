@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
-import 'package:flutter_ui_kit/widgets/layout/form_template.dart';
+import 'package:flutter_ui_kit/widgets/layout/generic_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/utility_template.dart';
 
 class Layouts extends StatelessWidget {
@@ -70,7 +70,8 @@ class Layouts extends StatelessWidget {
                 context,
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: dismissibleLayoutRoute),
-                    builder: (_) => FormTemplate(
+
+                    builder: (_) => GenericTemplate(
                         'How can we make Change better?',
                         Padding(
                             padding: const EdgeInsets.only(top: 20.0),
@@ -87,7 +88,7 @@ class Layouts extends StatelessWidget {
                               autofocus: true,
                               onSaved: (String value) {},
                             )),
-                        FilledButton('SEND', fullWidth: true, onPressed: (){print('gggg');}),
+                        FilledButton('SEND', fullWidth: true, onPressed: (){print('you clicked send');}),
                         dismissible: true)));
           },
           fullWidth: false,
