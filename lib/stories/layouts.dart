@@ -70,7 +70,6 @@ class Layouts extends StatelessWidget {
                 context,
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: dismissibleLayoutRoute),
-
                     builder: (_) => GenericTemplate(
                         'How can we make Change better?',
                         Padding(
