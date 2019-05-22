@@ -73,7 +73,7 @@ class Layouts extends StatelessWidget {
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: dismissibleLayoutRoute),
                     builder: (_) => GenericTemplate(
-                        const Heading('How can we make Change better?', headingType: HeadingType.HEADING_2,),
+                        const Heading('How can we make Change better?', headingType: HeadingType.HEADING_1, textAlign: TextAlign.left),
                         Padding(
                             padding: const EdgeInsets.only(top: 20.0),
                             child: TextFormField(
