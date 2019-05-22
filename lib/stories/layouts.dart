@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/layout/generic_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/utility_template.dart';
+import 'package:flutter_ui_kit/widgets/text/heading.dart';
+import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
 
 class Layouts extends StatelessWidget {
   static const String utilityLayoutRoute = '/utility-layout-page';
@@ -71,7 +73,7 @@ class Layouts extends StatelessWidget {
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: dismissibleLayoutRoute),
                     builder: (_) => GenericTemplate(
-                        'How can we make Change better?',
+                        const Heading('How can we make Change better?', headingType: HeadingType.HEADING_2,),
                         Padding(
                             padding: const EdgeInsets.only(top: 20.0),
                             child: TextFormField(
