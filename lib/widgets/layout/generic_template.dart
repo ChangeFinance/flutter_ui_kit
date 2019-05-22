@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/widgets/layout/page_template.dart';
 import 'package:flutter_ui_kit/widgets/text/heading.dart';
-import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
 
 import 'app_bar.dart';
 
