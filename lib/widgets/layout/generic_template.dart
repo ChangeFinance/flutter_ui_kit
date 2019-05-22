@@ -7,7 +7,7 @@ import 'app_bar.dart';
 
 class GenericTemplate extends StatelessWidget {
   final bool dismissible;
-  final String header;
+  final Heading header;
   final Widget child;
   final Widget formSubmitAction;
 
@@ -26,8 +26,7 @@ class GenericTemplate extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
-              child: Heading(header,
-                  headingType: HeadingType.HEADING_1, textAlign: TextAlign.left),
+              child: header,
             ),
             Expanded(flex: 1, child: child),
             Padding(
