@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../color.dart';
 
@@ -44,6 +44,7 @@ class AppCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final boxShadow = _elevationToShadow[elevation];
     return new Container(
       child: child,
       margin: margin,
@@ -51,7 +52,7 @@ class AppCard extends StatelessWidget {
           color: AppColor.deepWhite,
           border: null,
           borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-          boxShadow: [_elevationToShadow[elevation]]
+          boxShadow: boxShadow==null ? null : [boxShadow]
       ),
     );
   }
