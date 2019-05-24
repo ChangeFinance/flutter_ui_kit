@@ -40,7 +40,8 @@ class Iconography extends StatelessWidget {
           _cardEnabled(),
           _navSettingsEnabled(),
           _arrowForwardEnabled(),
-          _arrowBackEnabled()
+          _arrowBackEnabled(),
+          _inviteEnabled()
         ],
       ),
     );
@@ -69,7 +70,8 @@ class Iconography extends StatelessWidget {
           _walletDisabled(),
           _pricesDisabled(),
           _cardDisabled(),
-          _navSettingsDisabled()
+          _navSettingsDisabled(),
+          _inviteDisabled(),
         ],
       ),
     );
@@ -79,12 +81,24 @@ class Iconography extends StatelessWidget {
     return Card(
         child: Column(
           children: <Widget>[
+            Center(child: ChangeAppIcons.invite),
+            const Text('Invite')
+          ],
+        )
+    );
+  }
+
+  Widget _inviteEnabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
             Center(child: ChangeAppIcons.roundup),
             const Text('Round Up')
           ],
         )
     );
   }
+
 
 
   Widget _atmWithdrawEnabled() {
@@ -391,6 +405,17 @@ class Iconography extends StatelessWidget {
           children: <Widget>[
             Center(child: ChangeAppIcons.card_disabled),
             const Text('Card')
+          ],
+        )
+    );
+  }
+
+  Widget _inviteDisabled() {
+    return Card(
+        child: Column(
+          children: <Widget>[
+            Center(child: ChangeAppIcons.invite_disabled),
+            const Text('Invite')
           ],
         )
     );

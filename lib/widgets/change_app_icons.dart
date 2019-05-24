@@ -215,4 +215,18 @@ class ChangeAppIcons {
           ChangeIconType.enabled
       )
   );
+
+  static const ChangeIcon invite = ChangeIcon(
+      const ChangeIconData(
+          'invite',
+          ChangeIconType.enabled
+      )
+  );
+
+  static const ChangeIcon invite_disabled = ChangeIcon(
+      const ChangeIconData(
+          'invite',
+          ChangeIconType.disabled
+      )
+  );
 }
