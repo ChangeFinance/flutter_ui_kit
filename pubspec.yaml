@@ -52,4 +52,5 @@ flutter:
 
   assets:
     - assets/update-app.svg
+    - assets/referral-screen.svg
     - lib/assets/icons/

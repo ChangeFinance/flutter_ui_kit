@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/layout/generic_template.dart';
-import 'package:flutter_ui_kit/widgets/layout/info_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/utility_template.dart';
 import 'package:flutter_ui_kit/widgets/text/heading.dart';
 import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
@@ -98,7 +97,7 @@ class Layouts extends StatelessWidget {
                         FilledButton('SEND', fullWidth: true, onPressed: () {
                           print('you clicked send');
                         }),
-                        dismissible: true)));
+                        leadingWidget: const CloseButton())));
           },
           fullWidth: false,
           narrow: false,
@@ -116,29 +115,54 @@ class Layouts extends StatelessWidget {
           Navigator.push<dynamic>(
               context,
               MaterialPageRoute<dynamic>(
-                  settings: const RouteSettings(name: infoLayoutRoute),
-                  builder: (_) => InfoTemplate(
+                settings: const RouteSettings(name: infoLayoutRoute),
+                builder: (_) => GenericTemplate(
                         const Heading(
                             'Invite a friend and you both get €10 worth of Bitcoin',
                             headingType: HeadingType.HEADING_2,
                             textAlign: TextAlign.left),
-                        const Padding(
-                          padding: const EdgeInsets.only(top: 20.0),
-                          child: LabelValuePair(
-                              labelText: 'Invite Link',
-                              valueText: 'getchange.com/r/2415',
-                              copyToClipboardEnabled: true
-                          ),
-                        ),
+                        Padding(
+                            padding: const EdgeInsets.only(top: 20.0),
+                            child: Column(children: <Widget>[
+                              const LabelValuePair(
+                                  labelText: 'Invite Link',
+                                  valueText: 'getchange.com/r/2415',
+                                  copyToClipboardEnabled: true),
+                              Expanded(
+                                flex: 1,
+                                child: SvgPicture.asset(
+                                  'assets/referral-screen.svg',
+                                  width: 285.0,
+                                  height: 215.0,
+                                ),
+                              ),
+                            ])),
                         FilledButton('Invite friends', fullWidth: true,
                             onPressed: () {
                           print('you clicked invite friends');
                         }),
-                        info: true,
-                        routeName: utilityLayoutRoute,
-                        picture: SvgPicture.network(
-                            'https://s3.eu-central-1.amazonaws.com/production-change-app-assets/images/referral-screen.svg'),
-                      )));
+                        tailingWidget: [
+                          IconButton(
+                              icon: const Icon(Icons.info_outline),
+                              onPressed: () {
+                                showDialog<void>(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: const Text('You clicked'),
+                                        content: const Text('Info'),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                              child: const Text('Thats nice'),
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              })
+                                        ],
+                                      );
+                                    });
+                              })
+                        ]),
+              ));
         })));
   }
 }

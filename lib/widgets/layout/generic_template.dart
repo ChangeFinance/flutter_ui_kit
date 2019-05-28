@@ -5,20 +5,22 @@ import 'package:flutter_ui_kit/widgets/text/heading.dart';
 import 'app_bar.dart';
 
 class GenericTemplate extends StatelessWidget {
-  final bool dismissible;
+
+  final Widget leadingWidget;
+  final List<Widget> tailingWidget;
+
   final Heading header;
   final Widget child;
   final Widget formSubmitAction;
 
-  const GenericTemplate(this.header, this.child, this.formSubmitAction,
-      {this.dismissible = false})
+  const GenericTemplate(this.header, this.child, this.formSubmitAction, {this.leadingWidget, this.tailingWidget})
       : super();
 
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
       appBar: MainAppBar(
-          implyLeading: dismissible, leadingWidget: _getCloseButton()),
+          implyLeading: leadingWidget != null, leadingWidget: leadingWidget, tailingWidget: tailingWidget,),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -36,12 +38,5 @@ class GenericTemplate extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Widget _getCloseButton() {
-    if (dismissible) {
-      return const CloseButton();
-    }
-    return null;
   }
 }
