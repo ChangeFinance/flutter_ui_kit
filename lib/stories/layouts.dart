@@ -145,6 +145,7 @@ class Layouts extends StatelessWidget {
                           IconButton(
                               icon: const Icon(Icons.info_outline),
                               onPressed: () {
+                                Navigator.pop(context);
                                 showDialog<void>(
                                     context: context,
                                     builder: (BuildContext context) {

@@ -27,7 +27,7 @@ class GenericTemplate extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
-              child: header,
+              child: Align(alignment: Alignment.centerLeft, child:header),
             ),
             Expanded(flex: 1, child: child),
             Padding(
