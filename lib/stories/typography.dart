@@ -86,7 +86,6 @@ class AppTypography extends StatelessWidget {
   Widget _textComponents() {
     return const Align(
         alignment: Alignment.centerLeft,
-        child: TextPair(
-            'Text Pair component heading', 'text pair component body '));
+        child: TextPair('Text Pair component heading', 'text pair component body '));
   }
 }
