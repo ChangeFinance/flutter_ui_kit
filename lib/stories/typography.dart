@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/story_book/story.dart';
 import 'package:flutter_ui_kit/widgets/text/heading.dart';
 import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
+import 'package:flutter_ui_kit/widgets/text/text_pair.dart';
 
 class AppTypography extends StatelessWidget {
 
@@ -14,7 +15,8 @@ class AppTypography extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             _headers(),
-            _bodies(context)
+            _bodies(context),
+            _textComponents()
           ],
         ),
       ),
@@ -73,5 +75,9 @@ class AppTypography extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _textComponents() {
+    return const TextPair('Text Pair component heading','text pair component body ');
   }
 }
