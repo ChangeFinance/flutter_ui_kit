@@ -20,14 +20,14 @@ class GenericTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageTemplate(
       appBar: MainAppBar(
-          implyLeading: leadingWidget != null, leadingWidget: leadingWidget, tailingWidget: tailingWidget,),
+        implyLeading: leadingWidget != null, leadingWidget: leadingWidget, tailingWidget: tailingWidget,),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(bottom: 10.0),
-              child: header,
+              child: Align(alignment: Alignment.centerLeft, child:header),
             ),
             Expanded(flex: 1, child: child),
             Padding(

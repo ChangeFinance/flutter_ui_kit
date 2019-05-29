@@ -145,21 +145,7 @@ class Layouts extends StatelessWidget {
                           IconButton(
                               icon: const Icon(Icons.info_outline),
                               onPressed: () {
-                                showDialog<void>(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: const Text('You clicked'),
-                                        content: const Text('Info'),
-                                        actions: <Widget>[
-                                          FlatButton(
-                                              child: const Text('Thats nice'),
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              })
-                                        ],
-                                      );
-                                    });
+                                Navigator.pop(context);
                               })
                         ]),
               ));
