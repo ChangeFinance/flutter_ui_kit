@@ -52,14 +52,7 @@ class AppText {
       fontWeight: FontWeight.normal,
       letterSpacing: 0,
       color: AppColor.deepBlack);
-
-  static const TextStyle greyBody2 = TextStyle(
-      fontSize: 14.0,
-      fontFamily: 'Circular',
-      fontWeight: FontWeight.normal,
-      letterSpacing: 0,
-      color: Colors.grey);
-
+  
   static const TextStyle body3 = TextStyle(
       fontSize: 12.0,
       fontFamily: 'Circular',
@@ -70,5 +63,4 @@ class AppText {
   static const TextStyle button1 = AppText.body1;
   static const TextStyle button2 = AppText.body2;
   static const TextStyle button3 = AppText.body3;
-  static const TextStyle button4 = AppText.greyBody2;
 }

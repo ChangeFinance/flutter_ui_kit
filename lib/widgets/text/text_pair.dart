@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_kit/text.dart';
+
+import '../../color.dart';
 
 class TextPair extends StatelessWidget {
   final String heading;
   final String body;
-  final TextStyle bodyStyle;
-  final TextStyle headingStyle;
+  final Color textColor;
 
-  const TextPair(this.heading, this.body, {this.headingStyle = AppText.header3,
-    this.bodyStyle = AppText.greyBody2});
+  const TextPair(this.heading, this.body, {this.textColor = AppColor.semiGrey});
 
   @override
   Widget build(BuildContext context) {
+
+    final theme = Theme.of(context).textTheme;
     return new Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(heading, style: headingStyle, textAlign: TextAlign.left),
+        Text(heading, style: theme.display1, textAlign: TextAlign.left),
         Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: Text(
               body,
-              style: bodyStyle,
+              style: theme.body2.copyWith(color: textColor),
             ))
       ],
     );
