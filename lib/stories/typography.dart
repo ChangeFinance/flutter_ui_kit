@@ -66,17 +66,13 @@ class AppTypography extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text('Body 1 - Book; 16pt',
-                    style: Theme.of(context).textTheme.body1)),
+            child: Text('Body 1 - Book; 16pt',
+                    style: Theme.of(context).textTheme.body1),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text('Body 2 - Book; 14pt',
-                    style: Theme.of(context).textTheme.body2)),
+            child: Text('Body 2 - Book; 14pt',
+                    style: Theme.of(context).textTheme.body2),
           )
         ],
       ),
@@ -84,8 +80,6 @@ class AppTypography extends StatelessWidget {
   }
 
   Widget _textComponents() {
-    return const Align(
-        alignment: Alignment.centerLeft,
-        child: TextPair('Text Pair component heading', 'text pair component body '));
+    return const TextPair('Text Pair component heading', 'text pair component body');
   }
 }

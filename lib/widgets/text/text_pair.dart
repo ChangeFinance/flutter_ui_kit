@@ -17,7 +17,7 @@ class TextPair extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10.0),
             child: Text(
               body,
-              style: AppText.body2,
+              style: AppText.greyBody2,
             ))
       ],
     );
