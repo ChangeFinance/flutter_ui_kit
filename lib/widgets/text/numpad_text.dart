@@ -156,9 +156,12 @@ class _NumPadTextState extends State<NumPadText> {
 class KeyItem extends StatelessWidget {
 
   final Widget child;
+  @override
+  // ignore: overridden_fields
   final Key key;
   final Function(Key key) onKeyTap;
 
+  // ignore: prefer_const_constructors_in_immutables
   KeyItem({@required this.child,this.key,this.onKeyTap});
 
   @override
