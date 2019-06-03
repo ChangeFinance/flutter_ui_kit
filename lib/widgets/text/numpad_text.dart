@@ -73,7 +73,7 @@ class _NumPadTextState extends State<NumPadText> {
       child: Text(
         val,
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.display2
+        style: TextStyle(fontWeight: FontWeight.normal, fontSize: 24.0, color: Colors.black, fontFamily: 'CircularPro-Book')
       ),
       onKeyTap: onKeyTapped,
     );
@@ -91,8 +91,8 @@ class _NumPadTextState extends State<NumPadText> {
               Container(
                 alignment: Alignment.bottomRight,
                 color: Colors.white,
-                  height: height/2,
-                  width: width/1.5,
+                  height: height/2.5,
+                  width: width/1.2,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -171,6 +171,7 @@ class KeyItem extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkResponse(
+          radius: 30.0,
           splashColor: AppColor.brightGreen,
           highlightColor: Colors.white,
           onTap: () => onKeyTap(key),
