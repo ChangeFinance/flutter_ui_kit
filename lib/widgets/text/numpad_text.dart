@@ -1,76 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
 
-class NumPadText extends StatefulWidget {
+class NumPadText extends StatelessWidget {
 
   final TextEditingController textEditingController;
+  final int digitsAfterPoint;
 
   const NumPadText({
-    @required this.textEditingController
+    @required this.textEditingController,
+    this.digitsAfterPoint = -1
   });
 
-  @override
-  _NumPadTextState createState() => _NumPadTextState();
-}
-
-class _NumPadTextState extends State<NumPadText> {
-  static const Key _sevenKey = Key('seven');
-  static const Key _eightKey = Key('eight');
-  static const Key _nineKey = Key('nine');
-  static const Key _fourKey = Key('four');
-  static const Key _fiveKey = Key('five');
-  static const Key _sixKey = Key('six');
-  static const Key _oneKey = Key('one');
-  static const Key _twoKey = Key('two');
-  static const Key _threeKey = Key('three');
-  static const Key _dotKey = Key('dot');
-  static const Key _zeroKey = Key('zero');
-  static const Key _clearKey = Key('clear');
-
-  double height;
-  double width;
-  TextStyle digitTextStyle;
-
-  void onKeyTapped(Key key) {
-    var result = widget.textEditingController.text;
-    setState(() {
-      if (identical(_sevenKey, key)) {
-        result += '7';
-      } else if(identical(_eightKey, key)) {
-        result += '8';
-      } else if(identical(_nineKey, key)) {
-        result += '9';
-      } else if(identical(_fourKey, key)) {
-        result += '4';
-      } else if(identical(_fiveKey, key)) {
-        result += '5';
-      } else if(identical(_sixKey, key)) {
-        result += '6';
-      } else if(identical(_oneKey, key)) {
-        result += '1';
-      } else if(identical(_twoKey, key)) {
-        result += '2';
-      } else if(identical(_threeKey, key)) {
-        result += '3';
-      } else if(identical(_dotKey, key)) {
-        if (!result.contains('.')) {
-          result += '.';
-        }
-      } else if(identical(_zeroKey, key)) {
-        result += '0';
-      } else if(identical(_clearKey, key)) {
-        result = result.substring(0, result.length-1);
+  void onKeyTapped(String key) {
+    var result = textEditingController.text;
+    if (key == '.') {
+      if (!result.contains('.')) {
+        result += key;
       }
-      if (result.contains('.') && result.substring(result.indexOf('.')).length > 7) {
-        result = result.substring(0, result.length-1);
-      }
-      widget.textEditingController.text = result;
-    });
+    } else if (key == 'C') {
+      result = result.substring(0, result.length-1);
+    } else {
+      result += key;
+    }
+    if (digitsAfterPoint > 0 && result.contains('.') && result.substring(result.indexOf('.')).length > digitsAfterPoint+1) {
+      result = result.substring(0, result.length-1);
+    }
+    textEditingController.text = result;
   }
 
-  KeyItem buildKeyItem(String val, Key key) {
+  KeyItem buildKeyItem(String val, TextStyle digitTextStyle) {
     return KeyItem(
-      key: key,
+      value: val,
       child: Text(
         val,
         textAlign: TextAlign.center,
@@ -82,10 +42,8 @@ class _NumPadTextState extends State<NumPadText> {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width;
-    height = MediaQuery.of(context).size.height;
-    debugPrint('Width :: $width and Height :: $height');
-    digitTextStyle = Theme.of(context).textTheme.display2.copyWith(fontFamily: 'CircularPro-Book', fontWeight: FontWeight.normal, color: Colors.black, fontSize: 24.0);
+    final digitTextStyle
+      = Theme.of(context).textTheme.display2.copyWith(fontFamily: 'CircularPro-Book', fontWeight: FontWeight.normal, color: Colors.black, fontSize: 24.0);
     return Material(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -93,8 +51,8 @@ class _NumPadTextState extends State<NumPadText> {
               Container(
                 alignment: Alignment.bottomRight,
                 color: Colors.white,
-                  height: height/2.5,
-                  width: width/1.2,
+                  height: 240,
+                  width: 240,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -102,9 +60,9 @@ class _NumPadTextState extends State<NumPadText> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              buildKeyItem('1',_oneKey),
-                              buildKeyItem('2',_twoKey),
-                              buildKeyItem('3',_threeKey),
+                              buildKeyItem('1', digitTextStyle),
+                              buildKeyItem('2', digitTextStyle),
+                              buildKeyItem('3', digitTextStyle),
                             ],
                           ),
                         ),
@@ -112,9 +70,9 @@ class _NumPadTextState extends State<NumPadText> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              buildKeyItem('4',_fourKey),
-                              buildKeyItem('5',_fiveKey),
-                              buildKeyItem('6',_sixKey),
+                              buildKeyItem('4', digitTextStyle),
+                              buildKeyItem('5', digitTextStyle),
+                              buildKeyItem('6', digitTextStyle),
                             ],
                           ),
                         ),
@@ -122,9 +80,9 @@ class _NumPadTextState extends State<NumPadText> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              buildKeyItem('7', _sevenKey),
-                              buildKeyItem('8',_eightKey),
-                              buildKeyItem('9',_nineKey),
+                              buildKeyItem('7', digitTextStyle),
+                              buildKeyItem('8', digitTextStyle),
+                              buildKeyItem('9', digitTextStyle),
                             ],
                           ),
                         ),
@@ -132,19 +90,19 @@ class _NumPadTextState extends State<NumPadText> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              buildKeyItem('.',_dotKey),
-                              buildKeyItem('0',_zeroKey),
+                              buildKeyItem('.', digitTextStyle),
+                              buildKeyItem('0', digitTextStyle),
                               KeyItem(
-                                key: _clearKey,
+                                value: 'C',
                                 child: const Icon(
                                   Icons.arrow_back,
                                   size: 24.0,
                                   color: AppColor.deepBlack,
                                 ),
                                 onKeyTap: onKeyTapped,
-                              ),
-                            ],
-                          ),
+                              )
+                            ]
+                          )
                         )
                     ]
                   )
@@ -158,12 +116,9 @@ class _NumPadTextState extends State<NumPadText> {
 class KeyItem extends StatelessWidget {
 
   final Widget child;
-  @override
-  // ignore: overridden_fields
-  final Key key;
-  final Function(Key key) onKeyTap;
-
-  const KeyItem({@required this.child,this.key,this.onKeyTap});
+  final String value;
+  final Function(String value) onKeyTap;
+  const KeyItem({@required this.child,this.value,this.onKeyTap});
 
   @override
   Widget build(BuildContext context) {
@@ -175,13 +130,13 @@ class KeyItem extends StatelessWidget {
           radius: 30.0,
           splashColor: AppColor.brightGreen,
           highlightColor: Colors.white,
-          onTap: () => onKeyTap(key),
+          onTap: () => onKeyTap(value),
           child: Container(
             alignment: Alignment.center,
             child: child,
-          ),
-        ),
-      ),
+          )
+        )
+      )
     );
   }
 }

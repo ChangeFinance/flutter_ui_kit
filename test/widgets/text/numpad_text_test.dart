@@ -20,7 +20,7 @@ void main() {
 
     testWidgets('on tap key tests', (WidgetTester tester) async {
       await tester
-          .pumpWidget(wrapInMaterialApp(NumPadText(textEditingController: _textEditingController)));
+          .pumpWidget(wrapInMaterialApp(NumPadText(textEditingController: _textEditingController, digitsAfterPoint: 6)));
       await tester.tap(find.text('1'));
       await tester.tap(find.text('2'));
       await tester.tap(find.text('3'));
