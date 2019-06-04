@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
+import 'package:flutter_ui_kit/text.dart';
 
 class NumPadText extends StatelessWidget {
 
   final TextEditingController textEditingController;
-  final int digitsAfterPoint;
+  final int decimalPlaces;
 
   const NumPadText({
     @required this.textEditingController,
-    this.digitsAfterPoint = -1
+    this.decimalPlaces
   });
 
   void onKeyTapped(String key) {
@@ -18,98 +19,64 @@ class NumPadText extends StatelessWidget {
         result += key;
       }
     } else if (key == 'C') {
-      result = result.substring(0, result.length-1);
+      result = result.substring(0, result.length - 1);
     } else {
       result += key;
     }
-    if (digitsAfterPoint > 0 && result.contains('.')
-        && result.substring(result.indexOf('.')).length > digitsAfterPoint + 1) {
-      result = result.substring(0, result.length-1);
+    if (decimalPlaces != null && result.contains('.')
+        && result.substring(result.indexOf('.')).length > decimalPlaces + 1) {
+      result = result.substring(0, result.length - 1);
     }
     textEditingController.text = result;
   }
 
-  KeyItem buildKeyItem(String val, TextStyle digitTextStyle) {
+  KeyItem buildKeyItem(String val , TextStyle digitTextStyle) {
     return KeyItem(
-      value: val,
-      child: Text(
-        val,
-        textAlign: TextAlign.center,
-        style: digitTextStyle
-      ),
-      onKeyTap: onKeyTapped
+        value: val ,
+        child: (val != 'C')
+            ? Text(val , textAlign: TextAlign.center , style: digitTextStyle)
+            : const Icon(Icons.arrow_back , size: 24.0 , color: AppColor.deepBlack) ,
+        onKeyTap: onKeyTapped
+    );
+  }
+
+  Expanded buildRow(List<String> items) {
+    final digitTextStyle = AppText.header2.copyWith(fontFamily: 'CircularPro-Book', fontWeight: FontWeight.normal);
+    return Expanded(
+        child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              buildKeyItem(items[0], digitTextStyle),
+              buildKeyItem(items[1], digitTextStyle),
+              buildKeyItem(items[2], digitTextStyle)
+            ]
+        )
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final digitTextStyle
-      = Theme.of(context).textTheme.display2.copyWith(fontFamily: 'CircularPro-Book', fontWeight: FontWeight.normal, color: Colors.black, fontSize: 24.0);
     return Material(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                alignment: Alignment.bottomRight,
-                color: Colors.white,
-                height: MediaQuery.of(context).size.height * 0.4,
-                width: MediaQuery.of(context).size.width * 0.8,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              buildKeyItem('1', digitTextStyle),
-                              buildKeyItem('2', digitTextStyle),
-                              buildKeyItem('3', digitTextStyle)
-                            ]
-                          )
-                        ),
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              buildKeyItem('4', digitTextStyle),
-                              buildKeyItem('5', digitTextStyle),
-                              buildKeyItem('6', digitTextStyle)
-                            ]
-                          )
-                        ),
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              buildKeyItem('7', digitTextStyle),
-                              buildKeyItem('8', digitTextStyle),
-                              buildKeyItem('9', digitTextStyle)
-                            ]
-                          )
-                        ),
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              buildKeyItem('.', digitTextStyle),
-                              buildKeyItem('0', digitTextStyle),
-                              KeyItem(
-                                value: 'C',
-                                child: const Icon(
-                                  Icons.arrow_back,
-                                  size: 24.0,
-                                  color: AppColor.deepBlack,
-                                ),
-                                onKeyTap: onKeyTapped
-                              )
-                            ]
-                          )
-                        )
-                    ]
-                  )
-                )
-            ]
-        )
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            alignment: Alignment.bottomRight,
+            color: Colors.white,
+            height: MediaQuery.of(context).size.height * 0.4,
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                buildRow(['1', '2', '3']),
+                buildRow(['4', '5', '6']),
+                buildRow(['7', '8', '9']),
+                buildRow(['.', '0', 'C'])
+              ]
+            )
+          )
+        ]
+      )
     );
   }
 }
