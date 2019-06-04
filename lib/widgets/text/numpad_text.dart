@@ -29,6 +29,7 @@ class _NumPadTextState extends State<NumPadText> {
 
   double height;
   double width;
+  TextStyle digitTextStyle;
 
   void onKeyTapped(Key key) {
     var result = widget.textEditingController.text;
@@ -73,7 +74,7 @@ class _NumPadTextState extends State<NumPadText> {
       child: Text(
         val,
         textAlign: TextAlign.center,
-        style: TextStyle(fontWeight: FontWeight.normal, fontSize: 24.0, color: Colors.black, fontFamily: 'CircularPro-Book')
+        style: digitTextStyle
       ),
       onKeyTap: onKeyTapped,
     );
@@ -84,6 +85,7 @@ class _NumPadTextState extends State<NumPadText> {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     debugPrint('Width :: $width and Height :: $height');
+    digitTextStyle = Theme.of(context).textTheme.display2.copyWith(fontFamily: 'CircularPro-Book', fontWeight: FontWeight.normal);
     return Material(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
