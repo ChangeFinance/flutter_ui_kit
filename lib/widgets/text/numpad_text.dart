@@ -85,7 +85,7 @@ class _NumPadTextState extends State<NumPadText> {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
     debugPrint('Width :: $width and Height :: $height');
-    digitTextStyle = Theme.of(context).textTheme.display2.copyWith(fontFamily: 'CircularPro-Book', fontWeight: FontWeight.normal);
+    digitTextStyle = Theme.of(context).textTheme.display2.copyWith(fontFamily: 'CircularPro-Book', fontWeight: FontWeight.normal, color: Colors.black, fontSize: 24.0);
     return Material(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
