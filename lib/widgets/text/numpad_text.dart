@@ -22,7 +22,8 @@ class NumPadText extends StatelessWidget {
     } else {
       result += key;
     }
-    if (digitsAfterPoint > 0 && result.contains('.') && result.substring(result.indexOf('.')).length > digitsAfterPoint+1) {
+    if (digitsAfterPoint > 0 && result.contains('.')
+        && result.substring(result.indexOf('.')).length > digitsAfterPoint + 1) {
       result = result.substring(0, result.length-1);
     }
     textEditingController.text = result;
@@ -52,7 +53,7 @@ class NumPadText extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 color: Colors.white,
                   height: 240,
-                  width: 240,
+                  width: 300,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -133,7 +134,7 @@ class KeyItem extends StatelessWidget {
           onTap: () => onKeyTap(value),
           child: Container(
             alignment: Alignment.center,
-            child: child,
+            child: child
           )
         )
       )

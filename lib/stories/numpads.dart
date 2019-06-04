@@ -22,16 +22,14 @@ class NumPads extends StatelessWidget {
             autofocus: true,
             controller: _textEditingController,
             textAlign: TextAlign.right,
-            style: Theme.of(context).textTheme.display2,
+            style: Theme.of(context).textTheme.display2.copyWith(fontFamily: 'CircularPro-Book', fontWeight: FontWeight.normal, color: Colors.black, fontSize: 24.0),
             decoration: InputDecoration.collapsed(
                 hintText: '0',
                 hintStyle: const TextStyle(color: Colors.black, fontSize: 24.0)),
           ),
         ),
       ),
-      Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Center(child: NumPadText(textEditingController: _textEditingController)))
+     Center(child: NumPadText(textEditingController: _textEditingController))
     ]);
   }
 }
