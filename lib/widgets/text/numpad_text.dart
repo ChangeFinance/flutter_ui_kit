@@ -163,8 +163,7 @@ class KeyItem extends StatelessWidget {
   final Key key;
   final Function(Key key) onKeyTap;
 
-  // ignore: prefer_const_constructors_in_immutables
-  KeyItem({@required this.child,this.key,this.onKeyTap});
+  const KeyItem({@required this.child,this.key,this.onKeyTap});
 
   @override
   Widget build(BuildContext context) {
