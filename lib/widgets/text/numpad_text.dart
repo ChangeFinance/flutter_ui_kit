@@ -37,7 +37,7 @@ class NumPadText extends StatelessWidget {
         textAlign: TextAlign.center,
         style: digitTextStyle
       ),
-      onKeyTap: onKeyTapped,
+      onKeyTap: onKeyTapped
     );
   }
 
@@ -52,8 +52,8 @@ class NumPadText extends StatelessWidget {
               Container(
                 alignment: Alignment.bottomRight,
                 color: Colors.white,
-                  height: 240,
-                  width: 300,
+                height: MediaQuery.of(context).size.height * 0.4,
+                width: MediaQuery.of(context).size.width * 0.8,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
@@ -63,9 +63,9 @@ class NumPadText extends StatelessWidget {
                             children: <Widget>[
                               buildKeyItem('1', digitTextStyle),
                               buildKeyItem('2', digitTextStyle),
-                              buildKeyItem('3', digitTextStyle),
-                            ],
-                          ),
+                              buildKeyItem('3', digitTextStyle)
+                            ]
+                          )
                         ),
                         Expanded(
                           child: Row(
@@ -73,9 +73,9 @@ class NumPadText extends StatelessWidget {
                             children: <Widget>[
                               buildKeyItem('4', digitTextStyle),
                               buildKeyItem('5', digitTextStyle),
-                              buildKeyItem('6', digitTextStyle),
-                            ],
-                          ),
+                              buildKeyItem('6', digitTextStyle)
+                            ]
+                          )
                         ),
                         Expanded(
                           child: Row(
@@ -83,9 +83,9 @@ class NumPadText extends StatelessWidget {
                             children: <Widget>[
                               buildKeyItem('7', digitTextStyle),
                               buildKeyItem('8', digitTextStyle),
-                              buildKeyItem('9', digitTextStyle),
-                            ],
-                          ),
+                              buildKeyItem('9', digitTextStyle)
+                            ]
+                          )
                         ),
                         Expanded(
                           child: Row(
@@ -100,7 +100,7 @@ class NumPadText extends StatelessWidget {
                                   size: 24.0,
                                   color: AppColor.deepBlack,
                                 ),
-                                onKeyTap: onKeyTapped,
+                                onKeyTap: onKeyTapped
                               )
                             ]
                           )
@@ -128,7 +128,7 @@ class KeyItem extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkResponse(
-          radius: 30.0,
+          radius: MediaQuery.of(context).size.height * 0.05 - 2,
           splashColor: AppColor.brightGreen,
           highlightColor: Colors.white,
           onTap: () => onKeyTap(value),
