@@ -14,15 +14,15 @@ class NumPadText extends StatelessWidget {
 
   void onKeyTapped(String key) {
     var result = textEditingController.text;
-    if (key == '.') {
-      if (!result.contains('.')) {
-        result += key;
-      }
+    if ('0123456789.'.contains(key)) {
+      if (key == '.' && result.contains('.'))
+        return;
+      result += key;
     } else if (key == 'C') {
       result = result.substring(0, result.length - 1);
-    } else {
-      result += key;
-    }
+    } else
+      return;
+
     if (decimalPlaces != null && result.contains('.')
         && result.substring(result.indexOf('.')).length > decimalPlaces + 1) {
       result = result.substring(0, result.length - 1);
@@ -30,25 +30,24 @@ class NumPadText extends StatelessWidget {
     textEditingController.text = result;
   }
 
-  KeyItem buildKeyItem(String val , TextStyle digitTextStyle) {
+  KeyItem buildKeyItem(String val) {
     return KeyItem(
         value: val ,
         child: (val != 'C')
-            ? Text(val , textAlign: TextAlign.center , style: digitTextStyle)
+            ? Text(val , textAlign: TextAlign.center , style: AppText.body4)
             : const Icon(Icons.arrow_back , size: 24.0 , color: AppColor.deepBlack) ,
         onKeyTap: onKeyTapped
     );
   }
 
   Expanded buildRow(List<String> items) {
-    final digitTextStyle = AppText.header2.copyWith(fontFamily: 'CircularPro-Book', fontWeight: FontWeight.normal);
     return Expanded(
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              buildKeyItem(items[0], digitTextStyle),
-              buildKeyItem(items[1], digitTextStyle),
-              buildKeyItem(items[2], digitTextStyle)
+              buildKeyItem(items[0]),
+              buildKeyItem(items[1]),
+              buildKeyItem(items[2])
             ]
         )
     );
@@ -56,27 +55,21 @@ class NumPadText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Container(
-            alignment: Alignment.bottomRight,
-            color: Colors.white,
-            height: MediaQuery.of(context).size.height * 0.4,
-            width: MediaQuery.of(context).size.width * 0.8,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                buildRow(['1', '2', '3']),
-                buildRow(['4', '5', '6']),
-                buildRow(['7', '8', '9']),
-                buildRow(['.', '0', 'C'])
-              ]
-            )
-          )
-        ]
-      )
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Container(
+          child: buildRow(['1', '2', '3'])
+        ),
+        Container(
+          child: buildRow(['4', '5', '6'])
+        ),
+        Container(
+          child: buildRow(['7', '8', '9'])
+        ),
+        Container(
+          child: buildRow(['.', '0', 'C'])
+      )]
     );
   }
 }
@@ -92,17 +85,14 @@ class KeyItem extends StatelessWidget {
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterial(context));
     return Expanded(
-      child: Material(
-        type: MaterialType.transparency,
-        child: InkResponse(
-          radius: MediaQuery.of(context).size.height * 0.05 - 2,
-          splashColor: AppColor.brightGreen,
-          highlightColor: Colors.white,
-          onTap: () => onKeyTap(value),
-          child: Container(
-            alignment: Alignment.center,
-            child: child
-          )
+      child: InkResponse(
+        radius: 30,
+        splashColor: AppColor.brightGreen,
+        highlightColor: Colors.white,
+        onTap: () => onKeyTap(value),
+        child: Container(
+          alignment: Alignment.center,
+          child: child
         )
       )
     );

@@ -60,6 +60,13 @@ class AppText {
       letterSpacing: 0,
       color: AppColor.deepBlack);
 
+  static const TextStyle body4 = TextStyle(
+      fontSize: 24.0,
+      fontFamily: 'CircularPro-Book',
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0,
+      color: AppColor.deepBlack);
+
   static const TextStyle button1 = AppText.body1;
   static const TextStyle button2 = AppText.body2;
   static const TextStyle button3 = AppText.body3;

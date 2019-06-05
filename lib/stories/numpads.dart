@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
+import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/text/numpad_text.dart';
 
 class NumPads extends StatelessWidget {
@@ -45,29 +46,30 @@ Widget _numPadStory() {
       widgetBuilder: (context, props) {
         return Column(mainAxisSize: MainAxisSize.min, children: [
           new Container(
-              child: ConstrainedBox(
-                  constraints: const BoxConstraints.tightFor(width: 280.0),
-                  child: new IgnorePointer(
-                      child: Container(
-                          alignment: Alignment.bottomRight,
-                          padding: const EdgeInsets.all(30.0),
-                          child: IgnorePointer(
-                              child: TextField(
-                                keyboardType: TextInputType.number,
-                                autofocus: false,
-                                controller: _textEditingController,
-                                textAlign: TextAlign.right,
-                                style: Theme.of(context).textTheme.display2.copyWith(fontWeight: FontWeight.normal),
-                                decoration: InputDecoration.collapsed(
-                                    hintText: '0',
-                                    hintStyle: const TextStyle(color: Colors.black, fontSize: 24.0))
-                              )
-                          )
-                      )
+            width: 300.0,
+            child: new IgnorePointer(
+              child: Container(
+                alignment: Alignment.bottomRight,
+                padding: const EdgeInsets.all(30.0),
+                child: IgnorePointer(
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    autofocus: false,
+                    controller: _textEditingController,
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.display2.copyWith(fontWeight: FontWeight.normal),
+                    decoration: InputDecoration.collapsed(
+                      hintText: '0',
+                      hintStyle: AppText.body4)
                   )
+                )
               )
+            )
           ),
-          Center(child: NumPadText(textEditingController: _textEditingController, decimalPlaces: props['decimalPlaces']))
+          Container(
+            height:240.0,
+            child: NumPadText(textEditingController: _textEditingController, decimalPlaces: props['decimalPlaces']),
+          )
         ]);
       }
     )
