@@ -83,7 +83,6 @@ class KeyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    assert(debugCheckHasMaterial(context));
     return Expanded(
       child: InkResponse(
         radius: 30,
