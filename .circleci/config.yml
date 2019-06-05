@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: changefinance/flutter-builder-docker:1.4.18
+      - image: changefinance/flutter-builder-docker:1.5.0
     environment:
       CODECOV_TOKEN: 2946bed5-f2c8-4478-a9d8-e553cce48cbc
     steps:
