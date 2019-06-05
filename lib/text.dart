@@ -60,7 +60,7 @@ class AppText {
       letterSpacing: 0,
       color: AppColor.deepBlack);
 
-  static const TextStyle body4 = TextStyle(
+  static const TextStyle numPadTextStyle = TextStyle(
       fontSize: 24.0,
       fontFamily: 'CircularPro-Book',
       fontWeight: FontWeight.normal,

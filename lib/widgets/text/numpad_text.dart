@@ -2,39 +2,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/text.dart';
 
+typedef Callback = void Function(String value);
+
 class NumPadText extends StatelessWidget {
 
-  final TextEditingController textEditingController;
+  final Callback onChange;
   final int decimalPlaces;
+  static String _text = '';
 
   const NumPadText({
-    @required this.textEditingController,
+    @required this.onChange,
     this.decimalPlaces
   });
 
+  bool alreadyHasADot(String key, String result) {
+    return key == '.' && result.contains('.');
+  }
+
+  bool shouldRestrictDecimalPlaces(String result) {
+    return decimalPlaces != null && result.contains('.') && result.substring(result.indexOf('.')).length > decimalPlaces + 1;
+  }
+
   void onKeyTapped(String key) {
-    var result = textEditingController.text;
     if ('0123456789.'.contains(key)) {
-      if (key == '.' && result.contains('.'))
+      if (alreadyHasADot(key, _text))
         return;
-      result += key;
+      _text += key;
     } else if (key == 'C') {
-      result = result.substring(0, result.length - 1);
+      _text = _text.substring(0, _text.length - 1);
     } else
       return;
 
-    if (decimalPlaces != null && result.contains('.')
-        && result.substring(result.indexOf('.')).length > decimalPlaces + 1) {
-      result = result.substring(0, result.length - 1);
+    if (shouldRestrictDecimalPlaces(_text)) {
+      _text = _text.substring(0, _text.length - 1);
     }
-    textEditingController.text = result;
+    onChange(_text);
   }
 
   KeyItem buildKeyItem(String val) {
     return KeyItem(
         value: val ,
         child: (val != 'C')
-            ? Text(val , textAlign: TextAlign.center , style: AppText.body4)
+            ? Text(val , textAlign: TextAlign.center , style: AppText.numPadTextStyle)
             : const Icon(Icons.arrow_back , size: 24.0 , color: AppColor.deepBlack) ,
         onKeyTap: onKeyTapped
     );

@@ -10,10 +10,7 @@ class NumPads extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: MediaQuery
-            .of(context)
-            .size
-            .width ,
+        width: MediaQuery.of(context).size.width ,
         child: SingleChildScrollView(
             child: _numPadStory()
         )
@@ -23,6 +20,9 @@ class NumPads extends StatelessWidget {
 
 Widget _numPadStory() {
   final _textEditingController = TextEditingController();
+  void onChangeTextField(String value) {
+    _textEditingController.text = value;
+  }
   return ExpandableStory(
     title: 'Num Pad',
     child: PropsExplorer(
@@ -60,7 +60,7 @@ Widget _numPadStory() {
                     style: Theme.of(context).textTheme.display2.copyWith(fontWeight: FontWeight.normal),
                     decoration: InputDecoration.collapsed(
                       hintText: '0',
-                      hintStyle: AppText.body4)
+                      hintStyle: AppText.numPadTextStyle)
                   )
                 )
               )
@@ -68,7 +68,7 @@ Widget _numPadStory() {
           ),
           Container(
             height:240.0,
-            child: NumPadText(textEditingController: _textEditingController, decimalPlaces: props['decimalPlaces']),
+            child: NumPadText(onChange: onChangeTextField, decimalPlaces: props['decimalPlaces'])
           )
         ]);
       }
