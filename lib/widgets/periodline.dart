@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
-
-const TextStyle textStyle12 = TextStyle(
-    color: AppColor.deepBlack,
-    fontSize: 12.0,
-    fontStyle: FontStyle.normal,
-    fontFamily: 'CircularPro-Book');
-
-const TextStyle textStyle12w = TextStyle(
-    color: AppColor.deepWhite,
-    fontSize: 12.0,
-    fontStyle: FontStyle.normal,
-    fontFamily: 'CircularPro-Book');
-
-const TextStyle textStyle15 = TextStyle(
-    color: AppColor.deepBlack,
-    fontSize: 15.0,
-    fontStyle: FontStyle.normal,
-    fontFamily: 'CircularPro-Book');
+import 'package:flutter_ui_kit/text.dart';
 
 typedef Callback = void Function(String value);
 
@@ -50,7 +33,7 @@ class _PeriodLineWidgetState extends State<PeriodLine> {
           padding: const EdgeInsets.all(0.0) ,
           child: Text(
             period ,
-            style: textStyle12w ,
+            style: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite) ,
           ) ,
           highlightColor: AppColor.darkerGreen ,
           onPressed: () {
@@ -67,7 +50,7 @@ class _PeriodLineWidgetState extends State<PeriodLine> {
             padding: const EdgeInsets.all(0.0) ,
             child: Text(
               period ,
-              style: textStyle12 ,
+              style: AppText.graphTextStyle ,
             ) ,
             onPressed: () {
               _onPressedPeriod(period);
