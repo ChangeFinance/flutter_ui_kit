@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 
-class SparkLine extends StatefulWidget {
+class Graph extends StatefulWidget {
 
   final bool enableMaxMin;
+  final bool sharpCorners;
   final String labelPrefix;
   final List<double> initData;
-  SparkLine({@required this.initData, Key key, this.enableMaxMin = false, this.labelPrefix = '€'}) : super(key: key);
+  Graph({@required this.initData, Key key, this.enableMaxMin = false, this.labelPrefix = '€', this.sharpCorners = true}) : super(key: key);
 
   @override
-  SparkLineWidgetState createState() => SparkLineWidgetState();
+  GraphWidgetState createState() => GraphWidgetState();
 }
 
-class SparkLineWidgetState extends State<SparkLine> {
+class GraphWidgetState extends State<Graph> {
 
   List<double> _data;
 
@@ -27,6 +28,7 @@ class SparkLineWidgetState extends State<SparkLine> {
     return new Center(
       child: new Container(
         child: new Sparkline(
+        sharpCorners: widget.sharpCorners,
         data: (_data == null)?widget.initData:_data,
         lineColor: const Color.fromRGBO(62, 219, 181, 1),
         lineWidth: 1.0,
