@@ -36,7 +36,7 @@ Widget _sparkLinesStory() {
   }
 
   void onChangeTextField(String value) {
-    _keySpark.currentState.onRefresh(_generateRandomData(50));
+    _keySpark.currentState.onRefresh(_generateRandomData(100));
   }
 
   return Container(
@@ -71,7 +71,7 @@ Widget _sparkLinesStory() {
               Container(
                 height:180.0,
                 child: Center(
-                    child: SparkLine(key: _keySpark, labelPrefix: props['labelPrefix'],enableMaxMin: props['enableMaxMin'])
+                    child: SparkLine(initData: _generateRandomData(100),  key: _keySpark, labelPrefix: props['labelPrefix'],enableMaxMin: props['enableMaxMin'])
                 )
               ),
               Container(

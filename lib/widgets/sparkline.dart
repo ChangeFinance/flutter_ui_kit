@@ -5,7 +5,8 @@ class SparkLine extends StatefulWidget {
 
   final bool enableMaxMin;
   final String labelPrefix;
-  SparkLine({Key key, this.enableMaxMin = false, this.labelPrefix = '€'}) : super(key: key);
+  final List<double> initData;
+  SparkLine({@required this.initData, Key key, this.enableMaxMin = false, this.labelPrefix = '€'}) : super(key: key);
 
   @override
   SparkLineWidgetState createState() => SparkLineWidgetState();
@@ -13,7 +14,7 @@ class SparkLine extends StatefulWidget {
 
 class SparkLineWidgetState extends State<SparkLine> {
 
-  List<double> _data = [0.0];
+  List<double> _data;
 
   void onRefresh(List<double> data) {
     setState(() {
@@ -26,7 +27,7 @@ class SparkLineWidgetState extends State<SparkLine> {
     return new Center(
       child: new Container(
         child: new Sparkline(
-        data: _data,
+        data: (_data == null)?widget.initData:_data,
         lineColor: const Color.fromRGBO(62, 219, 181, 1),
         lineWidth: 1.0,
         pointsMode: PointsMode.none,
