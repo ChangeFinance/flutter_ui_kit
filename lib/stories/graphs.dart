@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
-import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/time_frame_selector.dart';
@@ -26,34 +25,17 @@ class Graphs extends StatelessWidget {
 
 Widget _graphsStory() {
 
-  final _keySpark1 = GlobalKey<GraphWidgetState>();
-  final _keySpark2 = GlobalKey<GraphWidgetState>();
-
   List<double> _generateRandomData(int count) {
     final result = <double>[];
-    for (var i = 0; i < count/5; i++) {
-      result.add(2 + random.nextDouble() * 3);
+    for (var i = 0; i < count; i++) {
+      result.add(random.nextDouble() * 10000);
     }
-    for (var i = 0; i < count/5; i++) {
-      result.add(3 + random.nextDouble() * 3);
-    }
-    for (var i = 0; i < count/5; i++) {
-      result.add(4 + random.nextDouble() * 3);
-    }
-    for (var i = 0; i < count/5; i++) {
-      result.add(2 + random.nextDouble() * 3);
-    }
-    for (var i = 0; i < count/5; i++) {
-      result.add(3 + random.nextDouble() * 3);
-    }
-
     return result;
   }
-
+  final data = _generateRandomData(100);
+  final key = ValueKey(data);
   void onChangeTextField(String value) {
-    final data = _generateRandomData(50);
-    _keySpark1.currentState.onRefresh(data);
-    _keySpark2.currentState.onRefresh(data);
+    _generateRandomData(1000);
   }
 
   return Container(
@@ -77,16 +59,6 @@ Widget _graphsStory() {
                   updateProp: updateProp,
                   propKey: 'enableMaxMin',
                 ),
-                BoolPropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'enableSharp',
-                ),
-                IntPropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'countValues',
-                ),
                 StringPropUpdater(
                   props: props,
                   updateProp: updateProp,
@@ -96,31 +68,17 @@ Widget _graphsStory() {
             );
           },
           widgetBuilder: (context, props) {
-            final data = _generateRandomData(props['countValues']);
             return Column(mainAxisSize: MainAxisSize.min, children: [
               Container(
                 height:180.0,
                 child: Center(
                     child: Graph(
-                        initData: data,
-                        key: _keySpark1,
+                        key: key,
+                        data: data,
                         labelPrefix: props['labelPrefix'],
-                        enableMaxMin: props['enableMaxMin'],
-                        sharpCorners: props['enableSharp']
+                        enableMaxMin: props['enableMaxMin']
                     )
                 )
-              ),
-              Container(
-                  height:180.0,
-                  child: Center(
-                      child: Graph(
-                          initData: data,
-                          key: _keySpark2,
-                          labelPrefix: props['labelPrefix'],
-                          enableMaxMin: props['enableMaxMin'],
-                          sharpCorners: !props['enableSharp']
-                      )
-                  )
               ),
               Container(
                 height:35.0,

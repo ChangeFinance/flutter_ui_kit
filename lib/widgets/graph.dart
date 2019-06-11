@@ -1,41 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 
-class Graph extends StatefulWidget {
+class Graph extends StatelessWidget {
 
   final bool enableMaxMin;
-  final bool sharpCorners;
   final String labelPrefix;
-  final List<double> initData;
-  Graph({@required this.initData, Key key, this.enableMaxMin = false, this.labelPrefix = '€', this.sharpCorners = true}) : super(key: key);
-
-  @override
-  GraphWidgetState createState() => GraphWidgetState();
-}
-
-class GraphWidgetState extends State<Graph> {
-
-  List<double> _data;
-
-  void onRefresh(List<double> data) {
-    setState(() {
-      _data = data;
-    });
-  }
+  final List<double> data;
+  Graph({@required this.data, Key key, this.enableMaxMin = false, this.labelPrefix = '€'}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return new Center(
       child: new Container(
         child: new Sparkline(
-        sharpCorners: widget.sharpCorners,
-        data: (_data == null)?widget.initData:_data,
+        sharpCorners: true,
+        data: data,
         lineColor: const Color.fromRGBO(62, 219, 181, 1),
         lineWidth: 1.0,
         pointsMode: PointsMode.none,
         fillMode: FillMode.below,
-        enableMaxMin: widget.enableMaxMin,
-        labelPrefix: widget.labelPrefix,
+        enableMaxMin: enableMaxMin,
+        labelPrefix: labelPrefix,
         fillGradient: new LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
