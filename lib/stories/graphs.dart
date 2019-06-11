@@ -45,9 +45,7 @@ Widget _graphsStory() {
         child: PropsExplorer(
           initialProps: const <String, dynamic>{
             'enableMaxMin': true,
-            'enableSharp': true,
-            'labelPrefix': '€',
-            'countValues': 10
+            'labelPrefix': '€'
           },
           formBuilder: (context, props, updateProp) {
             return ListView(

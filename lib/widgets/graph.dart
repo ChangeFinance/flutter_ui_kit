@@ -6,7 +6,7 @@ class Graph extends StatelessWidget {
   final bool enableMaxMin;
   final String labelPrefix;
   final List<double> data;
-  Graph({@required this.data, Key key, this.enableMaxMin = false, this.labelPrefix = '€'}) : super(key: key);
+  const Graph({@required this.data, Key key, this.enableMaxMin = false, this.labelPrefix = '€'}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
