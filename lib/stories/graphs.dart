@@ -41,7 +41,7 @@ Widget _graphsStory() {
   return Container(
     child: SingleChildScrollView(
       child: ExpandableStory(
-        title: 'Graph Line',
+        title: 'Spark Line',
         child: PropsExplorer(
           initialProps: const <String, dynamic>{
             'enableMaxMin': true,

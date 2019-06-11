@@ -41,15 +41,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_sparkline:
-    dependency: "direct dev"
-    description:
-      path: "."
-      ref: master
-      resolved-ref: "208e3750154aef4a5fb21aa44a6c8aafc1f9f7d7"
-      url: "https://github.com/ChangeFinance/flutter_sparkline.git"
-    source: git
-    version: "0.1.0"
   flutter_svg:
     dependency: "direct main"
     description:

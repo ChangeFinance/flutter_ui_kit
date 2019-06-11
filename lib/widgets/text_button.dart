@@ -7,13 +7,11 @@ class TextButton extends StatefulWidget {
   final String text;
   final FutureCallback onPressed;
   final EdgeInsetsGeometry padding;
-  final TextStyle textStyle;
 
   TextButton(
     this.text, {
     @required this.onPressed,
     this.padding,
-    this.textStyle,
     Key key,
   })  : assert(text != null),
         super(key: key);
@@ -38,8 +36,7 @@ class _TextButtonState extends State<TextButton> with ButtonMixin {
       child: FlatButton(
         child: Text(
           widget.text,
-          style:  (widget.textStyle != null) ? widget.textStyle :
-              Theme.of(context).textTheme.body1.copyWith(
+          style: Theme.of(context).textTheme.body1.copyWith(
                 color: getTextColorOnWhiteBackground(
                   enabled: _enabled,
                   pressing: _pressing,

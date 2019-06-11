@@ -9,7 +9,6 @@ class FilledButton extends StatefulWidget {
   final bool fullWidth;
   final bool narrow;
   final EdgeInsetsGeometry padding;
-  final TextStyle textStyle;
 
   FilledButton(
     this.text, {
@@ -17,7 +16,6 @@ class FilledButton extends StatefulWidget {
     this.fullWidth = false,
     this.narrow = false,
     this.padding,
-    this.textStyle,
     Key key,
   })  : assert(text != null),
         super(key: key);
@@ -36,11 +34,10 @@ class _FilledButtonState extends State<FilledButton> with ButtonMixin {
       child: RaisedButton(
         child: Text(
           widget.text,
-          style: (widget.textStyle != null) ? widget.textStyle :
-            Theme.of(context).textTheme.body1.copyWith(
-              color: AppColor.deepWhite,
-              fontSize: getFontSize(narrow: widget.narrow, fullWidth: widget.fullWidth)
-            ),
+          style: Theme.of(context).textTheme.body1.copyWith(
+            color: AppColor.deepWhite,
+            fontSize: getFontSize(narrow: widget.narrow, fullWidth: widget.fullWidth)
+          ),
         ),
         onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
             ? null
