@@ -30,7 +30,7 @@ dev_dependencies:
   flutter_sparkline:
     git:
       url: https://github.com/ChangeFinance/flutter_sparkline.git
-      ref: master
+      ref: add-graph-paint-callback
 
 
 # For information on the generic Dart part of this file, see the

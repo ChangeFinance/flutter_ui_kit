@@ -21,8 +21,8 @@ class Graph extends StatelessWidget {
     double _calcXForMarker(double x , double width) {
       if ((x - offsetLeftX) < 0)
         return 0;
-      if ((x + offsetRightX) > width)
-        return width - offsetRightX;
+      if ((x + offsetRightX * 2) > width)
+        return width - (offsetRightX * 2);
       return x - offsetLeftX;
     }
 
@@ -39,20 +39,24 @@ class Graph extends StatelessWidget {
     final widthNormalizer = width / data.length;
     final heightNormalizer = height / (maxValue - minValue);
 
+    void _drawLabel(double item, int i) {
+      final tp = new TextPainter(
+          text: new TextSpan(
+              style: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite, fontSize: 15.0, backgroundColor: Colors.black ),
+              text: labelPrefix + item.toString().substring(0 , 7)
+          ) ,
+          textDirection: TextDirection.ltr ,
+          textAlign: TextAlign.left);
+      tp.layout();
+      final x = i * widthNormalizer + lineWidth / 2;
+      final y = height - (item - minValue) * heightNormalizer + lineWidth / 2;
+      tp.paint(context, new Offset(_calcXForMarker(x, width), _calcYForMarker(y, height)));
+    }
+
     for (var i = 0; i < data.length; i++) {
       final item = data[i];
       if (item == maxValue || item == minValue) {
-        final tp = new TextPainter(
-            text: new TextSpan(
-                style: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite, fontSize: 15.0, backgroundColor: Colors.black ),
-                text: labelPrefix + item.toString().substring(0 , 7)
-            ) ,
-            textDirection: TextDirection.ltr ,
-            textAlign: TextAlign.left);
-        tp.layout();
-        final  x = i * widthNormalizer + lineWidth / 2;
-        final y = height - (item - minValue) * heightNormalizer + lineWidth / 2;
-        tp.paint(context, new Offset(_calcXForMarker(x, width), _calcYForMarker(y, height)));
+        _drawLabel(item, i);
       }
     }
   }
