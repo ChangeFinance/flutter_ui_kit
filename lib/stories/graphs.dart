@@ -33,7 +33,6 @@ Widget _graphsStory() {
     return result;
   }
   final data = _generateRandomData(100);
-  final key = ValueKey(data);
   void onChangeTextField(String value) {
     _generateRandomData(1000);
   }
