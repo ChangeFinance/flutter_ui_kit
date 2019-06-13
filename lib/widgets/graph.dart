@@ -12,8 +12,8 @@ class Graph extends StatelessWidget {
   const Graph({@required this.data, this.enableMaxMin = false, this.labelPrefix = '€'});
 
   void _drawMaxMinMarkers(Canvas context, double width, double height) {
-    const offsetLeftX = 30.0;
-    const offsetRightX = 30.0;
+    const offsetLeftX = 35.0;
+    const offsetRightX = 35.0;
     const offsetTopY = 5.0;
     const offsetDownY = 25.0;
     const lineWidth = 1.0;
@@ -54,9 +54,7 @@ class Graph extends StatelessWidget {
       final offset = new Offset(_calcXForMarker(x, width), _calcYForMarker(y, height));
 
       final paint = Paint();
-      context.drawRect(new Rect.fromLTRB(offset.dx - 2, offset.dy + 2, offset.dx + tp.width + 2, offset.dy + tp.height - 2), paint);
-      context.drawRect(new Rect.fromLTRB(offset.dx - 1, offset.dy + 1, offset.dx + tp.width + 1, offset.dy + tp.height - 1), paint);
-
+      context.drawRRect(RRect.fromRectAndRadius(Rect.fromLTWH(offset.dx - 3 , offset.dy - 2, 70, 20),const Radius.circular(4.0)),paint);
       tp.paint(context, offset);
     }
 
