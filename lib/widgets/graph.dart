@@ -48,9 +48,16 @@ class Graph extends StatelessWidget {
           textDirection: TextDirection.ltr ,
           textAlign: TextAlign.left);
       tp.layout();
+
       final x = i * widthNormalizer + lineWidth / 2;
       final y = height - (item - minValue) * heightNormalizer + lineWidth / 2;
-      tp.paint(context, new Offset(_calcXForMarker(x, width), _calcYForMarker(y, height)));
+      final offset = new Offset(_calcXForMarker(x, width), _calcYForMarker(y, height));
+
+      final paint = Paint();
+      context.drawRect(new Rect.fromLTRB(offset.dx - 2, offset.dy + 2, offset.dx + tp.width + 2, offset.dy + tp.height - 2), paint);
+      context.drawRect(new Rect.fromLTRB(offset.dx - 1, offset.dy + 1, offset.dx + tp.width + 1, offset.dy + tp.height - 1), paint);
+
+      tp.paint(context, offset);
     }
 
     for (var i = 0; i < data.length; i++) {

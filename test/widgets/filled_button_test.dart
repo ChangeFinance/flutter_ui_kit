@@ -69,5 +69,18 @@ void main() {
             fullWidth: fullWidth,
           ),
     );
+
+    testFontStyle(
+      group: group,
+      setUp: setUp,
+      testWidgets: testWidgets,
+      buttonText: buttonText,
+      buildButton: ({TextStyle textStyle}) => FilledButton(
+          buttonText,
+          textStyle: textStyle,
+          onPressed: () {},
+          narrow: true,
+      ),
+    );
   });
 }
