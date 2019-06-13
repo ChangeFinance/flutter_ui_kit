@@ -9,13 +9,12 @@ import '../wrap_in_material_app.dart';
 void main() {
   group('TimeFrameSelector', () {
     testWidgets('renders time Frame selector', (WidgetTester tester) async {
-      final key = GlobalKey();
       void onChangeTextField(String value) {
       }
       await tester.pumpWidget(wrapInMaterialApp(
-          TimeFrameSelector(key: key, onChange: onChangeTextField)
+          TimeFrameSelector(onChange: onChangeTextField)
       ));
-      expect(find.byKey(key), findsOneWidget);
+      expect(find.byType(TimeFrameSelector), findsOneWidget);
     });
     testWidgets('click on button', (WidgetTester tester) async {
       final key = GlobalKey();

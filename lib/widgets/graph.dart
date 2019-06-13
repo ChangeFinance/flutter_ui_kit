@@ -9,7 +9,7 @@ class Graph extends StatelessWidget {
   final bool enableMaxMin;
   final String labelPrefix;
   final List<double> data;
-  const Graph({@required this.data, Key key, this.enableMaxMin = false, this.labelPrefix = '€'}) : super(key: key);
+  const Graph({@required this.data, this.enableMaxMin = false, this.labelPrefix = '€'});
 
   void _drawMaxMinMarkers(Canvas context, double width, double height) {
     const offsetLeftX = 30.0;

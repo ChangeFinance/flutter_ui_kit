@@ -44,11 +44,11 @@ class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
     );
 
     return Expanded(
-      flex: 1 ,
-      child: Container(
-      height: 22.0 ,
-      child: (_periodValue == period) ? checkedButton : uncheckedButton
-      )
+        flex: 1 ,
+        child: Container(
+            height: 22.0 ,
+            child: (_periodValue == period) ? checkedButton : uncheckedButton
+        )
     );
   }
   

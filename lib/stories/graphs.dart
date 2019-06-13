@@ -71,7 +71,6 @@ Widget _graphsStory() {
                 height:180.0,
                 child: Center(
                     child: Graph(
-                        key: key,
                         data: data,
                         labelPrefix: props['labelPrefix'],
                         enableMaxMin: props['enableMaxMin']

@@ -1,7 +1,5 @@
 import 'dart:math' as math;
 
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/widgets/graph.dart';
 
@@ -14,20 +12,18 @@ void main() {
       List<double> _generateRandomData(int count) {
         final result = <double>[];
         for (var i = 0; i < count; i++) {
-          result.add(random.nextDouble() * 10000);
+          result.add(random.nextDouble() * 100);
         }
         return result;
       }
       final data = _generateRandomData(100);
-      final key = ValueKey(data);
       await tester.pumpWidget(wrapInMaterialApp(
           Graph(
-            key: key,
             data: data,
             labelPrefix: '\$',
             enableMaxMin: true
       )));
-      expect(find.byKey(key), findsOneWidget);
+      expect(find.byType(Graph), findsOneWidget);
     });
   });
 }
