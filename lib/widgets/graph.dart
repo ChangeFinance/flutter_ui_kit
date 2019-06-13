@@ -54,7 +54,7 @@ class Graph extends StatelessWidget {
       final offset = new Offset(_calcXForMarker(x, width), _calcYForMarker(y, height));
 
       final paint = Paint();
-      context.drawRRect(RRect.fromRectAndRadius(Rect.fromLTWH(offset.dx - 3 , offset.dy - 2, 70, 20),const Radius.circular(4.0)),paint);
+      context.drawRRect(RRect.fromRectAndRadius(Rect.fromLTWH(offset.dx - 3 , offset.dy - 2, 70, 20),const Radius.circular(6.0)),paint);
       tp.paint(context, offset);
     }
 
