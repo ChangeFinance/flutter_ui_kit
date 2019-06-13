@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
@@ -17,17 +16,23 @@ void main() {
       expect(find.byType(TimeFrameSelector), findsOneWidget);
     });
     testWidgets('click on button', (WidgetTester tester) async {
-      final key = GlobalKey();
       void onChangeTextField(String value) {
       }
       await tester.pumpWidget(wrapInMaterialApp(
-          TimeFrameSelector(key: key, onChange: onChangeTextField)
+          TimeFrameSelector(onChange: onChangeTextField)
       ));
       expect(find.byType(TextButton).evaluate().length, 5);
       expect(find.byType(FilledButton).evaluate().length, 1);
+      final initFilledButton = tester.widget(find.byType(FilledButton));
+      final FilledButton initContainerWidget = initFilledButton;
+      expect(initContainerWidget.text, '1H');
       await tester.tap(find.text('1Y'));
+      await tester.pump();
       expect(find.byType(TextButton).evaluate().length, 5);
       expect(find.byType(FilledButton).evaluate().length, 1);
+      final widget = tester.widget(find.byType(FilledButton));
+      final FilledButton containerWidget = widget;
+      expect(containerWidget.text, '1Y');
     });
 
   });
