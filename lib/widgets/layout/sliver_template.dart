@@ -9,7 +9,7 @@ class SliverTemplate extends StatelessWidget {
   final List<Widget> sliverList;
   final bool isPinned;
 
-  const SliverTemplate(this.content, this.sliverList, this.pinWidget, {this.isPinned});
+  const SliverTemplate(this.content, this.sliverList, this.pinWidget, {this.isPinned = true});
 
   @override
   Widget build(BuildContext context) {
