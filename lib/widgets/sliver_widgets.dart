@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_ui_kit/widgets/card.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
+import 'package:flutter_ui_kit/widgets/layout/sliver_content_template.dart';
 
 import '../color.dart';
 import '../text.dart';
@@ -51,5 +52,9 @@ class SliverWidgets {
   Widget svgPicture() {
     return SvgPicture.asset('assets/update-app.svg',
         width: 80.0, height: 85.0);
+  }
+
+  Widget content() {
+    return SliverContentTemplate(svgPicture(), copy());
   }
 }

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_ui_kit/color.dart';
 
 class SliverTemplate extends StatelessWidget {
 
-  final SvgPicture svgPicture;
-  final Widget bottomButton;
-  final Widget copy;
+  final Widget pinWidget;
+  final Widget content;
   final List<Widget> sliverList;
+  final bool isPinned;
 
-  const SliverTemplate({this.svgPicture, this.bottomButton, this.copy, this.sliverList});
+  const SliverTemplate(this.content, this.sliverList, this.pinWidget, {this.isPinned});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class SliverTemplate extends StatelessWidget {
             slivers: <Widget>[
               SliverAppBar(
                 expandedHeight: 250.0,
-                pinned: true,
+                pinned: isPinned,
                 forceElevated: false,
                 elevation: 0,
                 automaticallyImplyLeading: false,
@@ -47,23 +46,13 @@ class SliverTemplate extends StatelessWidget {
   Widget appBarBottom(BuildContext context) {
     return PreferredSize(
         preferredSize: const Size(10.00, 10.00),
-        child: bottomButton);
+        child: pinWidget);
   }
 
   Widget appBarBody(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Padding(
-              padding: const EdgeInsets.all(4.00),
-              child: svgPicture),
-          Padding(
-              padding: const EdgeInsets.only(top: 10.00),
-              child: copy),
-        ],
-      ),
+      child: content
     );
   }
 }

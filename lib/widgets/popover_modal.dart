@@ -12,7 +12,7 @@ class PopoverModal {
           return new Container(
             color: const Color(0xFF737373),
             child: Container(
-                decoration: new BoxDecoration(
+                decoration: const BoxDecoration(
                     color: AppColor.deepWhite,
                     borderRadius: const BorderRadius.only(
                         topLeft: const Radius.circular(20.0),

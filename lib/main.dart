@@ -27,11 +27,10 @@ void main() {
           Popover(),
           Layouts(),
           Iconography(),
-          SliverTemplate(
-            sliverList: SliverWidgets().buildSliverList(),
-            bottomButton: SliverWidgets().bottomButton(),
-            copy: SliverWidgets().copy(),
-            svgPicture: SliverWidgets().svgPicture(),
+          SliverTemplate(SliverWidgets().content(),
+            SliverWidgets().buildSliverList(),
+            SliverWidgets().bottomButton(),
+            isPinned: true,
           )
         ],
       ),
