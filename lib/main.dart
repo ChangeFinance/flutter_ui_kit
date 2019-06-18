@@ -29,8 +29,7 @@ void main() {
           Iconography(),
           SliverTemplate(SliverWidgets().content(),
             SliverWidgets().buildSliverList(),
-            SliverWidgets().bottomButton(),
-            isPinned: true,
+            SliverWidgets().bottomButton()
           )
         ],
       ),
