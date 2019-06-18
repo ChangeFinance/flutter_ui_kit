@@ -39,6 +39,13 @@ class AppText {
       letterSpacing: 0,
       color: AppColor.deepBlack);
 
+  static const TextStyle header5 = TextStyle(
+      fontSize: 10.0,
+      fontFamily: 'Circular',
+      fontWeight: FontWeight.bold,
+      letterSpacing: 0,
+      color: AppColor.deepBlack);
+
   static const TextStyle body1 = TextStyle(
       fontSize: 16.0,
       fontFamily: 'Circular',
