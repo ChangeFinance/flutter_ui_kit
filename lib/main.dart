@@ -27,9 +27,10 @@ void main() {
           Popover(),
           Layouts(),
           Iconography(),
-          SliverTemplate(SliverWidgets().content(),
-            SliverWidgets().buildSliverList(),
-            SliverWidgets().bottomButton()
+          SliverTemplate(
+            content: SliverWidgets().content(),
+            sliverList: SliverWidgets().buildSliverList(),
+            pinWidget: SliverWidgets().bottomButton()
           )
         ],
       ),
