@@ -2,7 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class ProgressIndicator extends StatelessWidget {
+class ProgressIndicatorWidget extends StatelessWidget {
+
+  const ProgressIndicatorWidget();
 
   @override
   Widget build(BuildContext context) {
