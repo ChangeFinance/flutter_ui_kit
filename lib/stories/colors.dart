@@ -1,5 +1,5 @@
 import 'package:flutter_ui_kit/color.dart';
-import 'package:flutter_ui_kit/story_book/story.dart';
+import 'package:flutter_storybook/story.dart';
 import 'package:flutter/material.dart';
 
 class AppColors extends StatelessWidget {

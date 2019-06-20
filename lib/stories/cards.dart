@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
-import 'package:flutter_ui_kit/story_book/expandable_story.dart';
-import 'package:flutter_ui_kit/story_book/prop_updater/double_prop_updater.dart';
-import 'package:flutter_ui_kit/story_book/props_explorer.dart';
+import 'package:flutter_storybook/expandable_story.dart';
+import 'package:flutter_storybook/prop_updater/double_prop_updater.dart';
+import 'package:flutter_storybook/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/card.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
 
