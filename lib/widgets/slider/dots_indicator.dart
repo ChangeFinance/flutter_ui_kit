@@ -47,7 +47,7 @@ class Dot extends StatelessWidget {
   final double dotSize;
   final Function onTap;
 
-  Dot({this.color, this.dotSize, this.onTap});
+  const Dot({this.color, this.dotSize, this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -53,4 +53,9 @@ flutter:
   assets:
     - assets/update-app.svg
     - assets/referral-screen.svg
+    - assets/card_holder.svg
+    - assets/free_trading.svg
+    - assets/fully_regulated.svg
+    - assets/macbook_user.svg
+    - assets/secure_funds.svg
     - lib/assets/icons/
