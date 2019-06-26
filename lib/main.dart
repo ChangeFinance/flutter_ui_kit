@@ -12,6 +12,7 @@ import 'package:flutter_ui_kit/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/widgets/layout/sliver_template.dart';
 import 'package:flutter_ui_kit/widgets/sliver_widgets.dart';
+import 'package:flutter_ui_kit/stories/progress_indicators.dart';
 
 void main() {
   runApp(
@@ -27,6 +28,7 @@ void main() {
           AppCards(),
           Popover(),
           Layouts(),
+          ProgressIndicators(),
           Iconography(),
           SliverTemplate(
             content: SliverWidgets().content(),
