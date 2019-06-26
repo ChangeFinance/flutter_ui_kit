@@ -25,7 +25,7 @@ class _BottomGreenProgressIndicatorState extends State<BottomGreenProgressIndica
       child: ClipRRect(
         borderRadius: BorderRadius.circular(widget.roundedBorder),
         child: LinearProgressIndicator(
-          value: widget.progressIndicatorValue * 0.1
+          value: widget.progressIndicatorValue * 0.01
           ),
         )
     );

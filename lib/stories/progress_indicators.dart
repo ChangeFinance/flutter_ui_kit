@@ -36,7 +36,7 @@ class ProgressIndicators extends StatelessWidget {
                 updateProp: updateProp,
                 propKey: 'progressIndicatorValue',
                 min: 0.0,
-                max: 10.0,
+                max: 100.0,
               ),
               DoublePropUpdater(
                 props: props,
