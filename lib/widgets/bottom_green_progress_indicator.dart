@@ -13,11 +13,9 @@ class BottomGreenProgressIndicator extends StatefulWidget {
 
   @override
   _BottomGreenProgressIndicatorState createState() => _BottomGreenProgressIndicatorState();
-
 }
 
 class _BottomGreenProgressIndicatorState extends State<BottomGreenProgressIndicator> {
-
   @override
   Widget build(BuildContext context){
     return Container(
