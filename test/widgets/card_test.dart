@@ -21,7 +21,7 @@ void main() {
       expect(find.text('Text Content'), findsOneWidget);
     });
 
-    testWidgets('sets correct default properteies', (WidgetTester tester) async {
+    testWidgets('sets correct default properties', (WidgetTester tester) async {
       const child = Text('Text Content');
       await tester.pumpWidget(wrapInMaterialApp(
           const AppCard(
@@ -46,7 +46,7 @@ void main() {
       )]);
     });
 
-    testWidgets('passes correct properteies', (WidgetTester tester) async {
+    testWidgets('passes correct properties', (WidgetTester tester) async {
       const child = Text('Text Content');
       await tester.pumpWidget(wrapInMaterialApp(
           const AppCard(
