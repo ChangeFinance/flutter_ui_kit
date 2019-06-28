@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 
-class PercentageFilled extends StatefulWidget {
-  final double progressIndicatorValue;
+class SimpleProgressIndicator extends StatefulWidget {
+  final double percentageFilled;
   final double roundedBorder;
   final double height;
   final bool background;
   final Color color;
 
-  const PercentageFilled({
+  const SimpleProgressIndicator({
     Key key,
-    this.progressIndicatorValue = 40.0,
+    this.percentageFilled = 40.0,
     this.roundedBorder = 0.0,
     this.height = 6.0,
     this.background = false,
     this.color = Colors.greenAccent,
-  }) : assert(progressIndicatorValue != null),
+  }) : assert(percentageFilled != null),
+       assert(percentageFilled <= 100.0),
        super(key: key);
 
   @override
-  _PercentageFilledState createState() => _PercentageFilledState();
+  _SimpleProgressIndicatorState createState() => _SimpleProgressIndicatorState();
 }
 
-class _PercentageFilledState extends State<PercentageFilled> {
+class _SimpleProgressIndicatorState extends State<SimpleProgressIndicator> {
   @override
   Widget build(BuildContext context){
 
@@ -38,7 +39,7 @@ class _PercentageFilledState extends State<PercentageFilled> {
       child: SizedBox(
         height: widget.height,
         child: LinearProgressIndicator(
-          value: (widget.progressIndicatorValue * 0.01).toDouble(),
+          value: (widget.percentageFilled * 0.01).toDouble(),
           backgroundColor: hasBackgroud(),
           valueColor: AlwaysStoppedAnimation<Color>(widget.color),
         ),

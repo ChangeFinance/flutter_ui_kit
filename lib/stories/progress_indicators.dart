@@ -3,7 +3,7 @@ import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/double_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
-import 'package:flutter_ui_kit/widgets/percentage_filled.dart';
+import 'package:flutter_ui_kit/widgets/simple_progress_indicator.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/dropdown_prop_updater.dart';
 
 class ProgressIndicators extends StatelessWidget {
@@ -12,19 +12,19 @@ class ProgressIndicators extends StatelessWidget {
     return Container(
         child: SingleChildScrollView(
       child: Column(
-        children: <Widget>[_percentageFilledStory()],
+        children: <Widget>[_simpleProgressIndicatorStory()],
       ),
     ));
   }
 
-  Widget _percentageFilledStory() {
+  Widget _simpleProgressIndicatorStory() {
     final colorList = ['Yellow', 'Red', 'Blue', 'Green'];
 
     return ExpandableStory(
       title: 'Bottom Green Progress Indicator',
       child: PropsExplorer(
           initialProps: <String, dynamic>{
-            'progressIndicatorValue': 4.0,
+            'percentageFilled': 4.0,
             'roundedBorder': 0.0,
             'height': 6.0,
             'background': false,
@@ -38,7 +38,7 @@ class ProgressIndicators extends StatelessWidget {
                 DoublePropUpdater(
                   props: props,
                   updateProp: updateProp,
-                  propKey: 'progressIndicatorValue',
+                  propKey: 'percentageFilled',
                   min: 0.0,
                   max: 100.0,
                 ),
@@ -71,8 +71,8 @@ class ProgressIndicators extends StatelessWidget {
             );
           },
           widgetBuilder: (context, props) {
-            final double progressIndicatorValue =
-                props['progressIndicatorValue'];
+            final double percentageFilled =
+                props['percentageFilled'];
             final double roundedBorder = props['roundedBorder'];
             final double height = props['height'];
             final bool background = props['background'];
@@ -80,8 +80,8 @@ class ProgressIndicators extends StatelessWidget {
 
             return Container(
               padding: const EdgeInsets.only(right: 20.0, left: 20.0),
-              child: PercentageFilled(
-                progressIndicatorValue: progressIndicatorValue,
+              child: SimpleProgressIndicator(
+                percentageFilled: percentageFilled,
                 roundedBorder: roundedBorder,
                 height: height,
                 background: background,
