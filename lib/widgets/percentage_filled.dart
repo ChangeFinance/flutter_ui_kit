@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SimpleProgressIndicator extends StatefulWidget {
+class PercentageFilled extends StatefulWidget {
   final double progressIndicatorValue;
   final double roundedBorder;
   final double height;
   final bool background;
   final Color color;
 
-  const SimpleProgressIndicator({
+  const PercentageFilled({
     Key key,
     this.progressIndicatorValue = 40.0,
     this.roundedBorder = 0.0,
@@ -18,14 +18,12 @@ class SimpleProgressIndicator extends StatefulWidget {
        super(key: key);
 
   @override
-  _SimpleProgressIndicatorState createState() => _SimpleProgressIndicatorState();
+  _PercentageFilledState createState() => _PercentageFilledState();
 }
 
-class _SimpleProgressIndicatorState extends State<SimpleProgressIndicator> {
+class _PercentageFilledState extends State<PercentageFilled> {
   @override
   Widget build(BuildContext context){
-
-    print(widget.color);
 
     Color hasBackgroud() {
       if(widget.background) {
