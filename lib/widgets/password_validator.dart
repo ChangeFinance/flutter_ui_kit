@@ -10,100 +10,145 @@ class PasswordValidator extends StatefulWidget {
   const PasswordValidator({
     Key key,
     this.password = 'Password123*',
-    this.hintList = const ['Try making it longer then 8 digits and adding capital characters that makes it difficult for others to guess',
-    'That is a good password, but you can try to add digits and special characters to make it a great one!',
-    'Remember to always keep your passwords secure'],
+    this.hintList = const [
+      'Try making it longer then 8 digits and adding capital characters that makes it difficult for others to guess',
+      'That is a good password, but you can try to add digits and special characters to make it a great one!',
+      'Remember to always keep your passwords secure'
+    ],
     this.strengthList = const ['bad', 'weak', 'normal', 'good', 'great', 'bad'],
-    this.colorList = const [Colors.redAccent, Colors.orangeAccent, Colors.blueAccent, Colors.lightGreen, Colors.greenAccent],
-  }) : assert(password != null),
-       super(key: key);
+    this.colorList = const [
+      Colors.redAccent,
+      Colors.orangeAccent,
+      Colors.blueAccent,
+      Colors.lightGreen,
+      Colors.greenAccent
+    ],
+  })  : assert(password != null),
+        super(key: key);
 
   @override
   _PasswordValidatorState createState() => _PasswordValidatorState();
 }
 
 class _PasswordValidatorState extends State<PasswordValidator> {
-
   int _passwordStrength() {
-      var counter = 1;
-      if(widget.password.length > 8){
-        counter = counter + 1;
-      }
-      if(widget.password.contains(new RegExp(r'[A-Z]'))){
-        counter = counter + 1;
-      }
-      if(widget.password.contains(new RegExp(r'[0-9]'))){
-        counter = counter + 1;
-      }
-      if(widget.password.contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]'))){
-        counter = counter + 1;
-      }
-      return counter;
+    var counter = 1;
+    if (widget.password.length > 8) {
+      counter = counter + 1;
     }
-
-    String _strengthToText() {
-      final passwordStrength = _passwordStrength();
-      switch(passwordStrength) {
-        case 1: { return 'Strength: ${widget.strengthList[0]}'; }
-        break;
-
-        case 2: { return 'Strength: ${widget.strengthList[1]}'; }
-        break;
-
-        case 3: { return 'Strength: ${widget.strengthList[2]}'; }
-        break;
-
-        case 4: { return 'Strength: ${widget.strengthList[3]}'; }
-        break;
-
-        case 5: { return 'Strength: ${widget.strengthList[4]}'; }
-        break; 
-
-        default: { return 'Strength: ${widget.strengthList[0]}'; }
-      }
+    if (widget.password.contains(new RegExp(r'[A-Z]'))) {
+      counter = counter + 1;
     }
-
-    Color _strengthToColor() {
-      final passwordStrength = _passwordStrength();
-      switch(passwordStrength) {
-        case 1: { return widget.colorList[0]; }
-        break;
-
-        case 2: { return widget.colorList[1]; }
-        break;
-
-        case 3: { return widget.colorList[2]; }
-        break;
-
-        case 4: { return widget.colorList[3]; }
-        break;
-
-        case 5: { return widget.colorList[4]; }
-        break;
-
-        default: { return widget.colorList[0]; }
-      }
+    if (widget.password.contains(new RegExp(r'[0-9]'))) {
+      counter = counter + 1;
     }
+    if (widget.password
+        .contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]'))) {
+      counter = counter + 1;
+    }
+    return counter;
+  }
 
-    String _hint() {
-      if(widget.password.length > 8){
-        if(widget.password.contains(new RegExp(r'[A-Z]'))) {
-          if(widget.password.contains(RegExp(r'[0-9]'))) {
-            if(widget.password.contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]'))){ 
-              return widget.hintList[2];
-            } else {
-              return widget.hintList[1];
-            }
+  String _strengthToText() {
+    final passwordStrength = _passwordStrength();
+    switch (passwordStrength) {
+      case 1:
+        {
+          return 'Strength: ${widget.strengthList[0]}';
+        }
+        break;
+
+      case 2:
+        {
+          return 'Strength: ${widget.strengthList[1]}';
+        }
+        break;
+
+      case 3:
+        {
+          return 'Strength: ${widget.strengthList[2]}';
+        }
+        break;
+
+      case 4:
+        {
+          return 'Strength: ${widget.strengthList[3]}';
+        }
+        break;
+
+      case 5:
+        {
+          return 'Strength: ${widget.strengthList[4]}';
+        }
+        break;
+
+      default:
+        {
+          return 'Strength: ${widget.strengthList[0]}';
+        }
+    }
+  }
+
+  Color _strengthToColor() {
+    final passwordStrength = _passwordStrength();
+    switch (passwordStrength) {
+      case 1:
+        {
+          return widget.colorList[0];
+        }
+        break;
+
+      case 2:
+        {
+          return widget.colorList[1];
+        }
+        break;
+
+      case 3:
+        {
+          return widget.colorList[2];
+        }
+        break;
+
+      case 4:
+        {
+          return widget.colorList[3];
+        }
+        break;
+
+      case 5:
+        {
+          return widget.colorList[4];
+        }
+        break;
+
+      default:
+        {
+          return widget.colorList[0];
+        }
+    }
+  }
+
+  String _hint() {
+    if (widget.password.length > 8) {
+      if (widget.password.contains(new RegExp(r'[A-Z]'))) {
+        if (widget.password.contains(RegExp(r'[0-9]'))) {
+          if (widget.password
+              .contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]'))) {
+            return widget.hintList[2];
           } else {
             return widget.hintList[1];
           }
         } else {
-          return widget.hintList[0];
+          return widget.hintList[1];
         }
       } else {
         return widget.hintList[0];
       }
+    } else {
+      return widget.hintList[0];
     }
+  }
 
   @override
   Widget build(BuildContext context) {
