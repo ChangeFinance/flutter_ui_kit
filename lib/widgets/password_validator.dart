@@ -20,14 +20,11 @@ class PasswordValidator extends StatefulWidget {
 
   @override
   _PasswordValidatorState createState() => _PasswordValidatorState();
-
 }
 
 class _PasswordValidatorState extends State<PasswordValidator> {
-  @override
-  Widget build(BuildContext context) {
 
-    int _passwordStrength() {
+  int _passwordStrength() {
       var counter = 1;
       if(widget.password.length > 8){
         counter = counter + 1;
@@ -108,6 +105,8 @@ class _PasswordValidatorState extends State<PasswordValidator> {
       }
     }
 
+  @override
+  Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
