@@ -113,7 +113,7 @@ class _PasswordValidatorState extends State<PasswordValidator> {
       children: <Widget>[
         Text(
           _strengthToText(),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16.0,
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -135,9 +135,9 @@ class _PasswordValidatorState extends State<PasswordValidator> {
         Text(
           _hint(),
           textAlign: TextAlign.left,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.grey,
-            fontSize: 13.0
+            fontSize: 13.0,
           ),
         ),
       ],
