@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/widgets/layout/sliver_template.dart';
 import 'package:flutter_ui_kit/widgets/sliver_widgets.dart';
 import 'package:flutter_ui_kit/stories/progress_indicators.dart';
+import 'package:flutter_ui_kit/stories/password_validators.dart';
 
 void main() {
   runApp(
@@ -29,6 +30,7 @@ void main() {
           Popover(),
           Layouts(),
           ProgressIndicators(),
+          PasswordValidators(),
           Iconography(),
           SliverTemplate(
             content: SliverWidgets().content(),
