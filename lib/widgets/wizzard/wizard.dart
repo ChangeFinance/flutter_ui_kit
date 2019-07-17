@@ -7,12 +7,12 @@ import '../filled_button.dart';
 
 class Wizard extends StatefulWidget {
   
-  WizardBinder binder;
-  Widget intoWidget;
-  List<Widget> wizardPages;
-  Widget outroWidget;
+  final WizardBinder binder;
+  final Widget intoWidget;
+  final List<Widget> wizardPages;
+  final Widget outroWidget;
 
-  Wizard({this.intoWidget, this.wizardPages, this.outroWidget, this.binder});
+  const Wizard({this.intoWidget, this.wizardPages, this.outroWidget, this.binder});
 
   @override
   _WizardState createState() => _WizardState(intoWidget, wizardPages, outroWidget, binder);

@@ -7,11 +7,7 @@ import 'package:flutter_ui_kit/widgets/wizzard/wizard.dart';
 import 'package:flutter_ui_kit/widgets/wizzard/wizard_binder.dart';
 
 class WizardStory extends StatelessWidget {
-  WizardBinder binder;
-
-  WizardStory() {
-    binder = WizardBinder();
-  }
+  final WizardBinder binder = WizardBinder();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +45,7 @@ class WizardStory extends StatelessWidget {
   Widget _wizardPageOne() {
     return Column(
       children: <Widget>[
-        Align(
+        const Align(
             alignment: Alignment.centerLeft,
             child: Heading('Mandatory page',
                 headingType: HeadingType.HEADING_1, textAlign: TextAlign.left)),
@@ -73,7 +69,7 @@ class WizardStory extends StatelessWidget {
   Widget _wizardPageTwo() {
     return Column(
       children: <Widget>[
-        Align(
+        const Align(
             alignment: Alignment.centerLeft,
             child: Heading('Do this later',
                 headingType: HeadingType.HEADING_1, textAlign: TextAlign.left)),
@@ -97,7 +93,7 @@ class WizardStory extends StatelessWidget {
   Widget _wizardPageThree() {
     return Column(
       children: <Widget>[
-        Align(
+        const Align(
             alignment: Alignment.centerLeft,
             child: Heading('Skippable page',
                 headingType: HeadingType.HEADING_1, textAlign: TextAlign.left)),
