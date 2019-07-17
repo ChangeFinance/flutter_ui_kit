@@ -82,7 +82,7 @@ class Iconography extends StatelessWidget {
   Widget _roundupEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.invite),
             const Text('Invite')
           ],
@@ -93,7 +93,7 @@ class Iconography extends StatelessWidget {
   Widget _inviteEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.roundup),
             const Text('Round Up')
           ],
@@ -105,7 +105,7 @@ class Iconography extends StatelessWidget {
   Widget _atmWithdrawEnabled() {
     return Card(
       child: Column(
-        children: <Widget>[
+        children: const <Widget>[
           Center(child: ChangeAppIcons.atm_withdraw),
           const Text('ATM Withdraw')
         ],
@@ -117,7 +117,7 @@ class Iconography extends StatelessWidget {
   Widget _receivedRewardEnabled() {
     return Card(
       child: Column(
-        children: <Widget>[
+        children: const <Widget>[
           Center(child: ChangeAppIcons.reward_enabled),
           const Text('Received reward')
         ],
@@ -128,7 +128,7 @@ class Iconography extends StatelessWidget {
   Widget _receivedRewardDisabled() {
     return Card(
       child: Column(
-        children: <Widget>[
+        children: const <Widget>[
           Center(child: ChangeAppIcons.reward_disabled),
           const Text('Received reward')
         ],
@@ -139,7 +139,7 @@ class Iconography extends StatelessWidget {
   Widget _bitcoinToSavingsEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.bitcoin_to_savings),
             const Text('Bitcoin 2 Savings')
           ],
@@ -150,7 +150,7 @@ class Iconography extends StatelessWidget {
   Widget _withdrawEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.withdraw),
             const Text('Withdraw')
           ],
@@ -161,7 +161,7 @@ class Iconography extends StatelessWidget {
   Widget _depositEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.deposit),
             const Text('Deposit')
           ],
@@ -172,9 +172,9 @@ class Iconography extends StatelessWidget {
   Widget _sellEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.sell),
-            const Text('Sell')
+            Text('Sell')
           ],
         )
     );
@@ -183,7 +183,7 @@ class Iconography extends StatelessWidget {
   Widget _buyEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.buy),
             const Text('Buy')
           ],
@@ -194,7 +194,7 @@ class Iconography extends StatelessWidget {
   Widget _feesEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.fees),
             const Text('Fees')
           ],
@@ -205,7 +205,7 @@ class Iconography extends StatelessWidget {
   Widget _cryptoConversionEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.convert),
             const Text('Crypto Conversion')
           ],
@@ -216,7 +216,7 @@ class Iconography extends StatelessWidget {
   Widget _cardPaymentEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.card_payment),
             const Text('Card Payment')
           ],
@@ -227,7 +227,7 @@ class Iconography extends StatelessWidget {
   Widget _walletEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.wallet),
             const Text('Wallet')
           ],
@@ -238,7 +238,7 @@ class Iconography extends StatelessWidget {
   Widget _pricesEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.prices),
             const Text('Prices')
           ],
@@ -249,7 +249,7 @@ class Iconography extends StatelessWidget {
   Widget _cardEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.card),
             const Text('Card')
           ],
@@ -260,7 +260,7 @@ class Iconography extends StatelessWidget {
   Widget _navSettingsEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.nav_settings),
             const Text('Settings (Navigation)')
           ],
@@ -271,7 +271,7 @@ class Iconography extends StatelessWidget {
   Widget _arrowForwardEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.arrow_forward),
             const Text('Arrow Forward')
           ],
@@ -282,7 +282,7 @@ class Iconography extends StatelessWidget {
   Widget _arrowBackEnabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.arrow_back),
             const Text('Arrow Back')
           ],
@@ -293,7 +293,7 @@ class Iconography extends StatelessWidget {
   Widget _roundupDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.roundup_disabled),
             const Text('Round up')
           ],
@@ -305,7 +305,7 @@ class Iconography extends StatelessWidget {
   Widget _atmWithdrawDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.atm_withdraw_disabled),
             const Text('ATM Withdraw')
           ],
@@ -316,7 +316,7 @@ class Iconography extends StatelessWidget {
   Widget _bitcoinToSavingsDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.bitcoin_to_savings_disabled),
             const Text('Bitcoin 2 Savings')
           ],
@@ -327,7 +327,7 @@ class Iconography extends StatelessWidget {
   Widget _withdrawDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.withdraw_disabled),
             const Text('Withdraw')
           ],
@@ -338,7 +338,7 @@ class Iconography extends StatelessWidget {
   Widget _depositDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.deposit_disabled),
             const Text('Deposit')
           ],
@@ -349,7 +349,7 @@ class Iconography extends StatelessWidget {
   Widget _sellDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.sell_disabled),
             const Text('Sell')
           ],
@@ -360,7 +360,7 @@ class Iconography extends StatelessWidget {
   Widget _buyDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.buy_disabled),
             const Text('Buy')
           ],
@@ -371,7 +371,7 @@ class Iconography extends StatelessWidget {
   Widget _feesDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.fees_disabled),
             const Text('Fees')
           ],
@@ -382,7 +382,7 @@ class Iconography extends StatelessWidget {
   Widget _cryptoConversionDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.convert_disabled),
             const Text('Crypto Conversion')
           ],
@@ -393,7 +393,7 @@ class Iconography extends StatelessWidget {
   Widget _cardPaymentDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.card_payment_disabled),
             const Text('Card Payment')
           ],
@@ -404,7 +404,7 @@ class Iconography extends StatelessWidget {
   Widget _walletDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.wallet_disabled),
             const Text('Wallet')
           ],
@@ -415,7 +415,7 @@ class Iconography extends StatelessWidget {
   Widget _pricesDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.prices_disabled),
             const Text('Prices')
           ],
@@ -426,7 +426,7 @@ class Iconography extends StatelessWidget {
   Widget _cardDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.card_disabled),
             const Text('Card')
           ],
@@ -437,7 +437,7 @@ class Iconography extends StatelessWidget {
   Widget _inviteDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.invite_disabled),
             const Text('Invite')
           ],
@@ -448,7 +448,7 @@ class Iconography extends StatelessWidget {
   Widget _navSettingsDisabled() {
     return Card(
         child: Column(
-          children: <Widget>[
+          children: const <Widget>[
             Center(child: ChangeAppIcons.nav_settings_disabled),
             const Text('Settings (Navigation)')
           ],
