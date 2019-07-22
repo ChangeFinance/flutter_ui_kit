@@ -42,9 +42,9 @@ class Graph extends StatelessWidget {
     void _drawLabel(double item, int i) {
       final tp = new TextPainter(
           text: new TextSpan(
-              style: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite, fontSize: 15.0, backgroundColor: Colors.black ),
+              style: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite, fontSize: 15.0, backgroundColor: Colors.transparent ),
               text: labelPrefix + item.toString().substring(0 , 7)
-          ) ,
+          ),
           textDirection: TextDirection.ltr ,
           textAlign: TextAlign.left);
       tp.layout();
@@ -53,8 +53,9 @@ class Graph extends StatelessWidget {
       final y = height - (item - minValue) * heightNormalizer + lineWidth / 2;
       final offset = new Offset(_calcXForMarker(x, width), _calcYForMarker(y, height));
 
+
       final paint = Paint();
-      context.drawRRect(RRect.fromRectAndRadius(Rect.fromLTWH(offset.dx - 3 , offset.dy - 2, 70, 20),const Radius.circular(6.0)),paint);
+      context.drawRRect(RRect.fromRectAndRadius(Rect.fromLTWH(offset.dx - 3 , offset.dy - 3, 73, 23),const Radius.circular(6.0)),paint);
       tp.paint(context, offset);
     }
 
