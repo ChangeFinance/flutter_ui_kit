@@ -21,14 +21,22 @@ class Graph extends StatelessWidget {
     const lineWidth = 1.0;
 
     double _calcXForMarker(double x, double width) {
-      if ((x - offsetLeftX) < 0) return 0;
-      if ((x + offsetRightX * 2) > width) return width - (offsetRightX * 2);
+      if ((x - offsetLeftX) < 0) {
+        return 0;
+      }
+      if ((x + offsetRightX * 2) > width) {
+        return width - (offsetRightX * 2);
+      }
       return x - offsetLeftX;
     }
 
     double _calcYForMarker(double y, double height) {
-      if ((y - offsetTopY) < 0) return offsetTopY;
-      if (y > (height - offsetDownY)) return height - offsetDownY;
+      if ((y - offsetTopY) < 0) {
+        return offsetTopY;
+      }
+      if (y > (height - offsetDownY)) {
+        return height - offsetDownY;
+      }
       return y - offsetTopY;
     }
 
