@@ -27,6 +27,10 @@ dev_dependencies:
   recase: ^2.0.1
   mockito: ^4.0.0
   package_info: ^0.4.0+3
+  flutter_sparkline:
+    git:
+      url: https://github.com/ChangeFinance/flutter_sparkline.git
+      ref: add-graph-paint-callback
 
 
 # For information on the generic Dart part of this file, see the
@@ -61,4 +65,5 @@ flutter:
     - assets/macbook_user.svg
     - assets/secure_funds.svg
     - assets/deposit.svg
+    - assets/confirmation.svg
     - lib/assets/icons/

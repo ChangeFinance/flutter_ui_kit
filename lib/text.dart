@@ -74,6 +74,12 @@ class AppText {
       letterSpacing: 0,
       color: AppColor.deepBlack);
 
+  static const TextStyle graphTextStyle = TextStyle(
+      color: AppColor.deepBlack,
+      fontSize: 12.0,
+      fontStyle: FontStyle.normal,
+      fontFamily: 'CircularPro-Book');
+
   static const TextStyle button1 = AppText.body1;
   static const TextStyle button2 = AppText.body2;
   static const TextStyle button3 = AppText.body3;

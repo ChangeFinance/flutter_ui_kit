@@ -6,6 +6,7 @@ import 'package:flutter_ui_kit/stories/colors.dart';
 import 'package:flutter_ui_kit/stories/layouts.dart';
 import 'package:flutter_ui_kit/stories/numpads.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
+import 'package:flutter_ui_kit/stories/graphs.dart';
 import 'package:flutter_ui_kit/stories/sliders.dart';
 import 'package:flutter_ui_kit/stories/typography.dart';
 import 'package:flutter_ui_kit/stories/icons.dart';
