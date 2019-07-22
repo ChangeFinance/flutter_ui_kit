@@ -52,6 +52,8 @@ flutter:
 
   assets:
     - assets/update-app.svg
+    - assets/euro.svg
+    - assets/bitcoin_colourful.svg
     - assets/referral-screen.svg
     - assets/card_holder.svg
     - assets/free_trading.svg

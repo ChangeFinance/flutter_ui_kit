@@ -1,92 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_ui_kit/color.dart';
+import 'package:flutter_ui_kit/widgets/customradio/radio_item.dart';
+import 'package:flutter_ui_kit/widgets/customradio/radio_model.dart';
 
 
 class CustomRadio extends StatefulWidget {
+
+  final List<RadioModel> radioElements;
+  const CustomRadio( {this.radioElements });
+
   @override
   CustomRadioState createState() {
-    return new CustomRadioState();
+    return new CustomRadioState(radioElements: radioElements);
+  }
+
+  static List<RadioModel> availableRadioModels() {
+    final sampleRadioElements = <RadioModel>[];
+    sampleRadioElements.add(new RadioModel('Euro', isSelected: false,
+        svgPicture: SvgPicture.asset(
+            'assets/euro.svg', height: 30.0, width: 30.0)));
+    sampleRadioElements.add(new RadioModel('Bitcoin', isSelected: false,
+        svgPicture: SvgPicture.asset(
+            'assets/bitcoin_colourful.svg', height: 30.0, width: 30.0)));
+    return sampleRadioElements;
   }
 }
 
 class CustomRadioState extends State<CustomRadio> {
-  List<RadioModel> sampleData = <RadioModel>[];
 
-  @override
-  void initState() {
-    super.initState();
-    sampleData.add(new RadioModel( 'Euro', isSelected: false, svgPicture: SvgPicture.asset('assets/euro.svg', height: 45.0, width: 45.0)));
-    sampleData.add(new RadioModel( 'Bitcoin',isSelected: false, svgPicture: SvgPicture.asset('assets/bitcoin_colourful.svg', height: 45.0, width: 45.0)));
-  }
+  List<RadioModel> radioElements;
+  CustomRadioState({this.radioElements});
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new ListView.builder(
-        itemCount: sampleData.length,
+        itemCount: radioElements.length,
         itemBuilder: (BuildContext context, int index) {
           return new InkWell(
             splashColor: AppColor.darkerGreen,
             onTap: () {
               setState(() {
-                sampleData.forEach((element) => element.isSelected = false);
-                sampleData[index].isSelected = true;
+                radioElements.forEach((element) => element.isSelected = false);
+                radioElements[index].isSelected = true;
               });
             },
-            child: new RadioItem(sampleData[index]),
+            child: new RadioItem(radioElements[index]),
           );
         },
       ),
     );
   }
-}
-
-class RadioItem extends StatelessWidget {
-
-  final RadioModel _item;
-
-  const RadioItem(this._item);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      margin: const EdgeInsets.all(15.0),
-      child: new Row(
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          new Container(
-            height: 50.0,
-            width: 50.0,
-            child: new Center(
-              child: _item.isSelected ? const Icon(Icons.check, size: 30.0, color: Colors.white) : const Icon(Icons.check_box_outline_blank, color: AppColor.deepWhite),
-            ),
-            decoration: new BoxDecoration(
-              color: _item.isSelected
-                  ? AppColor.darkerGreen
-                  : Colors.transparent,
-              border: new Border.all(
-                  width: 1.0,
-                  color: _item.isSelected
-                      ? AppColor.darkerGreen
-                      : Colors.grey),
-              shape: BoxShape.circle,
-            ),
-          ),
-          new Container(
-            margin: const EdgeInsets.only(left:10.0, right: 10.00),
-            child: new Row(children: <Widget>[ Padding(padding: const EdgeInsets.only(left: 10.00, right: 10.00),child: _item.svgPicture), Padding(padding: const EdgeInsets.only(left: 20.00),child: Text(_item.text))]),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class RadioModel {
-  bool isSelected;
-  final String text;
-  SvgPicture svgPicture;
-  RadioModel(this.text, {this.svgPicture, this.isSelected});
 }
