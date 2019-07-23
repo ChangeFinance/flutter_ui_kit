@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_ui_kit/color.dart';
+import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/button_common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -217,6 +218,28 @@ void testFontSize({
       expect(tester.widget<Text>(find.text(buttonText)).style.fontSize,
           ButtonStyleConstants.smallFontSize);
     });
+  });
+}
+
+void testFontStyle({
+  Function group,
+  Function setUp,
+  Function testWidgets,
+  String buttonText,
+  TextStyle textStyle,
+  Function buildButton,
+}) {
+  group('font text style', () {
+    testWidgets(
+        'text style is set',
+            (WidgetTester tester) async {
+          await tester.pumpWidget(wrapInMaterialApp(buildButton(
+              textStyle: AppText.body2
+          )));
+          expect(tester.widget<Text>(find.text(buttonText)).style.fontSize,
+              ButtonStyleConstants.smallFontSize);
+        });
+
   });
 }
 

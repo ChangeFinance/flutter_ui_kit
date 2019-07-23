@@ -45,5 +45,18 @@ void main() {
           TextButton(buttonText, onPressed: () {}, padding: padding),
       underlyingMaterialButtonType: FlatButton,
     );
+
+    testFontStyle(
+      group: group,
+      setUp: setUp,
+      testWidgets: testWidgets,
+      buttonText: buttonText,
+      buildButton: ({TextStyle textStyle}) => TextButton(
+        buttonText,
+        textStyle: textStyle,
+        onPressed: () {}
+      ),
+    );
+
   });
 }

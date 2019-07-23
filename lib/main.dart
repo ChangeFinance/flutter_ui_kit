@@ -1,3 +1,4 @@
+
 import 'package:flutter_ui_kit/stories/buttons.dart';
 import 'package:flutter_ui_kit/stories/cards.dart';
 import 'package:flutter_ui_kit/stories/colors.dart';
@@ -19,6 +20,7 @@ import 'package:flutter_ui_kit/stories/progress_indicators.dart';
 import 'package:flutter_ui_kit/stories/password_validators.dart';
 
 void main() {
+
   runApp(
     MaterialApp(
       theme: theme,
@@ -44,6 +46,7 @@ void main() {
           Sliders(),
           WizardStory(),
           Sliders(),
+          CustomRadio(radioElements: CustomRadio.availableRadioModels())
           CustomRadio(),
           CustomDatePicker()
         ],
