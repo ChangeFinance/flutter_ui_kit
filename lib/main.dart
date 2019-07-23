@@ -46,8 +46,7 @@ void main() {
           Sliders(),
           WizardStory(),
           Sliders(),
-          CustomRadio(radioElements: CustomRadio.availableRadioModels())
-          CustomRadio(),
+          CustomRadio(radioElements: CustomRadio.availableRadioModels()),
           CustomDatePicker()
         ],
       ),

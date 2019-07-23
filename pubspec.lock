@@ -41,6 +41,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_cupertino_date_picker:
+    dependency: "direct dev"
+    description:
+      name: flutter_cupertino_date_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.8"
+  flutter_sparkline:
+    dependency: "direct dev"
+    description:
+      path: "."
+      ref: add-graph-paint-callback
+      resolved-ref: f71f2e22cd4f2a3b29253e6a06064a117135bc5c
+      url: "https://github.com/ChangeFinance/flutter_sparkline.git"
+    source: git
+    version: "0.1.0"
   flutter_svg:
     dependency: "direct main"
     description:
