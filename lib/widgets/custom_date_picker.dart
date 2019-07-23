@@ -62,10 +62,10 @@ class _DatePickerBottomSheetState extends State<CustomDatePicker> {
                     width: 60,
                     child: TextField(
                       controller: _dayCtrl,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Day',
                         hintText: 'DD',
-                        hintStyle: TextStyle(color: Colors.white30),
+                        hintStyle: const TextStyle(color: Colors.white30),
                       ),
                       onTap: _showDatePicker,
                     )))),
@@ -74,10 +74,10 @@ class _DatePickerBottomSheetState extends State<CustomDatePicker> {
                 width: 60,
                 child: TextField(
                   controller: _monthCtrl,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Month',
                     hintText: 'MM',
-                    hintStyle: TextStyle(color: Colors.black26),
+                    hintStyle: const TextStyle(color: Colors.black26),
                   ),
                   onTap: _showDatePicker,
                 ))),
@@ -86,10 +86,10 @@ class _DatePickerBottomSheetState extends State<CustomDatePicker> {
                 padding: const EdgeInsets.only(right: 30.00),
                 child: TextField(
                   controller: _yearCtrl,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Year',
                     hintText: 'YYYY',
-                    hintStyle: TextStyle(color: Colors.black26),
+                    hintStyle: const TextStyle(color: Colors.black26),
                   ),
                   onTap: _showDatePicker,
                 )))
