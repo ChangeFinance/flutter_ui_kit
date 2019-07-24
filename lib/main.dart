@@ -2,6 +2,7 @@
 import 'package:flutter_ui_kit/stories/buttons.dart';
 import 'package:flutter_ui_kit/stories/cards.dart';
 import 'package:flutter_ui_kit/stories/colors.dart';
+import 'package:flutter_ui_kit/stories/graphs.dart';
 import 'package:flutter_ui_kit/stories/layouts.dart';
 import 'package:flutter_ui_kit/stories/numpads.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
@@ -46,7 +47,8 @@ void main() {
           Sliders(),
           WizardStory(),
           CustomDatePicker(),
-          CustomRadio(radioElements: CustomRadio.availableRadioModels())
+          CustomRadio(radioElements: CustomRadio.availableRadioModels()),
+          Graphs(),
         ],
       ),
     ),

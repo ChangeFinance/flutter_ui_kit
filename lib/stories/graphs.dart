@@ -44,7 +44,11 @@ Widget _graphsStory() {
         child: PropsExplorer(
           initialProps: const <String, dynamic>{
             'enableMaxMin': true,
-            'labelPrefix': '€'
+            'labelPrefix': '€',
+            'enableGradient': true,
+            'enableAutoColor': false,
+            'showTimeFrameSelector': true
+
           },
           formBuilder: (context, props, updateProp) {
             return ListView(
@@ -55,6 +59,21 @@ Widget _graphsStory() {
                   props: props,
                   updateProp: updateProp,
                   propKey: 'enableMaxMin',
+                ),
+                BoolPropUpdater(
+                  props: props,
+                  updateProp: updateProp,
+                  propKey: 'enableGradient',
+                ),
+                BoolPropUpdater(
+                  props: props,
+                  updateProp: updateProp,
+                  propKey: 'enableAutoColor',
+                ),
+                BoolPropUpdater(
+                  props: props,
+                  updateProp: updateProp,
+                  propKey: 'showTimeFrameSelector',
                 ),
                 StringPropUpdater(
                   props: props,
@@ -72,14 +91,16 @@ Widget _graphsStory() {
                     child: Graph(
                         data: data,
                         labelPrefix: props['labelPrefix'],
-                        enableMaxMin: props['enableMaxMin']
+                        enableMaxMin: props['enableMaxMin'],
+                        enableGradient: props['enableGradient'],
+                        enableAutoColor: props['enableAutoColor'],
                     )
                 )
               ),
               Container(
                 height:35.0,
                 child: Center(
-                  child: TimeFrameSelector(onChange: onChangeTextField),
+                  child: props['showTimeFrameSelector'] ? TimeFrameSelector(onChange: onChangeTextField) : Container(),
                 )
               ),
             ]);

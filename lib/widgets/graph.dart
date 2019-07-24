@@ -7,11 +7,18 @@ import 'package:flutter_ui_kit/text.dart';
 
 class Graph extends StatelessWidget {
   final bool enableMaxMin;
+  final bool enableGradient;
+  final bool enableAutoColor;
   final String labelPrefix;
   final List<double> data;
 
   const Graph(
-      {@required this.data, this.enableMaxMin = false, this.labelPrefix = '€'});
+      { @required this.data,
+        this.enableMaxMin = false,
+        this.labelPrefix = '€',
+        this.enableGradient = true,
+        this.enableAutoColor = false
+      });
 
   void _drawMaxMinMarkers(Canvas context, double width, double height) {
     const offsetLeftX = 35.0;
@@ -78,26 +85,38 @@ class Graph extends StatelessWidget {
     }
   }
 
+  Gradient _buildGradient() {
+    return new LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: const [
+        Color.fromRGBO(114, 239, 219, 0.13),
+        Color.fromRGBO(62, 219, 181, 0)
+      ],
+    );
+  }
+
+  Color _getColor() {
+    var color = AppColor.green;
+    if (enableAutoColor && data[0] < data[data.length-1]) {
+      color = AppColor.red;
+    }
+    return color;
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Center(
         child: new Container(
             child: new Sparkline(
       data: data,
-      lineColor: const Color.fromRGBO(62, 219, 181, 1),
+      lineColor: _getColor(),
       lineWidth: 1.0,
       pointsMode: PointsMode.none,
-      fillMode: FillMode.below,
+      fillMode: enableGradient ? FillMode.below : FillMode.none,
       labelPrefix: labelPrefix,
       onGraphPaint: enableMaxMin ? _drawMaxMinMarkers : null,
-      fillGradient: new LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: const [
-          Color.fromRGBO(114, 239, 219, 0.13),
-          Color.fromRGBO(62, 219, 181, 0)
-        ],
-      ),
+      fillGradient: enableGradient ? _buildGradient() : null,
     )));
   }
 }

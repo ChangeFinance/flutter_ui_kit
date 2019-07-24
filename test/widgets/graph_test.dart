@@ -21,7 +21,9 @@ void main() {
           Graph(
             data: data,
             labelPrefix: '\$',
-            enableMaxMin: true
+            enableMaxMin: true,
+            enableAutoColor: true,
+            enableGradient: false,
       )));
       expect(find.byType(Graph), findsOneWidget);
     });
