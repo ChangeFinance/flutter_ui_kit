@@ -23,7 +23,7 @@ class AssetRate extends StatelessWidget {
                 new Text('$symbol ',
                     style: AppText.body2),
                 new Text('$value',
-                    style: AppText.header0),
+                    style: AppText.header0.copyWith(fontWeight: FontWeight.bold)),
                 new Text('$cents',
                     style: theme.body2),
               ],
