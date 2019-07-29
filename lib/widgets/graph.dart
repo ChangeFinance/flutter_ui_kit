@@ -98,7 +98,7 @@ class Graph extends StatelessWidget {
 
   Color _getColor() {
     var color = AppColor.green;
-    if (enableAutoColor && data[0] < data[data.length-1]) {
+    if (enableAutoColor && data[0] > data[data.length-1]) {
       color = AppColor.red;
     }
     return color;

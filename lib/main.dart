@@ -1,4 +1,5 @@
 
+import 'package:flutter_ui_kit/stories/badges.dart';
 import 'package:flutter_ui_kit/stories/buttons.dart';
 import 'package:flutter_ui_kit/stories/cards.dart';
 import 'package:flutter_ui_kit/stories/colors.dart';
@@ -31,6 +32,7 @@ void main() {
           AppColors(),
           AppTypography(),
           Buttons(),
+          Badges(),
           NumPads(),
           AppCards(),
           Popover(),
