@@ -25,7 +25,7 @@ void main() {
       expect(find.byType(FilledButton).evaluate().length, 1);
       final initFilledButton = tester.widget(find.byType(FilledButton));
       final FilledButton initContainerWidget = initFilledButton;
-      expect(initContainerWidget.text, '1H');
+      expect(initContainerWidget.text, '1D');
       await tester.tap(find.text('1Y'));
       await tester.pump();
       expect(find.byType(TextButton).evaluate().length, 5);

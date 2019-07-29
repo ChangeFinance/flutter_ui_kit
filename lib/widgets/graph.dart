@@ -51,14 +51,23 @@ class Graph extends StatelessWidget {
     final minValue = data.reduce(math.min);
     final widthNormalizer = width / data.length;
     final heightNormalizer = height / (maxValue - minValue);
+    var maxValueDisplayed = false;
+    var minValueDisplayed = false;
 
     void _drawLabel(double item, int i) {
+      var displayedDecimals = 2;
+      if (item < 1) {
+        displayedDecimals = 4;
+      } else if (item < 1000) {
+        displayedDecimals = 3;
+      }
+
       final tp = new TextPainter(
           text: new TextSpan(
               style: AppText.graphTextStyle.copyWith(
                   color: AppColor.deepWhite,
                   backgroundColor: Colors.transparent),
-              text: labelPrefix + item.toString().substring(0, 7)),
+              text: (labelPrefix + item.toStringAsFixed(displayedDecimals)).padLeft(9)),
           textDirection: TextDirection.ltr,
           textAlign: TextAlign.left);
       tp.layout();
@@ -79,7 +88,12 @@ class Graph extends StatelessWidget {
 
     for (var i = 0; i < data.length; i++) {
       final item = data[i];
-      if (item == maxValue || item == minValue) {
+      if (!maxValueDisplayed && item == maxValue) {
+        maxValueDisplayed = true;
+        _drawLabel(item, i);
+      }
+      if (!minValueDisplayed && item == minValue) {
+        minValueDisplayed = true;
         _drawLabel(item, i);
       }
     }

@@ -16,7 +16,7 @@ class TimeFrameSelector extends StatefulWidget {
 }
 
 class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
-  String _periodValue = '1H';
+  String _periodValue = '1D';
 
   void _onPressedPeriod(String period) {
     setState(() {
@@ -32,7 +32,7 @@ class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
 
     final checkedButton = FilledButton(
         period,
-        onPressed: onPressed,
+        onPressed: null,
         textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite),
         padding: const EdgeInsets.all(0.0),
     );
@@ -51,7 +51,7 @@ class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
         )
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return new Row(
