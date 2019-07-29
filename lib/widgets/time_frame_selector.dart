@@ -32,9 +32,9 @@ class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
 
     final checkedButton = FilledButton(
         period,
-        onPressed: null,
+        onPressed: onPressed,
         textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite),
-        padding: const EdgeInsets.all(0.0),
+        padding: const EdgeInsets.all(0.0)
     );
     final uncheckedButton = TextButton(
         period,
