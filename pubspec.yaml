@@ -21,6 +21,10 @@ dependencies:
     sdk: flutter
   flutter_svg: ^0.12.4
   flutter_cupertino_date_picker: ^1.0.8
+  flutter_sparkline:
+    git:
+      url: https://github.com/ChangeFinance/flutter_sparkline.git
+      ref: add-graph-paint-callback
 
 dev_dependencies:
   flutter_test:
@@ -28,10 +32,7 @@ dev_dependencies:
   recase: ^2.0.1
   mockito: ^4.0.0
   package_info: ^0.4.0+3
-  flutter_sparkline:
-    git:
-      url: https://github.com/ChangeFinance/flutter_sparkline.git
-      ref: add-graph-paint-callback
+
 
 
 # For information on the generic Dart part of this file, see the
