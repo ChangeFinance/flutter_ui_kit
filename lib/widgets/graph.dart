@@ -8,7 +8,7 @@ import 'package:flutter_ui_kit/text.dart';
 class Graph extends StatelessWidget {
   final bool enableMaxMin;
   final bool enableGradient;
-  final bool enableAutoColor;
+  final Color lineColor;
   final String labelPrefix;
   final List<double> data;
 
@@ -17,7 +17,7 @@ class Graph extends StatelessWidget {
         this.enableMaxMin = false,
         this.labelPrefix = '€',
         this.enableGradient = true,
-        this.enableAutoColor = false
+        this.lineColor = AppColor.green
       });
 
   void _drawMaxMinMarkers(Canvas context, double width, double height) {
@@ -96,21 +96,13 @@ class Graph extends StatelessWidget {
     );
   }
 
-  Color _getColor() {
-    var color = AppColor.green;
-    if (enableAutoColor && data[0] < data[data.length-1]) {
-      color = AppColor.red;
-    }
-    return color;
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Center(
         child: new Container(
             child: new Sparkline(
       data: data,
-      lineColor: _getColor(),
+      lineColor: lineColor,
       lineWidth: 1.0,
       pointsMode: PointsMode.none,
       fillMode: enableGradient ? FillMode.below : FillMode.none,
