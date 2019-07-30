@@ -8,7 +8,7 @@ import 'package:flutter_ui_kit/text.dart';
 class Graph extends StatelessWidget {
   final bool enableMaxMin;
   final bool enableGradient;
-  final bool enableAutoColor;
+  final Color lineColor;
   final String labelPrefix;
   final List<double> data;
 
@@ -17,7 +17,7 @@ class Graph extends StatelessWidget {
         this.enableMaxMin = false,
         this.labelPrefix = '€',
         this.enableGradient = true,
-        this.enableAutoColor = false
+        this.lineColor = AppColor.green
       });
 
   void _drawMaxMinMarkers(Canvas context, double width, double height) {
@@ -51,14 +51,23 @@ class Graph extends StatelessWidget {
     final minValue = data.reduce(math.min);
     final widthNormalizer = width / data.length;
     final heightNormalizer = height / (maxValue - minValue);
+    var maxValueDisplayed = false;
+    var minValueDisplayed = false;
 
     void _drawLabel(double item, int i) {
+      var displayedDecimals = 2;
+      if (item < 1) {
+        displayedDecimals = 4;
+      } else if (item < 1000) {
+        displayedDecimals = 3;
+      }
+
       final tp = new TextPainter(
           text: new TextSpan(
               style: AppText.graphTextStyle.copyWith(
                   color: AppColor.deepWhite,
                   backgroundColor: Colors.transparent),
-              text: labelPrefix + item.toString().substring(0, 7)),
+              text: (labelPrefix + item.toStringAsFixed(displayedDecimals)).padLeft(9)),
           textDirection: TextDirection.ltr,
           textAlign: TextAlign.left);
       tp.layout();
@@ -79,7 +88,12 @@ class Graph extends StatelessWidget {
 
     for (var i = 0; i < data.length; i++) {
       final item = data[i];
-      if (item == maxValue || item == minValue) {
+      if (!maxValueDisplayed && item == maxValue) {
+        maxValueDisplayed = true;
+        _drawLabel(item, i);
+      }
+      if (!minValueDisplayed && item == minValue) {
+        minValueDisplayed = true;
         _drawLabel(item, i);
       }
     }
@@ -96,21 +110,13 @@ class Graph extends StatelessWidget {
     );
   }
 
-  Color _getColor() {
-    var color = AppColor.green;
-    if (enableAutoColor && data[0] < data[data.length-1]) {
-      color = AppColor.red;
-    }
-    return color;
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Center(
         child: new Container(
             child: new Sparkline(
       data: data,
-      lineColor: _getColor(),
+      lineColor: lineColor,
       lineWidth: 1.0,
       pointsMode: PointsMode.none,
       fillMode: enableGradient ? FillMode.below : FillMode.none,

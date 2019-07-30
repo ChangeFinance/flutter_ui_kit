@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/widgets/graph.dart';
 
 import '../wrap_in_material_app.dart';
@@ -22,7 +23,7 @@ void main() {
             data: data,
             labelPrefix: '\$',
             enableMaxMin: true,
-            enableAutoColor: true,
+            lineColor: AppColor.green,
             enableGradient: false,
       )));
       expect(find.byType(Graph), findsOneWidget);
