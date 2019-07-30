@@ -16,7 +16,7 @@ class TimeFrameSelector extends StatefulWidget {
 }
 
 class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
-  String _periodValue = '1H';
+  String _periodValue = '1D';
 
   void _onPressedPeriod(String period) {
     setState(() {
@@ -34,7 +34,7 @@ class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
         period,
         onPressed: onPressed,
         textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite),
-        padding: const EdgeInsets.all(0.0),
+        padding: const EdgeInsets.all(0.0)
     );
     final uncheckedButton = TextButton(
         period,
@@ -51,7 +51,7 @@ class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
         )
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return new Row(
