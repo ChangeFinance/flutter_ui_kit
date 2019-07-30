@@ -32,27 +32,28 @@ class _DropdownPropUpdaterState extends State<DropdownPropUpdater> {
 
   @override
   Widget build(BuildContext context){
-    return Column(
-      children: <Widget>[
-        Text(_getLabel()),
-        DropdownButton(
-          value: dropdownValue,
-          onChanged: (String newValue) {
-            widget.updateProp(widget.propKey, newValue);
-          },
-          items: widget.options
-          .map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-            );
-          })
-            .toList(),
-          )
-        ],
-      );
+    dropdownValue ??= widget.props[widget.propKey];
+
+    return ListTile(
+      title: Text(_getLabel()),
+      trailing: DropdownButton(
+        value: dropdownValue,
+        onChanged: (String newValue) {
+          dropdownValue = newValue;
+          widget.updateProp(widget.propKey, newValue);
+        },
+        items: widget.options
+            .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+      ),
+    );
   }
+
   String _getLabel() {
-  return ReCase(widget.propKey).titleCase;
+    return ReCase(widget.propKey).titleCase;
   }
 }
