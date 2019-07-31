@@ -22,7 +22,7 @@ class RadioItem extends StatelessWidget {
             child: new Center(
               child: _item.isSelected
                   ? const Icon(Icons.check, size: 20.0, color: AppColor.deepWhite)
-                  : const Icon(Icons.check,
+                  : const Icon(Icons.check, size: 20.0,
                       color: AppColor.deepWhite),
             ),
             decoration: new BoxDecoration(
