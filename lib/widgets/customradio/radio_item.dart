@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_ui_kit/widgets/customradio/radio_model.dart';
 
-import '../../color.dart';
+import '../change_app_icons.dart';
 
 class RadioItem extends StatelessWidget {
   final RadioModel _item;
@@ -15,25 +15,13 @@ class RadioItem extends StatelessWidget {
       margin: const EdgeInsets.only(top: 14.00),
       child: new Row(
         mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           new Container(
-            height: 30.0,
-            width: 30.0,
-            child: new Center(
-              child: _item.isSelected
-                  ? const Icon(Icons.check, size: 20.0, color: AppColor.deepWhite)
-                  : const Icon(Icons.check, size: 20.0,
-                      color: AppColor.deepWhite),
+            height: 24.0,
+            width: 24.0,
+            child: _radio(_item.isSelected)
             ),
-            decoration: new BoxDecoration(
-              color:
-                  _item.isSelected ? AppColor.darkerGreen : Colors.transparent,
-              border: new Border.all(
-                  width: 1.0,
-                  color: _item.isSelected ? AppColor.darkerGreen : AppColor.grey),
-              shape: BoxShape.circle,
-            ),
-          ),
           new Container(
             margin: const EdgeInsets.only(left: 10.0, right: 10.00),
             child: new Row(children: <Widget>[
@@ -48,5 +36,11 @@ class RadioItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _radio(bool isSelected) {
+    return isSelected
+        ? Container(child: ChangeAppIcons.radio_checked)
+        : ChangeAppIcons.radio_unchecked;
   }
 }

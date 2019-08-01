@@ -333,4 +333,32 @@ class ChangeAppIcons {
       width : width,
       height : height
   );
+
+  static const ChangeIcon checkbox_checked = ChangeIcon(
+      const ChangeIconData(
+          'checkbox_checked',
+          ChangeIconType.enabled
+      )
+  );
+
+  static const ChangeIcon checkbox_unchecked = ChangeIcon(
+      const ChangeIconData(
+          'checkbox_unchecked',
+          ChangeIconType.enabled
+      )
+  );
+
+  static const ChangeIcon radio_checked = ChangeIcon(
+      const ChangeIconData(
+          'radio_checked',
+          ChangeIconType.enabled
+      )
+  );
+
+  static const ChangeIcon radio_unchecked = ChangeIcon(
+      const ChangeIconData(
+          'radio_unchecked',
+          ChangeIconType.enabled
+      )
+  );
 }
