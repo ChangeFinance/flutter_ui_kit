@@ -42,7 +42,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_cupertino_date_picker:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_cupertino_date_picker
       url: "https://pub.dartlang.org"
