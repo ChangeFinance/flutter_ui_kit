@@ -6,6 +6,7 @@ import '../../color.dart';
 class Badge extends StatelessWidget {
   static const double badgeHeight = 30.0;
   static const double fontSize = 14.0;
+  static const double padding = 10.0;
 
   final String text;
   final double minWidth;
@@ -36,7 +37,7 @@ class Badge extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: badgeHeight / 2),
+                      padding: const EdgeInsets.symmetric(horizontal: padding),
                       child: Text(
                         text,
                         style: textStyle ?? defaultTextStyle,
