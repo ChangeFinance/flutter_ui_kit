@@ -49,7 +49,7 @@ packages:
     source: hosted
     version: "1.0.8"
   flutter_sparkline:
-    dependency: "direct main"
+    dependency: "direct dev"
     description:
       path: "."
       ref: add-graph-paint-callback

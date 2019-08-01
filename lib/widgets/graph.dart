@@ -10,7 +10,7 @@ class Graph extends StatelessWidget {
   final bool enableGradient;
   final Color lineColor;
   final String labelPrefix;
-  final List<double> data;
+  final List<Ohlc> data;
 
   const Graph(
       { @required this.data,
@@ -23,8 +23,8 @@ class Graph extends StatelessWidget {
   void _drawMaxMinMarkers(Canvas context, double width, double height) {
     const offsetLeftX = 35.0;
     const offsetRightX = 35.0;
-    const offsetTopY = 5.0;
-    const offsetDownY = 25.0;
+    const offsetTopY = 0.0;
+    const offsetDownY = 0.0;
     const lineWidth = 1.0;
 
     double _calcXForMarker(double x, double width) {
@@ -47,8 +47,11 @@ class Graph extends StatelessWidget {
       return y - offsetTopY;
     }
 
-    final maxValue = data.reduce(math.max);
-    final minValue = data.reduce(math.min);
+    final highPricesList = data.map((ohlc) => ohlc.h).toList();
+    final lowPricesList = data.map((ohlc) => ohlc.l).toList();
+
+    final maxValue = highPricesList.reduce(math.max);
+    final minValue = lowPricesList.reduce(math.min);
     final widthNormalizer = width / data.length;
     final heightNormalizer = height / (maxValue - minValue);
     var maxValueDisplayed = false;
@@ -80,21 +83,22 @@ class Graph extends StatelessWidget {
       final paint = Paint();
       context.drawRRect(
           RRect.fromRectAndRadius(
-              Rect.fromLTWH(offset.dx - 3, offset.dy - 3, 62, 20),
+              Rect.fromLTWH(offset.dx - 3, offset.dy - 3, 68, 20),
               const Radius.circular(6.0)),
           paint);
       tp.paint(context, offset);
     }
 
-    for (var i = 0; i < data.length; i++) {
-      final item = data[i];
-      if (!maxValueDisplayed && item == maxValue) {
+    final openPricesList = data.map((ohlc) => ohlc.o).toList();
+
+    for (var i = 0; i < openPricesList.length; i++) {
+      if (!maxValueDisplayed && highPricesList[i] == maxValue) {
         maxValueDisplayed = true;
-        _drawLabel(item, i);
+        _drawLabel(highPricesList[i], i);
       }
-      if (!minValueDisplayed && item == minValue) {
+      if (!minValueDisplayed && lowPricesList[i] == minValue) {
         minValueDisplayed = true;
-        _drawLabel(item, i);
+        _drawLabel(lowPricesList[i], i);
       }
     }
   }
@@ -115,7 +119,7 @@ class Graph extends StatelessWidget {
     return new Center(
         child: new Container(
             child: new Sparkline(
-      data: data,
+      data: data.map((ohlc) => ohlc.o).toList(),
       lineColor: lineColor,
       lineWidth: 1.0,
       pointsMode: PointsMode.none,
@@ -125,4 +129,35 @@ class Graph extends StatelessWidget {
       fillGradient: enableGradient ? _buildGradient() : null,
     )));
   }
+}
+
+class Ohlc {
+  final double o;
+  final double h;
+  final double l;
+  final double c;
+
+  const Ohlc(this.o, this.h, this.l, this.c);
+
+  @override
+  String toString() {
+    return 'o: $o, h: $h, l: $l, c: $c,';
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is Ohlc &&
+              runtimeType == other.runtimeType &&
+              o == other.o &&
+              h == other.h &&
+              l == other.l &&
+              c == other.c;
+
+  @override
+  int get hashCode =>
+      o.hashCode ^
+      h.hashCode ^
+      l.hashCode ^
+      c.hashCode;
 }

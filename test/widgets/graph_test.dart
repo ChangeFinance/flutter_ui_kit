@@ -10,10 +10,11 @@ math.Random random = new math.Random();
 void main() {
   group('Graph', () {
     testWidgets('renders graph', (WidgetTester tester) async {
-      List<double> _generateRandomData(int count) {
-        final result = <double>[];
+      List<Ohlc> _generateRandomData(int count) {
+        final result = <Ohlc>[];
         for (var i = 0; i < count; i++) {
-          result.add(random.nextDouble() * 100);
+          final value = random.nextDouble() * 10000;
+          result.add(Ohlc(value, value, value, value));
         }
         return result;
       }
