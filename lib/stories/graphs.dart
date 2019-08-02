@@ -27,11 +27,10 @@ class Graphs extends StatelessWidget {
 
   Widget _graphsStory() {
 
-    List<Ohlc> _generateRandomData(int count) {
-      final result = <Ohlc>[];
+    List<double> _generateRandomData(int count) {
+      final result = <double>[];
       for (var i = 0; i < count; i++) {
-        final value = random.nextDouble() * 10000;
-        result.add(Ohlc(value, value, value, value));
+        result.add(random.nextDouble() * 10000);
       }
       return result;
     }
