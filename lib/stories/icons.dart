@@ -25,6 +25,7 @@ class Iconography extends StatelessWidget {
         crossAxisCount: 3,
         shrinkWrap: true,
         children: <Widget>[
+          _receivedBonusEnabled(),
           _receivedRewardEnabled(),
           _atmWithdrawEnabled(),
           _roundupEnabled(),
@@ -58,6 +59,7 @@ class Iconography extends StatelessWidget {
         crossAxisCount: 3,
         shrinkWrap: true,
         children: <Widget>[
+          _receivedBonusDisabled(),
           _receivedRewardDisabled(),
           _atmWithdrawDisabled(),
           _roundupDisabled(),
@@ -122,6 +124,28 @@ class Iconography extends StatelessWidget {
           const Text('Received reward')
         ],
       )
+    );
+  }
+
+  Widget _receivedBonusEnabled() {
+    return Card(
+        child: Column(
+          children: const <Widget>[
+            Center(child: ChangeAppIcons.bonus_enabled),
+            const Text('Received Bonus')
+          ],
+        )
+    );
+  }
+
+  Widget _receivedBonusDisabled() {
+    return Card(
+        child: Column(
+          children: const <Widget>[
+            Center(child: ChangeAppIcons.bonus_disabled),
+            const Text('Received Bonus')
+          ],
+        )
     );
   }
 
