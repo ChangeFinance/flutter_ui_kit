@@ -3,10 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui_kit/widgets/customradio/custom_radio.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/layout/generic_template.dart';
+import 'package:flutter_ui_kit/widgets/layout/titled_generic_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/utility_template.dart';
 import 'package:flutter_ui_kit/widgets/text/heading.dart';
 import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
 import 'package:flutter_ui_kit/widgets/text/label_value_pair.dart';
+import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 import '../color.dart';
 
@@ -27,7 +29,8 @@ class Layouts extends StatelessWidget {
             _utilityLayout(context),
             _dismissibleLayout(context),
             _infoLayout(context),
-            _paymentMethod(context)
+            _paymentMethod(context),
+            _landingPage(context)
           ],
         ),
       ),
@@ -215,5 +218,86 @@ class Layouts extends StatelessWidget {
                         })),
               ));
         })));
+  }
+
+  Widget _landingPage(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: Center(
+        child: FilledButton(
+          'I\'m all about landing page',
+          onPressed: () {
+            Navigator.push<dynamic>(
+                context,
+                MaterialPageRoute<dynamic>(
+                    settings: const RouteSettings(name: dismissibleLayoutRoute),
+                    builder: (_) => TitledGenericTemplate(
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            const Heading('Exchange CAG tokens to new equity like CNG tokens',
+                                headingType: HeadingType.HEADING_1, textAlign: TextAlign.left),
+                            Container(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 14.0),
+                                child: Text('CNG tokens give you the right to become shareholder of Change',
+                                    style: Theme.of(context).textTheme.body1),
+                              ),
+                            ),
+                            const SizedBox(height: 33,),
+                            Row(
+                              children: <Widget>[
+                                SvgPicture.asset(
+                                  'assets/update-app.svg',
+                                  width: 24,
+                                  height: 24,
+                                ),
+                                const SizedBox(width: 6,),
+                                new RichText(
+                                  textAlign: TextAlign.left,
+                                  text: new TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: 'What is token swap?',
+                                        style: Theme.of(context).textTheme.body2.copyWith(
+                                            color: AppColor.semiGrey),
+                                      ),],),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        Column(children: <Widget>[
+                          FilledButton(
+                            'Go to Swap',
+                            onPressed: () {
+                              print('Test');
+                            },
+                            fullWidth: true,
+                            narrow: false,
+                          ),
+                          TextButton(
+                            'I\'m not CNG owner',
+                            onPressed: () {
+                              print('Test');
+                            },
+                          ),
+                        ]),
+                        leadingWidget: const CloseButton(),
+                        title: const Text('CAG Token Swap',),
+                        picture: SvgPicture.asset(
+                          'assets/update-app.svg',
+                          width: 285.0,
+                          height: 215.0,
+                        ),
+                    )
+                )
+            );
+          },
+          fullWidth: false,
+          narrow: false,
+        ),
+      ),
+    );
   }
 }
