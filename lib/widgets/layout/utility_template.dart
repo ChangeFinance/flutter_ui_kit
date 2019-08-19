@@ -13,8 +13,9 @@ class UtilityTemplate extends StatelessWidget {
   final String heading;
   final String body;
   final Widget action;
+  final bool restrictWidth;
 
-  const UtilityTemplate(this.heading, this.body, this.picture, this.action)
+  const UtilityTemplate(this.heading, this.body, this.picture, this.action, {this.restrictWidth = true})
       : super();
 
   @override
@@ -38,7 +39,7 @@ class UtilityTemplate extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                constraints: BoxConstraints(maxWidth: picture.width),
+                constraints: restrictWidth ? BoxConstraints(maxWidth: picture.width): const BoxConstraints(),
                 child: Column(
                   children: <Widget>[
                     Heading(
