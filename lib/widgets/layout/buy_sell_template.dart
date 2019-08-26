@@ -23,7 +23,7 @@ class BuySellTemplate extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text(mainTitle, style: theme.display1, textAlign: TextAlign.left),
+            Text(mainTitle, style: theme.display1.copyWith(color: AppColor.deepBlack), textAlign: TextAlign.left),
             const SizedBox(height: 5),
             Text(
               subTitle,
