@@ -24,7 +24,7 @@ class Switchers extends StatelessWidget {
                 child: PropsExplorer(
                     initialProps: const <String, dynamic>{
                       'buttonLabels': ['BTC', 'EUR'],
-                      'values': ['₿0.0147', '€50'],
+                      'values': ['₿0.01421', '€50'],
                     },
                     formBuilder: (context, props, updateProp) {
                       return ListView(
@@ -53,6 +53,8 @@ class Switchers extends StatelessWidget {
                       return Switcher(
                         buttonLabels: labels,
                         values: values,
+                        activeIndexListener: (index) =>
+                            print('switcher index changed to $index'),
                       );
                     }))));
   }
