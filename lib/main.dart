@@ -9,6 +9,7 @@ import 'package:flutter_ui_kit/stories/layouts.dart';
 import 'package:flutter_ui_kit/stories/numpads.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
 import 'package:flutter_ui_kit/stories/sliders.dart';
+import 'package:flutter_ui_kit/stories/switchers.dart';
 import 'package:flutter_ui_kit/stories/typography.dart';
 import 'package:flutter_ui_kit/stories/icons.dart';
 import 'package:flutter_ui_kit/stories/wizard.dart';
@@ -53,6 +54,7 @@ void main() {
           CustomRadio(radioElements: CustomRadio.availableRadioModels()),
           Checkboxes(),
           Graphs(),
+          Switchers(),
         ],
       ),
     ),

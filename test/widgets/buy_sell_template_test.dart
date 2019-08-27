@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/layout/buy_sell_template.dart';
 
-import 'wrap_in_material_app.dart';
+import '../wrap_in_material_app.dart';
+
 
 void main() {
   group('BuySellTemplateTest', () {
@@ -12,13 +13,11 @@ void main() {
       const subTitle = '\$110 available';
 
       final action = FilledButton('Buy', onPressed: () {});
-      final child = Container();
 
       await tester.pumpWidget(wrapInMaterialApp(
         BuySellTemplate(
           mainTitle: mainTitle,
           subTitle: subTitle,
-          child: child,
           action: action,
         ),
       ));
