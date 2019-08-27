@@ -13,6 +13,7 @@ class BuySellTemplate extends StatelessWidget {
   final Widget showcase;
   final List<String> switcherButtonLabels;
   final List<String> switcherValues;
+  final Function(String) onNumpadChange;
 
   const BuySellTemplate(
       {this.action,
@@ -21,7 +22,8 @@ class BuySellTemplate extends StatelessWidget {
       this.showcaseLabel,
       this.showcase,
       this.switcherButtonLabels,
-      this.switcherValues});
+      this.switcherValues,
+      this.onNumpadChange});
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +86,7 @@ class BuySellTemplate extends StatelessWidget {
   Widget _buildNumPad() {
     return Container(
       height: 240,
-      child: NumPadText(onChange: (val) {}, decimalPlaces: 2),
+      child: NumPadText(onChange: onNumpadChange ?? (val) {}, decimalPlaces: 2),
     );
   }
 
