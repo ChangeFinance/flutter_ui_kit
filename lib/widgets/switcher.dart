@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
+import 'package:flutter_ui_kit/theme.dart';
 
 import 'change_app_icons.dart';
 
@@ -52,15 +53,14 @@ class _SwitcherState extends State<Switcher> {
   }
 
   Widget _buildDisplay(BuildContext context) {
-    final theme = Theme.of(context).textTheme;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text(currentText, style: theme.display4.copyWith(color: AppColor.deepBlack)),
+        Text(currentText, style: theme.textTheme.display4.copyWith(color: AppColor.deepBlack)),
         const SizedBox(height: 10),
-        Text(nextText, style: theme.body2.copyWith(color: AppColor.semiGrey)),
+        Text(nextText, style: theme.textTheme.body2.copyWith(color: AppColor.semiGrey)),
       ],
     );
   }
