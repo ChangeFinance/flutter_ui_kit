@@ -58,7 +58,7 @@ class _SwitcherState extends State<Switcher> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text(currentText, style: theme.display4),
+        Text(currentText, style: theme.display4.copyWith(color: AppColor.deepBlack)),
         const SizedBox(height: 10),
         Text(nextText, style: theme.body2.copyWith(color: AppColor.semiGrey)),
       ],
