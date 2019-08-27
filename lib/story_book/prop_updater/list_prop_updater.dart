@@ -3,16 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:recase/recase.dart';
 
-abstract class ListPropUpdater<T> extends StatefulWidget {
+class ListPropUpdater<T> extends StatefulWidget {
   final Map<String, dynamic> props;
   final PropUpdater updateProp;
   final String propKey;
   final String hintText;
+  final String Function<T>(List<T> list) listToTextConverter;
+  final List<T> Function(String text) textToListConverter;
 
   ListPropUpdater({
     @required this.props,
     @required this.updateProp,
     @required this.propKey,
+    @required this.listToTextConverter,
+    @required this.textToListConverter,
     this.hintText = '',
     Key key,
   })  : assert(props != null),
@@ -20,14 +24,12 @@ abstract class ListPropUpdater<T> extends StatefulWidget {
         assert(propKey != null),
         assert(props[propKey] != null),
         assert(props[propKey] is List),
+        assert(listToTextConverter != null),
+        assert(textToListConverter != null),
         super(key: key);
 
   @override
   _ListPropUpdaterState createState() => _ListPropUpdaterState();
-
-  String listToText(List<T> list);
-
-  List<T> textToList(String text);
 }
 
 class _ListPropUpdaterState extends State<ListPropUpdater> {
@@ -37,8 +39,7 @@ class _ListPropUpdaterState extends State<ListPropUpdater> {
   void initState() {
     _controller = TextEditingController();
     final List<String> list = widget.props[widget.propKey];
-//    _controller.text = list.join(',');
-    _controller.text = widget.listToText(list);
+    _controller.text = widget.listToTextConverter(list);
     super.initState();
   }
 
@@ -53,8 +54,7 @@ class _ListPropUpdaterState extends State<ListPropUpdater> {
           hintText: widget.hintText.isNotEmpty ? widget.hintText : _getLabel(),
         ),
         onChanged: (String value) {
-//          final values = value.split(',');
-          final values = widget.textToList(value);
+          final values = widget.textToListConverter(value);
           widget.updateProp(widget.propKey, values);
         },
       ),

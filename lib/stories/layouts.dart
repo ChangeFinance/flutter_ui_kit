@@ -91,7 +91,20 @@ class Layouts extends StatelessWidget {
                 MaterialPageRoute<dynamic>(
                   settings: const RouteSettings(name: buySellLayout),
                   builder: (_) => BuySellTemplate(
-                    child: const NumPadText(onChange: null, decimalPlaces: 2),
+                    switcherButtonLabels: const ['BTC', 'EUR', 'USD'],
+                    switcherValues: const ['₿0.0147', '€50', '\$60'],
+                    showcaseLabel: 'Payment method',
+                    showcase: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Icon(Icons.attach_money),
+                        const SizedBox(width: 10),
+                        Text('Sample Wallet',
+                            style: Theme.of(context).textTheme.body2)
+                      ],
+                    ),
                     action: FilledButton(
                       'Buy',
                       onPressed: () {},
