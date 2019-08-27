@@ -1,4 +1,5 @@
 
+import 'package:flutter_ui_kit/stories/custom_label_value.dart';
 import 'package:flutter_ui_kit/stories/badges.dart';
 import 'package:flutter_ui_kit/stories/buttons.dart';
 import 'package:flutter_ui_kit/stories/cards.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_ui_kit/stories/wizard.dart';
 import 'package:flutter_ui_kit/story_book/story_book.dart';
 import 'package:flutter_ui_kit/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_kit/widgets.dart';
 import 'package:flutter_ui_kit/widgets/custom_date_picker.dart';
 import 'package:flutter_ui_kit/widgets/customradio/custom_radio.dart';
 import 'package:flutter_ui_kit/widgets/layout/sliver_template.dart';
@@ -53,6 +55,7 @@ void main() {
           CustomRadio(radioElements: CustomRadio.availableRadioModels()),
           Checkboxes(),
           Graphs(),
+          CustomLabelValue()
         ],
       ),
     ),
