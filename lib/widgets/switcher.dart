@@ -66,7 +66,6 @@ class _SwitcherState extends State<Switcher> {
   }
 
   Widget _buildButton(BuildContext context) {
-    final theme = Theme.of(context).textTheme;
     return FlatButton(
       onPressed: _switch,
       splashColor: AppColor.grey,
@@ -76,7 +75,7 @@ class _SwitcherState extends State<Switcher> {
         children: <Widget>[
           ChangeAppIcons.switch_arrow,
           const SizedBox(height: 10),
-          Text(currentLabel, style: theme.subtitle),
+          Text(currentLabel, style: theme.textTheme.subtitle),
         ],
       ),
     );
