@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
+import 'package:flutter_ui_kit/theme.dart';
 import 'package:flutter_ui_kit/widgets/layout/app_bar.dart';
 import 'package:flutter_ui_kit/widgets/layout/page_template.dart';
 import 'package:flutter_ui_kit/widgets/switcher.dart';
@@ -91,7 +92,6 @@ class BuySellTemplate extends StatelessWidget {
   }
 
   Widget _buildShowcase(BuildContext context) {
-    final theme = Theme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
