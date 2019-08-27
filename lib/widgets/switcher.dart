@@ -7,8 +7,12 @@ import 'change_app_icons.dart';
 class Switcher extends StatefulWidget {
   final List<String> buttonLabels;
   final List<String> values;
+  final Function(int) activeIndexListener;
 
-  Switcher({@required this.buttonLabels, @required this.values})
+  Switcher(
+      {@required this.buttonLabels,
+      @required this.values,
+      this.activeIndexListener})
       : assert(values.isNotEmpty);
 
   @override
@@ -20,7 +24,7 @@ class _SwitcherState extends State<Switcher> {
 
   List<String> get values => widget.values;
 
-  int currentIndex = 0;
+  Function(int) get activeIndexListener => widget.activeIndexListener;
 
   String get currentLabel => buttonLabels[currentIndex];
 
@@ -33,6 +37,8 @@ class _SwitcherState extends State<Switcher> {
       return values[currentIndex + 1];
     }
   }
+
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +65,7 @@ class _SwitcherState extends State<Switcher> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Text(currentText,
+            maxLines: 1,
             style:
                 theme.textTheme.display4.copyWith(color: AppColor.deepBlack)),
         const SizedBox(height: 10),
@@ -93,6 +100,9 @@ class _SwitcherState extends State<Switcher> {
         currentIndex = 0;
       } else {
         currentIndex++;
+      }
+      if (activeIndexListener != null) {
+        activeIndexListener(currentIndex);
       }
     });
   }
