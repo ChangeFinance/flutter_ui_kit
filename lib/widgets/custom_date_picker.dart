@@ -15,6 +15,9 @@ class CustomDatePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (dateTime != null) {
+      updateState(dateTime);
+    }
     return
         Container(
             child: Row(
