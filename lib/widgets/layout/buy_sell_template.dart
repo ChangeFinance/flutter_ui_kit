@@ -14,6 +14,7 @@ class BuySellTemplate extends StatelessWidget {
   final Widget showcase;
   final List<String> switcherButtonLabels;
   final List<String> switcherValues;
+  final int switcherMainTextLimit;
   final Function(String) onNumpadChange;
   final Function(int) onSwitcherChange;
 
@@ -25,6 +26,7 @@ class BuySellTemplate extends StatelessWidget {
       this.showcase,
       this.switcherButtonLabels,
       this.switcherValues,
+      this.switcherMainTextLimit,
       this.onNumpadChange,
       this.onSwitcherChange});
 
@@ -93,7 +95,8 @@ class BuySellTemplate extends StatelessWidget {
       child: NumPadText(
           onChange: onNumpadChange ?? (val) {},
           decimalPlaces: 2,
-          clearOnLongPress: true),
+          clearOnLongPress: true,
+          textLengthLimit: switcherMainTextLimit),
     );
   }
 

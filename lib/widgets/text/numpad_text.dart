@@ -8,11 +8,13 @@ class NumPadText extends StatelessWidget {
   final Callback onChange;
   final int decimalPlaces;
   final bool clearOnLongPress;
+  final int textLengthLimit;
   static String _text = '';
 
   const NumPadText(
       {@required this.onChange,
       this.clearOnLongPress = false,
+      this.textLengthLimit = 0,
       this.decimalPlaces});
 
   bool alreadyHasADot(String key, String result) {
@@ -27,8 +29,12 @@ class NumPadText extends StatelessWidget {
 
   void onKeyTapped(String key) {
     if ('0123456789.'.contains(key)) {
-      if (alreadyHasADot(key, _text))
+      if (alreadyHasADot(key, _text)) {
         return;
+      }
+      if (textLengthLimit > 0 && (_text + key).length > textLengthLimit) {
+        return;
+      }
       _text += key;
     } else if (key == 'C') {
       _text = _text.substring(0, _text.length - 1);
