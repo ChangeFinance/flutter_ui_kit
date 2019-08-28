@@ -93,6 +93,7 @@ class Layouts extends StatelessWidget {
                     switcherButtonLabels: const ['BTC', 'EUR', 'USD'],
                     switcherValues: const ['₿0.0147', '€50', '\$60'],
                     showcaseLabel: 'Payment method',
+                    errorText: 'Sample error message',
                     showcase: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.center,

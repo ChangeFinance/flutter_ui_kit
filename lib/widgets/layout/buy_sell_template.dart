@@ -15,6 +15,7 @@ class BuySellTemplate extends StatelessWidget {
   final List<String> switcherButtonLabels;
   final List<String> switcherValues;
   final int switcherMainTextLimit;
+  final String errorText;
   final Function(String) onNumpadChange;
   final Function(int) onSwitcherChange;
 
@@ -27,6 +28,7 @@ class BuySellTemplate extends StatelessWidget {
       this.switcherButtonLabels,
       this.switcherValues,
       this.switcherMainTextLimit,
+      this.errorText = '',
       this.onNumpadChange,
       this.onSwitcherChange});
 
@@ -81,6 +83,12 @@ class BuySellTemplate extends StatelessWidget {
           buttonLabels: switcherButtonLabels ?? [''],
           values: switcherValues ?? [''],
           activeIndexListener: onSwitcherChange,
+        ),
+        Container(
+          alignment: Alignment.center,
+          child: Text(errorText,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.body2.copyWith(color: AppColor.red)),
         ),
         const SizedBox(height: 20),
         _buildShowcase(context),
