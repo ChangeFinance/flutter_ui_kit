@@ -12,6 +12,7 @@ class LabelValueEditableField extends StatelessWidget {
   final bool editable;
   final EdgeInsets padding;
   final String route;
+  final Object arguments;
 
   const LabelValueEditableField({
     @required this.labelText,
@@ -20,7 +21,8 @@ class LabelValueEditableField extends StatelessWidget {
     this.textAlign,
     this.value,
     this.padding,
-    this.route
+    this.route,
+    this.arguments
   });
 
   @override
@@ -75,7 +77,11 @@ class LabelValueEditableField extends StatelessWidget {
               size: 20.0,
             )),
         onTap: () {
-          Navigator.pushNamed(context, route);
+          if (arguments != null) {
+            Navigator.pushNamed(context, route, arguments: arguments);
+          } else {
+            Navigator.pushNamed(context, route);
+          }
         },
       ),
     );
