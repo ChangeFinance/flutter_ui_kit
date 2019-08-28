@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
+import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/text.dart';
@@ -28,6 +29,7 @@ Widget _numPadStory() {
     child: PropsExplorer(
       initialProps: const <String, dynamic>{
         'decimalPlaces': 6,
+        'clearOnLongPress': false
       },
       formBuilder: (context, props, updateProp) {
         return ListView(
@@ -39,6 +41,11 @@ Widget _numPadStory() {
               updateProp: updateProp,
               propKey: 'decimalPlaces',
               hintText: 'Simulate decimal places',
+            ),
+            BoolPropUpdater(
+              props: props,
+              updateProp: updateProp,
+              propKey: 'clearOnLongPress',
             )
           ]
         );
@@ -68,7 +75,7 @@ Widget _numPadStory() {
           ),
           Container(
             height:240.0,
-            child: NumPadText(onChange: onChangeTextField, decimalPlaces: props['decimalPlaces'])
+            child: NumPadText(onChange: onChangeTextField, decimalPlaces: props['decimalPlaces'], clearOnLongPress: props['clearOnLongPress'])
           )
         ]);
       }
