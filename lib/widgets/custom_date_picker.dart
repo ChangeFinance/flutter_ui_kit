@@ -21,11 +21,10 @@ class CustomDatePicker extends StatelessWidget {
     return
         Container(
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
           new Flexible(
-              child: Padding(
-                  padding: const EdgeInsets.only(left: 30.0),
                   child: Container(
                       width: 60,
                       child: TextField(
@@ -40,7 +39,7 @@ class CustomDatePicker extends StatelessWidget {
                           ),
                           onTap: () {
                             _showDatePicker(context);
-                          })))),
+                          }))),
           new Flexible(
               child: Container(
                   width: 80,
