@@ -90,7 +90,10 @@ class BuySellTemplate extends StatelessWidget {
   Widget _buildNumPad() {
     return Container(
       height: 240,
-      child: NumPadText(onChange: onNumpadChange ?? (val) {}, decimalPlaces: 2),
+      child: NumPadText(
+          onChange: onNumpadChange ?? (val) {},
+          decimalPlaces: 2,
+          clearOnLongPress: true),
     );
   }
 
