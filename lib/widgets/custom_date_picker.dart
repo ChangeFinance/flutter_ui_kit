@@ -91,7 +91,6 @@ class CustomDatePicker extends StatelessWidget {
       },
       onConfirm: (_dateTime, List<int> index) {
         updateState(_dateTime);
-//        dateTime = _dateTime;
         onChange(_dateTime);
       },
     );
