@@ -78,7 +78,7 @@ class CustomDatePicker extends StatelessWidget {
   void _showDatePicker(BuildContext context) {
     DatePicker.showDatePicker(
       context,
-      initialDateTime: dateTime != null ? DateTime.now() : dateTime,
+      initialDateTime: dateTime == null ? DateTime.now() : dateTime,
       dateFormat: _format,
       onCancel: () {
         updateState(dateTime);
