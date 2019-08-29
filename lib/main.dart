@@ -54,8 +54,7 @@ void main() {
           CustomRadio(radioElements: CustomRadio.availableRadioModels()),
           Checkboxes(),
           Graphs(),
-          CustomLabelValue()
-          Switchers(),
+          CustomLabelValue(),
           CurrencyDisplays(),
         ],
       ),
