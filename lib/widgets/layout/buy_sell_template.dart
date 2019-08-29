@@ -17,7 +17,6 @@ class BuySellTemplate extends StatefulWidget {
   final List<String> currencySymbols;
   final int numpadMaxLength;
   final String errorText;
-  final Function(String) onNumpadChange;
   final double Function(double) primaryConverter;
   final double Function(double) reverseConverter;
   final Function(MapEntry<double, double>) amountChanged;
@@ -32,7 +31,6 @@ class BuySellTemplate extends StatefulWidget {
       this.currencySymbols,
       this.numpadMaxLength = 0,
       this.errorText = '',
-      this.onNumpadChange,
       this.primaryConverter,
       this.reverseConverter,
       this.amountChanged});

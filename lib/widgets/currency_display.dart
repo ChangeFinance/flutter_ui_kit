@@ -92,7 +92,7 @@ class __CursorState extends State<_Cursor> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    timer = Timer.periodic(Duration(milliseconds: 500), (timer) {
+    timer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
       setState(() {
         _show = !_show;
       });
@@ -103,7 +103,7 @@ class __CursorState extends State<_Cursor> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       opacity: _show ? 1 : 0,
       child: Container(
         margin: const EdgeInsets.only(left: 1),
