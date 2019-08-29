@@ -90,8 +90,8 @@ class Layouts extends StatelessWidget {
                 MaterialPageRoute<dynamic>(
                   settings: const RouteSettings(name: buySellLayout),
                   builder: (_) => BuySellTemplate(
-                    switcherButtonLabels: const ['BTC', 'EUR', 'USD'],
-                    switcherValues: const ['₿0.0147', '€50', '\$60'],
+                    switcherLabels: const ['BTC', 'EUR'],
+                    currencySymbols: const ['₿', '€'],
                     showcaseLabel: 'Payment method',
                     errorText: 'Sample error message',
                     showcase: Row(
@@ -111,7 +111,7 @@ class Layouts extends StatelessWidget {
                       fullWidth: true,
                     ),
                     mainTitle: 'Buy Bitcoin',
-                    subTitle: '\$110.0 Available',
+                    subTitle: '€110.0 Available',
                   ),
                 ));
           },

@@ -37,7 +37,9 @@ class NumPadText extends StatelessWidget {
       }
       _text += key;
     } else if (key == 'C') {
-      _text = _text.substring(0, _text.length - 1);
+      if (_text.isNotEmpty) {
+        _text = _text.substring(0, _text.length - 1);
+      }
     } else
       return;
 

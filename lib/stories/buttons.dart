@@ -1,11 +1,13 @@
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
+import 'package:flutter_ui_kit/story_book/prop_updater/list_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/outlined_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_kit/widgets/switcher_button.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 class Buttons extends StatelessWidget {
@@ -18,6 +20,7 @@ class Buttons extends StatelessWidget {
           _filledButtonStory(),
           _outlinedButtonStory(),
           _textButtonStory(),
+          _switcherButtonStory(),
         ],
       ),
     );
@@ -213,6 +216,49 @@ class Buttons extends StatelessWidget {
           return TextButton(
             props['text'],
             onPressed: onPressed,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _switcherButtonStory() {
+    // ignore: prefer_function_declarations_over_variables
+    final listToTextConverter = <String>(List<String> list) => list.join(',');
+    // ignore: prefer_function_declarations_over_variables
+    final textToListConverter = (String text) => text.split(',');
+
+    return ExpandableStory(
+      title: 'Switcher button',
+      child: PropsExplorer(
+        initialProps: const <String, dynamic>{
+          'buttonLabels': <String>[],
+        },
+        formBuilder: (context, props, updateProp) {
+          return ListView(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            children: <Widget>[
+              ListPropUpdater<String>(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'buttonLabels',
+                listToTextConverter: listToTextConverter,
+                textToListConverter: textToListConverter,
+                hintText: 'comma-separated list of strings e.g EUR,BTC,USD',
+              )
+            ],
+          );
+        },
+        widgetBuilder: (context, props) {
+          final List<String> labels = props['buttonLabels'];
+          return Column(
+            children: <Widget>[
+              SwitcherButton(
+                labels: labels,
+                onSwitch: (index) => print('Switched to index $index'),
+              ),
+            ],
           );
         },
       ),
