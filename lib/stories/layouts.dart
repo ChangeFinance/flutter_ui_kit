@@ -105,6 +105,8 @@ class Layouts extends StatelessWidget {
                             style: Theme.of(context).textTheme.body2)
                       ],
                     ),
+                    amountChanged: (amts) =>
+                        print('New Amounts: ${amts.key} - ${amts.value}'),
                     action: FilledButton(
                       'Buy',
                       onPressed: () {},

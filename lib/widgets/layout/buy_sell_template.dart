@@ -20,6 +20,7 @@ class BuySellTemplate extends StatefulWidget {
   final Function(String) onNumpadChange;
   final double Function(double) primaryConverter;
   final double Function(double) reverseConverter;
+  final Function(MapEntry<double, double>) amountChanged;
 
   const BuySellTemplate(
       {this.action,
@@ -33,7 +34,8 @@ class BuySellTemplate extends StatefulWidget {
       this.errorText = '',
       this.onNumpadChange,
       this.primaryConverter,
-      this.reverseConverter});
+      this.reverseConverter,
+      this.amountChanged});
 
   @override
   _BuySellTemplateState createState() => _BuySellTemplateState();
@@ -44,19 +46,21 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
 
   List<String> get currencySymbols => widget.currencySymbols;
 
-  double Function(double val) get amountConverter {
+  double Function(double) get amountConverter {
     if (widget.primaryConverter != null) {
       return widget.primaryConverter;
     }
     return (v) => v;
   }
 
-  double Function(double val) get reverseConverter {
+  double Function(double) get reverseConverter {
     if (widget.reverseConverter != null) {
       return widget.reverseConverter;
     }
     return (v) => v;
   }
+
+  Function(MapEntry<double, double>) get amountChanged => widget.amountChanged;
 
   String _numpadBuffer = '';
 
@@ -163,6 +167,9 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
     final amounts = [primaryAmount, secondaryAmount]
         .map((s) => double.tryParse(s.replaceAll(',', '')) ?? 0)
         .toList();
+    if (amountChanged != null) {
+      amountChanged(MapEntry(amounts[0], amounts[1]));
+    }
     return amounts;
   }
 
