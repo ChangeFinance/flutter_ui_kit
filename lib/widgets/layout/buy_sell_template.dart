@@ -17,6 +17,7 @@ class BuySellTemplate extends StatefulWidget {
   final List<String> currencySymbols;
   final int numpadMaxLength;
   final String errorText;
+  final Function(int) onSwitched;
   final double Function(double) primaryConverter;
   final double Function(double) reverseConverter;
   final Function(MapEntry<double, double>) amountChanged;
@@ -31,6 +32,7 @@ class BuySellTemplate extends StatefulWidget {
       this.currencySymbols,
       this.numpadMaxLength = 0,
       this.errorText = '',
+      this.onSwitched,
       this.primaryConverter,
       this.reverseConverter,
       this.amountChanged});
@@ -43,6 +45,8 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
   List<String> get switcherLabels => widget.switcherLabels;
 
   List<String> get currencySymbols => widget.currencySymbols;
+
+  Function(int) get onSwitched => widget.onSwitched;
 
   double Function(double) get amountConverter {
     if (widget.primaryConverter != null) {
@@ -176,6 +180,9 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
       _switcherIndex = newIndex;
       _numpadBuffer = newIndex == 0 ? secondaryAmount : primaryAmount;
     });
+    if (onSwitched != null) {
+      onSwitched(newIndex);
+    }
   }
 
   void _onNumpadChange(String text) {
