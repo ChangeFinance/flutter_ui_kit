@@ -64,10 +64,6 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
 
   Function(MapEntry<double, double>) get amountChanged => widget.amountChanged;
 
-  String _numpadBuffer = '';
-
-  // ignore: unused_field
-  String _prevText = '';
   String _currText = '';
   int _switcherIndex = 0;
   String primaryAmount = '';
@@ -178,7 +174,6 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
   void _onSwitch(int newIndex) {
     setState(() {
       _switcherIndex = newIndex;
-      _numpadBuffer = newIndex == 0 ? secondaryAmount : primaryAmount;
     });
     if (onSwitched != null) {
       onSwitched(newIndex);
@@ -197,8 +192,6 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
     }
 
     setState(() {
-      _prevText = _currText;
-      _numpadBuffer = res;
       _currText = text;
       if (_switcherIndex == 0) {
         secondaryAmount = res;
@@ -221,9 +214,6 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
         print(secondaryAmount);
       }
     });
-
-    print('Numpad value: $text');
-    print('Buffer value: $_numpadBuffer');
   }
 
   String removeChar(String str) {
