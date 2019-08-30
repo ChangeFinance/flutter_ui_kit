@@ -92,7 +92,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
         child: Column(
           children: <Widget>[
             Expanded(
@@ -115,7 +115,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         CurrencySwitcher(
           symbols: currencySymbols,
           amounts: _getAmounts(),
