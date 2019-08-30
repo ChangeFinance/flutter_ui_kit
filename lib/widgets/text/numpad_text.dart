@@ -4,12 +4,11 @@ import 'package:flutter_ui_kit/text.dart';
 
 typedef Callback = void Function(String value);
 
-class NumPadText extends StatelessWidget {
+class NumPadText extends StatefulWidget {
   final Callback onChange;
   final int decimalPlaces;
   final bool clearOnLongPress;
   final int textLengthLimit;
-  static String _text = '';
 
   const NumPadText(
       {@required this.onChange,
@@ -17,14 +16,20 @@ class NumPadText extends StatelessWidget {
       this.textLengthLimit = 0,
       this.decimalPlaces});
 
+  @override
+  _NumPadTextState createState() => _NumPadTextState();
+}
+
+class _NumPadTextState extends State<NumPadText> {
+  String _text = '';
   bool alreadyHasADot(String key, String result) {
     return key == '.' && result.contains('.');
   }
 
   bool shouldRestrictDecimalPlaces(String result) {
-    return decimalPlaces != null &&
+    return widget.decimalPlaces != null &&
         result.contains('.') &&
-        result.substring(result.indexOf('.')).length > decimalPlaces + 1;
+        result.substring(result.indexOf('.')).length > widget.decimalPlaces + 1;
   }
 
   void onKeyTapped(String key) {
@@ -32,7 +37,7 @@ class NumPadText extends StatelessWidget {
       if (alreadyHasADot(key, _text)) {
         return;
       }
-      if (textLengthLimit > 0 && (_text + key).length > textLengthLimit) {
+      if (widget.textLengthLimit > 0 && (_text + key).length > widget.textLengthLimit) {
         return;
       }
       _text += key;
@@ -46,13 +51,13 @@ class NumPadText extends StatelessWidget {
     if (shouldRestrictDecimalPlaces(_text)) {
       _text = _text.substring(0, _text.length - 1);
     }
-    onChange(_text);
+    widget.onChange(_text);
   }
 
   void onKeyLongPressed(String key) {
-    if (key == 'C' && clearOnLongPress) {
+    if (key == 'C' && widget.clearOnLongPress) {
       _text = '';
-      onChange(_text);
+      widget.onChange(_text);
     }
   }
 
