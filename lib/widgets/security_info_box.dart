@@ -50,7 +50,7 @@ class SecurityInfoBox extends StatelessWidget {
             ],
           ),
         ),
-        decoration: new BoxDecoration(
+        decoration: const BoxDecoration(
             color: AppColor.lightestGrey,
             border: null,
             borderRadius: const BorderRadius.all(Radius.circular(16)),
