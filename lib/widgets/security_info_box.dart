@@ -37,11 +37,11 @@ class SecurityInfoBox extends StatelessWidget {
                         child: Align(
                             alignment: Alignment.topLeft,
                             child: Text(infoHeader,
-                              style: AppText.confirmBuySellTextStyle3,)
+                              style: AppText.body3,)
                         ),
                       ),
                       Text(infoBody,
-                        style: AppText.confirmBuySellTextStyle1,
+                        style: AppText.body3SemiGray,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 15,),
                     ]

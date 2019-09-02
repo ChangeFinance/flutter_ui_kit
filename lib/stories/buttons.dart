@@ -9,6 +9,7 @@ import 'package:flutter_ui_kit/widgets/outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/widgets/switcher_button.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
+import 'package:flutter_ui_kit/widgets/two_states_button.dart';
 
 class Buttons extends StatelessWidget {
   @override
@@ -21,6 +22,7 @@ class Buttons extends StatelessWidget {
           _outlinedButtonStory(),
           _textButtonStory(),
           _switcherButtonStory(),
+          _twoStatesButtonStory()
         ],
       ),
     );
@@ -259,6 +261,80 @@ class Buttons extends StatelessWidget {
                 onSwitch: (index) => print('Switched to index $index'),
               ),
             ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _twoStatesButtonStory() {
+    return ExpandableStory(
+      title: 'Button changes it\'s state buy timer',
+      child: PropsExplorer(
+        initialProps: const <String, dynamic>{
+          'initialText': 'Confirm buy',
+          'finalText': 'Refresh rate',
+          'timeIntervalInSec': 3,
+          'enabled': true,
+          'fullWidth': false,
+          'narrow': false,
+        },
+        formBuilder: (context, props, updateProp) {
+          return ListView(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            children: <Widget>[
+              StringPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'initialText',
+              ),
+              StringPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'finalText',
+              ),
+              IntPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'timeIntervalInSec',
+                hintText: 'Switch state timer with duration in seconds',
+              ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'enabled',
+              ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'fullWidth',
+              ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'narrow',
+              ),
+            ],
+          );
+        },
+        widgetBuilder: (context, props) {
+          Function onPressed = () {};
+          Function onRefreshRate = () {};
+
+          if (props['enabled'] == false) {
+            onPressed = null;
+            onRefreshRate = null;
+          }
+
+          return TwoStatesButton(
+            props['initialText'],
+            props['finalText'],
+            props['timeIntervalInSec'],
+            onPressed: onPressed,
+            onButtonCallback: onRefreshRate,
+            fullWidth: props['fullWidth'],
+            narrow: props['narrow'],
           );
         },
       ),

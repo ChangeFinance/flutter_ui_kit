@@ -7,6 +7,7 @@ import 'package:flutter_ui_kit/stories/checkboxes.dart';
 import 'package:flutter_ui_kit/stories/colors.dart';
 import 'package:flutter_ui_kit/stories/currency_displays.dart';
 import 'package:flutter_ui_kit/stories/graphs.dart';
+import 'package:flutter_ui_kit/stories/info_box.dart';
 import 'package:flutter_ui_kit/stories/layouts.dart';
 import 'package:flutter_ui_kit/stories/numpads.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
@@ -56,6 +57,7 @@ void main() {
           Graphs(),
           CustomLabelValue(),
           CurrencyDisplays(),
+          InfoBoxes(),
         ],
       ),
     ),

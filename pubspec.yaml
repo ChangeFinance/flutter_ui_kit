@@ -69,4 +69,5 @@ flutter:
     - assets/secure_funds.svg
     - assets/deposit.svg
     - assets/confirmation.svg
+    - assets/convert_is_secured.svg
     - lib/assets/icons/
