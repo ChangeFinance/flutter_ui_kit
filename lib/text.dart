@@ -80,6 +80,23 @@ class AppText {
       fontStyle: FontStyle.normal,
       fontFamily: 'CircularPro-Book');
 
+  static const TextStyle confirmBuySellTextStyle1 = TextStyle(
+      fontSize: 12.0,
+      fontFamily: 'Circular',
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0,
+      height: 1.5,
+      color: AppColor.semiGrey);
+
+  static const TextStyle confirmBuySellTextStyle2 = TextStyle(
+      fontSize: 14.0,
+      fontFamily: 'Circular',
+      fontWeight: FontWeight.bold,
+      letterSpacing: 0,
+      color: AppColor.deepBlack);
+
+  static const TextStyle confirmBuySellTextStyle3 = body3;
+
   static const TextStyle button1 = AppText.body1;
   static const TextStyle button2 = AppText.body2;
   static const TextStyle button3 = AppText.body3;
