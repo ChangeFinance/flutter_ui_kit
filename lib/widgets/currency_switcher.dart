@@ -4,7 +4,7 @@ import 'package:flutter_ui_kit/widgets/switcher_button.dart';
 
 class CurrencySwitcher extends StatefulWidget {
   final List<String> symbols;
-  final List<double> amounts;
+  final List<String> amounts;
   final List<String> currencyLabels;
   final Function(int) onSwitch;
 
@@ -23,7 +23,7 @@ class CurrencySwitcher extends StatefulWidget {
 class _CurrencySwitcherState extends State<CurrencySwitcher> {
   List<String> get symbols => widget.symbols;
 
-  List<double> get amounts => widget.amounts;
+  List<String> get amounts => widget.amounts;
 
   List<String> get labels => widget.currencyLabels;
 

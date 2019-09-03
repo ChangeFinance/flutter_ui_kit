@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/theme.dart';
@@ -9,7 +8,7 @@ enum CurrencyDisplaySize { small, large }
 
 class CurrencyDisplay extends StatelessWidget {
   final String currencySymbol;
-  final double amount;
+  final String amount;
   final CurrencyDisplaySize size;
   final bool showCursor;
 
@@ -21,6 +20,9 @@ class CurrencyDisplay extends StatelessWidget {
       color: AppColor.deepBlack, fontSize: 45, fontWeight: FontWeight.w100);
   static final TextStyle _smallCursorStyle =
       _largeCursorStyle.copyWith(color: AppColor.semiGrey, fontSize: 12);
+
+  static NumberFormat get numberFormatter => NumberFormat('######.##');
+  static NumberFormat get smallNumberFormatter => NumberFormat('#.######');
 
   CurrencyDisplay(
       {@required this.currencySymbol,
@@ -55,7 +57,7 @@ class CurrencyDisplay extends StatelessWidget {
             constraints: const BoxConstraints(maxWidth: 250),
             child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Text(_formatAmount(),
+                child: Text(amount,
                     style: textStyle, overflow: TextOverflow.clip)),
           ),
           /*amount == null &&*/ showCursor
@@ -64,15 +66,6 @@ class CurrencyDisplay extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  String _formatAmount() {
-    if (amount == null) {
-      return '';
-    }
-    return amount >= 1
-        ? NumberFormat('###,###.##').format(amount)
-        : NumberFormat('#.######').format(amount);
   }
 }
 

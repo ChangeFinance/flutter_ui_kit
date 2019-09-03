@@ -9,11 +9,15 @@ class NumPadText extends StatefulWidget {
   final int decimalPlaces;
   final bool clearOnLongPress;
   final int textLengthLimit;
+  final String startNumPadText;
+  final bool needNumPadTextUpdate;
 
   const NumPadText(
       {@required this.onChange,
       this.clearOnLongPress = false,
       this.textLengthLimit = 0,
+      this.startNumPadText = '',
+      this.needNumPadTextUpdate = false,
       this.decimalPlaces});
 
   @override
@@ -22,6 +26,7 @@ class NumPadText extends StatefulWidget {
 
 class _NumPadTextState extends State<NumPadText> {
   String _text = '';
+
   bool alreadyHasADot(String key, String result) {
     return key == '.' && result.contains('.');
   }
@@ -33,7 +38,13 @@ class _NumPadTextState extends State<NumPadText> {
   }
 
   void onKeyTapped(String key) {
+    if (widget.needNumPadTextUpdate) {
+      _text = widget.startNumPadText;
+    }
     if ('0123456789.'.contains(key)) {
+      if (key == '0' && _text.isEmpty) {
+        _text += '0.';
+      }
       if (alreadyHasADot(key, _text)) {
         return;
       }

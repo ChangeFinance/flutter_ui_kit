@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/theme.dart';
+import 'package:flutter_ui_kit/widgets/currency_display.dart';
 import 'package:flutter_ui_kit/widgets/currency_switcher.dart';
 import 'package:flutter_ui_kit/widgets/layout/app_bar.dart';
 import 'package:flutter_ui_kit/widgets/layout/page_template.dart';
 import 'package:flutter_ui_kit/widgets/text/numpad_text.dart';
-import 'package:intl/intl.dart';
 
 class BuySellTemplate extends StatefulWidget {
   final String mainTitle;
@@ -65,6 +65,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
   Function(MapEntry<double, double>) get amountChanged => widget.amountChanged;
 
   String _currText = '';
+  bool _needNumPadUpdate = false;
   int _switcherIndex = 0;
   String primaryAmount = '';
   String secondaryAmount = '';
@@ -140,8 +141,10 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
       height: 240,
       child: NumPadText(
           onChange: _onNumpadChange,
-          decimalPlaces: 2,
+          decimalPlaces: 4,
           clearOnLongPress: true,
+          startNumPadText: _currText,
+          needNumPadTextUpdate: _needNumPadUpdate,
           textLengthLimit: widget.numpadMaxLength),
     );
   }
@@ -161,12 +164,12 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
     );
   }
 
-  List<double> _getAmounts() {
-    final amounts = [primaryAmount, secondaryAmount]
-        .map((s) => double.tryParse(s.replaceAll(',', '')) ?? 0)
-        .toList();
+  List<String> _getAmounts() {
+    final amounts = [primaryAmount, secondaryAmount];
     if (amountChanged != null) {
-      amountChanged(MapEntry(amounts[0], amounts[1]));
+    final amountList = amounts.map((s) => double.tryParse(s) ?? 0)
+        .toList();
+      amountChanged(MapEntry(amountList[0], amountList[1]));
     }
     return amounts;
   }
@@ -174,46 +177,51 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
   void _onSwitch(int newIndex) {
     setState(() {
       _switcherIndex = newIndex;
+      if (_switcherIndex == 0) {
+        _currText = secondaryAmount;
+      } else {
+        _currText = primaryAmount;
+      }
+      _needNumPadUpdate = true;
+      _updateState(_currText);
     });
     if (onSwitched != null) {
       onSwitched(newIndex);
     }
   }
 
-  void _onNumpadChange(String text) {
-    final numberFormatter = NumberFormat('###,###.##');
-    final smallNumberFormatter = NumberFormat('#.######');
-    String res;
-    if (_currText.length < text.length) {
-      final diff = textDiff(_currText, text);
-      res = _switcherIndex == 0 ? secondaryAmount + diff : primaryAmount + diff;
+  void _updateState(String text) {
+    _currText = text;
+    final numberFormatter = CurrencyDisplay.numberFormatter;
+    final smallNumberFormatter = CurrencyDisplay.smallNumberFormatter;
+    if (_switcherIndex == 0) {
+      secondaryAmount = text;
+      // convert
+      final doubleVal =
+          double.tryParse(secondaryAmount) ?? 0;
+      final converted = amountConverter(doubleVal);
+      primaryAmount = converted >= 1
+          ? numberFormatter.format(converted)
+          : smallNumberFormatter.format(converted);
+      print(primaryAmount);
     } else {
-      res = removeChar(_switcherIndex == 0 ? secondaryAmount : primaryAmount);
+      primaryAmount = text;
+      final doubleVal =
+          double.tryParse(primaryAmount) ?? 0;
+      final converted = reverseConverter(doubleVal);
+      secondaryAmount = converted >= 1
+          ? numberFormatter.format(converted)
+          : smallNumberFormatter.format(converted);
+      print(secondaryAmount);
     }
+  }
 
+  void _onNumpadChange(String text) {
     setState(() {
-      _currText = text;
-      if (_switcherIndex == 0) {
-        secondaryAmount = res;
-        // convert
-        final doubleVal =
-            double.tryParse(secondaryAmount.replaceAll(',', '')) ?? 0;
-        final converted = amountConverter(doubleVal);
-        primaryAmount = converted >= 1
-            ? numberFormatter.format(converted)
-            : smallNumberFormatter.format(converted);
-        print(primaryAmount);
-      } else {
-        primaryAmount = res;
-        final doubleVal =
-            double.tryParse(primaryAmount.replaceAll(',', '')) ?? 0;
-        final converted = reverseConverter(doubleVal);
-        secondaryAmount = converted >= 1
-            ? numberFormatter.format(converted)
-            : smallNumberFormatter.format(converted);
-        print(secondaryAmount);
-      }
+      _updateState(text);
     });
+
+    _needNumPadUpdate = false;
   }
 
   String removeChar(String str) {

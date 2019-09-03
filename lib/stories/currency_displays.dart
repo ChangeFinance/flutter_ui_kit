@@ -69,7 +69,7 @@ class CurrencyDisplays extends StatelessWidget {
             amount = null;
           }
           return CurrencyDisplay(
-              amount: amount,
+              amount: '$amount',
               currencySymbol: symbol,
               size: isLarge
                   ? CurrencyDisplaySize.large
@@ -94,7 +94,7 @@ class CurrencyDisplays extends StatelessWidget {
         },
         widgetBuilder: (context, props) {
           return CurrencySwitcher(
-            amounts: const [2012, 0.0045],
+            amounts: const ['2012', '0.0045'],
             currencyLabels: const ['USD', 'BTC'],
             symbols: const ['\$', '₿'],
           );
