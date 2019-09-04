@@ -42,9 +42,16 @@ class _NumPadTextState extends State<NumPadText> {
       _text = widget.startNumPadText;
     }
     if ('0123456789.'.contains(key)) {
-      if (key == '0' && _text.isEmpty) {
+      if ((key == '0' || key == '.') && _text.isEmpty) {
         _text += '0.';
+        widget.onChange(_text);
+        return;
       }
+
+      if (_text == '0') {
+        _text += '.';
+      }
+
       if (alreadyHasADot(key, _text)) {
         return;
       }

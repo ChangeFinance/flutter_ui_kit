@@ -103,7 +103,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
             ),
             Padding(
                 key: const Key('actionPadding'),
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.only(bottom: 10, top: 10),
                 child: widget.action),
           ],
         ),
@@ -141,7 +141,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
       height: 240,
       child: NumPadText(
           onChange: _onNumpadChange,
-          decimalPlaces: 4,
+          decimalPlaces: 6,
           clearOnLongPress: true,
           startNumPadText: _currText,
           needNumPadTextUpdate: _needNumPadUpdate,
@@ -182,8 +182,8 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
       } else {
         _currText = primaryAmount;
       }
+
       _needNumPadUpdate = true;
-      _updateState(_currText);
     });
     if (onSwitched != null) {
       onSwitched(newIndex);

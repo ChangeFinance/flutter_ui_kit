@@ -42,10 +42,12 @@ class CurrencyDisplay extends StatelessWidget {
       ? AppColor.deepBlack
       : AppColor.semiGrey;
 
+  double get maxHeight => size == CurrencyDisplaySize.large ? 50 : 25;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: const BoxConstraints(maxWidth: 300, maxHeight: 50),
+      constraints: BoxConstraints(maxWidth: 300, maxHeight: maxHeight),
       alignment: Alignment.center,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -57,7 +59,7 @@ class CurrencyDisplay extends StatelessWidget {
             constraints: const BoxConstraints(maxWidth: 250),
             child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Text(amount,
+                child: Text(_getAmount(),
                     style: textStyle, overflow: TextOverflow.clip)),
           ),
           /*amount == null &&*/ showCursor
@@ -66,6 +68,16 @@ class CurrencyDisplay extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _getAmount() {
+    if (size == CurrencyDisplaySize.small) {
+      if (!amount.contains('.') && amount.isNotEmpty) {
+        return '$amount.0';
+      }
+    }
+
+    return amount;
   }
 }
 
