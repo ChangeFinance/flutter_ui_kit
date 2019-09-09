@@ -5,7 +5,7 @@ import '../wrap_in_material_app.dart';
 
 void main() {
   group('AssetRate', () {
-    testWidgets('renders rate value', (WidgetTester tester) async {
+    testWidgets('renders value', (WidgetTester tester) async {
       const symbol = '€';
       const rate = 8750.1;
       await tester.pumpWidget(wrapInMaterialApp(const AssetRate(symbol, rate)));
@@ -15,6 +15,18 @@ void main() {
       expect(find.text('€ '), findsOneWidget);
       expect(find.text('8,750'), findsOneWidget);
       expect(find.text('.10'), findsOneWidget);
+    });
+
+    testWidgets('renders negative value', (WidgetTester tester) async {
+      const symbol = '€';
+      const rate = -8701.478;
+      await tester.pumpWidget(wrapInMaterialApp(const AssetRate(symbol, rate)));
+      expect(find.byType(Column), findsOneWidget);
+      expect(find.byType(Row), findsOneWidget);
+      expect(find.byType(Text).evaluate().length, 3);
+      expect(find.text('€ '), findsOneWidget);
+      expect(find.text('-8,701'), findsOneWidget);
+      expect(find.text('.48'), findsOneWidget);
     });
   });
 }
