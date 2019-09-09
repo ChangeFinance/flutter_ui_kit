@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/text.dart';
+import 'package:intl/intl.dart' as intl;
 
 class Graph extends StatelessWidget {
   final bool enableMaxMin;
@@ -53,21 +54,22 @@ class Graph extends StatelessWidget {
     final heightNormalizer = height / (maxValue - minValue);
     var maxValueDisplayed = false;
     var minValueDisplayed = false;
-    var decimalPrecision = 2;
+    var strFormat = '#,##0.00';
     if (maxValue <= 100 && minValue <= 100) {
-      decimalPrecision = 3;
+      strFormat = '#,##0.000';
     }
     if (maxValue <= 1 && minValue <= 1) {
-      decimalPrecision = 4;
+      strFormat = '#,##0.0000';
     }
+    final numberFormat = intl.NumberFormat(strFormat, 'en_US');
 
-    void _drawLabel(double item, int i, int decimalPrecision) {
+    void _drawLabel(double item, int i, intl.NumberFormat numberFormat) {
       final tp = new TextPainter(
           text: new TextSpan(
               style: AppText.graphTextStyle.copyWith(
                   color: AppColor.deepWhite,
                   backgroundColor: Colors.transparent),
-              text: (labelPrefix + item.toStringAsFixed(decimalPrecision)).padLeft(10)),
+              text: (labelPrefix + numberFormat.format(item)).padLeft(10)),
           textDirection: TextDirection.ltr,
           textAlign: TextAlign.left);
       tp.layout();
@@ -90,11 +92,11 @@ class Graph extends StatelessWidget {
       final item = data[i];
       if (!maxValueDisplayed && item == maxValue) {
         maxValueDisplayed = true;
-        _drawLabel(item, i, decimalPrecision);
+        _drawLabel(item, i, numberFormat);
       }
       if (!minValueDisplayed && item == minValue) {
         minValueDisplayed = true;
-        _drawLabel(item, i, decimalPrecision);
+        _drawLabel(item, i, numberFormat);
       }
     }
   }
