@@ -13,7 +13,7 @@ void main() {
       expect(find.byType(Row), findsOneWidget);
       expect(find.byType(Text).evaluate().length, 3);
       expect(find.text('€ '), findsOneWidget);
-      expect(find.text('8750'), findsOneWidget);
+      expect(find.text('8,750'), findsOneWidget);
       expect(find.text('.10'), findsOneWidget);
     });
   });
