@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
@@ -33,6 +34,24 @@ void main() {
       final widget = tester.widget(find.byType(FilledButton));
       final FilledButton containerWidget = widget;
       expect(containerWidget.text, '1Y');
+    });
+
+    testWidgets('can access period selected from external object', (WidgetTester tester) async {
+      final timeFrameSelectorKey = new GlobalKey<TimeFrameSelectorWidgetState>();
+      void onChangeTextField(String value) {
+      }
+
+      await tester.pumpWidget(wrapInMaterialApp(
+          TimeFrameSelector(key: timeFrameSelectorKey, onChange: onChangeTextField)
+      ));
+      expect(find.byType(TimeFrameSelector), findsOneWidget);
+      expect(find.byType(TextButton).evaluate().length, 5);
+      expect(find.byType(FilledButton).evaluate().length, 1);
+      await tester.tap(find.text('1Y'));
+      await tester.pump();
+
+      expect(timeFrameSelectorKey.currentState.periodValue, '1Y');
+
     });
 
   });
