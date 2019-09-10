@@ -7,7 +7,7 @@ import 'package:intl/intl.dart';
 enum CurrencyDisplaySize { small, large }
 
 class CurrencyDisplay extends StatelessWidget {
-  final bool isNativeCurrency;
+  final bool displayAsPrefix;
   final String currencySymbol;
   final String amount;
   final CurrencyDisplaySize size;
@@ -30,7 +30,7 @@ class CurrencyDisplay extends StatelessWidget {
       this.amount,
       this.size = CurrencyDisplaySize.large,
       this.showCursor = true,
-      this.isNativeCurrency = true});
+      this.displayAsPrefix = true});
 
   TextStyle get textStyle =>
       size == CurrencyDisplaySize.large ? _largeTextStyle : _smallTextStyle;
@@ -49,7 +49,7 @@ class CurrencyDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final children = <Widget>[];
-    if (isNativeCurrency) {
+    if (displayAsPrefix) {
       children.add(Text(currencySymbol, maxLines: 1, style: textStyle));
       children.add(ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 200),

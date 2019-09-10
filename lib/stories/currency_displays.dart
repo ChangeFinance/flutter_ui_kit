@@ -95,8 +95,10 @@ class CurrencyDisplays extends StatelessWidget {
         widgetBuilder: (context, props) {
           return CurrencySwitcher(
             amounts: const ['2012', '0.0045'],
-            currencyLabels: const ['USD', 'BTC'],
-            symbols: const ['\$', '₿'],
+            currencyInfoList: [
+              CurrencyInfo(label: 'USD', symbol: '\$', prefix: true),
+              CurrencyInfo(label: 'BTC', symbol: 'BTC')
+            ],
           );
         },
       ),

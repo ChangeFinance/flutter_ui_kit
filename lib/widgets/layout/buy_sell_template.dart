@@ -13,8 +13,7 @@ class BuySellTemplate extends StatefulWidget {
   final Widget action;
   final String showcaseLabel;
   final Widget showcase;
-  final List<String> switcherLabels;
-  final List<String> currencySymbols;
+  final List<CurrencyInfo> currencyInfoList;
   final int numpadMaxLength;
   final String errorText;
   final Function(int) onSwitched;
@@ -23,28 +22,25 @@ class BuySellTemplate extends StatefulWidget {
   final Function(MapEntry<double, double>) amountChanged;
 
   const BuySellTemplate(
-      {this.action,
+      {@required this.currencyInfoList,
+        this.action,
       this.mainTitle,
       this.subTitle,
       this.showcaseLabel,
       this.showcase,
-      this.switcherLabels,
-      this.currencySymbols,
       this.numpadMaxLength = 0,
       this.errorText = '',
       this.onSwitched,
       this.primaryConverter,
       this.reverseConverter,
-      this.amountChanged});
+      this.amountChanged}): assert(currencyInfoList != null && currencyInfoList.length == 2);
 
   @override
   _BuySellTemplateState createState() => _BuySellTemplateState();
 }
 
 class _BuySellTemplateState extends State<BuySellTemplate> {
-  List<String> get switcherLabels => widget.switcherLabels;
-
-  List<String> get currencySymbols => widget.currencySymbols;
+  List<CurrencyInfo> get currencyInfoList => widget.currencyInfoList;
 
   Function(int) get onSwitched => widget.onSwitched;
 
@@ -118,9 +114,8 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
       children: <Widget>[
         const SizedBox(height: 10),
         CurrencySwitcher(
-          symbols: currencySymbols,
+          currencyInfoList: currencyInfoList,
           amounts: _getAmounts(),
-          currencyLabels: switcherLabels,
           onSwitch: _onSwitch,
         ),
         Container(
