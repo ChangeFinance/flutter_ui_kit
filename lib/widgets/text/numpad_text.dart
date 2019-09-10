@@ -42,14 +42,12 @@ class _NumPadTextState extends State<NumPadText> {
       _text = widget.startNumPadText;
     }
     if ('0123456789.'.contains(key)) {
-      if ((key == '0' || key == '.') && _text.isEmpty) {
-        _text += '0.';
-        widget.onChange(_text);
-        return;
-      }
-
       if (_text == '0') {
-        _text += '.';
+        if (key == '0') {
+          _text = '0.';
+        } else if (key != '.') {
+          _text = '';
+        }
       }
 
       if (alreadyHasADot(key, _text)) {
@@ -62,9 +60,13 @@ class _NumPadTextState extends State<NumPadText> {
     } else if (key == 'C') {
       if (_text.isNotEmpty) {
         _text = _text.substring(0, _text.length - 1);
+        if (_text.isEmpty) {
+          _text = '0';
+        }
       }
-    } else
+    } else {
       return;
+    }
 
     if (shouldRestrictDecimalPlaces(_text)) {
       _text = _text.substring(0, _text.length - 1);

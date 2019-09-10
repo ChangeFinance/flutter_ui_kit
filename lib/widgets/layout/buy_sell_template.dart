@@ -64,11 +64,11 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
 
   Function(MapEntry<double, double>) get amountChanged => widget.amountChanged;
 
-  String _currText = '';
+  String _currText = '0';
   bool _needNumPadUpdate = false;
   int _switcherIndex = 0;
-  String primaryAmount = '';
-  String secondaryAmount = '';
+  String primaryAmount = '0';
+  String secondaryAmount = '0';
 
   @override
   Widget build(BuildContext context) {

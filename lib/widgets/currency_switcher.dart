@@ -57,6 +57,10 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
     );
   }
 
+  bool _isNativeCurrencySymbol(String symbol) {
+    return symbol == '€' || symbol == '\$';
+  }
+
   Widget _buildDisplay() {
     if (amounts == null) {
       return CurrencyDisplay(
@@ -68,6 +72,7 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
 
     if (amounts.isNotEmpty) {
       first = CurrencyDisplay(
+          isNativeCurrency: _isNativeCurrencySymbol(symbols[1]),
           currencySymbol: symbols[1],
           amount: amounts[1],
           showCursor: _currentIndex == 0,
@@ -77,6 +82,7 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
     }
     if (amounts.length > 1) {
       second = CurrencyDisplay(
+          isNativeCurrency: _isNativeCurrencySymbol(symbols[0]),
           currencySymbol: symbols[0],
           amount: amounts[0],
           showCursor: _currentIndex == 1,
