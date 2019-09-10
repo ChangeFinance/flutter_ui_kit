@@ -12,16 +12,16 @@ class TimeFrameSelector extends StatefulWidget {
   const TimeFrameSelector({Key key, this.onChange}) : super(key: key);
 
   @override
-  _TimeFrameSelectorWidgetState createState() => _TimeFrameSelectorWidgetState();
+  TimeFrameSelectorWidgetState createState() => TimeFrameSelectorWidgetState();
 }
 
-class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
-  String _periodValue = '1D';
+class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
+  String periodValue = '1D';
 
   void _onPressedPeriod(String period) {
     setState(() {
-      _periodValue = period;
-      widget.onChange(_periodValue);
+      periodValue = period;
+      widget.onChange(periodValue);
     });
   }
 
@@ -47,7 +47,7 @@ class _TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
         flex: 1 ,
         child: Container(
             height: 22.0 ,
-            child: (_periodValue == period) ? checkedButton : uncheckedButton
+            child: (periodValue == period) ? checkedButton : uncheckedButton
         )
     );
   }
