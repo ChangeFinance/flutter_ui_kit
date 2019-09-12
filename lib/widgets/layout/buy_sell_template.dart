@@ -13,8 +13,7 @@ class BuySellTemplate extends StatefulWidget {
   final Widget action;
   final String showcaseLabel;
   final Widget showcase;
-  final List<String> switcherLabels;
-  final List<String> currencySymbols;
+  final List<CurrencyInfo> currencyInfoList;
   final int numpadMaxLength;
   final String errorText;
   final Function(int) onSwitched;
@@ -23,28 +22,25 @@ class BuySellTemplate extends StatefulWidget {
   final Function(MapEntry<double, double>) amountChanged;
 
   const BuySellTemplate(
-      {this.action,
+      {@required this.currencyInfoList,
+        this.action,
       this.mainTitle,
       this.subTitle,
       this.showcaseLabel,
       this.showcase,
-      this.switcherLabels,
-      this.currencySymbols,
       this.numpadMaxLength = 0,
       this.errorText = '',
       this.onSwitched,
       this.primaryConverter,
       this.reverseConverter,
-      this.amountChanged});
+      this.amountChanged}): assert(currencyInfoList != null && currencyInfoList.length == 2);
 
   @override
   _BuySellTemplateState createState() => _BuySellTemplateState();
 }
 
 class _BuySellTemplateState extends State<BuySellTemplate> {
-  List<String> get switcherLabels => widget.switcherLabels;
-
-  List<String> get currencySymbols => widget.currencySymbols;
+  List<CurrencyInfo> get currencyInfoList => widget.currencyInfoList;
 
   Function(int) get onSwitched => widget.onSwitched;
 
@@ -64,11 +60,11 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
 
   Function(MapEntry<double, double>) get amountChanged => widget.amountChanged;
 
-  String _currText = '';
+  String _currText = '0';
   bool _needNumPadUpdate = false;
   int _switcherIndex = 0;
-  String primaryAmount = '';
-  String secondaryAmount = '';
+  String primaryAmount = '0';
+  String secondaryAmount = '0';
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +99,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
             ),
             Padding(
                 key: const Key('actionPadding'),
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.only(bottom: 10, top: 10),
                 child: widget.action),
           ],
         ),
@@ -118,9 +114,8 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
       children: <Widget>[
         const SizedBox(height: 10),
         CurrencySwitcher(
-          symbols: currencySymbols,
+          currencyInfoList: currencyInfoList,
           amounts: _getAmounts(),
-          currencyLabels: switcherLabels,
           onSwitch: _onSwitch,
         ),
         Container(
@@ -141,7 +136,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
       height: 240,
       child: NumPadText(
           onChange: _onNumpadChange,
-          decimalPlaces: 4,
+          decimalPlaces: 6,
           clearOnLongPress: true,
           startNumPadText: _currText,
           needNumPadTextUpdate: _needNumPadUpdate,
@@ -182,8 +177,8 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
       } else {
         _currText = primaryAmount;
       }
+
       _needNumPadUpdate = true;
-      _updateState(_currText);
     });
     if (onSwitched != null) {
       onSwitched(newIndex);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_ui_kit/widgets/currency_switcher.dart';
 import 'package:flutter_ui_kit/widgets/customradio/custom_radio.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/layout/buy_sell_template.dart';
@@ -91,8 +92,10 @@ class Layouts extends StatelessWidget {
                 MaterialPageRoute<dynamic>(
                   settings: const RouteSettings(name: buySellLayout),
                   builder: (_) => BuySellTemplate(
-                    switcherLabels: const ['BTC', 'EUR'],
-                    currencySymbols: const ['₿', '€'],
+                    currencyInfoList: [
+                      CurrencyInfo(label: 'BTC', symbol: 'BTC'),
+                      CurrencyInfo(label: 'EUR', symbol: '€', prefix: true)
+                    ],
                     showcaseLabel: 'Payment method',
                     errorText: 'Sample error message',
                     showcase: Row(
@@ -115,6 +118,7 @@ class Layouts extends StatelessWidget {
                     ),
                     mainTitle: 'Buy Bitcoin',
                     subTitle: '€110.0 Available',
+                    numpadMaxLength: 7,
                   ),
                 ));
           },

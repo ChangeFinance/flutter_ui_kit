@@ -37,27 +37,53 @@ class _NumPadTextState extends State<NumPadText> {
         result.substring(result.indexOf('.')).length > widget.decimalPlaces + 1;
   }
 
+  bool _checkPressedClear(String key) {
+    if (key != 'C') {
+      return false;
+    }
+
+    if (_text.length > 1) {
+      _text = _text.substring(0, _text.length - 1);
+    } else {
+      _text = '0';
+    }
+
+    return true;
+  }
+
+  bool _checkPressedKey(String key) {
+    if (!'0123456789.'.contains(key)) {
+      return false;
+    }
+
+    if (_text == '0') {
+      if (key == '0') {
+        _text = '0.';
+      } else if (key != '.') {
+        _text = '';
+      }
+    }
+
+    if (alreadyHasADot(key, _text)) {
+      return false;
+    }
+    if (widget.textLengthLimit > 0 && (_text + key).length > widget.textLengthLimit) {
+      return false;
+    }
+    _text += key;
+    return true;
+  }
+
   void onKeyTapped(String key) {
     if (widget.needNumPadTextUpdate) {
       _text = widget.startNumPadText;
     }
-    if ('0123456789.'.contains(key)) {
-      if (key == '0' && _text.isEmpty) {
-        _text += '0.';
-      }
-      if (alreadyHasADot(key, _text)) {
+
+    if (!_checkPressedClear(key)) {
+      if (!_checkPressedKey(key)) {
         return;
       }
-      if (widget.textLengthLimit > 0 && (_text + key).length > widget.textLengthLimit) {
-        return;
-      }
-      _text += key;
-    } else if (key == 'C') {
-      if (_text.isNotEmpty) {
-        _text = _text.substring(0, _text.length - 1);
-      }
-    } else
-      return;
+    }
 
     if (shouldRestrictDecimalPlaces(_text)) {
       _text = _text.substring(0, _text.length - 1);

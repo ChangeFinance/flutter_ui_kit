@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 enum CurrencyDisplaySize { small, large }
 
 class CurrencyDisplay extends StatelessWidget {
+  final bool displayAsPrefix;
   final String currencySymbol;
   final String amount;
   final CurrencyDisplaySize size;
@@ -28,7 +29,8 @@ class CurrencyDisplay extends StatelessWidget {
       {@required this.currencySymbol,
       this.amount,
       this.size = CurrencyDisplaySize.large,
-      this.showCursor = true});
+      this.showCursor = true,
+      this.displayAsPrefix = true});
 
   TextStyle get textStyle =>
       size == CurrencyDisplaySize.large ? _largeTextStyle : _smallTextStyle;
@@ -42,30 +44,62 @@ class CurrencyDisplay extends StatelessWidget {
       ? AppColor.deepBlack
       : AppColor.semiGrey;
 
+  double get maxHeight => size == CurrencyDisplaySize.large ? 50 : 25;
+
   @override
   Widget build(BuildContext context) {
+    final children = <Widget>[];
+    if (displayAsPrefix) {
+      children.add(Text(currencySymbol, maxLines: 1, style: textStyle));
+      children.add(ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 200),
+        child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Text(_getAmount(),
+                style: textStyle, overflow: TextOverflow.clip)),
+      ));
+      children.add(showCursor
+          ? _Cursor(cursorHeight: cursorHeight, cursorColor: cursorColor)
+          : Container());
+    } else {
+      children.add(ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 250),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: <Widget>[
+                Text(_getAmount(),
+                    style: textStyle, overflow: TextOverflow.clip),
+                showCursor
+                    ? _Cursor(cursorHeight: cursorHeight, cursorColor: cursorColor)
+                    : Container(),
+                SizedBox(width: size == CurrencyDisplaySize.large ? 10 : 5),
+                Text(currencySymbol, maxLines: 1, style: textStyle),
+              ],
+            ),
+
+          )));
+    }
+
     return Container(
-      constraints: const BoxConstraints(maxWidth: 300, maxHeight: 50),
+      constraints: BoxConstraints(maxWidth: 300, maxHeight: maxHeight),
       alignment: Alignment.center,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Text(currencySymbol, maxLines: 1, style: textStyle),
-          SizedBox(width: size == CurrencyDisplaySize.large ? 10 : 5),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 250),
-            child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Text(amount,
-                    style: textStyle, overflow: TextOverflow.clip)),
-          ),
-          /*amount == null &&*/ showCursor
-              ? _Cursor(cursorHeight: cursorHeight, cursorColor: cursorColor)
-              : Container(),
-        ],
+        children: children,
       ),
     );
+  }
+
+  String _getAmount() {
+    if (size == CurrencyDisplaySize.small) {
+      if (!amount.contains('.') && amount.isNotEmpty) {
+        return '$amount.0';
+      }
+    }
+
+    return amount;
   }
 }
 
