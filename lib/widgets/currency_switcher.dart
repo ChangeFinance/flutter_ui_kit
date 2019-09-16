@@ -57,23 +57,20 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
       height: 100,
       width: double.infinity,
       alignment: Alignment.center,
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[]
-          ..add(_buildDisplay())
-          ..toList()
-          ..add(Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Expanded(child: Container()),
-              SwitcherButton(
-                labels: [infoList[0].label, infoList[1].label],
-                onSwitch: _switch,
-              ),
-            ],
-          )),
-      ),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 32.0),
+              child: _buildDisplay(),
+            ),
+          ),
+          SwitcherButton(
+            labels: [infoList[0].label, infoList[1].label],
+            onSwitch: _switch,
+          ),
+        ],
+      )
     );
   }
 

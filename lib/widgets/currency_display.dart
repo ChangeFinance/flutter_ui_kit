@@ -51,43 +51,27 @@ class CurrencyDisplay extends StatelessWidget {
     final children = <Widget>[];
     if (displayAsPrefix) {
       children.add(Text(currencySymbol, maxLines: 1, style: textStyle));
-      children.add(ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 200),
-        child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Text(_getAmount(),
-                style: textStyle, overflow: TextOverflow.clip)),
-      ));
-      children.add(showCursor
-          ? _Cursor(cursorHeight: cursorHeight, cursorColor: cursorColor)
-          : Container());
+      children.add(Text(_getAmount(),
+          style: textStyle, overflow: TextOverflow.clip));
+      if (showCursor) {
+        children.add(_Cursor(cursorHeight: cursorHeight, cursorColor: cursorColor));
+      }
     } else {
-      children.add(ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 250),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: <Widget>[
-                Text(_getAmount(),
-                    style: textStyle, overflow: TextOverflow.clip),
-                showCursor
-                    ? _Cursor(cursorHeight: cursorHeight, cursorColor: cursorColor)
-                    : Container(),
-                SizedBox(width: size == CurrencyDisplaySize.large ? 10 : 5),
-                Text(currencySymbol, maxLines: 1, style: textStyle),
-              ],
-            ),
-
-          )));
+      children.add(Text(_getAmount(),
+          style: textStyle, overflow: TextOverflow.clip));
+      if (showCursor) {
+        children.add(_Cursor(cursorHeight: cursorHeight, cursorColor: cursorColor));
+      }
+      children.add(Text(' $currencySymbol', maxLines: 1, style: textStyle));
     }
 
     return Container(
-      constraints: BoxConstraints(maxWidth: 300, maxHeight: maxHeight),
-      alignment: Alignment.center,
-      child: Row(
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: children,
+        children: children),
       ),
     );
   }
