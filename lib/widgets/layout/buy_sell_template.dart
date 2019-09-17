@@ -48,6 +48,8 @@ class BuySellTemplate extends StatefulWidget {
 }
 
 class _BuySellTemplateState extends State<BuySellTemplate> {
+  static const _X_SMALL_SCREEN = 1200;
+
   List<CurrencyInfo> get currencyInfoList => widget.currencyInfoList;
 
   Function(int) get onSwitched => widget.onSwitched;
@@ -76,6 +78,8 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final bottomPadding = screenHeight > _X_SMALL_SCREEN ? 30.0 : 10.0;
     return PageTemplate(
       appBar: MainAppBar(
         leadingWidget: const CloseButton(),
@@ -106,7 +110,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
             ),
             Padding(
                 key: const Key('actionPadding'),
-                padding: const EdgeInsets.only(bottom: 30, top: 10),
+                padding: EdgeInsets.only(bottom: bottomPadding, top: 10),
                 child: widget.action),
           ],
         ),
