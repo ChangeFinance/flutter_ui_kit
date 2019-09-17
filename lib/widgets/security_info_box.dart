@@ -17,12 +17,12 @@ class SecurityInfoBox extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10.0),
       child: Container(
         child:Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.only(top: 15, bottom: 15, left: 10, right: 10),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(right: 15.0),
+                padding: const EdgeInsets.only(right: 10.0),
                 child: Align(alignment: Alignment.topLeft, child:SvgPicture.asset(
                   assetName,
                   width: 24.0,
@@ -33,7 +33,7 @@ class SecurityInfoBox extends StatelessWidget {
                 child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
+                        padding: const EdgeInsets.only(bottom: 5),
                         child: Align(
                             alignment: Alignment.topLeft,
                             child: Text(infoHeader,
