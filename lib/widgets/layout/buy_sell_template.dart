@@ -22,6 +22,7 @@ class BuySellTemplate extends StatefulWidget {
   final Function(MapEntry<double, double>) amountChanged;
   final int flowStepsNumber;
   final int flowStep;
+  final String walletBalance;
 
   const BuySellTemplate(
       {@required this.currencyInfoList,
@@ -37,7 +38,8 @@ class BuySellTemplate extends StatefulWidget {
       this.reverseConverter,
       this.amountChanged,
       this.flowStepsNumber = 0,
-      this.flowStep = 0}): assert(currencyInfoList != null && currencyInfoList.length == 2);
+      this.flowStep = 0,
+      this.walletBalance}): assert(currencyInfoList != null && currencyInfoList.length == 2);
 
   @override
   _BuySellTemplateState createState() => _BuySellTemplateState();
@@ -85,10 +87,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
                 style: theme.display1.copyWith(color: AppColor.deepBlack),
                 textAlign: TextAlign.left),
             const SizedBox(height: 5),
-            Text(
-              widget.subTitle,
-              style: theme.body2.copyWith(color: AppColor.semiGrey),
-            ),
+            _subtitle(context),
           ],
         ),
         showProgress: true,
@@ -111,6 +110,24 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _subtitle(BuildContext context) {
+    final theme = Theme.of(context).textTheme;
+    return GestureDetector(
+      onTap: (){
+        setState(() {
+          _switcherIndex = 0;
+          _onSwitch(0);
+          _updateState(widget.walletBalance);
+
+        });
+      },
+      child: Text(
+        widget.subTitle,
+        style: theme.body2.copyWith(color: AppColor.semiGrey),
+      )
     );
   }
 
