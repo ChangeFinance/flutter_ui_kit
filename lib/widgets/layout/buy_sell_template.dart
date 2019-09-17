@@ -20,6 +20,8 @@ class BuySellTemplate extends StatefulWidget {
   final double Function(double) primaryConverter;
   final double Function(double) reverseConverter;
   final Function(MapEntry<double, double>) amountChanged;
+  final int flowStepsNumber;
+  final int flowStep;
 
   const BuySellTemplate(
       {@required this.currencyInfoList,
@@ -33,7 +35,9 @@ class BuySellTemplate extends StatefulWidget {
       this.onSwitched,
       this.primaryConverter,
       this.reverseConverter,
-      this.amountChanged}): assert(currencyInfoList != null && currencyInfoList.length == 2);
+      this.amountChanged,
+      this.flowStepsNumber = 0,
+      this.flowStep = 0}): assert(currencyInfoList != null && currencyInfoList.length == 2);
 
   @override
   _BuySellTemplateState createState() => _BuySellTemplateState();
@@ -87,6 +91,9 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
             ),
           ],
         ),
+        showProgress: true,
+        flowStep: widget.flowStep,
+        flowStepsNumber: widget.flowStepsNumber,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
