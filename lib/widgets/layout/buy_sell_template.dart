@@ -7,6 +7,8 @@ import 'package:flutter_ui_kit/widgets/layout/app_bar.dart';
 import 'package:flutter_ui_kit/widgets/layout/page_template.dart';
 import 'package:flutter_ui_kit/widgets/text/numpad_text.dart';
 
+import '../../text.dart';
+
 class BuySellTemplate extends StatefulWidget {
   final String mainTitle;
   final String subTitle;
@@ -74,7 +76,6 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).textTheme;
     return PageTemplate(
       appBar: MainAppBar(
         leadingWidget: const CloseButton(),
@@ -84,7 +85,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(widget.mainTitle,
-                style: theme.display1.copyWith(color: AppColor.deepBlack),
+                style: AppText.header3,
                 textAlign: TextAlign.left),
             const SizedBox(height: 5),
             _subtitle(context),
@@ -105,7 +106,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
             ),
             Padding(
                 key: const Key('actionPadding'),
-                padding: const EdgeInsets.only(bottom: 10, top: 10),
+                padding: const EdgeInsets.only(bottom: 30, top: 10),
                 child: widget.action),
           ],
         ),
@@ -114,19 +115,18 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
   }
 
   Widget _subtitle(BuildContext context) {
-    final theme = Theme.of(context).textTheme;
     return GestureDetector(
       onTap: (){
         setState(() {
-          _switcherIndex = 0;
+          final selected = _switcherIndex;
           _onSwitch(0);
           _updateState(widget.walletBalance);
-
+          _onSwitch(selected);
         });
       },
       child: Text(
         widget.subTitle,
-        style: theme.body2.copyWith(color: AppColor.semiGrey),
+        style: AppText.body3.copyWith(color: AppColor.semiGrey),
       )
     );
   }
