@@ -58,6 +58,7 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
       width: double.infinity,
       alignment: Alignment.center,
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
             child: Padding(

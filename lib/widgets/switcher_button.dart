@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
-import 'package:flutter_ui_kit/theme.dart';
+import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/change_app_icons.dart';
 
 class SwitcherButton extends StatefulWidget {
@@ -39,7 +39,7 @@ class _SwitcherButtonState extends State<SwitcherButton> {
         children: <Widget>[
           ChangeAppIcons.switch_arrow,
           const SizedBox(height: 10),
-          Text(currentLabel, style: theme.textTheme.subtitle),
+          Text(currentLabel, style: AppText.body3),
         ],
       ),
     );

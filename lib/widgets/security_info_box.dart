@@ -25,8 +25,8 @@ class SecurityInfoBox extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 15.0),
                 child: Align(alignment: Alignment.topLeft, child:SvgPicture.asset(
                   assetName,
-                  width: 26.0,
-                  height: 26.0,
+                  width: 24.0,
+                  height: 24.0,
                 )),
               ),
               Flexible(
