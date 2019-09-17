@@ -47,7 +47,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Container(
               height: 1.0,
               width: 15.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColor.green,
               ),),
           )
@@ -58,7 +58,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Container(
               height: 1.0,
               width: 15.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColor.lightestGrey,
               ),),
           )
