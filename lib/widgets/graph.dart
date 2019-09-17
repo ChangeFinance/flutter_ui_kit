@@ -119,7 +119,7 @@ class Graph extends StatelessWidget {
             child: new Sparkline(
       data: data,
       lineColor: lineColor,
-      lineWidth: 1.0,
+      lineWidth: 1.1,
       pointsMode: PointsMode.none,
       fillMode: enableGradient ? FillMode.below : FillMode.none,
       labelPrefix: labelPrefix,
