@@ -59,7 +59,7 @@ class AppText {
       fontWeight: FontWeight.normal,
       letterSpacing: 0,
       color: AppColor.deepBlack);
-  
+
   static const TextStyle body3 = TextStyle(
       fontSize: 12.0,
       fontFamily: 'Circular',
@@ -78,6 +78,7 @@ class AppText {
       color: AppColor.deepBlack,
       fontSize: 12.0,
       fontStyle: FontStyle.normal,
+      fontWeight: FontWeight.w400,
       fontFamily: 'CircularPro-Book');
 
   static const TextStyle body3SemiGray = TextStyle(
