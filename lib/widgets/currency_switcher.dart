@@ -54,10 +54,11 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 72,
       width: double.infinity,
       alignment: Alignment.center,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
@@ -66,9 +67,12 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
               child: _buildDisplay(),
             ),
           ),
-          SwitcherButton(
-            labels: [infoList[0].label, infoList[1].label],
-            onSwitch: _switch,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4.0),
+            child: SwitcherButton(
+              labels: [infoList[0].label, infoList[1].label],
+              onSwitch: _switch,
+            ),
           ),
         ],
       )
@@ -108,7 +112,8 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: _currentIndex == 0 ? [first, second] : [second, first],
+      children: _currentIndex == 0 ? [first, const SizedBox(height: 6,), second]
+          : [second, const SizedBox(height: 6,), first],
     );
   }
 

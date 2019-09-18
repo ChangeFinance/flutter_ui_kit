@@ -107,7 +107,7 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
             Expanded(
               key: const Key('childExpandedContainer'),
               flex: 1,
-              child: _buildContent(context),
+              child: _buildContent(context, screenHeight),
             ),
             Padding(
                 key: const Key('actionPadding'),
@@ -136,28 +136,50 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _buildContent(BuildContext context, double screenHeight) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const SizedBox(height: 10),
-        CurrencySwitcher(
-          currencyInfoList: currencyInfoList,
-          amounts: _getAmounts(),
-          onSwitch: _onSwitch,
+        Expanded(
+          flex: screenHeight > _X_SMALL_SCREEN ? 1 : 0,
+          child: Container(),
         ),
-        Container(
-          alignment: Alignment.center,
-          child: Text(widget.errorText,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.body2.copyWith(color: AppColor.red)),
+        Expanded(
+          flex: 1,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              CurrencySwitcher(
+                currencyInfoList: currencyInfoList,
+                amounts: _getAmounts(),
+                onSwitch: _onSwitch,
+              ),
+            ],
+          ),
         ),
-        const SizedBox(height: 20),
+        Expanded(
+          flex: screenHeight > _X_SMALL_SCREEN ? 1 : 0,
+          child: _buildErrorText(),
+        ),
         _buildShowcase(context),
         _buildNumPad(),
       ],
     );
+  }
+
+  Widget _buildErrorText() {
+    if (widget.errorText != null && widget.errorText.isNotEmpty) {
+      return Container(
+          alignment: Alignment.topCenter,
+          child: Text(widget.errorText,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.body2.copyWith(color: AppColor.red)),
+          );
+    } else {
+      return Container();
+    }
   }
 
   Widget _buildNumPad() {
@@ -174,17 +196,20 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
   }
 
   Widget _buildShowcase(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          widget.showcaseLabel ?? '',
-          style: theme.textTheme.body2.copyWith(color: AppColor.semiGrey),
-        ),
-        Expanded(child: Container()),
-        widget.showcase ?? Container(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 22),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            widget.showcaseLabel ?? '',
+            style: theme.textTheme.body2.copyWith(color: AppColor.semiGrey),
+          ),
+          Expanded(child: Container()),
+          widget.showcase ?? Container(),
+        ],
+      ),
     );
   }
 

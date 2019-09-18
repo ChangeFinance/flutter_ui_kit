@@ -34,11 +34,11 @@ class _SwitcherButtonState extends State<SwitcherButton> {
       onPressed: _switch,
       splashColor: AppColor.grey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           ChangeAppIcons.switch_arrow,
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           Text(currentLabel, style: AppText.body3),
         ],
       ),

@@ -44,6 +44,8 @@ class CurrencyDisplay extends StatelessWidget {
 
   double get cursorHeight => size == CurrencyDisplaySize.large ? 30 : 18;
 
+  double get currencyDisplayHeight => size == CurrencyDisplaySize.large ? 50 : 15;
+
   Color get cursorColor => size == CurrencyDisplaySize.large
       ? AppColor.deepBlack
       : AppColor.semiGrey;
@@ -52,9 +54,9 @@ class CurrencyDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     final children = <Widget>[];
     if (displayAsPrefix) {
-      children.add(Text(currencySymbol, maxLines: 1, style: textStyle));
+      children.add(Text(currencySymbol, maxLines: 1, style: textStyle, textAlign: TextAlign.end));
       children.add(Text(_getAmount(),
-          style: textStyle, maxLines: 1,));
+          style: textStyle, maxLines: 1, textAlign: TextAlign.end));
       if (showCursor) {
         children.add(_Cursor(cursorHeight: cursorHeight, cursorColor: cursorColor));
       }
@@ -72,6 +74,7 @@ class CurrencyDisplay extends StatelessWidget {
     }
 
     return Container(
+      height: currencyDisplayHeight,
       child: FittedBox(
         fit: BoxFit.contain,
         child: Row(
@@ -125,6 +128,7 @@ class __CursorState extends State<_Cursor> with TickerProviderStateMixin {
         duration: const Duration(milliseconds: 500),
         opacity: _show ? 1 : 0,
         child: Container(
+          alignment: Alignment.bottomRight,
           margin: const EdgeInsets.only(left: 1),
           width: 1.5,
           height: widget.cursorHeight,

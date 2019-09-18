@@ -211,6 +211,6 @@ class ChangeAppIcons {
       const ChangeIconData('radio_unchecked', ChangeIconType.enabled));
 
   static const ChangeIcon switch_arrow = ChangeIcon(
-    const ChangeIconData('switch_arrow', ChangeIconType.enabled),
+    const ChangeIconData('switch_arrow', ChangeIconType.enabled), height: 20, width: 20,
   );
 }

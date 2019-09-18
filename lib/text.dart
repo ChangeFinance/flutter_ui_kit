@@ -69,7 +69,7 @@ class AppText {
 
   static const TextStyle numPadTextStyle = TextStyle(
       fontSize: 24.0,
-      fontFamily: 'CircularPro-Book',
+      fontFamily: 'Circular',
       fontWeight: FontWeight.normal,
       letterSpacing: 0,
       color: AppColor.deepBlack);
