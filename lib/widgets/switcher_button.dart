@@ -20,7 +20,11 @@ class _SwitcherButtonState extends State<SwitcherButton> {
 
   String get currentLabel {
     if (labels.isEmpty) {
+      _currentIndex = 0;
       return '';
+    }
+    if (_currentIndex >= labels.length) {
+      _currentIndex = labels.length - 1;
     }
     return labels[_currentIndex];
   }

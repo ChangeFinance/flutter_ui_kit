@@ -234,7 +234,7 @@ class Buttons extends StatelessWidget {
       title: 'Switcher button',
       child: PropsExplorer(
         initialProps: const <String, dynamic>{
-          'buttonLabels': <String>[],
+          'buttonLabels': <String>['BTC','EUR','ETH'],
         },
         formBuilder: (context, props, updateProp) {
           return ListView(

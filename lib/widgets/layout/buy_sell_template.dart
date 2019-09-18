@@ -49,7 +49,7 @@ class BuySellTemplate extends StatefulWidget {
 }
 
 class _BuySellTemplateState extends State<BuySellTemplate> {
-  static const _X_SMALL_SCREEN = 1200;
+  static const _X_SMALL_SCREEN = 850;
 
   List<CurrencyInfo> get currencyInfoList => widget.currencyInfoList;
 
