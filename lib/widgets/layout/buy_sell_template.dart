@@ -41,14 +41,15 @@ class BuySellTemplate extends StatefulWidget {
       this.amountChanged,
       this.flowStepsNumber = 0,
       this.flowStep = 0,
-      this.walletBalance}): assert(currencyInfoList != null && currencyInfoList.length == 2);
+      this.walletBalance
+      }): assert(currencyInfoList != null && currencyInfoList.length == 2);
 
   @override
   _BuySellTemplateState createState() => _BuySellTemplateState();
 }
 
 class _BuySellTemplateState extends State<BuySellTemplate> {
-  static const _X_SMALL_SCREEN = 1200;
+  static const _X_SMALL_SCREEN = 600;
 
   List<CurrencyInfo> get currencyInfoList => widget.currencyInfoList;
 
