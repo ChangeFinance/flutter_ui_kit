@@ -119,7 +119,7 @@ class Layouts extends StatelessWidget {
                     mainTitle: 'Buy Bitcoin',
                     subTitle: '€110.0 Available',
                     numpadMaxLength: 10,
-                    walletBalance: '10',
+                    walletBalance: '110.0',
                   ),
                 ));
           },
