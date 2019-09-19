@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
-import 'package:flutter_ui_kit/theme.dart';
+import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/change_app_icons.dart';
 
 class SwitcherButton extends StatefulWidget {
@@ -20,7 +20,11 @@ class _SwitcherButtonState extends State<SwitcherButton> {
 
   String get currentLabel {
     if (labels.isEmpty) {
+      _currentIndex = 0;
       return '';
+    }
+    if (_currentIndex >= labels.length) {
+      _currentIndex = labels.length - 1;
     }
     return labels[_currentIndex];
   }
@@ -34,12 +38,12 @@ class _SwitcherButtonState extends State<SwitcherButton> {
       onPressed: _switch,
       splashColor: AppColor.grey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           ChangeAppIcons.switch_arrow,
-          const SizedBox(height: 10),
-          Text(currentLabel, style: theme.textTheme.subtitle),
+          const SizedBox(height: 8),
+          Text(currentLabel, style: AppText.body3),
         ],
       ),
     );

@@ -27,7 +27,7 @@ Widget _story() {
 
 Widget _securedInfoBoxStory() {
   return ExpandableStory(
-      title: 'Simple Info Box',
+      title: 'Security Info Box',
       child: PropsExplorer(
           initialProps: const <String, dynamic>{
             'assetName': 'assets/convert_is_secured.svg',

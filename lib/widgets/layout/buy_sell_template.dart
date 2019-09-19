@@ -7,6 +7,8 @@ import 'package:flutter_ui_kit/widgets/layout/app_bar.dart';
 import 'package:flutter_ui_kit/widgets/layout/page_template.dart';
 import 'package:flutter_ui_kit/widgets/text/numpad_text.dart';
 
+import '../../text.dart';
+
 class BuySellTemplate extends StatefulWidget {
   final String mainTitle;
   final String subTitle;
@@ -20,6 +22,9 @@ class BuySellTemplate extends StatefulWidget {
   final double Function(double) primaryConverter;
   final double Function(double) reverseConverter;
   final Function(MapEntry<double, double>) amountChanged;
+  final int flowStepsNumber;
+  final int flowStep;
+  final String walletBalance;
 
   const BuySellTemplate(
       {@required this.currencyInfoList,
@@ -33,13 +38,19 @@ class BuySellTemplate extends StatefulWidget {
       this.onSwitched,
       this.primaryConverter,
       this.reverseConverter,
-      this.amountChanged}): assert(currencyInfoList != null && currencyInfoList.length == 2);
+      this.amountChanged,
+      this.flowStepsNumber = 0,
+      this.flowStep = 0,
+      this.walletBalance
+      }): assert(currencyInfoList != null && currencyInfoList.length == 2);
 
   @override
   _BuySellTemplateState createState() => _BuySellTemplateState();
 }
 
 class _BuySellTemplateState extends State<BuySellTemplate> {
+  static const _X_SMALL_SCREEN = 850;
+
   List<CurrencyInfo> get currencyInfoList => widget.currencyInfoList;
 
   Function(int) get onSwitched => widget.onSwitched;
@@ -68,7 +79,8 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).textTheme;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final bottomPadding = screenHeight > _X_SMALL_SCREEN ? 30.0 : 10.0;
     return PageTemplate(
       appBar: MainAppBar(
         leadingWidget: const CloseButton(),
@@ -78,15 +90,15 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(widget.mainTitle,
-                style: theme.display1.copyWith(color: AppColor.deepBlack),
+                style: AppText.header3,
                 textAlign: TextAlign.left),
             const SizedBox(height: 5),
-            Text(
-              widget.subTitle,
-              style: theme.body2.copyWith(color: AppColor.semiGrey),
-            ),
+            _subtitle(context),
           ],
         ),
+        showProgress: true,
+        flowStep: widget.flowStep,
+        flowStepsNumber: widget.flowStepsNumber,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
@@ -95,11 +107,11 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
             Expanded(
               key: const Key('childExpandedContainer'),
               flex: 1,
-              child: _buildContent(context),
+              child: _buildContent(context, screenHeight),
             ),
             Padding(
                 key: const Key('actionPadding'),
-                padding: const EdgeInsets.only(bottom: 10, top: 10),
+                padding: EdgeInsets.only(bottom: bottomPadding, top: 10),
                 child: widget.action),
           ],
         ),
@@ -107,28 +119,67 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
     );
   }
 
-  Widget _buildContent(BuildContext context) {
+  Widget _subtitle(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        setState(() {
+          final selected = _switcherIndex;
+          _onSwitch(0);
+          _updateState(widget.walletBalance);
+          _onSwitch(selected);
+        });
+      },
+      child: Text(
+        widget.subTitle,
+        style: AppText.body3.copyWith(color: AppColor.semiGrey),
+      )
+    );
+  }
+
+  Widget _buildContent(BuildContext context, double screenHeight) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const SizedBox(height: 10),
-        CurrencySwitcher(
-          currencyInfoList: currencyInfoList,
-          amounts: _getAmounts(),
-          onSwitch: _onSwitch,
+        Expanded(
+          flex: screenHeight > _X_SMALL_SCREEN ? 1 : 0,
+          child: Container(),
         ),
-        Container(
-          alignment: Alignment.center,
-          child: Text(widget.errorText,
-              textAlign: TextAlign.center,
-              style: theme.textTheme.body2.copyWith(color: AppColor.red)),
+        Expanded(
+          flex: 1,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              CurrencySwitcher(
+                currencyInfoList: currencyInfoList,
+                amounts: _getAmounts(),
+                onSwitch: _onSwitch,
+              ),
+            ],
+          ),
         ),
-        const SizedBox(height: 20),
+        Expanded(
+          flex: screenHeight > _X_SMALL_SCREEN ? 1 : 0,
+          child: _buildErrorText(),
+        ),
         _buildShowcase(context),
         _buildNumPad(),
       ],
     );
+  }
+
+  Widget _buildErrorText() {
+    if (widget.errorText != null && widget.errorText.isNotEmpty) {
+      return Container(
+          alignment: Alignment.topCenter,
+          child: Text(widget.errorText,
+              textAlign: TextAlign.center,
+              style: theme.textTheme.body2.copyWith(color: AppColor.red)),
+          );
+    } else {
+      return Container();
+    }
   }
 
   Widget _buildNumPad() {
@@ -145,17 +196,20 @@ class _BuySellTemplateState extends State<BuySellTemplate> {
   }
 
   Widget _buildShowcase(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          widget.showcaseLabel ?? '',
-          style: theme.textTheme.body2.copyWith(color: AppColor.semiGrey),
-        ),
-        Expanded(child: Container()),
-        widget.showcase ?? Container(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 22),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            widget.showcaseLabel ?? '',
+            style: theme.textTheme.body2.copyWith(color: AppColor.semiGrey),
+          ),
+          Expanded(child: Container()),
+          widget.showcase ?? Container(),
+        ],
+      ),
     );
   }
 
