@@ -3,16 +3,22 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class GaugeIndicator extends StatelessWidget {
-  static const double bearishThreshold = 38.0;
-  static const double bullishThreshold = 62.0;
-
   final double width;
-  final double percent;
+  final double bearishThreshold;
+  final double bullishThreshold;
+  final double score;
 
 
-  const GaugeIndicator({@required this.width, @required this.percent})
+  const GaugeIndicator({
+    @required this.width,
+    @required this.bearishThreshold,
+    @required this.bullishThreshold,
+    @required this.score
+  })
       :assert(width > 0),
-       assert(percent >= 0 && percent <=100);
+       assert(bearishThreshold >= 0 && bearishThreshold < 1),
+       assert(bullishThreshold > 0 && bullishThreshold <= 1 && bullishThreshold > bearishThreshold),
+       assert(score >= 0 && score <= 1);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,7 @@ class GaugeIndicator extends StatelessWidget {
         width: width,
         height: width / 2,
         child: CustomPaint(
-          painter: _GaugePainter(width, width / 2, percent, bearishThreshold, bullishThreshold),
+          painter: _GaugePainter(width, width / 2, score, bearishThreshold, bullishThreshold),
         )
     );
   }
@@ -41,11 +47,11 @@ class _GaugePainter extends CustomPainter {
 
   final double width;
   final double height;
-  final double percent;
+  final double score;
   final double bearishThreshold;
   final double bullishThreshold;
 
-  _GaugePainter(this.width, this.height, this.percent, this.bearishThreshold, this.bullishThreshold);
+  _GaugePainter(this.width, this.height, this.score, this.bearishThreshold, this.bullishThreshold);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -77,20 +83,20 @@ class _GaugePainter extends CustomPainter {
     const delta = 0.05;
 
     paint.color = const Color(0xffff6b6b);
-    canvas.drawArc(rect, pi, pi * bearishThreshold / 100 - delta, false, paint);
+    canvas.drawArc(rect, pi, pi * bearishThreshold - delta, false, paint);
 
     paint.color = const Color(0xff9da0a6);
-    canvas.drawArc(rect, pi + pi * bearishThreshold / 100, pi * (bullishThreshold - bearishThreshold) / 100, false, paint);
+    canvas.drawArc(rect, pi + pi * bearishThreshold, pi * (bullishThreshold - bearishThreshold), false, paint);
 
     paint.color = const Color(0xff4ce2a7);
-    canvas.drawArc(rect, 2 * pi - pi * (100 - bullishThreshold) / 100 + delta, pi * (100-bullishThreshold) / 100 - delta, false, paint);
+    canvas.drawArc(rect, 2 * pi - pi * (1 - bullishThreshold) + delta, pi * (1 - bullishThreshold) - delta, false, paint);
 
     final pointerCenter = gaugeCenter.translate(0, -7);
     paint.color = Colors.black;
     canvas.drawCircle(pointerCenter, 4.5, paint);
 
-    final dx = cos(percent * pi / 100);
-    final dy = sin(percent * pi / 100);
+    final dx = cos(score * pi);
+    final dy = sin(score * pi);
     final from = pointerCenter.translate(-8 * dx, -8 * dy);
     final to = pointerCenter.translate(-0.7 * height * dx, -0.7 * height * dy);
     canvas.drawLine(from, to, paint);
