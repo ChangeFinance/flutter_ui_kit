@@ -8,15 +8,21 @@ void main() {
     testWidgets('validates input values', (WidgetTester tester) async {
       expect (
           () {
-            return const GaugeIndicator(width: 200, percent: 75);
+            return const GaugeIndicator(width: 200,
+                bearishThreshold: 0.4,
+                bullishThreshold: 0.8,
+                score: 0.75);
           },
           returnsNormally
       );
 
       expect (
           () {
-            final percent = DateTime.now().year.toDouble();
-            return  GaugeIndicator(width: 200, percent: percent);
+            final score = DateTime.now().year.toDouble();
+            return  GaugeIndicator(width: 200,
+                bearishThreshold: 0.4,
+                bullishThreshold: 0.8,
+                score: score);
           },
           throwsAssertionError
       );
@@ -24,9 +30,10 @@ void main() {
 
     testWidgets('renders widget', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(
-          const GaugeIndicator(
-              width: 200,
-              percent: 75))
+          const GaugeIndicator(width: 200,
+              bearishThreshold: 0.4,
+              bullishThreshold: 0.8,
+              score: 0.75))
       );
 
       expect(find.byType(GaugeIndicator), findsOneWidget);
