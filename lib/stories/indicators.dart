@@ -31,7 +31,9 @@ Widget _gaugeIndicatorStory() {
       title: 'Gauge Indicator',
       child: PropsExplorer(
           initialProps: const <String, dynamic>{
-            'percent': 75.0
+            'bearishThreshold': 40.0,
+            'bullishThreshold': 60.0,
+            'score': 75.0
           },
           formBuilder: (context, props, updateProp) {
             return ListView(
@@ -41,7 +43,19 @@ Widget _gaugeIndicatorStory() {
                   DoublePropUpdater(
                       props: props,
                       updateProp: updateProp,
-                      propKey: 'percent',
+                      propKey: 'bearishThreshold',
+                      min: 0.0,
+                      max: 45.0),
+                  DoublePropUpdater(
+                      props: props,
+                      updateProp: updateProp,
+                      propKey: 'bullishThreshold',
+                      min: 55.0,
+                      max: 100.0),
+                  DoublePropUpdater(
+                      props: props,
+                      updateProp: updateProp,
+                      propKey: 'score',
                       min: 0.0,
                       max: 100.0),
                 ]);
@@ -50,8 +64,13 @@ Widget _gaugeIndicatorStory() {
             return Column(mainAxisSize: MainAxisSize.min, children: [
               Container(
                   child: Center(
-                      child: GaugeIndicator(width: 200, percent: props['percent'],)
-                  )),
+                      child: GaugeIndicator(width: 200,
+                          bearishThreshold: props['bearishThreshold'] / 100.0,
+                          bullishThreshold: props['bullishThreshold'] / 100.0,
+                          score: props['score'] / 100.0
+                      )
+                  )
+              ),
             ]);
           }));
 }
