@@ -6,8 +6,9 @@ import 'package:flutter_ui_kit/widgets/change_app_icons.dart';
 class SwitcherButton extends StatefulWidget {
   final List<String> labels;
   final Function(int) onSwitch;
+  final bool showLabel;
 
-  SwitcherButton({@required this.labels, this.onSwitch});
+  SwitcherButton({@required this.labels, this.onSwitch, this.showLabel = true});
 
   @override
   _SwitcherButtonState createState() => _SwitcherButtonState();
@@ -43,7 +44,7 @@ class _SwitcherButtonState extends State<SwitcherButton> {
         children: <Widget>[
           ChangeAppIcons.switch_arrow,
           const SizedBox(height: 8),
-          Text(currentLabel, style: AppText.body3),
+          widget.showLabel ? Text(currentLabel, style: AppText.body3) : Container(),
         ],
       ),
     );
