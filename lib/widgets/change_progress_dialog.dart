@@ -115,7 +115,7 @@ class ChangeProgressDialog {
             child: Dialog(
                 backgroundColor: _backgroundColor,
                 insetAnimationCurve: _insetAnimCurve,
-                insetAnimationDuration: Duration(milliseconds: 100),
+                insetAnimationDuration: const Duration(milliseconds: 100),
                 elevation: _dialogElevation,
                 shape: RoundedRectangleBorder(
                     borderRadius:
