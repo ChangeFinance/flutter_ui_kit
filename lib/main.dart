@@ -10,6 +10,7 @@ import 'package:flutter_ui_kit/stories/graphs.dart';
 import 'package:flutter_ui_kit/stories/indicators.dart';
 import 'package:flutter_ui_kit/stories/info_box.dart';
 import 'package:flutter_ui_kit/stories/layouts.dart';
+import 'package:flutter_ui_kit/stories/loader.dart';
 import 'package:flutter_ui_kit/stories/numpads.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
 import 'package:flutter_ui_kit/stories/sliders.dart';
@@ -59,7 +60,8 @@ void main() {
           CustomLabelValue(),
           CurrencyDisplays(),
           InfoBoxes(),
-          Indicators()
+          Indicators(),
+          Loaders(),
         ],
       ),
     ),
