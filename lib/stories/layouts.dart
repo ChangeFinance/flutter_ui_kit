@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_ui_kit/widgets/currency_switcher.dart';
 import 'package:flutter_ui_kit/widgets/customradio/custom_radio.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
-import 'package:flutter_ui_kit/widgets/layout/buy_sell_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/generic_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/information_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/titled_generic_template.dart';
@@ -38,7 +36,6 @@ class Layouts extends StatelessWidget {
             _infoLayout(context),
             _paymentMethod(context),
             _landingPage(context),
-            _buySellLayout(context),
           ],
         ),
       ),
@@ -72,56 +69,6 @@ class Layouts extends StatelessWidget {
                           fullWidth: true,
                           narrow: false,
                         ))));
-          },
-          fullWidth: false,
-          narrow: false,
-        ),
-      ),
-    );
-  }
-
-  Widget _buySellLayout(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(30.0),
-      child: Center(
-        child: FilledButton(
-          'I\'m all about Buy/Sell',
-          onPressed: () {
-            Navigator.push<dynamic>(
-                context,
-                MaterialPageRoute<dynamic>(
-                  settings: const RouteSettings(name: buySellLayout),
-                  builder: (_) => BuySellTemplate(
-                    currencyInfoList: [
-                      CurrencyInfo(label: 'BTC', symbol: 'BTC'),
-                      CurrencyInfo(label: 'EUR', symbol: '€', prefix: true)
-                    ],
-                    showcaseLabel: 'Payment method',
-                    errorText: 'Sample error message',
-                    showcase: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.attach_money),
-                        const SizedBox(width: 10),
-                        Text('Sample Wallet',
-                            style: Theme.of(context).textTheme.body2)
-                      ],
-                    ),
-                    amountChanged: (amts) =>
-                        print('New Amounts: ${amts.key} - ${amts.value}'),
-                    action: FilledButton(
-                      'Buy',
-                      onPressed: () {},
-                      fullWidth: true,
-                    ),
-                    mainTitle: 'Buy Bitcoin',
-                    subTitle: '€110.0 Available',
-                    numpadMaxLength: 10,
-                    walletBalance: '110.0',
-                  ),
-                ));
           },
           fullWidth: false,
           narrow: false,
