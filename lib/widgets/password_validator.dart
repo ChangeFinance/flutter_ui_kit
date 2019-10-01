@@ -11,9 +11,10 @@ class PasswordValidator extends StatefulWidget {
     Key key,
     this.password = 'Password123*',
     this.hintList = const [
-      'Try making it longer then 8 digits and adding capital characters that makes it difficult for others to guess',
+      'Try making it longer then 8 digits and adding capital characters that makes it difficult for others to guess.',
       'That is a good password, but you can try to add digits and special characters to make it a great one!',
-      'Remember to always keep your passwords secure'
+      'You can enable two-factor authentication later.',
+      'Make it longer than 8 characters.'
     ],
     this.strengthList = const ['bad', 'weak', 'normal', 'good', 'great', 'bad'],
     this.colorList = const [
@@ -134,7 +135,8 @@ class _PasswordValidatorState extends State<PasswordValidator> {
       if (widget.password.contains(new RegExp(r'[A-Z]'))) {
         if (widget.password.contains(RegExp(r'[0-9]'))) {
           if (widget.password
-              .contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]'))) {
+              .contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]')))
+          {
             return widget.hintList[2];
           } else {
             return widget.hintList[1];
@@ -146,6 +148,14 @@ class _PasswordValidatorState extends State<PasswordValidator> {
         return widget.hintList[0];
       }
     } else {
+      if (widget.password.contains(new RegExp(r'[A-Z]'))) {
+        if (widget.password.contains(RegExp(r'[0-9]'))) {
+          if (widget.password
+              .contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]')))
+          {
+          return widget.hintList[3];}
+        }
+      }
       return widget.hintList[0];
     }
   }

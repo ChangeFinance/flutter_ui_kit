@@ -22,7 +22,8 @@ class PasswordValidators extends StatelessWidget {
     
     final hintList = ['Try making it longer then 8 digits and adding capital characters that makes it difficult for others to guess',
     'That is a good password, but you can try to add digits and special characters to make it a great one!',
-    'Remember to always keep your passwords secure'];
+    'You can enable two-factor authentication later.',
+    'Make it longer than 8 characters.'];
     final strengthList = ['bad', 'weak', 'normal', 'good', 'great'];
     final colorList = [Colors.redAccent, Colors.orangeAccent, Colors.blueAccent, Colors.lightGreen, Colors.greenAccent];
     return ExpandableStory(
