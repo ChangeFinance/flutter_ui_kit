@@ -21,9 +21,10 @@ void main() {
       ));
       final SimpleProgressIndicator progressIndicator = tester.element(find.byType(SimpleProgressIndicator)).widget;
       final PasswordValidator passwordValidator = tester.element(find.byType(PasswordValidator)).widget;
-      final hintList = ['Try making it longer then 8 digits and adding capital characters that makes it difficult for others to guess',
+      final hintList = ['Try making it longer then 8 digits and adding capital characters that makes it difficult for others to guess.',
       'That is a good password, but you can try to add digits and special characters to make it a great one!',
-      'Remember to always keep your passwords secure'];
+      'You can enable two-factor authentication later.',
+      'Make it longer than 8 characters.'];
       final strengthList = ['bad', 'weak', 'normal', 'good', 'great', 'bad'];
       final colorList = [Colors.redAccent, Colors.orangeAccent, Colors.blueAccent, Colors.lightGreen, Colors.greenAccent];
 
