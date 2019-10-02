@@ -135,8 +135,7 @@ class _PasswordValidatorState extends State<PasswordValidator> {
       if (widget.password.contains(new RegExp(r'[A-Z]'))) {
         if (widget.password.contains(RegExp(r'[0-9]'))) {
           if (widget.password
-              .contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]')))
-          {
+              .contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]'))) {
             return widget.hintList[2];
           } else {
             return widget.hintList[1];
@@ -151,9 +150,9 @@ class _PasswordValidatorState extends State<PasswordValidator> {
       if (widget.password.contains(new RegExp(r'[A-Z]'))) {
         if (widget.password.contains(RegExp(r'[0-9]'))) {
           if (widget.password
-              .contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]')))
-          {
-          return widget.hintList[3];}
+              .contains(new RegExp(r'[!@_#$\%;^&*+(),.?":\-{}|<>/\\]'))) {
+            return widget.hintList[3];
+          }
         }
       }
       return widget.hintList[0];
