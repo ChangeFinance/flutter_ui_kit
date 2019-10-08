@@ -26,7 +26,7 @@ class CustomDatePicker extends StatelessWidget {
                 children: [
           new Flexible(
                   child: Container(
-                      width: 60,
+                      width: 75,
                       child: TextField(
                           focusNode: DisabledFocusNode(),
                           controller: _dayCtrl,
@@ -42,7 +42,7 @@ class CustomDatePicker extends StatelessWidget {
                           }))),
           new Flexible(
               child: Container(
-                  width: 80,
+                  width: 75,
                   child: TextField(
                     focusNode: DisabledFocusNode(),
                     controller: _monthCtrl,
@@ -58,8 +58,8 @@ class CustomDatePicker extends StatelessWidget {
                     },
                   ))),
           new Flexible(
-              child: Padding(
-                  padding: const EdgeInsets.only(right: 30.00),
+              child: Container(
+                  width: 75,
                   child: TextField(
                     focusNode: DisabledFocusNode(),
                     controller: _yearCtrl,
@@ -87,6 +87,7 @@ class CustomDatePicker extends StatelessWidget {
       },
       onChange: (dateTime, List<int> index) {
         updateState(dateTime);
+        onChange(dateTime);
       },
       onConfirm: (_dateTime, List<int> index) {
         updateState(_dateTime);
