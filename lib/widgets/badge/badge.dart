@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../color.dart';
 
@@ -38,12 +39,23 @@ class Badge extends StatelessWidget {
                 children: [
                   Padding(
                       padding: const EdgeInsets.symmetric(horizontal: padding),
-                      child: Text(
-                        text,
-                        style: textStyle ?? defaultTextStyle,
-                        textAlign: TextAlign.right,
-                      ))
-                ]))
-        );
+                      child:
+                      Shimmer.fromColors(
+                        key: new Key(text),
+                        baseColor: defaultTextStyle.color,
+                        highlightColor: bgColor,
+                        loop: 1,
+                        period: const Duration(milliseconds: 750),
+                        child: Text(
+                          text,
+                          style: textStyle ?? defaultTextStyle,
+                          textAlign: TextAlign.right
+                        ),
+                      )
+                  )
+                ]
+            )
+        )
+    );
   }
 }
