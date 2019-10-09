@@ -41,7 +41,7 @@ class Badge extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: padding),
                       child:
                       Shimmer.fromColors(
-                        key: UniqueKey(),
+                        key: new Key(text),
                         baseColor: defaultTextStyle.color,
                         highlightColor: bgColor,
                         loop: 1,
