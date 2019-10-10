@@ -11,6 +11,8 @@ class NumPadText extends StatefulWidget {
   final int textLengthLimit;
   final String startNumPadText;
   final bool needNumPadTextUpdate;
+  final bool noTextCache;
+  final Callback onKey;
 
   const NumPadText(
       {@required this.onChange,
@@ -18,7 +20,9 @@ class NumPadText extends StatefulWidget {
       this.textLengthLimit = 0,
       this.startNumPadText = '',
       this.needNumPadTextUpdate = false,
-      this.decimalPlaces});
+      this.decimalPlaces,
+      this.noTextCache = false,
+      this.onKey});
 
   @override
   _NumPadTextState createState() => _NumPadTextState();
@@ -75,6 +79,11 @@ class _NumPadTextState extends State<NumPadText> {
   }
 
   void onKeyTapped(String key) {
+    if (widget.noTextCache && widget.onKey != null) {
+      widget.onKey(key);
+      return;
+    }
+
     if (widget.needNumPadTextUpdate) {
       _text = widget.startNumPadText;
     }
