@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppColor {
   const AppColor._();
-  static const Color green = Color(0xFF3EDBB5);
-  static const Color greenSwatch = MaterialColor(500, {
+  static const int changeGreen = 0xFF3EDBB5;
+  static const Color green = Color(changeGreen);
+  static const Color greenSwatch = MaterialColor(changeGreen, {
     50: Color(0xFFE8FBF6),
     100: Color(0xFFC5F4E9),
     200: Color(0xFF9FEDDA),
