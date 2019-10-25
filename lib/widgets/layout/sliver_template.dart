@@ -9,6 +9,7 @@ class SliverTemplate extends StatelessWidget {
   final bool isPinned;
   final Widget appBarTitleWidget;
   final Widget backgroundWidget;
+  final FloatingActionButton floatingActionButton;
 
   const SliverTemplate(
       {this.content = const SizedBox.shrink(),
@@ -16,11 +17,13 @@ class SliverTemplate extends StatelessWidget {
       this.pinWidget = const SizedBox.shrink(),
       this.isPinned = true,
       this.appBarTitleWidget = const SizedBox.shrink(),
-      this.backgroundWidget = const SizedBox.shrink()});
+      this.backgroundWidget = const SizedBox.shrink(),
+      this.floatingActionButton});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: floatingActionButton,
         body: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: false,
