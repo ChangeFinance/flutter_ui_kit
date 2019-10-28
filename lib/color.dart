@@ -30,6 +30,6 @@ class AppColor {
   static const Color grey = Color(0xFFE7E7E7);
   static const Color mediumGrey = Color(0xFFE7E7E7);
   static const Color semiGrey = Color(0xFF9DA0A6);
-
+  static const Color moreBlueGrey = Color(0xFFDFE1E6);
   static const Color shadowColor = Color(0x1f0D0F10);
 }
