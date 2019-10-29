@@ -51,7 +51,8 @@ class Graph extends StatelessWidget {
     final maxValue = data.reduce(math.max);
     final minValue = data.reduce(math.min);
     final widthNormalizer = width / data.length;
-    final heightNormalizer = height / (maxValue - minValue);
+    final isFlat = maxValue == minValue;
+    final heightNormalizer = isFlat ? 1 : height / (maxValue - minValue);
     var maxValueDisplayed = false;
     var minValueDisplayed = false;
     var strFormat = '#,##0.00';
@@ -75,7 +76,9 @@ class Graph extends StatelessWidget {
       tp.layout();
 
       final x = i * widthNormalizer + lineWidth / 2;
-      final y = height - (item - minValue) * heightNormalizer + lineWidth / 2;
+      final y = isFlat
+        ? height / 2
+        : height - (item - minValue) * heightNormalizer + lineWidth / 2;
       final offset =
           new Offset(_calcXForMarker(x, width), _calcYForMarker(y, height));
 

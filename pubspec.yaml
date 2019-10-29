@@ -24,7 +24,7 @@ dependencies:
   flutter_sparkline:
     git:
       url: https://github.com/ChangeFinance/flutter_sparkline.git
-      ref: add-graph-paint-callback
+      ref: EN-413_flat_line_bug
   intl: ^0.15.8
   shimmer: ^1.0.1
 

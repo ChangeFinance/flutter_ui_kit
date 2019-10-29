@@ -52,8 +52,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: add-graph-paint-callback
-      resolved-ref: f71f2e22cd4f2a3b29253e6a06064a117135bc5c
+      ref: EN-413_flat_line_bug
+      resolved-ref: b0de8760496104b19cf31c0745273dd5863b03d0
       url: "https://github.com/ChangeFinance/flutter_sparkline.git"
     source: git
     version: "0.1.0"
@@ -153,6 +153,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  shimmer:
+    dependency: "direct main"
+    description:
+      name: shimmer
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   sky_engine:
     dependency: transitive
     description: flutter
