@@ -29,10 +29,8 @@ TextTheme _textTheme = const TextTheme(
   caption: AppText.button1
 );
 
-
-
 ButtonThemeData _buttonTheme = ButtonThemeData(
-  textTheme: ButtonTextTheme.primary,
+  textTheme: ButtonTextTheme.accent,
   buttonColor: primaryColor,
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
   disabledColor: AppColor.mediumGrey,
