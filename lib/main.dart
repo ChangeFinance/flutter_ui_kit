@@ -12,6 +12,7 @@ import 'package:flutter_ui_kit/stories/info_box.dart';
 import 'package:flutter_ui_kit/stories/layouts.dart';
 import 'package:flutter_ui_kit/stories/loader.dart';
 import 'package:flutter_ui_kit/stories/numpads.dart';
+import 'package:flutter_ui_kit/stories/passcode_views.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
 import 'package:flutter_ui_kit/stories/sliders.dart';
 import 'package:flutter_ui_kit/stories/typography.dart';
@@ -61,6 +62,7 @@ void main() {
           CurrencyDisplays(),
           InfoBoxes(),
           Indicators(),
+          PasscodeViews(),
           Loaders(),
         ],
       ),
