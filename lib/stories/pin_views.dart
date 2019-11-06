@@ -5,7 +5,7 @@ import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart'
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/text/passcode_view.dart';
 
-class PasscodeViews extends StatelessWidget {
+class PinViews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +21,7 @@ class PasscodeViews extends StatelessWidget {
 
   Widget _passcodeStory() {
     return ExpandableStory(
-      title: 'Passcode',
+      title: 'Pinview',
       child: PropsExplorer(
         initialProps: const <String, dynamic>{
           'length': 4,
@@ -50,7 +50,7 @@ class PasscodeViews extends StatelessWidget {
         widgetBuilder: (context, props) {
           return Container(
             child: Center(
-              child: PasscodeView(props['length'], props['text']),
+              child: PinView(props['length'], props['text']),
             ),
           );
         },
