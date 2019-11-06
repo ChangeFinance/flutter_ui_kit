@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../color.dart';
+import '../color.dart';
 
 class PinView extends StatelessWidget {
   final int length;
