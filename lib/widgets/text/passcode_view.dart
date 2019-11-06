@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../color.dart';
 
-class PasscodeView extends StatelessWidget {
+class PinView extends StatelessWidget {
   final int length;
   final String text;
 
-  PasscodeView(this.length, this.text);
+  PinView(this.length, this.text);
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +16,17 @@ class PasscodeView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
-        children: List<Widget>.generate(length, (index) => _PasscodeDot(active: index <= text.runes.length - 1)),
+        children: List<Widget>.generate(length, (index) => PinDot(active: index <= text.runes.length - 1)),
       ),
     );
   }
 }
 
-class _PasscodeDot extends StatelessWidget {
+@visibleForTesting
+class PinDot extends StatelessWidget {
   final bool active;
 
-  const _PasscodeDot({@required this.active});
+  const PinDot({@required this.active});
 
   @override
   Widget build(BuildContext context) {
