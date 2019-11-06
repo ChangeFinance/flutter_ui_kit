@@ -3,7 +3,7 @@ import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
-import 'package:flutter_ui_kit/widgets/text/passcode_view.dart';
+import 'package:flutter_ui_kit/widgets/text/pin_view.dart';
 
 class PinViews extends StatelessWidget {
   @override

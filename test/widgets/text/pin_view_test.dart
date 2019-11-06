@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_ui_kit/widgets/text/passcode_view.dart';
+import 'package:flutter_ui_kit/widgets/text/pin_view.dart';
 
 import '../../wrap_in_material_app.dart';
 
