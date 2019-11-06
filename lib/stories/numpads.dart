@@ -153,7 +153,6 @@ class _PasscodeNumpadStory extends StatelessWidget {
                     child: PasscodeNumPadText(
                       onChange: (String newVal) {
                         _textEditingController.text = newVal;
-                        print('NEWVAL: $newVal');
                       },
                       textLengthLimit: props['textLengthLimit'],
                       actionButtonText: props['actionButtonText'],
