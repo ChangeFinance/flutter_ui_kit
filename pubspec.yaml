@@ -27,6 +27,12 @@ dependencies:
       ref: master
   intl: ^0.15.8
   shimmer: ^1.0.1
+  alpha2_countries: ^1.0.5
+  url_launcher: 5.0.3
+  changeapp_common:
+    git:
+      url: ssh://git@github.com/ChangeFinance/changeapp_common
+      ref: CARD_119
 
 dev_dependencies:
   flutter_test:
@@ -73,4 +79,6 @@ flutter:
     - assets/round_up_purchases.svg
     - assets/save_as_you_pay.svg
     - assets/you_are_all_set.svg
+    - assets/icons/ether.svg
+    - assets/icons/american_tech_stocks.svg
     - lib/assets/icons/
