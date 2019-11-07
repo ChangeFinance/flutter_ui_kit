@@ -29,10 +29,7 @@ dependencies:
   shimmer: ^1.0.1
   alpha2_countries: ^1.0.5
   url_launcher: 5.0.3
-  changeapp_common:
-    git:
-      url: ssh://git@github.com/ChangeFinance/changeapp_common
-      ref: CARD_119
+  rxdart: ^0.22.2
 
 dev_dependencies:
   flutter_test:
