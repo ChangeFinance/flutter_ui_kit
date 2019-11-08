@@ -7,7 +7,7 @@ class Heading extends StatelessWidget {
   final HeadingType headingType;
   final TextAlign textAlign;
 
-  const Heading(this.data, {this.constraints, this.headingType, this.textAlign});
+  const Heading(this.data, {this.constraints, this.headingType, this.textAlign, Key key}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
