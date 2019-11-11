@@ -11,6 +11,7 @@ class SliverTemplate extends StatelessWidget {
   final Widget backgroundWidget;
   final FloatingActionButton floatingActionButton;
   final ScrollController scrollController;
+  static const appBarHeightPercentage = 0.4;
 
   const SliverTemplate(
       {this.content = const SizedBox.shrink(),
@@ -33,7 +34,7 @@ class SliverTemplate extends StatelessWidget {
             shrinkWrap: false,
             slivers: <Widget>[
           SliverAppBar(
-            expandedHeight: mediaQuery.size.height / 2.5,
+            expandedHeight: mediaQuery.size.height * appBarHeightPercentage,
             pinned: isPinned,
             forceElevated: false,
             elevation: 0,
