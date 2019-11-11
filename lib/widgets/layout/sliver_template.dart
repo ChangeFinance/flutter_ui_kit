@@ -24,6 +24,7 @@ class SliverTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
     return Scaffold(
         floatingActionButton: floatingActionButton,
         body: CustomScrollView(
@@ -32,7 +33,7 @@ class SliverTemplate extends StatelessWidget {
             shrinkWrap: false,
             slivers: <Widget>[
           SliverAppBar(
-            expandedHeight: 250.0,
+            expandedHeight: mediaQuery.size.height / 2.5,
             pinned: isPinned,
             forceElevated: false,
             elevation: 0,
