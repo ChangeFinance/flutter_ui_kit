@@ -105,7 +105,7 @@ class Graph extends StatelessWidget {
   }
 
   Gradient _buildGradient() {
-    return new LinearGradient(
+    return const LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: const [

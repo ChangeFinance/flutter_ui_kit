@@ -8,7 +8,6 @@ class GaugeIndicator extends StatelessWidget {
   final double bullishThreshold;
   final double score;
 
-
   const GaugeIndicator({
     @required this.width,
     @required this.bearishThreshold,
@@ -68,7 +67,7 @@ class _GaugePainter extends CustomPainter {
     final bgRadius = bgDiameter / 2;
     final bgOffset = (width - bgDiameter) / 2;
     final bgRect = Rect.fromCircle(center: gaugeCenter, radius: bgRadius);
-    final Gradient gradient = LinearGradient(
+    const Gradient gradient = LinearGradient(
       begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: const [const Color(0x2172efdb), const Color(0x003edbb5)]
