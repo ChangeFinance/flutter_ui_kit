@@ -33,7 +33,6 @@ class SliverTemplate extends StatelessWidget {
         body: CustomScrollView(
             controller: scrollController,
             physics: const BouncingScrollPhysics(),
-            // shrinkWrap: false,
             slivers: <Widget>[
           SliverAppBar(
             expandedHeight: mediaQuery.size.width * appBarWidthPercentage,
