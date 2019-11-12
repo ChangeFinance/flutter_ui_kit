@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_ui_kit/color.dart';
 
+import 'custom_flexible_space_bar.dart';
+
 class SliverTemplate extends StatelessWidget {
   final Widget pinWidget;
   final Widget content;
@@ -11,7 +13,7 @@ class SliverTemplate extends StatelessWidget {
   final Widget backgroundWidget;
   final FloatingActionButton floatingActionButton;
   final ScrollController scrollController;
-  static const appBarHeightPercentage = 0.4;
+  static const appBarWidthPercentage = 0.7;
 
   const SliverTemplate(
       {this.content = const SizedBox.shrink(),
@@ -31,21 +33,19 @@ class SliverTemplate extends StatelessWidget {
         body: CustomScrollView(
             controller: scrollController,
             physics: const BouncingScrollPhysics(),
-            shrinkWrap: false,
+            // shrinkWrap: false,
             slivers: <Widget>[
           SliverAppBar(
-            expandedHeight: mediaQuery.size.height * appBarHeightPercentage,
+            expandedHeight: mediaQuery.size.width * appBarWidthPercentage,
             pinned: isPinned,
             forceElevated: false,
             elevation: 0,
             automaticallyImplyLeading: false,
             backgroundColor: AppColor.deepWhite,
-            bottom: appBarBottom(context),
             title: appBarTitleWidget,
-            flexibleSpace: FlexibleSpaceBar(
+            flexibleSpace: CustomFlexibleSpaceBar(
               centerTitle: true,
-              titlePadding: const EdgeInsets.only(top: 90.00),
-              title: appBarBody(context),
+              title: content,
               collapseMode: CollapseMode.pin,
               background: Container(
                   child: backgroundWidget,
@@ -57,15 +57,5 @@ class SliverTemplate extends StatelessWidget {
             sliverList,
           )),
         ]));
-  }
-
-  Widget appBarBottom(BuildContext context) {
-    return PreferredSize(
-        preferredSize: const Size(10.00, 10.00), child: pinWidget);
-  }
-
-  Widget appBarBody(BuildContext context) {
-    return Container(
-        height: MediaQuery.of(context).size.height, child: content);
   }
 }
