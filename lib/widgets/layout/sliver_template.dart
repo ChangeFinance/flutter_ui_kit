@@ -15,30 +15,31 @@ class SliverTemplate extends StatelessWidget {
   final ScrollController scrollController;
   static const appBarWidthPercentage = 0.7;
 
-  const SliverTemplate(
-      {this.content = const SizedBox.shrink(),
-      this.sliverList,
-      this.pinWidget = const SizedBox.shrink(),
-      this.isPinned = true,
-      this.appBarTitleWidget = const SizedBox.shrink(),
-      this.backgroundWidget = const SizedBox.shrink(),
-      this.floatingActionButton,
-      this.scrollController});
+  const SliverTemplate({
+    this.content = const SizedBox.shrink(),
+    this.sliverList,
+    this.pinWidget = const SizedBox.shrink(),
+    this.isPinned = true,
+    this.appBarTitleWidget = const SizedBox.shrink(),
+    this.backgroundWidget = const SizedBox.shrink(),
+    this.floatingActionButton,
+    this.scrollController,
+  });
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
-        floatingActionButton: floatingActionButton,
-        body: CustomScrollView(
-            controller: scrollController,
-            physics: const BouncingScrollPhysics(),
-            slivers: <Widget>[
+      floatingActionButton: floatingActionButton,
+      body: CustomScrollView(
+        controller: scrollController,
+        physics: const BouncingScrollPhysics(),
+        slivers: <Widget>[
           SliverAppBar(
             expandedHeight: mediaQuery.size.width * appBarWidthPercentage,
             pinned: isPinned,
-            forceElevated: false,
-            elevation: 0,
+            forceElevated: true,
+            elevation: 2,
             automaticallyImplyLeading: false,
             backgroundColor: AppColor.deepWhite,
             title: appBarTitleWidget,
@@ -47,14 +48,20 @@ class SliverTemplate extends StatelessWidget {
               title: content,
               collapseMode: CollapseMode.pin,
               background: Container(
-                  child: backgroundWidget,
-                  decoration: const BoxDecoration(color: AppColor.deepWhite)),
+                child: backgroundWidget,
+                decoration: const BoxDecoration(
+                  color: AppColor.deepWhite,
+                ),
+              ),
             ),
           ),
           SliverList(
-              delegate: SliverChildListDelegate(
-            sliverList,
-          )),
-        ]));
+            delegate: SliverChildListDelegate(
+              sliverList,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
