@@ -13,7 +13,7 @@ class SliverTemplate extends StatelessWidget {
   final Widget backgroundWidget;
   final FloatingActionButton floatingActionButton;
   final ScrollController scrollController;
-  static const appBarWidthPercentage = 0.7;
+  final double heightAsPercentageOfScreenWidth;
 
   const SliverTemplate({
     this.content = const SizedBox.shrink(),
@@ -24,7 +24,13 @@ class SliverTemplate extends StatelessWidget {
     this.backgroundWidget = const SizedBox.shrink(),
     this.floatingActionButton,
     this.scrollController,
+    this.heightAsPercentageOfScreenWidth = 0.7,
   });
+
+  double _getSliverAppBarHeight(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    return screenWidth * heightAsPercentageOfScreenWidth;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,21 +42,29 @@ class SliverTemplate extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         slivers: <Widget>[
           SliverAppBar(
-            expandedHeight: mediaQuery.size.width * appBarWidthPercentage,
+            expandedHeight: _getSliverAppBarHeight(context),
             pinned: isPinned,
             forceElevated: true,
             elevation: 2,
             automaticallyImplyLeading: false,
             backgroundColor: AppColor.deepWhite,
             title: appBarTitleWidget,
-            flexibleSpace: CustomFlexibleSpaceBar(
-              centerTitle: true,
-              title: content,
-              collapseMode: CollapseMode.pin,
-              background: Container(
-                child: backgroundWidget,
-                decoration: const BoxDecoration(
-                  color: AppColor.deepWhite,
+            flexibleSpace: Container(
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 20.0,
+                ),
+              ]),
+              child: CustomFlexibleSpaceBar(
+                centerTitle: true,
+                title: content,
+                collapseMode: CollapseMode.pin,
+                background: Container(
+                  child: backgroundWidget,
+                  decoration: const BoxDecoration(
+                    color: AppColor.deepWhite,
+                  ),
                 ),
               ),
             ),
