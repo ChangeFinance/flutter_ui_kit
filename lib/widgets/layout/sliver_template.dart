@@ -88,7 +88,7 @@ class _SliverTemplateState extends State<SliverTemplate> {
                   boxShadow: collapsed
                       ? []
                       : [
-                          BoxShadow(
+                          const BoxShadow(
                             color: Colors.black26,
                             blurRadius: 20.0,
                           ),
