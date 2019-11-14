@@ -110,7 +110,10 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
           left: 0.0,
           right: 0.0,
           height: settings.maxExtent,
-          child: widget.background,
+          child: Opacity(
+            opacity: opacity,
+            child: widget.background,
+          ),
         ));
       }
     }
