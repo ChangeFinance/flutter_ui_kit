@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/animations/shaker.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
@@ -15,7 +13,7 @@ class Animations extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          children: const <Widget>[
             const _ShakerStory(),
           ],
         ),
