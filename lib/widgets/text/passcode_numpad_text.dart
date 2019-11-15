@@ -64,9 +64,9 @@ class _PasscodeNumPadTextState extends State<PasscodeNumPadText> {
               textAlign: TextAlign.center,
               style: isActionButton
                   ? actionButtonStyle
-                  :  (enabled ? AppText.numPadTextStyle : AppText.numPadTextStyle.copyWith(color: AppColor.semiGrey)))
+                  : (enabled ? AppText.numPadTextStyle : AppText.numPadTextStyle.copyWith(color: AppColor.semiGrey)))
           : Icon(Icons.arrow_back, size: 24.0, color: enabled ? AppColor.deepBlack : AppColor.semiGrey),
-      onKeyTap: val == widget.actionButtonText ? onKeyTapped : (enabled ? onKeyTapped : null),
+      onKeyTap: val == widget.actionButtonText ? widget.onActionbuttonPressed : (enabled ? onKeyTapped : null),
     );
   }
 
