@@ -16,7 +16,14 @@ class TimeFrameSelector extends StatefulWidget {
 }
 
 class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
-  String periodValue = '1D';
+  String periodValue;
+
+  @override
+  void initState() {
+    super.initState();
+    periodValue = '1D';
+    widget.onChange(periodValue);
+  }
 
   void _onPressedPeriod(String period) {
     setState(() {
