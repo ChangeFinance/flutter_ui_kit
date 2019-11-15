@@ -1,3 +1,4 @@
+import 'package:flutter_ui_kit/stories/animations.dart';
 import 'package:flutter_ui_kit/stories/badges.dart';
 
 import 'package:flutter_ui_kit/stories/custom_label_value.dart';
@@ -36,6 +37,7 @@ void main() {
       home: StoryBook(
         title: 'Change UI Components',
         pages: [
+          Animations(),
           AppColors(),
           AppTypography(),
           Buttons(),

@@ -10,6 +10,7 @@ class PasscodeNumPadText extends StatefulWidget {
   final Callback onKey;
   final String actionButtonText;
   final VoidCallback onActionbuttonPressed;
+  final bool enabled;
 
   const PasscodeNumPadText({
     @required this.onChange,
@@ -17,6 +18,7 @@ class PasscodeNumPadText extends StatefulWidget {
     this.onKey,
     this.actionButtonText,
     this.onActionbuttonPressed,
+    this.enabled = true,
   });
 
   @override
@@ -24,6 +26,8 @@ class PasscodeNumPadText extends StatefulWidget {
 }
 
 class _PasscodeNumPadTextState extends State<PasscodeNumPadText> {
+  bool get enabled => widget.enabled;
+
   String _text = '';
 
   void onKeyTapped(String key) {
@@ -56,9 +60,13 @@ class _PasscodeNumPadTextState extends State<PasscodeNumPadText> {
     return _KeyItem(
       value: val,
       child: (val != 'C')
-          ? Text(val, textAlign: TextAlign.center, style: isActionButton ? actionButtonStyle : AppText.numPadTextStyle)
-          : const Icon(Icons.arrow_back, size: 24.0, color: AppColor.deepBlack),
-      onKeyTap: onKeyTapped,
+          ? Text(val,
+              textAlign: TextAlign.center,
+              style: isActionButton
+                  ? actionButtonStyle
+                  :  (enabled ? AppText.numPadTextStyle : AppText.numPadTextStyle.copyWith(color: AppColor.semiGrey)))
+          : Icon(Icons.arrow_back, size: 24.0, color: enabled ? AppColor.deepBlack : AppColor.semiGrey),
+      onKeyTap: val == widget.actionButtonText ? onKeyTapped : (enabled ? onKeyTapped : null),
     );
   }
 
@@ -94,7 +102,7 @@ class _KeyItem extends StatelessWidget {
             radius: 30,
             splashColor: AppColor.brightGreen,
             highlightColor: Colors.white,
-            onTap: () => onKeyTap(value),
+            onTap: onKeyTap != null ? () => onKeyTap(value) : null,
             child: Container(alignment: Alignment.center, child: child)));
   }
 }
