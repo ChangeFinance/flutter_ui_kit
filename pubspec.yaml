@@ -27,7 +27,7 @@ dependencies:
       ref: master
   intl: ^0.15.8
   shimmer: ^1.0.1
-  animated_widgets:  #^1.0.2+1
+  animated_widgets:
     git:
       url: https://github.com/ChangeFinance/AnimatedWidgets.git
       ref: master
