@@ -39,28 +39,25 @@ Widget _numPadStory() {
             'textLengthLimit': 0,
           },
           formBuilder: (context, props, updateProp) {
-            return ListView(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                children: <Widget>[
-                  IntPropUpdater(
-                    props: props,
-                    updateProp: updateProp,
-                    propKey: 'decimalPlaces',
-                    hintText: 'Simulate decimal places',
-                  ),
-                  BoolPropUpdater(
-                    props: props,
-                    updateProp: updateProp,
-                    propKey: 'clearOnLongPress',
-                  ),
-                  IntPropUpdater(
-                    props: props,
-                    updateProp: updateProp,
-                    propKey: 'textLengthLimit',
-                    hintText: 'Text Length limit (0 for no limit)',
-                  )
-                ]);
+            return ListView(physics: const NeverScrollableScrollPhysics(), shrinkWrap: true, children: <Widget>[
+              IntPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'decimalPlaces',
+                hintText: 'Simulate decimal places',
+              ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'clearOnLongPress',
+              ),
+              IntPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'textLengthLimit',
+                hintText: 'Text Length limit (0 for no limit)',
+              )
+            ]);
           },
           widgetBuilder: (context, props) {
             return Column(mainAxisSize: MainAxisSize.min, children: [
@@ -76,13 +73,9 @@ Widget _numPadStory() {
                                   autofocus: false,
                                   controller: _textEditingController,
                                   textAlign: TextAlign.left,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .display2
-                                      .copyWith(fontWeight: FontWeight.normal),
-                                  decoration: InputDecoration.collapsed(
-                                      hintText: '0',
-                                      hintStyle: AppText.numPadTextStyle)))))),
+                                  style: Theme.of(context).textTheme.display2.copyWith(fontWeight: FontWeight.normal),
+                                  decoration:
+                                      InputDecoration.collapsed(hintText: '0', hintStyle: AppText.numPadTextStyle)))))),
               Container(
                   height: 240.0,
                   child: NumPadText(
@@ -96,7 +89,6 @@ Widget _numPadStory() {
 }
 
 class _PasscodeNumpadStory extends StatelessWidget {
-
   final TextEditingController _textEditingController = TextEditingController();
 
   @override
@@ -106,26 +98,29 @@ class _PasscodeNumpadStory extends StatelessWidget {
         child: PropsExplorer(
             initialProps: const <String, dynamic>{
               'textLengthLimit': 0,
-              'actionButtonText': 'Action'
+              'actionButtonText': 'Action',
+              'enabled': true,
             },
             formBuilder: (context, props, updateProp) {
-              return ListView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  children: <Widget>[
-                    IntPropUpdater(
-                      props: props,
-                      updateProp: updateProp,
-                      propKey: 'textLengthLimit',
-                      hintText: 'Text Length limit (0 for no limit)',
-                    ),
-                    StringPropUpdater(
-                      props: props,
-                      updateProp: updateProp,
-                      propKey: 'actionButtonText',
-                      hintText: 'Action button text',
-                    ),
-                  ]);
+              return ListView(physics: const NeverScrollableScrollPhysics(), shrinkWrap: true, children: <Widget>[
+                IntPropUpdater(
+                  props: props,
+                  updateProp: updateProp,
+                  propKey: 'textLengthLimit',
+                  hintText: 'Text Length limit (0 for no limit)',
+                ),
+                StringPropUpdater(
+                  props: props,
+                  updateProp: updateProp,
+                  propKey: 'actionButtonText',
+                  hintText: 'Action button text',
+                ),
+                BoolPropUpdater(
+                  props: props,
+                  updateProp: updateProp,
+                  propKey: 'enabled',
+                ),
+              ]);
             },
             widgetBuilder: (context, props) {
               return Column(mainAxisSize: MainAxisSize.min, children: [
@@ -141,13 +136,9 @@ class _PasscodeNumpadStory extends StatelessWidget {
                                     autofocus: false,
                                     controller: _textEditingController,
                                     textAlign: TextAlign.left,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .display2
-                                        .copyWith(fontWeight: FontWeight.normal),
+                                    style: Theme.of(context).textTheme.display2.copyWith(fontWeight: FontWeight.normal),
                                     decoration: InputDecoration.collapsed(
-                                        hintText: '0',
-                                        hintStyle: AppText.numPadTextStyle)))))),
+                                        hintText: '0', hintStyle: AppText.numPadTextStyle)))))),
                 Container(
                     height: 240.0,
                     child: PasscodeNumPadText(
@@ -156,6 +147,7 @@ class _PasscodeNumpadStory extends StatelessWidget {
                       },
                       textLengthLimit: props['textLengthLimit'],
                       actionButtonText: props['actionButtonText'],
+                      enabled: props['enabled'],
                     ))
               ]);
             }));
