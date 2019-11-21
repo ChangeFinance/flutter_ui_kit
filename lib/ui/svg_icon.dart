@@ -466,10 +466,10 @@ class SvgIcons {
         size: size,
       );
 
-  static const SvgIcon cardVisa = const SvgIcon(
+  static SvgIcon cardVisa(Size size) => SvgIcon(
       path: 'assets/images/card/card-visa.svg',
       color: SvgIconColor.noColor,
-      size: Size.square(80.0)
+      size: size
   );
 
   static const SvgIcon eurWalletIllustration = const SvgIcon(
