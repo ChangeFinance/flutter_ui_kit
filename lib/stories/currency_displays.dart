@@ -4,6 +4,7 @@ import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/double_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
+import 'package:flutter_ui_kit/widgets/asset_rate.dart';
 import 'package:flutter_ui_kit/widgets/currency_display.dart';
 import 'package:flutter_ui_kit/widgets/currency_switcher.dart';
 
@@ -16,6 +17,7 @@ class CurrencyDisplays extends StatelessWidget {
           children: <Widget>[
             _currencyDisplayStory(),
             _currencySwitcherStory(),
+            _assetRateStory(),
           ],
         ),
       ),
@@ -100,6 +102,41 @@ class CurrencyDisplays extends StatelessWidget {
               CurrencyInfo(label: 'BTC', symbol: 'BTC')
             ],
           );
+        },
+      ),
+    );
+  }
+
+  Widget _assetRateStory() {
+    return ExpandableStory(
+      title: 'Asset Rate',
+      child: PropsExplorer(
+        initialProps: const <String, dynamic>{
+          'currencySymbol': '€',
+          'amount': 1792.28
+        },
+        formBuilder: (context, props, updateProp) {
+          return ListView(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            children: <Widget>[
+              StringPropUpdater(
+                  props: props,
+                  updateProp: updateProp,
+                  propKey: 'currencySymbol'),
+              DoublePropUpdater(
+                  props: props,
+                  updateProp: updateProp,
+                  propKey: 'amount',
+                  min: 0,
+                  max: 999999999),
+            ],
+          );
+        },
+        widgetBuilder: (context, props) {
+          final double amount = props['amount'];
+          final String symbol = props['currencySymbol'];
+          return AssetRate(symbol, amount);
         },
       ),
     );
