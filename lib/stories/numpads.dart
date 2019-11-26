@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
@@ -100,6 +101,7 @@ class _PasscodeNumpadStory extends StatelessWidget {
               'textLengthLimit': 0,
               'actionButtonText': 'Action',
               'enabled': true,
+              'hasSecondaryActionButton': false,
             },
             formBuilder: (context, props, updateProp) {
               return ListView(physics: const NeverScrollableScrollPhysics(), shrinkWrap: true, children: <Widget>[
@@ -119,6 +121,11 @@ class _PasscodeNumpadStory extends StatelessWidget {
                   props: props,
                   updateProp: updateProp,
                   propKey: 'enabled',
+                ),
+                BoolPropUpdater(
+                  props: props,
+                  updateProp: updateProp,
+                  propKey: 'hasSecondaryActionButton',
                 ),
               ]);
             },
@@ -148,8 +155,26 @@ class _PasscodeNumpadStory extends StatelessWidget {
                       textLengthLimit: props['textLengthLimit'],
                       actionButtonText: props['actionButtonText'],
                       enabled: props['enabled'],
+                      onActionbuttonPressed: () {
+                        _showDialog(context, '', 'Action button pressed');
+                      },
+                      hasSecondaryActionButton: props['hasSecondaryActionButton'],
+                      secondaryActionWidget: Icon(Icons.fingerprint, color: AppColor.green, size: 25),
+                      onSecondaryActionButtonPressed: () {
+                        _showDialog(context, '', 'Secondary action button pressed');
+                      },
                     ))
               ]);
             }));
+  }
+
+  void _showDialog(BuildContext context, String title, String text) {
+    showDialog<void>(
+        context: context,
+        builder: (_) => AlertDialog(
+              title: Text(title),
+              content: Text(text),
+            ));
+    print('Action button pressed');
   }
 }

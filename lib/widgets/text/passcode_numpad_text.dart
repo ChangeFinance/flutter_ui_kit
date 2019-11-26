@@ -11,6 +11,9 @@ class PasscodeNumPadText extends StatefulWidget {
   final String actionButtonText;
   final VoidCallback onActionbuttonPressed;
   final bool enabled;
+  final bool hasSecondaryActionButton;
+  final Widget secondaryActionWidget;
+  final VoidCallback onSecondaryActionButtonPressed;
 
   const PasscodeNumPadText({
     @required this.onChange,
@@ -19,7 +22,10 @@ class PasscodeNumPadText extends StatefulWidget {
     this.actionButtonText,
     this.onActionbuttonPressed,
     this.enabled = true,
-  });
+    this.hasSecondaryActionButton = false,
+    this.secondaryActionWidget,
+    this.onSecondaryActionButtonPressed,
+  }) : assert(!(hasSecondaryActionButton == true && secondaryActionWidget == null));
 
   @override
   _PasscodeNumPadTextState createState() => _PasscodeNumPadTextState();
@@ -50,6 +56,7 @@ class _PasscodeNumPadTextState extends State<PasscodeNumPadText> {
       _text = _text.isNotEmpty ? _text.substring(0, _text.length - 1) : '';
     }
 
+    setState(() {});
     widget.onChange(_text);
   }
 
@@ -57,7 +64,34 @@ class _PasscodeNumPadTextState extends State<PasscodeNumPadText> {
     final isActionButton = val == widget.actionButtonText;
     final actionButtonStyle =
         AppText.numPadTextStyle.copyWith(color: AppColor.darkerGreen, fontWeight: FontWeight.normal, fontSize: 16);
-    return _KeyItem(
+    Widget child;
+    if (val != 'C') {
+      child = Text(val,
+          textAlign: TextAlign.center,
+          style: isActionButton
+              ? actionButtonStyle
+              : (enabled ? AppText.numPadTextStyle : AppText.numPadTextStyle.copyWith(color: AppColor.semiGrey)));
+    } else {
+      if (widget.hasSecondaryActionButton && _text.trim().isEmpty) {
+        child = widget.secondaryActionWidget;
+      } else {
+        child = Icon(Icons.arrow_back, size: 24.0, color: enabled ? AppColor.deepBlack : AppColor.semiGrey);
+      }
+    }
+
+    Function(String value) onKeyTap;
+    if (val == widget.actionButtonText && widget.onActionbuttonPressed != null) {
+      onKeyTap = (_) => widget.onActionbuttonPressed();
+    } else if (val == 'C' &&
+        widget.hasSecondaryActionButton &&
+        widget.onSecondaryActionButtonPressed != null &&
+        _text.trim().isEmpty) {
+      onKeyTap = (_) => widget.onSecondaryActionButtonPressed();
+    } else {
+      onKeyTap = widget.enabled ? onKeyTapped : null;
+    }
+
+    /*return _KeyItem(
       value: val,
       child: (val != 'C')
           ? Text(val,
@@ -69,6 +103,11 @@ class _PasscodeNumPadTextState extends State<PasscodeNumPadText> {
       onKeyTap: (val == widget.actionButtonText && widget.onActionbuttonPressed != null)
           ? (_) => widget.onActionbuttonPressed()
           : (enabled ? onKeyTapped : null),
+    );*/
+    return _KeyItem(
+      value: val,
+      child: child,
+      onKeyTap: onKeyTap,
     );
   }
 
