@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 const Duration _kBottomSheetDuration = Duration(milliseconds: 200);
 const double _kMinFlingVelocity = 700.0;
@@ -145,7 +145,10 @@ class _BottomSheetState extends State<BottomSheet> {
       onVerticalDragUpdate: _handleDragUpdate,
       onVerticalDragEnd: _handleDragEnd,
       child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: const BorderRadius.only(
+              topLeft: const Radius.circular(20.0),
+              topRight: const Radius.circular(20.0)
+          ),
           child: bottomSheet),
       excludeFromSemantics: true,
     );
