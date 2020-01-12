@@ -1,3 +1,4 @@
+import 'package:flutter_ui_kit/dark-theme.dart';
 import 'package:flutter_ui_kit/stories/animations.dart';
 import 'package:flutter_ui_kit/stories/badges.dart';
 
@@ -37,6 +38,7 @@ void main() {
   runApp(
     MaterialApp(
       theme: theme,
+      darkTheme: darkTheme,
       home: StoryBook(
         title: 'Change UI Components',
         pages: [
