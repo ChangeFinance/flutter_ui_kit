@@ -11,6 +11,7 @@ class PasscodeNumPadText extends StatefulWidget {
   final String actionButtonText;
   final VoidCallback onActionbuttonPressed;
   final bool enabled;
+  final bool needNumPadTextUpdate;
   final bool hasSecondaryActionButton;
   final Widget secondaryActionWidget;
   final VoidCallback onSecondaryActionButtonPressed;
@@ -22,6 +23,7 @@ class PasscodeNumPadText extends StatefulWidget {
     this.actionButtonText,
     this.onActionbuttonPressed,
     this.enabled = true,
+    this.needNumPadTextUpdate = false,
     this.hasSecondaryActionButton = false,
     this.secondaryActionWidget,
     this.onSecondaryActionButtonPressed,
@@ -47,6 +49,10 @@ class _PasscodeNumPadTextState extends State<PasscodeNumPadText> {
       widget.onKey(key);
     }
 
+    if (widget.needNumPadTextUpdate) {
+      _text = '';
+    }
+
     if (!isCancel) {
       if (widget.textLengthLimit > 0 && (_text + key).length > widget.textLengthLimit) {
         return;
@@ -63,7 +69,7 @@ class _PasscodeNumPadTextState extends State<PasscodeNumPadText> {
   Widget buildKeyItem(String val) {
     final isActionButton = val == widget.actionButtonText;
     final actionButtonStyle =
-        AppText.numPadTextStyle.copyWith(color: AppColor.darkerGreen, fontWeight: FontWeight.normal, fontSize: 16);
+    AppText.numPadTextStyle.copyWith(color: AppColor.darkerGreen, fontWeight: FontWeight.normal, fontSize: 16);
     Widget child;
     if (val != 'C') {
       child = Text(val,
