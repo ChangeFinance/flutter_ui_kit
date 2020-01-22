@@ -10,8 +10,9 @@ class StreamCheckboxField extends StatelessWidget {
     this.value,
     this.onChanged,
     this.label,
-    this.height
-  });
+    this.height,
+    Key key
+  }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +52,12 @@ class CheckboxField extends StatelessWidget {
     return Column(
       children: errorText == null
           ? <Widget>[
-              buildCheckboxListTile(boxHeight),
-            ]
+        buildCheckboxListTile(boxHeight),
+      ]
           : <Widget>[
-              buildCheckboxListTile(boxHeight),
-              buildError(context),
-            ],
+        buildCheckboxListTile(boxHeight),
+        buildError(context),
+      ],
     );
   }
 

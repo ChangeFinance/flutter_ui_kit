@@ -27,13 +27,13 @@ dependencies:
       ref: master
   intl: ^0.15.8
   shimmer: ^1.0.1
+  alpha2_countries: ^1.0.5
+  url_launcher: 5.0.3
+  rxdart: ^0.22.2
   animated_widgets:
     git:
       url: https://github.com/ChangeFinance/AnimatedWidgets.git
       ref: master
-  alpha2_countries: ^1.0.5
-  url_launcher: 5.0.3
-  rxdart: ^0.22.2
 
 dev_dependencies:
   flutter_test:
