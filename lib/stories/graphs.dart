@@ -51,7 +51,8 @@ class Graphs extends StatelessWidget {
               'labelPrefix': '€',
               'enableGradient': true,
               'lineColor': 'Green',
-              'showTimeFrameSelector': true
+              'showTimeFrameSelector': true,
+              'maxTimeFrame': '1Y'
 
             },
             formBuilder: (context, props, updateProp) {
@@ -85,6 +86,11 @@ class Graphs extends StatelessWidget {
                     updateProp: updateProp,
                     propKey: 'labelPrefix',
                   ),
+                  StringPropUpdater(
+                    props: props,
+                    updateProp: updateProp,
+                    propKey: 'maxTimeFrame',
+                  ),
                 ]
               );
             },
@@ -105,7 +111,9 @@ class Graphs extends StatelessWidget {
                 Container(
                   height:35.0,
                   child: Center(
-                    child: props['showTimeFrameSelector'] ? TimeFrameSelector(onChange: onChangeTextField) : Container(),
+                    child: props['showTimeFrameSelector'] ? TimeFrameSelector(
+                        maxTimeFrame: props['maxTimeFrame'],
+                        onChange: onChangeTextField) : Container(),
                   )
                 ),
               ]);

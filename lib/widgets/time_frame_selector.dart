@@ -8,8 +8,10 @@ typedef Callback = void Function(String value);
 
 class TimeFrameSelector extends StatefulWidget {
   final Callback onChange;
+  final String maxTimeFrame;
 
-  const TimeFrameSelector({Key key, this.onChange}) : super(key: key);
+  const TimeFrameSelector({Key key, this.maxTimeFrame = '1Y', this.onChange})
+      : super(key: key);
 
   @override
   TimeFrameSelectorWidgetState createState() => TimeFrameSelectorWidgetState();
@@ -61,16 +63,20 @@ class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
 
   @override
   Widget build(BuildContext context) {
+    final timeFrames = ['1H', '1D', '1W', '1M', '1Y', '5Y'];
+    final widgets = <Widget>[];
+
+    for (var t in timeFrames) {
+      widgets.add(_buildItem(t));
+      if (t == widget.maxTimeFrame) {
+        break;
+      }
+    }
+
     return new Row(
-      crossAxisAlignment: CrossAxisAlignment.center ,
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly ,
-      children: <Widget>[
-        _buildItem('1H'),
-        _buildItem('1D'),
-        _buildItem('1W'),
-        _buildItem('1M'),
-        _buildItem('1Y'),
-        _buildItem('5Y')]
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: widgets
     );
   }
 }
