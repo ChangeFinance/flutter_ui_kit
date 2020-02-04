@@ -22,14 +22,14 @@ void main() {
       await tester.pumpWidget(wrapInMaterialApp(
           TimeFrameSelector(onChange: onChangeTextField)
       ));
-      expect(find.byType(TextButton).evaluate().length, 4);
+      expect(find.byType(TextButton).evaluate().length, 5);
       expect(find.byType(FilledButton).evaluate().length, 1);
       final initFilledButton = tester.widget(find.byType(FilledButton));
       final FilledButton initContainerWidget = initFilledButton;
       expect(initContainerWidget.text, '1D');
       await tester.tap(find.text('1Y'));
       await tester.pump();
-      expect(find.byType(TextButton).evaluate().length, 4);
+      expect(find.byType(TextButton).evaluate().length, 5);
       expect(find.byType(FilledButton).evaluate().length, 1);
       final widget = tester.widget(find.byType(FilledButton));
       final FilledButton containerWidget = widget;
@@ -45,12 +45,12 @@ void main() {
           TimeFrameSelector(key: timeFrameSelectorKey, onChange: onChangeTextField)
       ));
       expect(find.byType(TimeFrameSelector), findsOneWidget);
-      expect(find.byType(TextButton).evaluate().length, 4);
+      expect(find.byType(TextButton).evaluate().length, 5);
       expect(find.byType(FilledButton).evaluate().length, 1);
       await tester.tap(find.text('1Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.periodValue, '1Y');
+      expect(timeFrameSelectorKey.currentState.selectedTimeFrame, TimeFrame.ONE_YEAR);
 
     });
 
@@ -58,7 +58,7 @@ void main() {
       void onChangeTextField(String value) {
       }
       await tester.pumpWidget(wrapInMaterialApp(
-          TimeFrameSelector(maxTimeFrame: '5Y', onChange: onChangeTextField)
+          TimeFrameSelector(maxTimeFrame: TimeFrame.FIVE_YEARS, onChange: onChangeTextField)
       ));
       expect(find.byType(TimeFrameSelector), findsOneWidget);
       expect(find.byType(TextButton).evaluate().length, 5);
@@ -69,28 +69,75 @@ void main() {
       expect(find.text('5Y'), findsOneWidget);
     });
 
-    testWidgets('can hide 5 years option', (WidgetTester tester) async {
+    testWidgets('can disable 5 years option', (WidgetTester tester) async {
+      final timeFrameSelectorKey = new GlobalKey<
+          TimeFrameSelectorWidgetState>();
+
       void onChangeTextField(String value) {
       }
       await tester.pumpWidget(wrapInMaterialApp(
-          TimeFrameSelector(maxTimeFrame: '1Y', onChange: onChangeTextField)
+          TimeFrameSelector(key: timeFrameSelectorKey,
+              maxTimeFrame: TimeFrame.ONE_YEAR,
+              onChange: onChangeTextField)
       ));
       expect(find.byType(TimeFrameSelector), findsOneWidget);
       expect(find.text('1Y'), findsOneWidget);
-      expect(find.text('5Y'), findsNothing);
+      expect(find.text('5Y'), findsOneWidget);
+
+      await tester.tap(find.text('1Y'));
+      await tester.pump();
+
+      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+          TimeFrame.ONE_YEAR);
+
+      await tester.tap(find.text('5Y'));
+      await tester.pump();
+
+      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+          TimeFrame.ONE_YEAR);
     });
 
     testWidgets(
-        'can hide 1 year and 5 years options', (WidgetTester tester) async {
+        'can disable 1 year and 5 years options', (WidgetTester tester) async {
+      final timeFrameSelectorKey = new GlobalKey<
+          TimeFrameSelectorWidgetState>();
+
       void onChangeTextField(String value) {
       }
       await tester.pumpWidget(wrapInMaterialApp(
-          TimeFrameSelector(maxTimeFrame: '1M', onChange: onChangeTextField)
+          TimeFrameSelector(key: timeFrameSelectorKey,
+              maxTimeFrame: TimeFrame.ONE_YEAR,
+              onChange: onChangeTextField)
       ));
+
       expect(find.byType(TimeFrameSelector), findsOneWidget);
       expect(find.text('1M'), findsOneWidget);
-      expect(find.text('1Y'), findsNothing);
-      expect(find.text('5Y'), findsNothing);
+      expect(find.text('1Y'), findsOneWidget);
+      expect(find.text('5Y'), findsOneWidget);
+
+      await tester.tap(find.text('1W'));
+      await tester.pump();
+
+      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+          TimeFrame.ONE_WEEK);
+
+      await tester.tap(find.text('1M'));
+      await tester.pump();
+
+      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+          TimeFrame.ONE_MONTH);
+
+      await tester.tap(find.text('1Y'));
+      await tester.pump();
+
+      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+          TimeFrame.ONE_MONTH);
+
+      await tester.tap(find.text('5Y'));
+      await tester.pump();
+
+      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+          TimeFrame.ONE_MONTH);
     });
 
   });
