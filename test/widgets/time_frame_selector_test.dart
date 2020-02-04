@@ -106,7 +106,7 @@ void main() {
       }
       await tester.pumpWidget(wrapInMaterialApp(
           TimeFrameSelector(key: timeFrameSelectorKey,
-              maxTimeFrame: TimeFrame.ONE_YEAR,
+              maxTimeFrame: TimeFrame.ONE_MONTH,
               onChange: onChangeTextField)
       ));
 
