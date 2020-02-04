@@ -51,10 +51,16 @@ class Graphs extends StatelessWidget {
               'labelPrefix': '€',
               'enableGradient': true,
               'lineColor': 'Green',
-              'showTimeFrameSelector': true
+              'showTimeFrameSelector': true,
+              'defaultTimeFrame': '1D',
+              'maxTimeFrame': '1Y'
 
             },
             formBuilder: (context, props, updateProp) {
+              final timeFrames = <String>[];
+              for (var timeFrame in TimeFrame.values) {
+                timeFrames.add(TimeFrameHelper.getValue(timeFrame));
+              }
               return ListView(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -85,6 +91,18 @@ class Graphs extends StatelessWidget {
                     updateProp: updateProp,
                     propKey: 'labelPrefix',
                   ),
+                  DropdownPropUpdater(
+                    props: props,
+                    updateProp: updateProp,
+                    propKey: 'defaultTimeFrame',
+                    options: timeFrames,
+                  ),
+                  DropdownPropUpdater(
+                    props: props,
+                    updateProp: updateProp,
+                    propKey: 'maxTimeFrame',
+                    options: timeFrames,
+                  ),
                 ]
               );
             },
@@ -103,10 +121,15 @@ class Graphs extends StatelessWidget {
                   )
                 ),
                 Container(
-                  height:35.0,
-                  child: Center(
-                    child: props['showTimeFrameSelector'] ? TimeFrameSelector(onChange: onChangeTextField) : Container(),
-                  )
+                    height: 35.0,
+                    child: Center(
+                      child: props['showTimeFrameSelector'] ? TimeFrameSelector(
+                          defaultTimeFrame: TimeFrameHelper.getKey(
+                              props['defaultTimeFrame']),
+                          maxTimeFrame: TimeFrameHelper.getKey(
+                              props['maxTimeFrame']),
+                          onChange: onChangeTextField) : Container(),
+                    )
                 ),
               ]);
             }
