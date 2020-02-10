@@ -96,6 +96,13 @@ class AppText {
       letterSpacing: 0,
       color: AppColor.deepBlack);
 
+  static const TextStyle newsSourceTime = TextStyle(
+      fontSize: 16.0,
+      fontFamily: 'Circular',
+      fontWeight: FontWeight.normal,
+      letterSpacing: 0,
+      color: AppColor.semiGrey);
+
   static const TextStyle button1 = AppText.body1;
   static const TextStyle button2 = AppText.body2;
   static const TextStyle button3 = AppText.body3;
