@@ -12,6 +12,7 @@ import 'package:flutter_ui_kit/stories/indicators.dart';
 import 'package:flutter_ui_kit/stories/info_box.dart';
 import 'package:flutter_ui_kit/stories/inputs.dart';
 import 'package:flutter_ui_kit/stories/layouts.dart';
+import 'package:flutter_ui_kit/stories/listItems.dart';
 import 'package:flutter_ui_kit/stories/loader.dart';
 import 'package:flutter_ui_kit/stories/numpads.dart';
 import 'package:flutter_ui_kit/stories/pin_views.dart';
@@ -44,6 +45,7 @@ void main() {
           Inputs(),
           Buttons(),
           Badges(),
+          ListItems(),
           NumPads(),
           AppCards(),
           Popover(),
