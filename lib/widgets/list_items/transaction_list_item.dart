@@ -56,7 +56,7 @@ class TransactionListItem extends StatelessWidget {
   }
 
   Widget _body(BuildContext context, double screenWidth) {
-    final maxAmountWidth = screenWidth - 200;
+    final maxAmountWidth = screenWidth - 184;
     final amountFieldWidth = _amountFieldWidth();
 
     final width = amountFieldWidth < maxAmountWidth ? amountFieldWidth : maxAmountWidth;
@@ -80,6 +80,7 @@ class TransactionListItem extends StatelessWidget {
             const SizedBox(width: 16.0,),
             Expanded(
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -133,7 +134,7 @@ class TransactionListItem extends StatelessWidget {
 
     return amountDecoration == AmountDecoration.NO
         ? _blackTextStyle()
-        : _blackTextStyle().copyWith(color: AppColor.deepGreen);
+        : _blackTextStyle().copyWith(color: AppColor.deepGreen, height: 1.0);
   }
 
   TextStyle _secondAmountStyle() {
@@ -196,19 +197,24 @@ class TransactionListItem extends StatelessWidget {
 
     return amountDecoration == AmountDecoration.BADGE
         ? Container(
-          decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+        height: 24.0,
+        decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(12.0)),
             color: AppColor.greenLight),
-          width: amountFieldWidth,
-          constraints: BoxConstraints(maxWidth: maxAmountWidth),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(amount,
-              textAlign: TextAlign.center,
+        width: amountFieldWidth,
+        constraints: BoxConstraints(maxWidth: maxAmountWidth),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+            Text(amount,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: _amountStyle(),),
-          ),)
+        ])))
         : textWidget;
   }
 
