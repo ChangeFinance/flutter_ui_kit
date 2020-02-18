@@ -47,18 +47,15 @@ class TransactionListItem extends StatelessWidget {
                 )
             ),
             alignment: Alignment.centerLeft,
-            constraints: BoxConstraints(
-                minWidth: minRowWidth,
-                maxWidth: screenWidth
-            ),
+            width: screenWidth,
             child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24.0),
-                child: _row(context, screenWidth)
+                child: _body(context, screenWidth)
             )
         ));
   }
 
-  Widget _row(BuildContext context, double screenWidth) {
+  Widget _body(BuildContext context, double screenWidth) {
     final maxAmountWidth = screenWidth - 200;
     final amountFieldWidth = _amountFieldWidth();
 
@@ -66,58 +63,52 @@ class TransactionListItem extends StatelessWidget {
     final maxTitleWidth = screenWidth - paddingsAndIcon - width;
 
     var minTitleWidth = _titleTextSize(title, _titleTextStyle(), maxTitleWidth).width;
-//    if (minTitleWidth == maxTitleWidth) {
-//      final textBox = _calcTextBox(context, BoxConstraints(maxWidth: 400, maxHeight: 48), title);
-//      var minTitleWidth = textBox.right - textBox.left + 30;
-//    }
-
-    //_titleTextSize(title, _titleTextStyle(), maxTitleWidth).width;
     final minSubTitleWidth = _textSize(subTitle, _semiGreyTextStyle()).width;
     if (minSubTitleWidth < maxTitleWidth &&  minSubTitleWidth > minTitleWidth) {
       minTitleWidth = minSubTitleWidth;
     }
 
-    //final test = _calcTextBox(context, BoxConstraints(maxWidth: maxTitleWidth), title);
-
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Row(
+          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             transactionIcon,
             const SizedBox(width: 16.0,),
-            _getTitle(maxTitleWidth, minTitleWidth),
-            const SizedBox(width: 16.0,),
-            _getAmount(amountFieldWidth, maxAmountWidth)
+            Expanded(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  _getTitle(maxTitleWidth, minTitleWidth),
+                  const SizedBox(width: 16.0,),
+                  _getAmount(amountFieldWidth, maxAmountWidth)
+                ],
+              ),
+            )
           ],
         ),
         const SizedBox(width: 4.0,),
         Row(
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             const SizedBox(width: 40.0,),
-            _getSubTitle(maxTitleWidth, minTitleWidth),
-            const SizedBox(width: 16.0,),
-            secondAmount != null ? _getSecondAmount(amountFieldWidth, maxAmountWidth) : Container()
+            Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    _getSubTitle(maxTitleWidth, minTitleWidth),
+                    const SizedBox(width: 16.0,),
+                    secondAmount != null ? _getSecondAmount(amountFieldWidth, maxAmountWidth) : Container()
+                  ],
+                )),
           ],
         )
       ],
     );
-  }
-
-  TextBox _calcTextBox(BuildContext context, BoxConstraints constraints, String text) {
-    final textWidget = TextSpan(text: text, style: _titleTextStyle());
-    // ignore: avoid_as
-    final richTextWidget = Text.rich(
-      textWidget,
-      maxLines: 2,
-      overflow: TextOverflow.ellipsis,).build(context) as RichText;
-    final renderObject = richTextWidget.createRenderObject(context);
-    renderObject.layout(constraints);
-    final lastBox = renderObject
-        .getBoxesForSelection(TextSelection(
-        baseOffset: 0, extentOffset: textWidget.toPlainText().length))
-        .last;
-    return lastBox;
   }
 
   double _amountFieldWidth() {
@@ -206,7 +197,7 @@ class TransactionListItem extends StatelessWidget {
     return amountDecoration == AmountDecoration.BADGE
         ? Container(
           decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(12.0)),
             color: AppColor.greenLight),
           width: amountFieldWidth,
           constraints: BoxConstraints(maxWidth: maxAmountWidth),
@@ -235,19 +226,21 @@ class TransactionListItem extends StatelessWidget {
 
   TextStyle _semiGreyTextStyle() {
     return TextStyle(
+        height: 1.5,
         fontSize: 16.0,
         fontFamily: 'Circular',
         fontWeight: FontWeight.normal,
-        //letterSpacing: 0.02,
+        letterSpacing: 0.02,
         color: AppColor.semiGrey);
   }
 
   TextStyle _blackTextStyle() {
     return TextStyle(
+        height: 1.5,
         fontSize: 16.0,
         fontFamily: 'Circular',
         fontWeight: FontWeight.normal,
-        //letterSpacing: 0.02,
+        letterSpacing: 0.02,
         color: AppColor.deepBlack);
   }
 }
