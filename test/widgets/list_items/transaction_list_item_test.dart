@@ -26,7 +26,7 @@ void main() {
       final Container containerWidget = widget;
       final BoxDecoration decoration = containerWidget.decoration;
       expect(decoration.color, AppColor.greenLight);
-      expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(8.0)));
+      expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(12.0)));
     });
 
     testWidgets('renders transaction list item with two amounts', (WidgetTester tester) async {
