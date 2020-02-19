@@ -4,7 +4,7 @@ import 'package:flutter_ui_kit/ui/app_bar.dart';
 
 import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/color.dart';
-import 'package:flutter_ui_kit/widgets/layout/SwipeConfirmation.dart';
+import 'package:flutter_ui_kit/widgets/layout/swipe_confirmation.dart';
 
 enum SwipeMode { swipe, static }
 
