@@ -188,7 +188,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
         child: Container(
           width: double.infinity,
           height: swiperBaseHeight + swiperHeightOffsetYFromAnimation(_heightAnimation.value),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: AppColor.green,
             borderRadius: const BorderRadius.only(
               topLeft: const Radius.circular(20),
