@@ -18,6 +18,7 @@ import 'package:flutter_ui_kit/stories/numpads.dart';
 import 'package:flutter_ui_kit/stories/pin_views.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
 import 'package:flutter_ui_kit/stories/sliders.dart';
+import 'package:flutter_ui_kit/stories/top_movers_cards.dart';
 import 'package:flutter_ui_kit/stories/typography.dart';
 import 'package:flutter_ui_kit/stories/icons.dart';
 import 'package:flutter_ui_kit/stories/wizard.dart';
@@ -31,7 +32,6 @@ import 'package:flutter_ui_kit/widgets/layout/sliver_template.dart';
 import 'package:flutter_ui_kit/widgets/sliver_widgets.dart';
 import 'package:flutter_ui_kit/stories/progress_indicators.dart';
 import 'package:flutter_ui_kit/stories/password_validators.dart';
-import 'package:flutter_ui_kit/widgets/top_movers/top_movers_card.dart';
 
 void main() {
   runApp(
@@ -71,12 +71,7 @@ void main() {
           Indicators(),
           PinViews(),
           Loaders(),
-          const TopMoversCard(
-            currencyName: 'Bitcoin',
-            currencyCode: 'BTC',
-            percentage: '600.1%',
-            isGrowing: true
-          )
+          TopMoversCards()
         ],
       ),
     ),
