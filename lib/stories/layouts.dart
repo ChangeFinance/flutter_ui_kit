@@ -1,4 +1,3 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui_kit/widgets.dart';
@@ -379,12 +378,7 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
       completeScreenLabelIcon: const SizedBox(
         width: 100,
         height: 100,
-        child: const FlareActor(
-          'lib/assets/animations/change_checkmark.flr',
-          isPaused: false,
-          animation: 'Animations',
-          fit: BoxFit.contain,
-        ),
+        child: const Text('ICON', style: const TextStyle(color: Colors.white)),
       ),
       completionPrimaryButtonAction: () {
         Navigator.of(context).pop();
