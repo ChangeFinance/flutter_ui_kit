@@ -76,7 +76,10 @@ class TransactionListItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            transactionIcon,
+            Padding(
+              padding: const EdgeInsets.only(top: 1.0),
+              child: transactionIcon,
+            ),
             const SizedBox(width: 16.0,),
             Expanded(
               child: Row(
@@ -116,13 +119,15 @@ class TransactionListItem extends StatelessWidget {
     var textBoxForAmountWidth = _textSize(amount, _amountStyle()).width;
     if (amountDecoration == AmountDecoration.BADGE) {
       textBoxForAmountWidth = textBoxForAmountWidth + 16.0;
+    } else {
+      textBoxForAmountWidth = textBoxForAmountWidth + 8;
     }
 
     if (secondAmount == null || secondAmount.isEmpty) {
       return textBoxForAmountWidth;
     }
 
-    final textBoxForSecondAmountWidth = _textSize(secondAmount, _secondAmountStyle()).width;
+    final textBoxForSecondAmountWidth = _textSize(secondAmount, _secondAmountStyle()).width + 8;
     return textBoxForAmountWidth > textBoxForSecondAmountWidth
         ? textBoxForAmountWidth : textBoxForSecondAmountWidth;
   }
@@ -188,12 +193,14 @@ class TransactionListItem extends StatelessWidget {
     final textWidget = Container(
         width: amountFieldWidth,
         constraints: BoxConstraints(maxWidth: maxAmountWidth),
-        child: Text(amount,
-          textAlign: TextAlign.right,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: _amountStyle(),)
-    );
+        child: Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Text(amount,
+              textAlign: TextAlign.right,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: _amountStyle(),)
+        ));
 
     return amountDecoration == AmountDecoration.BADGE
         ? Container(
@@ -204,17 +211,17 @@ class TransactionListItem extends StatelessWidget {
         width: amountFieldWidth,
         constraints: BoxConstraints(maxWidth: maxAmountWidth),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-            Text(amount,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: _amountStyle(),),
-        ])))
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Row(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(amount,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: _amountStyle(),),
+                ])))
         : textWidget;
   }
 
@@ -222,12 +229,14 @@ class TransactionListItem extends StatelessWidget {
     return Container(
         width: amountFieldWidth,
         constraints: BoxConstraints(maxWidth: maxAmountWidth),
-        child: Text(secondAmount,
-          textAlign: TextAlign.right,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: _secondAmountStyle(),)
-    );
+        child: Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Text(secondAmount,
+              textAlign: TextAlign.right,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: _secondAmountStyle(),)
+        ));
   }
 
   TextStyle _semiGreyTextStyle() {
