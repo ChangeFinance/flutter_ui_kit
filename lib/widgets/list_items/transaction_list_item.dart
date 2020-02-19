@@ -205,7 +205,7 @@ class TransactionListItem extends StatelessWidget {
     return amountDecoration == AmountDecoration.BADGE
         ? Container(
         height: 24.0,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(12.0)),
             color: AppColor.greenLight),
         width: amountFieldWidth,
@@ -240,7 +240,7 @@ class TransactionListItem extends StatelessWidget {
   }
 
   TextStyle _semiGreyTextStyle() {
-    return TextStyle(
+    return const TextStyle(
         height: 1.5,
         fontSize: 16.0,
         fontFamily: 'Circular',
@@ -250,7 +250,7 @@ class TransactionListItem extends StatelessWidget {
   }
 
   TextStyle _blackTextStyle() {
-    return TextStyle(
+    return const TextStyle(
         height: 1.5,
         fontSize: 16.0,
         fontFamily: 'Circular',
