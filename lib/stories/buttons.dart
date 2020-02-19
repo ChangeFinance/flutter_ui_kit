@@ -1,3 +1,4 @@
+import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
@@ -82,8 +83,7 @@ class Buttons extends StatelessWidget {
 
           if (props['taskDuration'] != null && props['enabled'] != false) {
             onPressed = () async {
-              await Future<void>.delayed(
-                  Duration(milliseconds: props['taskDuration']));
+              await Future<void>.delayed(Duration(milliseconds: props['taskDuration']));
             };
           }
 
@@ -108,6 +108,7 @@ class Buttons extends StatelessWidget {
           'fullWidth': false,
           'narrow': false,
           'taskDuration': 300,
+          'alt': false,
         },
         formBuilder: (context, props, updateProp) {
           return ListView(
@@ -140,6 +141,11 @@ class Buttons extends StatelessWidget {
                 updateProp: updateProp,
                 propKey: 'narrow',
               ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'alt',
+              ),
             ],
           );
         },
@@ -152,16 +158,21 @@ class Buttons extends StatelessWidget {
 
           if (props['taskDuration'] != null && props['enabled'] != false) {
             onPressed = () async {
-              await Future<void>.delayed(
-                  Duration(milliseconds: props['taskDuration']));
+              await Future<void>.delayed(Duration(milliseconds: props['taskDuration']));
             };
           }
 
-          return OutlinedButton(
-            props['text'],
-            onPressed: onPressed,
-            fullWidth: props['fullWidth'],
-            narrow: props['narrow'],
+          return Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            color: props['alt'] ? AppColor.green : Colors.white,
+            child: OutlinedButton(
+              props['text'],
+              onPressed: onPressed,
+              fullWidth: props['fullWidth'],
+              narrow: props['narrow'],
+              alt: props['alt'],
+            ),
           );
         },
       ),
@@ -176,6 +187,7 @@ class Buttons extends StatelessWidget {
           'text': 'Activate',
           'enabled': true,
           'taskDuration': 300,
+          'alt': false,
         },
         formBuilder: (context, props, updateProp) {
           return ListView(
@@ -198,6 +210,11 @@ class Buttons extends StatelessWidget {
                 updateProp: updateProp,
                 propKey: 'enabled',
               ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'alt',
+              ),
             ],
           );
         },
@@ -210,14 +227,18 @@ class Buttons extends StatelessWidget {
 
           if (props['taskDuration'] != null && props['enabled'] != false) {
             onPressed = () async {
-              await Future<void>.delayed(
-                  Duration(milliseconds: props['taskDuration']));
+              await Future<void>.delayed(Duration(milliseconds: props['taskDuration']));
             };
           }
 
-          return TextButton(
-            props['text'],
-            onPressed: onPressed,
+          return Container(
+            width: double.infinity,
+            color: props['alt'] ? AppColor.green : Colors.white,
+            child: TextButton(
+              props['text'],
+              onPressed: onPressed,
+              alt: props['alt'],
+            ),
           );
         },
       ),
@@ -234,7 +255,7 @@ class Buttons extends StatelessWidget {
       title: 'Switcher button',
       child: PropsExplorer(
         initialProps: const <String, dynamic>{
-          'buttonLabels': <String>['BTC','EUR','ETH'],
+          'buttonLabels': <String>['BTC', 'EUR', 'ETH'],
         },
         formBuilder: (context, props, updateProp) {
           return ListView(
