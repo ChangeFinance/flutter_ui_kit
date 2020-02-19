@@ -19,6 +19,8 @@ class AppColor {
   static Color paleGreen = green.withOpacity(0.2);
   static const Color darkerGreen = Color(0xFF39CCA8);
   static const Color brightGreen = Color(0xFF4CE2A7);
+  static const Color greenLight = Color(0xFFD8F8F0);
+  static const Color deepGreen = Color(0xFF19866B);
 
   static const Color deepBlack = Color(0xFF000000);
   static const Color deepWhite = Color(0xFFFFFFFF);
