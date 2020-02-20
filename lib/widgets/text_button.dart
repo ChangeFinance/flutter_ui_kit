@@ -8,12 +8,14 @@ class TextButton extends StatefulWidget {
   final FutureCallback onPressed;
   final EdgeInsetsGeometry padding;
   final TextStyle textStyle;
+  final bool alt;
 
   TextButton(
     this.text, {
     @required this.onPressed,
     this.padding,
     this.textStyle,
+    this.alt = false,
     Key key,
   })  : assert(text != null),
         super(key: key);
@@ -38,23 +40,24 @@ class _TextButtonState extends State<TextButton> with ButtonMixin {
       child: FlatButton(
         child: Text(
           widget.text,
-          style:  (widget.textStyle != null) ? widget.textStyle :
-              Theme.of(context).textTheme.body1.copyWith(
-                color: getTextColorOnWhiteBackground(
-                  enabled: _enabled,
-                  pressing: _pressing,
-                  onPressed: widget.onPressed,
-                ),
-                fontSize: 12.0,
-              ),
+          style: (widget.textStyle != null)
+              ? widget.textStyle
+              : Theme.of(context).textTheme.body1.copyWith(
+                    color: !widget.alt
+                        ? getTextColorOnWhiteBackground(
+                            enabled: _enabled,
+                            pressing: _pressing,
+                            onPressed: widget.onPressed,
+                          )
+                        : (_enabled ? Colors.white : AppColor.mediumGrey),
+                    fontSize: 12.0,
+                  ),
         ),
         onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
             ? null
-            : () => disableButtonWhileOnPressedExecutes(
-                setEnabled: _setEnabled, onPressed: widget.onPressed),
-        textColor: AppColor.green,
-        padding: widget.padding ??
-            const EdgeInsets.symmetric(vertical: 17.5, horizontal: 18.5),
+            : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed),
+        textColor: widget.alt ? Colors.white : AppColor.green,
+        padding: widget.padding ?? const EdgeInsets.symmetric(vertical: 17.5, horizontal: 18.5),
       ),
     );
   }

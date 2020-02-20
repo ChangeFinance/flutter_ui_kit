@@ -15,14 +15,14 @@ class _LoadersState extends State<Loaders> {
   Widget build(BuildContext context) {
     pr = new ChangeProgressDialog(context);
 
-    pr.style(progressWidget:const CircularProgressIndicator());
+    pr.style(progressWidget: const CircularProgressIndicator());
 
     return Scaffold(
       body: Center(
         child: RaisedButton(
-            child: Text(
+            child: const Text(
               'Show loader',
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
             color: Colors.blue,
             onPressed: () {
