@@ -74,7 +74,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
         setState(() {
           final screenHeight = MediaQuery.of(context).size.height;
           final dragDistance = screenHeight * _controller.value;
-          if (dragDistance >= dragDistanceThreshold && isSwipingUp) {
+          if (dragDistance >= dragDistanceThreshold && isSwipingUp && !isTouchingScreen) {
             canShowConfirmView = true;
             _slideInController.forward();
           } else if (!isSwipingUp) {
@@ -239,9 +239,12 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
     );
   }
 
+  bool isTouchingScreen = false;
+
   void _onVerticalDragStart(DragStartDetails details) {
     debugPrint('Drag Start -> Global position: ${details.globalPosition}, Local position: ${details.localPosition}');
     setState(() {
+      isTouchingScreen = true;
       dyStartPosition = details.globalPosition.dy;
     });
   }
@@ -251,6 +254,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
     debugPrint(
         'Drag Update -> Global position: ${details.globalPosition}, Local position: ${details.localPosition}, Delta: ${details.primaryDelta}');
     setState(() {
+      isTouchingScreen = true;
       dyEndPosition = details.globalPosition.dy;
       isSwipingUp = details.primaryDelta <= 0;
     });
@@ -261,7 +265,9 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
   void _onVerticalDragEnd(DragEndDetails details) {
     debugPrint('Drag End -> Primary velocity: ${details.primaryVelocity}, Velocity: ${details.velocity}');
     debugPrint('DRAG DISTANCE -> ${(dyStartPosition - dyEndPosition).abs()}');
-
+    setState(() {
+      isTouchingScreen = false;
+    });
     final dragDistance = (dyStartPosition - dyEndPosition).abs();
     if (details.velocity.pixelsPerSecond.dy.abs() > 1000 && isSwipingUp) {
       _controller.animateTo(1, curve: Curves.easeOut, duration: const Duration(milliseconds: 250));
