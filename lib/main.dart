@@ -18,6 +18,7 @@ import 'package:flutter_ui_kit/stories/numpads.dart';
 import 'package:flutter_ui_kit/stories/pin_views.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
 import 'package:flutter_ui_kit/stories/sliders.dart';
+import 'package:flutter_ui_kit/stories/top_movers_cards.dart';
 import 'package:flutter_ui_kit/stories/typography.dart';
 import 'package:flutter_ui_kit/stories/icons.dart';
 import 'package:flutter_ui_kit/stories/wizard.dart';
@@ -70,6 +71,7 @@ void main() {
           Indicators(),
           PinViews(),
           Loaders(),
+          TopMoversCards()
         ],
       ),
     ),
