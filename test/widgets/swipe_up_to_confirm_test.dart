@@ -11,7 +11,7 @@ void main() {
 
       setUp(() {
         final swipeUpView = SwipeUpToConfirmLayout(
-          body: Center(
+          body: const Center(
             child: const Text('Hello'),
           ),
           swiperDisplay: const Text('Swiper display'),
@@ -60,7 +60,7 @@ void main() {
         swipeUpCompleteAction = () {};
 
         final swipeUpView = SwipeUpToConfirmLayout(
-          body: Center(
+          body: const Center(
             child: const Text('Hello'),
           ),
           swiperDisplay: const Text('Swiper display'),
