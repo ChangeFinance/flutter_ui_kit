@@ -9,6 +9,7 @@ class OutlinedButton extends StatefulWidget {
   final bool fullWidth;
   final bool narrow;
   final EdgeInsetsGeometry padding;
+  final bool alt;
 
   OutlinedButton(
     this.text, {
@@ -16,6 +17,7 @@ class OutlinedButton extends StatefulWidget {
     this.fullWidth = false,
     this.narrow = false,
     this.padding,
+    this.alt = false,
     Key key,
   })  : assert(text != null),
         super(key: key);
@@ -43,23 +45,23 @@ class _OutlinedButtonState extends State<OutlinedButton> with ButtonMixin {
           child: Text(
             widget.text,
             style: Theme.of(context).textTheme.body1.copyWith(
-                  color: getTextColorOnWhiteBackground(
-                    enabled: _enabled,
-                    pressing: _pressing,
-                    onPressed: widget.onPressed,
-                  ),
-                  fontSize: getFontSize(
-                      narrow: widget.narrow, fullWidth: widget.fullWidth),
+                  color: !widget.alt
+                      ? getTextColorOnWhiteBackground(
+                          enabled: _enabled,
+                          pressing: _pressing,
+                          onPressed: widget.onPressed,
+                        )
+                      : (_enabled ? Colors.white : AppColor.mediumGrey),
+                  fontSize: getFontSize(narrow: widget.narrow, fullWidth: widget.fullWidth),
                 ),
           ),
           onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
               ? null
-              : () => disableButtonWhileOnPressedExecutes(
-                  setEnabled: _setEnabled, onPressed: widget.onPressed),
+              : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed),
           padding: widget.padding ?? getPadding(narrow: widget.narrow),
-          textColor: AppColor.green,
-          borderSide: const BorderSide(color: AppColor.green),
-          highlightedBorderColor: AppColor.green,
+          textColor: widget.alt ? Colors.white : AppColor.green,
+          borderSide: BorderSide(color: widget.alt ? Colors.white : AppColor.green),
+          highlightedBorderColor: widget.alt ? Colors.white : AppColor.green,
           disabledBorderColor: AppColor.mediumGrey,
         ),
       ),
