@@ -180,11 +180,15 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
       right: 0,
       bottom: 0,
       child: GestureDetector(
-        onVerticalDragStart:
-            widget.swipeMode == SwipeMode.static ? null : (swipeUpComplete ? null : _onVerticalDragStart),
-        onVerticalDragUpdate:
-            widget.swipeMode == SwipeMode.static ? null : (swipeUpComplete ? null : _onVerticalDragUpdate),
-        onVerticalDragEnd: widget.swipeMode == SwipeMode.static ? null : (swipeUpComplete ? null : _onVerticalDragEnd),
+        onVerticalDragStart: (widget.swipeMode == SwipeMode.static && !isTouchingScreen)
+            ? null
+            : (swipeUpComplete ? null : _onVerticalDragStart),
+        onVerticalDragUpdate: (widget.swipeMode == SwipeMode.static && !isTouchingScreen)
+            ? null
+            : (swipeUpComplete ? null : _onVerticalDragUpdate),
+        onVerticalDragEnd: (widget.swipeMode == SwipeMode.static && !isTouchingScreen)
+            ? null
+            : (swipeUpComplete ? null : _onVerticalDragEnd),
         child: Container(
           width: double.infinity,
           height: swiperBaseHeight + swiperHeightOffsetYFromAnimation(_heightAnimation.value),
