@@ -53,7 +53,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
   double dyStartPosition = 0;
   double dyEndPosition = 0;
   double dragDistanceThreshold = 150;
-  bool isSwipingUp = true;
+  bool isSwipingUp = false;
   bool swipeUpComplete = false;
   bool canShowConfirmView = false;
 
