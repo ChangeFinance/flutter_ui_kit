@@ -124,7 +124,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
   Widget build(BuildContext context) {
     return Scaffold(
       key: widget.scaffoldKey,
-      backgroundColor: Colors.white,
+      backgroundColor: swipeUpComplete ? AppColor.green : Colors.white,
       body: _buildBody(),
     );
   }
