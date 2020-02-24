@@ -6,6 +6,7 @@ import 'package:flutter_ui_kit/story_book/prop_updater/dropdown_prop_updater.dar
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/list_items/transaction_list_item.dart';
+import 'package:flutter_ui_kit/widgets/list_items/transaction_list_item_container.dart';
 
 const _primaryAmountDecorationList = ['NO', 'BADGE', 'CROSS_OUT'];
 const _secondaryAmountDecorationList = ['NO', 'CROSS_OUT'];
@@ -95,17 +96,33 @@ class ListItems extends StatelessWidget {
           widgetBuilder: (context, props) {
             return Column(mainAxisSize: MainAxisSize.min, children: [
               Container(
-                      child: TransactionListItem(
+                  child: TransactionListItemContainer(title: 'Today',
+                      transactionListItems: [TransactionListItem(
                         onPressed: null,
                         transactionIcon: const Icon(Icons.arrow_back),
                         amount: props['amount'],
-                        amountDecoration: _optionToAmountDecoration(props['amountDecoration']),
+                        amountDecoration: _optionToAmountDecoration(
+                            props['amountDecoration']),
                         secondAmount: props['secondAmount'],
-                        secondAmountDecoration: _optionToAmountDecoration(props['secondAmountDecoration']),
+                        secondAmountDecoration: _optionToAmountDecoration(
+                            props['secondAmountDecoration']),
+                        withDivider: props['withDivider'],
+                        title: props['title'],
+                        subTitle: props['subTitle'],
+                      ), TransactionListItem(
+                        onPressed: null,
+                        transactionIcon: const Icon(Icons.arrow_back),
+                        amount: props['amount'],
+                        amountDecoration: _optionToAmountDecoration(
+                            props['amountDecoration']),
+                        secondAmount: props['secondAmount'],
+                        secondAmountDecoration: _optionToAmountDecoration(
+                            props['secondAmountDecoration']),
                         withDivider: props['withDivider'],
                         title: props['title'],
                         subTitle: props['subTitle'],
                       )
+                      ])
               ),
             ]);
           }));
