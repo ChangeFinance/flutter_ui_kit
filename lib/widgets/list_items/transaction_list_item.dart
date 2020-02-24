@@ -134,7 +134,7 @@ class TransactionListItem extends StatelessWidget {
 
   TextStyle _amountStyle() {
     if (amountDecoration == AmountDecoration.CROSS_OUT) {
-      return _semiGreyTextStyle().copyWith(decoration: TextDecoration.lineThrough);
+      return _greyTextStyle().copyWith(decoration: TextDecoration.lineThrough);
     }
 
     return amountDecoration == AmountDecoration.NO
@@ -149,7 +149,7 @@ class TransactionListItem extends StatelessWidget {
   }
 
   TextStyle _titleTextStyle() {
-    return amountDecoration == AmountDecoration.CROSS_OUT ? _semiGreyTextStyle() : _blackTextStyle();
+    return amountDecoration == AmountDecoration.CROSS_OUT ? _greyTextStyle() : _blackTextStyle();
   }
 
   Widget _getTitle(double maxWidth, double minWidth) {
@@ -203,7 +203,7 @@ class TransactionListItem extends StatelessWidget {
         ));
 
     return amountDecoration == AmountDecoration.BADGE
-        ? Container(
+        ? Padding(padding: const EdgeInsets.only(top: 2.0), child: Container(
         height: 24.0,
         decoration: const BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(12.0)),
@@ -221,7 +221,7 @@ class TransactionListItem extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: _amountStyle(),),
-                ])))
+                ]))))
         : textWidget;
   }
 
@@ -241,8 +241,8 @@ class TransactionListItem extends StatelessWidget {
 
   TextStyle _semiGreyTextStyle() {
     return const TextStyle(
-        height: 1.5,
-        fontSize: 16.0,
+        height: 1.428,
+        fontSize: 14.0,
         fontFamily: 'Circular',
         fontWeight: FontWeight.normal,
         letterSpacing: 0.02,
@@ -257,5 +257,15 @@ class TransactionListItem extends StatelessWidget {
         fontWeight: FontWeight.normal,
         letterSpacing: 0.02,
         color: AppColor.deepBlack);
+  }
+
+  TextStyle _greyTextStyle() {
+    return const TextStyle(
+        height: 1.5,
+        fontSize: 16.0,
+        fontFamily: 'Circular',
+        fontWeight: FontWeight.normal,
+        letterSpacing: 0.02,
+        color: AppColor.semiGrey);
   }
 }
