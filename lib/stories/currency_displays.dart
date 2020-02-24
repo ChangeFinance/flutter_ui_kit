@@ -86,16 +86,23 @@ class CurrencyDisplays extends StatelessWidget {
     return ExpandableStory(
       title: 'Currency Switcher',
       child: PropsExplorer(
-        initialProps: const <String, dynamic>{},
+        initialProps: const <String, dynamic>{
+          'selectedCurrencyAmount': true
+        },
         formBuilder: (context, props, updateProp) {
           return ListView(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            children: const <Widget>[],
+            children: <Widget>[
+              BoolPropUpdater(
+                  props: props, updateProp: updateProp, propKey: 'selectedCurrencyAmount'),
+            ],
           );
         },
         widgetBuilder: (context, props) {
+          final bool oneAmount = props['selectedCurrencyAmount'];
           return CurrencySwitcher(
+            onlySwitchedAmount: oneAmount,
             amounts: const ['2012', '0.0045'],
             currencyInfoList: [
               CurrencyInfo(label: 'USD', symbol: '\$', prefix: true),
