@@ -19,12 +19,14 @@ class CurrencyInfo {
       {String symbol,
         String label,
         bool prefix,
-        String amount}) {
+        String amount
+      }) {
     return CurrencyInfo(
         symbol: symbol ?? this.symbol,
         label: label ?? this.label,
         prefix: prefix ?? this.prefix,
-        amount: amount ?? this.amount);
+        amount: amount ?? this.amount
+    );
   }
 }
 
@@ -32,11 +34,14 @@ class CurrencySwitcher extends StatefulWidget {
   final List<CurrencyInfo> currencyInfoList;
   final List<String> amounts;
   final Function(int) onSwitch;
+  final bool onlySwitchedAmount;
 
-  CurrencySwitcher(
-      {@required this.currencyInfoList,
-      @required this.amounts,
-      this.onSwitch})
+  CurrencySwitcher({
+        @required this.currencyInfoList,
+        @required this.amounts,
+        this.onSwitch,
+        this.onlySwitchedAmount = false
+      })
       : assert(currencyInfoList != null && currencyInfoList.length == 2);
 
   @override
@@ -112,8 +117,8 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: _currentIndex == 0 ? [first, const SizedBox(height: 6,), second]
-          : [second, const SizedBox(height: 6,), first],
+      children: _currentIndex == 0 ? [first, const SizedBox(height: 6,), widget.onlySwitchedAmount ? Container() : second]
+          : [second, const SizedBox(height: 6,), widget.onlySwitchedAmount ? Container() : first],
     );
   }
 
