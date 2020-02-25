@@ -34,6 +34,7 @@ class TransactionListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fixedTitle = title.replaceAll(RegExp(' +'), ' ');
     final screenWidth = MediaQuery.of(context).size.width -
         MediaQuery.of(context).padding.horizontal;
     return GestureDetector(
@@ -50,10 +51,10 @@ class TransactionListItem extends StatelessWidget {
             width: screenWidth,
             child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: _body(context, screenWidth))));
+                child: _body(context, screenWidth, fixedTitle))));
   }
 
-  Widget _body(BuildContext context, double screenWidth) {
+  Widget _body(BuildContext context, double screenWidth, String fixedTitle) {
     final maxAmountWidth = screenWidth - 184;
     final amountFieldWidth = _amountFieldWidth();
 
@@ -62,7 +63,7 @@ class TransactionListItem extends StatelessWidget {
     final maxTitleWidth = screenWidth - paddingsAndIcon - width;
 
     var minTitleWidth =
-        _titleTextSize(title, _titleTextStyle(), maxTitleWidth).width;
+        _titleTextSize(fixedTitle, _titleTextStyle(), maxTitleWidth).width;
     final minSubTitleWidth = _textSize(subTitle, _semiGreyTextStyle()).width;
     if (minSubTitleWidth < maxTitleWidth && minSubTitleWidth > minTitleWidth) {
       minTitleWidth = minSubTitleWidth;
@@ -89,7 +90,7 @@ class TransactionListItem extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  _getTitle(maxTitleWidth, minTitleWidth),
+                  _getTitle(fixedTitle, maxTitleWidth, minTitleWidth),
                   const SizedBox(
                     width: 16.0,
                   ),
@@ -168,14 +169,14 @@ class TransactionListItem extends StatelessWidget {
         : _blackTextStyle();
   }
 
-  Widget _getTitle(double maxWidth, double minWidth) {
+  Widget _getTitle(String fixedTitle, double maxWidth, double minWidth) {
     return Padding(
         padding: const EdgeInsets.only(top: 2),
         child: Container(
           width: minWidth,
           constraints: BoxConstraints(maxWidth: maxWidth),
           child: Text(
-            title,
+            fixedTitle,
             textAlign: TextAlign.left,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,

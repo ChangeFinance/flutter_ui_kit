@@ -73,5 +73,21 @@ void main() {
       final BoxDecoration decoration = containerWidget.decoration;
       expect(decoration.border.bottom.color, AppColor.lightestGrey);
     });
+
+    testWidgets(
+        'should trim unnecessary empty spaces', (WidgetTester tester) async {
+      await tester.pumpWidget(wrapInMaterialApp(
+          const TransactionListItem(
+            onPressed: null,
+            transactionIcon: Icon(Icons.arrow_back),
+            title: 'Buy           Bitcoin   Now',
+            subTitle: '14 Jan',
+            amount: '+ 0.04 BTC',
+            amountDecoration: AmountDecoration.BADGE,
+            withDivider: true,
+          )
+      ));
+      expect(find.text('Buy Bitcoin Now'), findsOneWidget);
+    });
   });
 }
