@@ -19,9 +19,9 @@ class TransactionListItemContainer extends StatelessWidget {
     widgets.addAll(transactionListItems);
 
     return Container(
-        decoration: BoxDecoration(
-            border: Border(
-          bottom: BorderSide(width: 1.0, color: AppColor.lightestGrey),
+        decoration: const BoxDecoration(
+            border: const Border(
+          bottom: const BorderSide(width: 1.0, color: AppColor.lightestGrey),
         )),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start, children: widgets));
