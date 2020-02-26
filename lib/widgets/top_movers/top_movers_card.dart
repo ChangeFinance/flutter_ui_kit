@@ -28,7 +28,7 @@ class TopMoversCard extends StatelessWidget {
     return AppCard(
         color: AppColor.deepWhite,
         elevation: 2,
-        margin: const EdgeInsets.all(15),
+        margin: const EdgeInsets.only(left: 15, top: 15, bottom: 15),
         borderRadius: 4,
         child: Container(
             width: 130,
