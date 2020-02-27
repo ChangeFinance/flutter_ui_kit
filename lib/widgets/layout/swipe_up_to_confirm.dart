@@ -154,7 +154,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
         offset: Offset(0, -swiperHeightOffsetYFromAnimation(_heightAnimation.value)),
         child: Column(
           children: <Widget>[
-            const MainAppBar(centerTitle: true, title: const Text('Confirm limit order', style: AppText.header3)),
+            MainAppBar(centerTitle: true, title: Text(widget.title, style: AppText.header3)),
             _buildContent(),
           ],
         ),
