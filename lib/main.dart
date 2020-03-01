@@ -15,6 +15,7 @@ import 'package:flutter_ui_kit/stories/label_value_pairs.dart';
 import 'package:flutter_ui_kit/stories/layouts.dart';
 import 'package:flutter_ui_kit/stories/listItems.dart';
 import 'package:flutter_ui_kit/stories/loader.dart';
+import 'package:flutter_ui_kit/stories/new_typography.dart';
 import 'package:flutter_ui_kit/stories/numpads.dart';
 import 'package:flutter_ui_kit/stories/pin_views.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
@@ -43,6 +44,7 @@ void main() {
         pages: [
           Animations(),
           AppColors(),
+          NewTypography(),
           AppTypography(),
           Inputs(),
           Buttons(),
