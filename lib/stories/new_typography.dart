@@ -69,14 +69,18 @@ class NewTypography extends StatelessWidget {
               title: '',
             ),
             Story(
-              child: _buildStoryRow(context, TextStyles.style_14_20_regular, 'Secondary body text, \ntransactions title, amount, and date.\n'
-                  ' text input, error message, price\n label on graph, price filter button,\n transaction details title, percentage\n flactuation amount',
-                  'Change Invest', 'Change\nInvest'),
+              child: _buildStoryRow(
+                  context,
+                  TextStyles.style_14_20_regular,
+                  'Secondary body text, \ntransactions title, amount, and date.\n'
+                      ' text input, error message, price\n label on graph, price filter button,\n transaction details title, percentage\n flactuation amount',
+                  'Change Invest',
+                  'Change\nInvest'),
               title: '',
             ),
             Story(
-              child: _buildStoryRow(context, TextStyles.style_10_14_regular, 'Action bar labels',
-                  'Change Invest', 'Change\nInvest'),
+              child: _buildStoryRow(
+                  context, TextStyles.style_10_14_regular, 'Action bar labels', 'Change Invest', 'Change\nInvest'),
               title: '',
             ),
           ],
@@ -100,7 +104,6 @@ class NewTypography extends StatelessWidget {
         ResponsiveGridCol(
           child: Container(
             alignment: Alignment.centerLeft,
-//            margin: const EdgeInsets.only(left: 20),
             child: Text(
               singleLineSample,
               style: textStyle,
@@ -132,7 +135,7 @@ class NewTypography extends StatelessWidget {
   }
 
   Widget _buildStyleInfo(BuildContext context, TextStyle textStyle, String useDescription) {
-    final titleTextStyle = TextStyle(
+    const titleTextStyle = const TextStyle(
       fontWeight: FontWeight.bold,
       color: Colors.black,
       fontSize: 16,
@@ -159,7 +162,7 @@ class NewTypography extends StatelessWidget {
         Container(
           width: 30,
           height: 30,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: AppColor.green,
             shape: BoxShape.circle,
           ),
