@@ -19,7 +19,7 @@ class LabelText extends StatelessWidget {
           fontFamily: 'Circular',
           letterSpacing: 1.0,
           height: 1.0,
-          fontWeight: FontWeight.bold),
+          fontWeight: FontWeight.normal),
     );
   }
 }
