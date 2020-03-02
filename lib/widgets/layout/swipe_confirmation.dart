@@ -82,6 +82,24 @@ class SwipeConfirmation extends StatelessWidget {
       );
 
   Widget _buildButtons() {
+    final buttons = <Widget>[];
+    if (primaryButtonText != null && primaryButtonText != '') {
+      buttons.add(OutlinedButton(
+          primaryButtonText,
+          onPressed: primaryButtonAction,
+          fullWidth: true,
+          narrow: false,
+          alt: true
+      ));
+    }
+    if (secondaryButtonText != null && secondaryButtonText != '') {
+      buttons.add(TextButton(
+          secondaryButtonText,
+          onPressed: secondaryButtonAction,
+          alt: true
+      ));
+    }
+
     return Positioned(
       bottom: 20 + -buttonTranslation.value,
       left: 0,
@@ -89,20 +107,7 @@ class SwipeConfirmation extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
-          children: <Widget>[
-            OutlinedButton(
-              primaryButtonText,
-              onPressed: primaryButtonAction,
-              fullWidth: true,
-              narrow: false,
-              alt: true,
-            ),
-            TextButton(
-              secondaryButtonText,
-              onPressed: secondaryButtonAction,
-              alt: true,
-            ),
-          ],
+          children: buttons,
         ),
       ),
     );
