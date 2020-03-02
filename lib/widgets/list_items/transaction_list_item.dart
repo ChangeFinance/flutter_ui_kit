@@ -58,8 +58,7 @@ class TransactionListItem extends StatelessWidget {
     final maxAmountWidth = screenWidth - 160;
     final amountFieldWidth = _amountFieldWidth(context);
 
-    final width =
-    amountFieldWidth < maxAmountWidth ? amountFieldWidth : maxAmountWidth;
+    final width = amountFieldWidth < maxAmountWidth ? amountFieldWidth : maxAmountWidth;
     final maxTitleWidth = screenWidth - paddingsAndIcon - width;
 
     var minTitleWidth =
@@ -147,7 +146,7 @@ class TransactionListItem extends StatelessWidget {
     final size = _calcTextBox(context, amount, _amountStyle());
     var textBoxForAmountWidth = size.right - size.left + 2;
     if (amountDecoration == AmountDecoration.BADGE) {
-      textBoxForAmountWidth = textBoxForAmountWidth + 16.0;
+      textBoxForAmountWidth = textBoxForAmountWidth + 16;
     } else {
       textBoxForAmountWidth = textBoxForAmountWidth + 8;
     }
@@ -261,10 +260,10 @@ class TransactionListItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                      width: amountFieldWidth,
-                      constraints: BoxConstraints(maxWidth: maxAmountWidth),
+                      width: amountFieldWidth - 16,
+                      constraints: BoxConstraints(maxWidth: maxAmountWidth - 16),
                       child: Padding(
-                          padding: const EdgeInsets.only(top: 2.0, right: 8.0),
+                          padding: const EdgeInsets.only(top: 2.0, right: 0.0),
                           child: Text(
                             amount,
                             textAlign: TextAlign.center,
