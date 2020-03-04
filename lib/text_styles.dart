@@ -79,7 +79,7 @@ class TextStyles {
   static const TextStyle style_14_20_regular = const TextStyle(
     fontFamily: _fontFamily,
     fontSize: 14,
-    height: 20 / 16,
+    height: 20 / 14,
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.w400,
     color: Colors.black,

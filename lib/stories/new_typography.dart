@@ -4,7 +4,7 @@ import 'package:flutter_ui_kit/story_book/story.dart';
 import 'package:flutter_ui_kit/text_styles.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
-class NewTypography extends StatelessWidget {
+class Typography extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
