@@ -11,6 +11,7 @@ import 'package:flutter_ui_kit/stories/graphs.dart';
 import 'package:flutter_ui_kit/stories/indicators.dart';
 import 'package:flutter_ui_kit/stories/info_box.dart';
 import 'package:flutter_ui_kit/stories/inputs.dart';
+import 'package:flutter_ui_kit/stories/label_value_pairs.dart';
 import 'package:flutter_ui_kit/stories/layouts.dart';
 import 'package:flutter_ui_kit/stories/listItems.dart';
 import 'package:flutter_ui_kit/stories/loader.dart';
@@ -71,7 +72,8 @@ void main() {
           Indicators(),
           PinViews(),
           Loaders(),
-          TopMoversCards()
+          TopMoversCards(),
+          LabelValuePairs(),
         ],
       ),
     ),
