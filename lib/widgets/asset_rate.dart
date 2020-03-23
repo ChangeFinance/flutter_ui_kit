@@ -8,7 +8,8 @@ class AssetRate extends StatelessWidget {
   final double rate;
   final int decimalPlaces;
 
-  const AssetRate(this.symbol, this.rate, {this.decimalPlaces = 2});
+  const AssetRate(this.symbol, this.rate, {this.decimalPlaces = 2})
+      : assert(decimalPlaces > 0);
 
   @override
   Widget build(BuildContext context) {
