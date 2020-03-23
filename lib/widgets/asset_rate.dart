@@ -6,12 +6,14 @@ import '../text.dart';
 class AssetRate extends StatelessWidget {
   final String symbol;
   final double rate;
+  final int decimalPlaces;
 
-  const AssetRate(this.symbol, this.rate);
+  const AssetRate(this.symbol, this.rate, {this.decimalPlaces = 2})
+      : assert(decimalPlaces > 0);
 
   @override
   Widget build(BuildContext context) {
-    final formattedNumber = intl.NumberFormat('#,##0.00', 'en_US').format(rate);
+    final formattedNumber = intl.NumberFormat('#,##0.${'0' * decimalPlaces}', 'en_US').format(rate);
     final value = formattedNumber.toString().substring(0, formattedNumber.indexOf('.'));
     final cents = formattedNumber.toString().substring(formattedNumber.indexOf('.'));
     return Column(
