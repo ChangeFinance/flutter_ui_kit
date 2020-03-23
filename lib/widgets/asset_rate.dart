@@ -12,7 +12,7 @@ class AssetRate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formattedNumber = intl.NumberFormat(decimalPlaces == 2 ? '#,##0.00' : '#,##0.0000', 'en_US').format(rate);
+    final formattedNumber = intl.NumberFormat('#,##0.${'0' * decimalPlaces}', 'en_US').format(rate);
     final value = formattedNumber.toString().substring(0, formattedNumber.indexOf('.'));
     final cents = formattedNumber.toString().substring(formattedNumber.indexOf('.'));
     return Column(
