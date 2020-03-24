@@ -27,7 +27,8 @@ class PinViews extends StatelessWidget {
         initialProps: const <String, dynamic>{
           'length': 4,
           'text': '34',
-          'displayText': false
+          'displayText': false,
+          'error': false
         },
         formBuilder: (context, props, updateProp) {
           return ListView(
@@ -51,13 +52,18 @@ class PinViews extends StatelessWidget {
                 updateProp: updateProp,
                 propKey: 'displayText',
               ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'error',
+              ),
             ],
           );
         },
         widgetBuilder: (context, props) {
           return Container(
             child: Center(
-              child: PinView(props['length'], props['text'], displayText: props['displayText']),
+              child: PinView(props['length'], props['text'], displayText: props['displayText'], error: props['error']),
             ),
           );
         },

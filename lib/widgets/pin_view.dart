@@ -8,13 +8,14 @@ class PinView extends StatelessWidget {
   final int length;
   final String text;
   final bool displayText;
+  final bool error;
 
-  PinView(this.length, this.text, {this.displayText = false});
+  PinView(this.length, this.text, {this.displayText = false, this.error = false});
 
   @override
   Widget build(BuildContext context) {
     final content = displayText
-        ? List<Widget>.generate(length, (index) => PinText(character: index <= text.runes.length - 1 ? String.fromCharCode(text.runes.elementAt(index)): ''))
+        ? List<Widget>.generate(length, (index) => PinText(character: index <= text.runes.length - 1 ? String.fromCharCode(text.runes.elementAt(index)): '', error: error))
         : List<Widget>.generate(length, (index) => PinDot(active: index <= text.runes.length - 1));
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
@@ -47,17 +48,24 @@ class PinDot extends StatelessWidget {
 @visibleForTesting
 class PinText extends StatelessWidget {
   final String character;
+  final bool error;
 
-  const PinText({@required this.character});
+  const PinText({@required this.character, @required this.error});
 
   @override
   Widget build(BuildContext context) {
-    final underlineColor = character == '' ? AppColors.primaryColor : AppColors.primaryColorDarker;
+    final underlineColor = error
+        ? AppColors.warning
+        : character == '' ? AppColors.primaryColor : AppColors.primaryColorDarker;
+
     return Container(
       width: 56.0,
       height: 28.0,
       decoration: BoxDecoration(border: Border(bottom: BorderSide(color: underlineColor, width: 2.0))),
-      child: Text(character, style: AppText.body1, textAlign: TextAlign.center,)
+      child: Text(character,
+        style: AppText.body1.copyWith(fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center
+      )
     );
   }
 }

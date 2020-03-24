@@ -35,4 +35,30 @@ void main() {
       expect(pinDots[3].active, false);
     });
   });
+
+
+  group('PinText view', () {
+    testWidgets('renders correct number of placeholders in text mode', (WidgetTester tester) async {
+      final pinView = PinView(4, '432', displayText: true);
+      final widget = wrapInMaterialApp(pinView);
+      await tester.pumpWidget(widget);
+      await tester.pump();
+
+      expect(find.byType(PinView), findsOneWidget);
+      expect(find.byType(PinText), findsNWidgets(4));
+    });
+
+    testWidgets('renders entered numbers in text mode', (WidgetTester tester) async {
+      final pinView = PinView(4, '432', displayText: true);
+      final widget = wrapInMaterialApp(pinView);
+      await tester.pumpWidget(widget);
+      await tester.pump();
+
+      expect(find.byType(PinView), findsOneWidget);
+      expect(find.byType(PinText), findsNWidgets(4));
+      expect(find.widgetWithText(PinText, '4'), findsOneWidget);
+      expect(find.widgetWithText(PinText, '3'), findsOneWidget);
+      expect(find.widgetWithText(PinText, '4'), findsOneWidget);
+    });
+  });
 }
