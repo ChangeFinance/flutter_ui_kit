@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
+import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
@@ -25,7 +26,9 @@ class PinViews extends StatelessWidget {
       child: PropsExplorer(
         initialProps: const <String, dynamic>{
           'length': 4,
-          'text': '3',
+          'text': '34',
+          'displayText': false,
+          'error': false
         },
         formBuilder: (context, props, updateProp) {
           return ListView(
@@ -44,13 +47,23 @@ class PinViews extends StatelessWidget {
                 propKey: 'text',
                 hintText: 'Text',
               ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'displayText',
+              ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'error',
+              ),
             ],
           );
         },
         widgetBuilder: (context, props) {
           return Container(
             child: Center(
-              child: PinView(props['length'], props['text']),
+              child: PinView(props['length'], props['text'], displayText: props['displayText'], error: props['error']),
             ),
           );
         },
