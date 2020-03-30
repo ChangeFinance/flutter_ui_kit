@@ -14,14 +14,16 @@ class UtilityTemplate extends StatelessWidget {
   final String body;
   final Widget action;
   final bool restrictWidth;
+  final bool implyLeading;
 
-  const UtilityTemplate(this.heading, this.body, this.picture, this.action, {this.restrictWidth = true})
+  const UtilityTemplate(this.heading, this.body, this.picture, this.action,
+      {this.restrictWidth = true, this.implyLeading = false})
       : super();
 
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
-      appBar: const MainAppBar(implyLeading: false),
+      appBar: MainAppBar(implyLeading: implyLeading),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
