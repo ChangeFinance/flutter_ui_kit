@@ -56,7 +56,7 @@ class TransactionListItem extends StatelessWidget {
 
   Widget _body(BuildContext context, double screenWidth, String fixedTitle) {
     final maxAmountWidth = screenWidth - 160;
-    final amountFieldWidth = _amountFieldWidth(context);
+    final amountFieldWidth = _amountFieldWidth(context).toDouble();
 
     final width = amountFieldWidth < maxAmountWidth ? amountFieldWidth : maxAmountWidth;
     final maxTitleWidth = screenWidth - paddingsAndIcon - width;
@@ -142,9 +142,13 @@ class TransactionListItem extends StatelessWidget {
     return lastBox;
   }
 
-  double _amountFieldWidth(BuildContext context) {
+  int _roundWidth(double value) {
+    return (value + 1).round();
+  }
+
+  int _amountFieldWidth(BuildContext context) {
     final size = _calcTextBox(context, amount, _amountStyle());
-    var textBoxForAmountWidth = size.right - size.left + 2;
+    var textBoxForAmountWidth = _roundWidth(size.right - size.left) + 2;
     if (amountDecoration == AmountDecoration.BADGE) {
       textBoxForAmountWidth = textBoxForAmountWidth + 16;
     } else {
@@ -157,7 +161,7 @@ class TransactionListItem extends StatelessWidget {
 
     final size1 = _calcTextBox(context, secondAmount, _amountStyle());
     final textBoxForSecondAmountWidth =
-        size1.right - size1.left + 10;
+        _roundWidth(size1.right - size1.left) + 10;
     return textBoxForAmountWidth > textBoxForSecondAmountWidth
         ? textBoxForAmountWidth
         : textBoxForSecondAmountWidth;
