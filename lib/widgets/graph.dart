@@ -128,6 +128,7 @@ class Graph extends StatelessWidget {
       labelPrefix: labelPrefix,
       onGraphPaint: enableMaxMin ? _drawMaxMinMarkers : null,
       fillGradient: enableGradient ? _buildGradient() : null,
+      useCubicSmoothing: true,
     )));
   }
 }
