@@ -24,7 +24,7 @@ dependencies:
   flutter_sparkline:
     git:
       url: https://github.com/ChangeFinance/flutter_sparkline.git
-      ref: "1.0"
+      ref: "1.1"
   intl: ^0.15.8
   shimmer: ^1.0.1
   animated_widgets:
@@ -35,8 +35,6 @@ dependencies:
   url_launcher: 5.0.3
   rxdart: ^0.22.2
   flare_flutter: 1.8.3
-  device_simulator: 0.9.5
-  responsive_grid: ^1.1.1
 
 dev_dependencies:
   flutter_test:
