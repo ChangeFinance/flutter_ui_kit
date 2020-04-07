@@ -7,6 +7,7 @@ jobs:
       CODECOV_TOKEN: 2946bed5-f2c8-4478-a9d8-e553cce48cbc
     steps:
       - checkout
+      - run: flutter pub get
       - run: flutter doctor -v
       - run: flutter analyze
       - run: flutter -v test --concurrency=2
