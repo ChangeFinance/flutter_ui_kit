@@ -91,6 +91,7 @@ class _SingleDigit extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class _MultipleDigits extends StatelessWidget {
   double _initial = 3.98;
   double _final = 3.99;
@@ -100,7 +101,7 @@ class _MultipleDigits extends StatelessWidget {
     return ExpandableStory(
       title: 'Multiple Digits (runs)',
       child: Builder(builder: (ctx) {
-        final runStyle = TextStyles.style_40_60_regular;
+        const runStyle = TextStyles.style_40_60_regular;
 
         return StatefulBuilder(builder: (ctx, setState) {
           return Column(
