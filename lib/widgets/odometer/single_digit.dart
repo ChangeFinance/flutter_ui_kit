@@ -70,7 +70,8 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
     final durationMillis = numCycles > 0 ? 500 ~/ numCycles : 500;
     controller = AnimationController(duration: Duration(milliseconds: durationMillis), vsync: this);
-    animation = Tween<double>(begin: currentValue.toDouble(), end: finalValue.toDouble()).animate(controller)
+    final curvedAnimation = CurvedAnimation(parent: controller, curve: Curves.easeOutQuint);
+    animation = Tween<double>(begin: currentValue.toDouble(), end: finalValue.toDouble()).animate(curvedAnimation)
       ..addListener(() {
         setState(() {});
       });
@@ -86,7 +87,7 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
         alignment: Alignment.topCenter,
         size: digitSize,
         child: ClipRect(
-          clipper: CustomDigitClipper(digitSize),
+          clipper: _CustomDigitClipper(digitSize),
           child: Transform.translate(
             offset: Offset(0, -animation.value * digitSize.height),
             child: Column(
@@ -108,8 +109,8 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
   }
 }
 
-class CustomDigitClipper extends CustomClipper<Rect> {
-  CustomDigitClipper(this.digitSize);
+class _CustomDigitClipper extends CustomClipper<Rect> {
+  _CustomDigitClipper(this.digitSize);
 
   final Size digitSize;
 
