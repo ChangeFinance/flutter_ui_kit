@@ -63,8 +63,8 @@ class Odometer extends StatelessWidget {
   List<Widget> _getChildrenForUnequalFormatChildren(
       List<MapEntry<String, TextStyle>> initial, List<MapEntry<String, TextStyle>> current) {
     final children = <Widget>[];
-    bool dotAdded = false;
-    for (int i = 0; i < current.length; i++) {
+    var dotAdded = false;
+    for (var i = 0; i < current.length; i++) {
       int finalVal, initialVal;
       if ('.' == current[i].key) {
         dotAdded = true;
@@ -98,8 +98,8 @@ class Odometer extends StatelessWidget {
   }
 
   Size _getSize() {
-    double w = 0;
-    double h = 0;
+    var w = 0.0;
+    var h = 0.0;
     textRuns.forEach((r) {
       final size = TextRun.getSingleDigitSize('9', r.textStyle);
       w += size.width;
