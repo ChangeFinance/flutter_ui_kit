@@ -17,6 +17,7 @@ import 'package:flutter_ui_kit/stories/listItems.dart';
 import 'package:flutter_ui_kit/stories/loader.dart';
 import 'package:flutter_ui_kit/stories/new_typography.dart' as new_typography;
 import 'package:flutter_ui_kit/stories/numpads.dart';
+import 'package:flutter_ui_kit/stories/odometers.dart';
 import 'package:flutter_ui_kit/stories/pin_views.dart';
 import 'package:flutter_ui_kit/stories/popover.dart';
 import 'package:flutter_ui_kit/stories/sliders.dart';
@@ -46,6 +47,7 @@ void main() {
           AppColors(),
           new_typography.Typography(),
           AppTypography(),
+          Odometers(),
           Inputs(),
           Buttons(),
           Badges(),
