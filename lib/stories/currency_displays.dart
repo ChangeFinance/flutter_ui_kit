@@ -4,9 +4,12 @@ import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/double_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
+import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/asset_rate.dart';
 import 'package:flutter_ui_kit/widgets/currency_display.dart';
 import 'package:flutter_ui_kit/widgets/currency_switcher.dart';
+import 'package:flutter_ui_kit/widgets/odometer/odometer.dart';
+import 'package:flutter_ui_kit/widgets/odometer/text_run.dart';
 
 class CurrencyDisplays extends StatelessWidget {
   @override
@@ -18,6 +21,7 @@ class CurrencyDisplays extends StatelessWidget {
             _currencyDisplayStory(),
             _currencySwitcherStory(),
             _assetRateStory(),
+            _AnimatedAssetRateStory(),
           ],
         ),
       ),
@@ -40,24 +44,11 @@ class CurrencyDisplays extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
-              StringPropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'currencySymbol'),
-              BoolPropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'amountIsNull'),
-              BoolPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'isLarge'),
-              BoolPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'showCursor'),
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'amount',
-                  min: 0,
-                  max: 999999999),
+              StringPropUpdater(props: props, updateProp: updateProp, propKey: 'currencySymbol'),
+              BoolPropUpdater(props: props, updateProp: updateProp, propKey: 'amountIsNull'),
+              BoolPropUpdater(props: props, updateProp: updateProp, propKey: 'isLarge'),
+              BoolPropUpdater(props: props, updateProp: updateProp, propKey: 'showCursor'),
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'amount', min: 0, max: 999999999),
             ],
           );
         },
@@ -73,9 +64,7 @@ class CurrencyDisplays extends StatelessWidget {
           return CurrencyDisplay(
               amount: '$amount',
               currencySymbol: symbol,
-              size: isLarge
-                  ? CurrencyDisplaySize.large
-                  : CurrencyDisplaySize.small,
+              size: isLarge ? CurrencyDisplaySize.large : CurrencyDisplaySize.small,
               showCursor: showCursor);
         },
       ),
@@ -86,16 +75,13 @@ class CurrencyDisplays extends StatelessWidget {
     return ExpandableStory(
       title: 'Currency Switcher',
       child: PropsExplorer(
-        initialProps: const <String, dynamic>{
-          'selectedCurrencyAmount': true
-        },
+        initialProps: const <String, dynamic>{'selectedCurrencyAmount': true},
         formBuilder: (context, props, updateProp) {
           return ListView(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
-              BoolPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'selectedCurrencyAmount'),
+              BoolPropUpdater(props: props, updateProp: updateProp, propKey: 'selectedCurrencyAmount'),
             ],
           );
         },
@@ -118,25 +104,14 @@ class CurrencyDisplays extends StatelessWidget {
     return ExpandableStory(
       title: 'Asset Rate',
       child: PropsExplorer(
-        initialProps: const <String, dynamic>{
-          'currencySymbol': '€',
-          'amount': 1792.28
-        },
+        initialProps: const <String, dynamic>{'currencySymbol': '€', 'amount': 1792.28},
         formBuilder: (context, props, updateProp) {
           return ListView(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
-              StringPropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'currencySymbol'),
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'amount',
-                  min: 0,
-                  max: 999999999),
+              StringPropUpdater(props: props, updateProp: updateProp, propKey: 'currencySymbol'),
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'amount', min: 0, max: 999999999),
             ],
           );
         },
@@ -144,6 +119,41 @@ class CurrencyDisplays extends StatelessWidget {
           final double amount = props['amount'];
           final String symbol = props['currencySymbol'];
           return AssetRate(symbol, amount);
+        },
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class _AnimatedAssetRateStory extends StatelessWidget {
+  double _initialRate = 0.00;
+  double _currentRate = 1012.22;
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableStory(
+      title: 'Animated Asset Rate',
+      child: StatefulBuilder(
+        builder: (ctx, setState) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              AnimatedAssetRate('€', _initialRate, _currentRate),
+              const SizedBox(height: 20),
+              RaisedButton(
+                child: const Text('Refresh Price', style: const TextStyle(color: Colors.white)),
+                onPressed: () {
+                  setState(() {
+                    _initialRate = _currentRate;
+                    _currentRate = _initialRate * 1.001;
+                  });
+                },
+              ),
+            ],
+          );
         },
       ),
     );

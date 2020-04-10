@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_kit/widgets/odometer/odometer.dart';
+import 'package:flutter_ui_kit/widgets/odometer/text_run.dart';
 import 'package:intl/intl.dart' as intl;
 
 import '../text.dart';
@@ -8,8 +10,7 @@ class AssetRate extends StatelessWidget {
   final double rate;
   final int decimalPlaces;
 
-  const AssetRate(this.symbol, this.rate, {this.decimalPlaces = 2})
-      : assert(decimalPlaces > 0);
+  const AssetRate(this.symbol, this.rate, {this.decimalPlaces = 2}) : assert(decimalPlaces > 0);
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +20,50 @@ class AssetRate extends StatelessWidget {
     return Column(
       children: <Widget>[
         RichText(
-          text: TextSpan(
-              children: [
-                new TextSpan(text: '$symbol ',
-                    style: AppText.body2),
-                new TextSpan(text: '$value',
-                    style: AppText.header0.copyWith(fontWeight: FontWeight.bold)),
-                new TextSpan(text: '$cents',
-                    style: AppText.body2),
-              ]
-          )
-        )
+            text: TextSpan(children: [
+          new TextSpan(text: '$symbol ', style: AppText.body2),
+          new TextSpan(text: '$value', style: AppText.header0.copyWith(fontWeight: FontWeight.bold)),
+          new TextSpan(text: '$cents', style: AppText.body2),
+        ]))
+      ],
+    );
+  }
+}
+
+class AnimatedAssetRate extends StatelessWidget {
+  final String symbol;
+  final double rate;
+  final double initialRate;
+  final int decimalPlaces;
+
+  const AnimatedAssetRate(this.symbol, this.initialRate, this.rate, {this.decimalPlaces = 2})
+      : assert(decimalPlaces > 0);
+
+  @override
+  Widget build(BuildContext context) {
+    final formattedRate = intl.NumberFormat('#,##0.${'0' * decimalPlaces}', 'en_US').format(rate);
+    final rateValue = formattedRate.toString().substring(0, formattedRate.indexOf('.'));
+    final rateCents = formattedRate.toString().substring(formattedRate.indexOf('.') + 1);
+
+    final formattedInitialRate = intl.NumberFormat('#,##0.${'0' * decimalPlaces}', 'en_US').format(initialRate);
+    final initialRateValue = formattedInitialRate.toString().substring(0, formattedInitialRate.indexOf('.'));
+    final initialRateCents = formattedInitialRate.toString().substring(formattedInitialRate.indexOf('.') + 1);
+
+    final smallTextStyle = AppText.body2;
+    final largeTextStyle = AppText.header0.copyWith(fontWeight: FontWeight.bold);
+    final htFactor = largeTextStyle.fontSize / smallTextStyle.fontSize;
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Odometer(
+          [
+            TextRun(symbol, symbol, smallTextStyle.copyWith(height: htFactor)),
+            TextRun(rateValue, initialRateValue, largeTextStyle),
+            TextRun('.', '.', smallTextStyle.copyWith(height: htFactor)),
+            TextRun(rateCents, initialRateCents, smallTextStyle.copyWith(height: htFactor)),
+          ],
+        ),
       ],
     );
   }
