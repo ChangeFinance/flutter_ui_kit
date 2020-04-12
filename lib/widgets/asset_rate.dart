@@ -73,7 +73,7 @@ class _AnimatedAssetRateState extends State<AnimatedAssetRate> {
     final initialRateValue = formattedInitialRate.toString().substring(0, formattedInitialRate.indexOf('.'));
     final initialRateCents = formattedInitialRate.toString().substring(formattedInitialRate.indexOf('.') + 1);
 
-    final smallTextStyle = AppText.body2;
+    const smallTextStyle = AppText.body2;
     final largeTextStyle = AppText.header0.copyWith(fontWeight: FontWeight.bold);
     final htFactor = largeTextStyle.fontSize / smallTextStyle.fontSize;
 
