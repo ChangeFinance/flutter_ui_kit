@@ -6,9 +6,7 @@ class TextRun {
   final TextStyle textStyle;
 
   TextRun(this.currentText, this.initialText, this.textStyle)
-      : assert(isNumberOrDot(currentText)),
-        assert(isNumberOrDot(initialText)),
-        assert(isValidPair(currentText, initialText));
+      : assert(isValidPair(currentText, initialText));
 
   static Size getSingleDigitSize(String digit, TextStyle textStyle) {
     return TextRun(digit, '0', textStyle).getSize();

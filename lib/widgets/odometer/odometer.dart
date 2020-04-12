@@ -70,7 +70,9 @@ class Odometer extends StatelessWidget {
         dotAdded = true;
       } else {
         finalVal = int.tryParse(current[i].key);
-        initialVal = dotAdded ? 0 : int.tryParse(initial[i].key);
+        if (i < initial.length) {
+          initialVal = dotAdded ? 0 : int.tryParse(initial[i].key);
+        }
       }
       final textStyle = current[i].value;
 

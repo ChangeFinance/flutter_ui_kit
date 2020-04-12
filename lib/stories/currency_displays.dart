@@ -7,6 +7,7 @@ import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/asset_rate.dart';
 import 'package:flutter_ui_kit/widgets/currency_display.dart';
 import 'package:flutter_ui_kit/widgets/currency_switcher.dart';
+import 'package:rxdart/rxdart.dart';
 
 class CurrencyDisplays extends StatelessWidget {
   @override
@@ -18,6 +19,7 @@ class CurrencyDisplays extends StatelessWidget {
             _currencyDisplayStory(),
             _currencySwitcherStory(),
             _assetRateStory(),
+            _AnimatedAssetRateStory(),
           ],
         ),
       ),
@@ -40,24 +42,11 @@ class CurrencyDisplays extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
-              StringPropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'currencySymbol'),
-              BoolPropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'amountIsNull'),
-              BoolPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'isLarge'),
-              BoolPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'showCursor'),
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'amount',
-                  min: 0,
-                  max: 999999999),
+              StringPropUpdater(props: props, updateProp: updateProp, propKey: 'currencySymbol'),
+              BoolPropUpdater(props: props, updateProp: updateProp, propKey: 'amountIsNull'),
+              BoolPropUpdater(props: props, updateProp: updateProp, propKey: 'isLarge'),
+              BoolPropUpdater(props: props, updateProp: updateProp, propKey: 'showCursor'),
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'amount', min: 0, max: 999999999),
             ],
           );
         },
@@ -73,9 +62,7 @@ class CurrencyDisplays extends StatelessWidget {
           return CurrencyDisplay(
               amount: '$amount',
               currencySymbol: symbol,
-              size: isLarge
-                  ? CurrencyDisplaySize.large
-                  : CurrencyDisplaySize.small,
+              size: isLarge ? CurrencyDisplaySize.large : CurrencyDisplaySize.small,
               showCursor: showCursor);
         },
       ),
@@ -86,16 +73,13 @@ class CurrencyDisplays extends StatelessWidget {
     return ExpandableStory(
       title: 'Currency Switcher',
       child: PropsExplorer(
-        initialProps: const <String, dynamic>{
-          'selectedCurrencyAmount': true
-        },
+        initialProps: const <String, dynamic>{'selectedCurrencyAmount': true},
         formBuilder: (context, props, updateProp) {
           return ListView(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
-              BoolPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'selectedCurrencyAmount'),
+              BoolPropUpdater(props: props, updateProp: updateProp, propKey: 'selectedCurrencyAmount'),
             ],
           );
         },
@@ -118,25 +102,14 @@ class CurrencyDisplays extends StatelessWidget {
     return ExpandableStory(
       title: 'Asset Rate',
       child: PropsExplorer(
-        initialProps: const <String, dynamic>{
-          'currencySymbol': '€',
-          'amount': 1792.28
-        },
+        initialProps: const <String, dynamic>{'currencySymbol': '€', 'amount': 1792.28},
         formBuilder: (context, props, updateProp) {
           return ListView(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
-              StringPropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'currencySymbol'),
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'amount',
-                  min: 0,
-                  max: 999999999),
+              StringPropUpdater(props: props, updateProp: updateProp, propKey: 'currencySymbol'),
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'amount', min: 0, max: 999999999),
             ],
           );
         },
@@ -147,5 +120,56 @@ class CurrencyDisplays extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+// ignore: must_be_immutable
+class _AnimatedAssetRateStory extends StatefulWidget {
+  @override
+  __AnimatedAssetRateStoryState createState() => __AnimatedAssetRateStoryState();
+}
+
+class __AnimatedAssetRateStoryState extends State<_AnimatedAssetRateStory> {
+  static double _currRate = 0.01;
+  BehaviorSubject<double> rateStream = BehaviorSubject.seeded(_currRate);
+
+  @override
+  void initState() {
+    super.initState();
+    rateStream.listen((r) {
+      _currRate = r;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableStory(
+      title: 'Animated Asset Rate',
+      child: StatefulBuilder(
+        builder: (ctx, setState) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              AnimatedAssetRate('€', rateStream),
+              const SizedBox(height: 20),
+              RaisedButton(
+                child: const Text('Refresh Price', style: const TextStyle(color: Colors.white)),
+                onPressed: () {
+                  rateStream.add(_currRate * 1.5);
+                },
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    rateStream?.close();
   }
 }

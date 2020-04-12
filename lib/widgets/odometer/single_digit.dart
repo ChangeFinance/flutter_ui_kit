@@ -104,8 +104,8 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
   @override
   void dispose() {
-    super.dispose();
     controller?.dispose();
+    super.dispose();
   }
 }
 
