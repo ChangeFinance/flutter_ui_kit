@@ -30,22 +30,46 @@ class AssetRate extends StatelessWidget {
   }
 }
 
-class AnimatedAssetRate extends StatelessWidget {
+class AnimatedAssetRate extends StatefulWidget {
   final String symbol;
-  final double rate;
-  final double initialRate;
   final int decimalPlaces;
+  final Stream<double> rateStream;
 
-  const AnimatedAssetRate(this.symbol, this.initialRate, this.rate, {this.decimalPlaces = 2})
-      : assert(decimalPlaces > 0);
+  const AnimatedAssetRate(this.symbol, this.rateStream, {this.decimalPlaces = 2}) : assert(decimalPlaces > 0);
+
+  @override
+  _AnimatedAssetRateState createState() => _AnimatedAssetRateState();
+}
+
+class _AnimatedAssetRateState extends State<AnimatedAssetRate> {
+  double _initialRate = 0.0;
+  double _currentRate = 0.0;
+
+  Stream<double> get rateStream => widget.rateStream;
+
+  @override
+  void initState() {
+    super.initState();
+    rateStream?.listen((rate) {
+      if (rate == _currentRate) {
+        return;
+      }
+
+      setState(() {
+        _initialRate = _currentRate;
+        _currentRate = rate;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final formattedRate = intl.NumberFormat('#,##0.${'0' * decimalPlaces}', 'en_US').format(rate);
+    final formattedRate = intl.NumberFormat('#,##0.${'0' * widget.decimalPlaces}', 'en_US').format(_currentRate);
     final rateValue = formattedRate.toString().substring(0, formattedRate.indexOf('.'));
     final rateCents = formattedRate.toString().substring(formattedRate.indexOf('.') + 1);
 
-    final formattedInitialRate = intl.NumberFormat('#,##0.${'0' * decimalPlaces}', 'en_US').format(initialRate);
+    final formattedInitialRate =
+        intl.NumberFormat('#,##0.${'0' * widget.decimalPlaces}', 'en_US').format(_initialRate);
     final initialRateValue = formattedInitialRate.toString().substring(0, formattedInitialRate.indexOf('.'));
     final initialRateCents = formattedInitialRate.toString().substring(formattedInitialRate.indexOf('.') + 1);
 
@@ -58,7 +82,7 @@ class AnimatedAssetRate extends StatelessWidget {
       children: <Widget>[
         Odometer(
           [
-            TextRun(symbol, symbol, smallTextStyle.copyWith(height: htFactor)),
+            TextRun(widget.symbol, widget.symbol, smallTextStyle.copyWith(height: htFactor)),
             TextRun(rateValue, initialRateValue, largeTextStyle),
             TextRun('.', '.', smallTextStyle.copyWith(height: htFactor)),
             TextRun(rateCents, initialRateCents, smallTextStyle.copyWith(height: htFactor)),

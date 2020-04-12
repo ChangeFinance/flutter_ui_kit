@@ -10,6 +10,7 @@ import 'package:flutter_ui_kit/widgets/currency_display.dart';
 import 'package:flutter_ui_kit/widgets/currency_switcher.dart';
 import 'package:flutter_ui_kit/widgets/odometer/odometer.dart';
 import 'package:flutter_ui_kit/widgets/odometer/text_run.dart';
+import 'package:rxdart/rxdart.dart';
 
 class CurrencyDisplays extends StatelessWidget {
   @override
@@ -126,9 +127,22 @@ class CurrencyDisplays extends StatelessWidget {
 }
 
 // ignore: must_be_immutable
-class _AnimatedAssetRateStory extends StatelessWidget {
-  double _initialRate = 0.00;
-  double _currentRate = 1012.22;
+class _AnimatedAssetRateStory extends StatefulWidget {
+  @override
+  __AnimatedAssetRateStoryState createState() => __AnimatedAssetRateStoryState();
+}
+
+class __AnimatedAssetRateStoryState extends State<_AnimatedAssetRateStory> {
+  static double _currRate = 0.01;
+  BehaviorSubject<double> rateStream = BehaviorSubject.seeded(_currRate);
+
+  @override
+  void initState() {
+    super.initState();
+    rateStream.listen((r) {
+      _currRate = r;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,15 +155,12 @@ class _AnimatedAssetRateStory extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              AnimatedAssetRate('€', _initialRate, _currentRate),
+              AnimatedAssetRate('€', rateStream),
               const SizedBox(height: 20),
               RaisedButton(
                 child: const Text('Refresh Price', style: const TextStyle(color: Colors.white)),
                 onPressed: () {
-                  setState(() {
-                    _initialRate = _currentRate;
-                    _currentRate = _initialRate * 1.001;
-                  });
+                  rateStream.add(_currRate * 1.5);
                 },
               ),
             ],
@@ -157,5 +168,11 @@ class _AnimatedAssetRateStory extends StatelessWidget {
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    rateStream?.close();
   }
 }
