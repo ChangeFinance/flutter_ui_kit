@@ -4,12 +4,9 @@ import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/double_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
-import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/asset_rate.dart';
 import 'package:flutter_ui_kit/widgets/currency_display.dart';
 import 'package:flutter_ui_kit/widgets/currency_switcher.dart';
-import 'package:flutter_ui_kit/widgets/odometer/odometer.dart';
-import 'package:flutter_ui_kit/widgets/odometer/text_run.dart';
 import 'package:rxdart/rxdart.dart';
 
 class CurrencyDisplays extends StatelessWidget {
