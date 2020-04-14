@@ -53,7 +53,7 @@ class AnimatedAssetRate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final smallTextStyle = this.smallTextStyle.copyWith(height: 3.5);
+    final smallTextStyle = this.smallTextStyle.copyWith(height: 3);
 
     return StreamBuilder<String>(
       stream: rateStream?.map(_formatRate)?.distinct()?.where((r) => r != _lastFormattedRate),
