@@ -145,24 +145,20 @@ class __AnimatedAssetRateStoryState extends State<_AnimatedAssetRateStory> {
   Widget build(BuildContext context) {
     return ExpandableStory(
       title: 'Animated Asset Rate',
-      child: StatefulBuilder(
-        builder: (ctx, setState) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              AnimatedAssetRate('€', rateStream),
-              const SizedBox(height: 20),
-              RaisedButton(
-                child: const Text('Refresh Price', style: const TextStyle(color: Colors.white)),
-                onPressed: () {
-                  rateStream.add(_currRate * 1.5);
-                },
-              ),
-            ],
-          );
-        },
+      child:  Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          AnimatedAssetRate('€', rateStream),
+          const SizedBox(height: 20),
+          RaisedButton(
+            child: const Text('Refresh Price', style: const TextStyle(color: Colors.white)),
+            onPressed: () {
+              rateStream.add(_currRate * 1.5);
+            },
+          ),
+        ],
       ),
     );
   }
