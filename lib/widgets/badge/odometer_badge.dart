@@ -177,6 +177,6 @@ class OdometerBadge extends StatelessWidget {
       });
     });
 
-    return Size(w + 10, h);
+    return Size(w + 6, h);
   }
 }
