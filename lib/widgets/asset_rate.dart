@@ -30,65 +30,65 @@ class AssetRate extends StatelessWidget {
   }
 }
 
-class AnimatedAssetRate extends StatefulWidget {
+// ignore: must_be_immutable
+class AnimatedAssetRate extends StatelessWidget {
   final String symbol;
   final int decimalPlaces;
   final Stream<double> rateStream;
+  final TextStyle largeTextStyle;
+  final TextStyle smallTextStyle;
 
-  const AnimatedAssetRate(this.symbol, this.rateStream, {this.decimalPlaces = 2}) : assert(decimalPlaces > 0);
-
-  @override
-  _AnimatedAssetRateState createState() => _AnimatedAssetRateState();
-}
-
-class _AnimatedAssetRateState extends State<AnimatedAssetRate> {
-  double _initialRate = 0.0;
-  double _currentRate = 0.0;
-
-  Stream<double> get rateStream => widget.rateStream;
-
-  @override
-  void initState() {
-    super.initState();
-    rateStream?.listen((rate) {
-      if (rate == _currentRate) {
-        return;
-      }
-
-      setState(() {
-        _initialRate = _currentRate;
-        _currentRate = rate;
-      });
-    });
+  AnimatedAssetRate(
+    this.symbol,
+    this.rateStream, {
+    this.decimalPlaces = 2,
+  })  : assert(decimalPlaces > 0),
+        largeTextStyle = AppText.header0.copyWith(fontWeight: FontWeight.bold),
+        smallTextStyle =
+            AppText.body2.copyWith(height: (AppText.header0.fontSize / AppText.body2.fontSize).roundToDouble()){
+    rateStream.listen((r) {});
   }
+
+  String _lastFormattedRate = '0.00';
 
   @override
   Widget build(BuildContext context) {
-    final formattedRate = intl.NumberFormat('#,##0.${'0' * widget.decimalPlaces}', 'en_US').format(_currentRate);
-    final rateValue = formattedRate.toString().substring(0, formattedRate.indexOf('.'));
-    final rateCents = formattedRate.toString().substring(formattedRate.indexOf('.') + 1);
+    final smallTextStyle = this.smallTextStyle.copyWith(height: 3);
 
-    final formattedInitialRate =
-        intl.NumberFormat('#,##0.${'0' * widget.decimalPlaces}', 'en_US').format(_initialRate);
-    final initialRateValue = formattedInitialRate.toString().substring(0, formattedInitialRate.indexOf('.'));
-    final initialRateCents = formattedInitialRate.toString().substring(formattedInitialRate.indexOf('.') + 1);
+    return StreamBuilder<String>(
+      stream: rateStream?.map(_formatRate)?.distinct()?.where((r) => r != _lastFormattedRate),
+      builder: (ctx, snapshot) {
+        if (!snapshot.hasData) {
+          return Container();
+        }
+        debugPrint('RECEIVED RATE STREAM DATA: ${snapshot.data}');
 
-    final smallTextStyle = AppText.body2;
-    final largeTextStyle = AppText.header0.copyWith(fontWeight: FontWeight.bold);
-    final htFactor = largeTextStyle.fontSize / smallTextStyle.fontSize;
+        final prevVal = _lastFormattedRate;
+        final curVal = snapshot.data;
 
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Odometer(
-          [
-            TextRun(widget.symbol, widget.symbol, smallTextStyle.copyWith(height: htFactor)),
-            TextRun(rateValue, initialRateValue, largeTextStyle),
-            TextRun('.', '.', smallTextStyle.copyWith(height: htFactor)),
-            TextRun(rateCents, initialRateCents, smallTextStyle.copyWith(height: htFactor)),
+        final prevHundrethsPart = prevVal.substring(0, prevVal.indexOf('.'));
+        final prevCentsPart = prevVal.substring(prevVal.indexOf('.') + 1);
+
+        final curHundrethsPart = curVal.substring(0, curVal.indexOf('.'));
+        final curCentsPart = curVal.substring(curVal.indexOf('.') + 1);
+        _lastFormattedRate = curVal;
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            Odometer(
+              [
+                TextRun(symbol, symbol, smallTextStyle),
+                TextRun(curHundrethsPart, prevHundrethsPart, largeTextStyle),
+                TextRun('.', '.', smallTextStyle),
+                TextRun(curCentsPart, prevCentsPart, smallTextStyle),
+              ],
+            ),
           ],
-        ),
-      ],
+        );
+      },
     );
   }
+
+  String _formatRate(double rate) => intl.NumberFormat('#,##0.${'0' * decimalPlaces}', 'en_US').format(rate);
 }
