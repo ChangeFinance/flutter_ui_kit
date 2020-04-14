@@ -21,74 +21,83 @@ class AssetRate extends StatelessWidget {
       children: <Widget>[
         RichText(
             text: TextSpan(children: [
-          new TextSpan(text: '$symbol ', style: AppText.body2),
-          new TextSpan(text: '$value', style: AppText.header0.copyWith(fontWeight: FontWeight.bold)),
-          new TextSpan(text: '$cents', style: AppText.body2),
-        ]))
+              new TextSpan(text: '$symbol ', style: AppText.body2),
+              new TextSpan(text: '$value', style: AppText.header0.copyWith(fontWeight: FontWeight.bold)),
+              new TextSpan(text: '$cents', style: AppText.body2),
+            ]))
       ],
     );
   }
 }
 
-// ignore: must_be_immutable
-class AnimatedAssetRate extends StatelessWidget {
+class AnimatedAssetRate extends StatefulWidget {
   final String symbol;
   final int decimalPlaces;
   final Stream<double> rateStream;
   final TextStyle largeTextStyle;
   final TextStyle smallTextStyle;
 
-  AnimatedAssetRate(
-    this.symbol,
-    this.rateStream, {
-    this.decimalPlaces = 2,
-  })  : assert(decimalPlaces > 0),
+  AnimatedAssetRate(this.symbol,
+      this.rateStream, {
+        this.decimalPlaces = 2,
+      })
+      : assert(decimalPlaces > 0),
         largeTextStyle = AppText.header0.copyWith(fontWeight: FontWeight.bold),
         smallTextStyle =
-            AppText.body2.copyWith(height: (AppText.header0.fontSize / AppText.body2.fontSize).roundToDouble()){
-    rateStream.listen((r) {});
-  }
+        AppText.body2.copyWith(height: (AppText.header0.fontSize / AppText.body2.fontSize).roundToDouble());
 
-  String _lastFormattedRate = '0.00';
+  @override
+  _AnimatedAssetRateState createState() => _AnimatedAssetRateState();
+}
+
+class _AnimatedAssetRateState extends State<AnimatedAssetRate> {
+  double _initialRate = 0.0;
+  double _currentRate = 0.0;
+
+  Stream<double> get rateStream => widget.rateStream;
+
+  @override
+  void initState() {
+    super.initState();
+    rateStream?.map((r) => double.parse(r.toStringAsFixed(widget.decimalPlaces)))?.listen((rate) {
+      if (_formatRate(rate) == _formatRate(_currentRate)) {
+        return;
+      }
+
+      setState(() {
+        _initialRate = _currentRate;
+        _currentRate = rate;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final smallTextStyle = this.smallTextStyle.copyWith(height: 3.5);
+    final formattedRate = _formatRate(_currentRate);
+    final rateValue = formattedRate.toString().substring(0, formattedRate.indexOf('.'));
+    final rateCents = formattedRate.toString().substring(formattedRate.indexOf('.') + 1);
 
-    return StreamBuilder<String>(
-      stream: rateStream?.map(_formatRate)?.distinct()?.where((r) => r != _lastFormattedRate),
-      builder: (ctx, snapshot) {
-        if (!snapshot.hasData) {
-          return Container();
-        }
-        debugPrint('RECEIVED RATE STREAM DATA: ${snapshot.data}');
+    final formattedInitialRate = _formatRate(_initialRate);
+    final initialRateValue = formattedInitialRate.toString().substring(0, formattedInitialRate.indexOf('.'));
+    final initialRateCents = formattedInitialRate.toString().substring(formattedInitialRate.indexOf('.') + 1);
 
-        final prevVal = _lastFormattedRate;
-        final curVal = snapshot.data;
+    final smallTextStyle = widget.smallTextStyle.copyWith(height: 3.5);
 
-        final prevHundrethsPart = prevVal.substring(0, prevVal.indexOf('.'));
-        final prevCentsPart = prevVal.substring(prevVal.indexOf('.') + 1);
-
-        final curHundrethsPart = curVal.substring(0, curVal.indexOf('.'));
-        final curCentsPart = curVal.substring(curVal.indexOf('.') + 1);
-        _lastFormattedRate = curVal;
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            Odometer(
-              [
-                TextRun(symbol, symbol, smallTextStyle),
-                TextRun(curHundrethsPart, prevHundrethsPart, largeTextStyle),
-                TextRun('.', '.', smallTextStyle),
-                TextRun(curCentsPart, prevCentsPart, smallTextStyle),
-              ],
-            ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        Odometer(
+          [
+            TextRun(widget.symbol, widget.symbol, smallTextStyle),
+            TextRun(rateValue, initialRateValue, widget.largeTextStyle),
+            TextRun('.', '.', smallTextStyle),
+            TextRun(rateCents, initialRateCents, smallTextStyle),
           ],
-        );
-      },
+        ),
+      ],
     );
   }
 
-  String _formatRate(double rate) => intl.NumberFormat('#,##0.${'0' * decimalPlaces}', 'en_US').format(rate);
+  String _formatRate(double rate) => intl.NumberFormat('#,##0.${'0' * widget.decimalPlaces}', 'en_US').format(rate);
 }
