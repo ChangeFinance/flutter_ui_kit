@@ -37,6 +37,7 @@ class OdometerBadge extends StatelessWidget {
   final Color bgColor;
   final VoidCallback onTap;
   final TextStyle textStyle;
+  final double minWidth;
 
   const OdometerBadge(
     this.textRuns, {
@@ -45,6 +46,7 @@ class OdometerBadge extends StatelessWidget {
     this.bgColor = AppColor.green,
     this.onTap,
     this.textStyle = const TextStyle(color: AppColor.deepWhite, fontSize: 15, height: 1.0),
+    this.minWidth,
   }) : super(key: key);
 
   @override
@@ -169,7 +171,7 @@ class OdometerBadge extends StatelessWidget {
     var h = 0.0;
     textRuns.forEach((r) {
       Characters(r.currentText).forEach((c) {
-        final size = TextRun.getSingleDigitSize('9', textStyle);
+        final size = TextRun.getSingleDigitSize(c, textStyle);
         w += size.width;
         if (size.height > h) {
           h = size.height;
@@ -177,6 +179,9 @@ class OdometerBadge extends StatelessWidget {
       });
     });
 
-    return Size(w + 6, h);
+    if (minWidth != null && w < minWidth) {
+      w = minWidth;
+    }
+    return Size(w, h);
   }
 }
