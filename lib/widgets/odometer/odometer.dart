@@ -103,7 +103,7 @@ class Odometer extends StatelessWidget {
     var w = 0.0;
     var h = 0.0;
     textRuns.forEach((r) {
-      final size = TextRun.getSingleDigitSize('9', r.textStyle);
+      final size = r.getSize();//TextRun.getSingleDigitSize('${r.currentText}', r.textStyle);
       w += size.width;
       if (size.height > h) {
         h = size.height;

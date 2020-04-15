@@ -68,7 +68,7 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
       numCycles = currentValue - finalValue;
     }
 
-    final durationMillis = numCycles > 0 ? 500 ~/ numCycles : 500;
+    final durationMillis = numCycles > 0 ? 1150 ~/ numCycles : 500;
     controller = AnimationController(duration: Duration(milliseconds: durationMillis), vsync: this);
     final curvedAnimation = CurvedAnimation(parent: controller, curve: Curves.easeOutQuint);
     animation = Tween<double>(begin: currentValue.toDouble(), end: finalValue.toDouble()).animate(curvedAnimation)
@@ -80,7 +80,7 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    final digitSize = TextRun.getSingleDigitSize('9', textStyle);
+    final digitSize = TextRun.getSingleDigitSize('$currentValue', textStyle);
     return Container(
       decoration: boxDecoration,
       child: SizedOverflowBox(
