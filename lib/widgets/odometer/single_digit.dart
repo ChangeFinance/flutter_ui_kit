@@ -80,7 +80,7 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    final digitSize = TextRun.getSingleDigitSize('9', textStyle);
+    final digitSize = TextRun.getSingleDigitSize('$currentValue', textStyle);
     return Container(
       decoration: boxDecoration,
       child: SizedOverflowBox(
