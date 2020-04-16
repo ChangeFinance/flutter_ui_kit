@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class TextRun {
   final String initialText;
   final String currentText;
   final TextStyle textStyle;
 
-  TextRun(this.currentText, this.initialText, this.textStyle)
-      : assert(isValidPair(currentText, initialText));
+  TextRun(this.currentText, this.initialText, this.textStyle) : assert(isValidPair(currentText, initialText));
 
   static Size getSingleDigitSize(String digit, TextStyle textStyle) {
     return TextRun(digit, '0', textStyle).getSize();
@@ -36,6 +36,11 @@ class TextRun {
     painter.textAlign = TextAlign.left;
     painter.textScaleFactor = 1.0;
     painter.layout();
+
+    if (currentText == '1') {
+      return Size(painter.size.width + 1, painter.size.height);
+    }
+
     return painter.size;
   }
 }
