@@ -52,7 +52,7 @@ class OdometerBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final odometerSize = _getOdometerSize();
-    final badgeHeight = odometerSize.height + 4;
+    final badgeHeight = odometerSize.height + 2;
 
     return Container(
         decoration: BoxDecoration(
@@ -68,6 +68,7 @@ class OdometerBadge extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: badgeHeight / 4),
                   child: Shimmer.fromColors(
                     key: new Key(textRuns.map((r) => '${r.initialText}-${r.currentText}').join(',')),
+                    enabled: false,
                     baseColor: baseColor,
                     highlightColor: bgColor,
                     loop: 1,
@@ -182,6 +183,6 @@ class OdometerBadge extends StatelessWidget {
     if (minWidth != null && w < minWidth) {
       w = minWidth;
     }
-    return Size(w, h);
+    return Size(w, h + 2);
   }
 }

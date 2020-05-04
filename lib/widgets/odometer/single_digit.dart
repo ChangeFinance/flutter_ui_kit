@@ -80,7 +80,7 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    final digitSize = TextRun.getSingleDigitSize('$currentValue', textStyle);
+    final digitSize = TextRun.getSingleDigitSize('${animation.value.roundToDouble().toInt()}', textStyle);
     return Container(
       decoration: boxDecoration,
       child: SizedOverflowBox(
@@ -121,6 +121,6 @@ class _CustomDigitClipper extends CustomClipper<Rect> {
 
   @override
   bool shouldReclip(CustomClipper<Rect> oldClipper) {
-    return false;
+    return true;
   }
 }
