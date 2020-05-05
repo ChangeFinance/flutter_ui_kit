@@ -6,15 +6,22 @@ import 'package:flutter_ui_kit/widgets/list_items/information_list_item.dart';
 import '../../wrap_in_material_app.dart';
 
 void main() {
+  var linkPressed = false;
+  // ignore: prefer_function_declarations_over_variables
+  final linkAction = () {
+    linkPressed = true;
+  };
+
   group('Information list item', () {
     testWidgets('renders information list item', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(
-        const InformationListItem(
+        InformationListItem(
           'Link',
           'BADGE',
           icon: const Text('icon'),
           title: 'Title',
           information: 'information',
+          linkAction: linkAction,
         ),
       ));
 
@@ -30,6 +37,22 @@ void main() {
       final Container badgeContainer = find.byKey(const Key('informationListItemBadge')).evaluate().single.widget;
       final BoxDecoration decoration = badgeContainer.decoration;
       expect(decoration.color, AppColor.green);
+    });
+
+    testWidgets('link action calls link action callbacl', (WidgetTester tester)async {
+      await tester.pumpWidget(wrapInMaterialApp(
+        InformationListItem(
+          'Link',
+          'BADGE',
+          icon: const Text('icon'),
+          title: 'Title',
+          information: 'information',
+          linkAction: linkAction,
+        ),
+      ));
+
+      await tester.tap(find.text('Link'));
+      expect(linkPressed, true);
     });
   });
 }
