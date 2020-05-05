@@ -7,6 +7,7 @@ class InformationListItem extends StatelessWidget {
   final String information;
   final String badgeText;
   final String linkText;
+  final VoidCallback linkAction;
 
   const InformationListItem(
     this.linkText,
@@ -14,6 +15,7 @@ class InformationListItem extends StatelessWidget {
     @required this.icon,
     @required this.title,
     @required this.information,
+    this.linkAction,
   });
 
   bool get hasBadge => badgeText != null && badgeText.trim().isNotEmpty;
@@ -66,10 +68,13 @@ class InformationListItem extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         hasLink
-            ? Text(
-                linkText,
-                textAlign: TextAlign.start,
-                style: informationStyle.copyWith(color: AppColor.green),
+            ? GestureDetector(
+                child: Text(
+                  linkText,
+                  textAlign: TextAlign.start,
+                  style: informationStyle.copyWith(color: AppColor.green),
+                ),
+                onTap: linkAction,
               )
             : Container(),
       ],

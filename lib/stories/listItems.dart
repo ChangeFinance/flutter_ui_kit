@@ -160,9 +160,28 @@ class ListItems extends StatelessWidget {
             child: InformationListItem(
               linkText,
               badgeText,
-              icon: const SvgIcon(path: 'assets/card_holder.svg', color: SvgIconColor.noColor,),
+              icon: const SvgIcon(
+                path: 'assets/card_holder.svg',
+                color: SvgIconColor.noColor,
+              ),
               title: title,
               information: information,
+              linkAction: () {
+                showDialog<dynamic>(
+                    context: ctx,
+                    builder: (c) {
+                      return AlertDialog(
+                        title: const Text('Link pressed'),
+                        content: const Text('Link pressed'),
+                        actions: <Widget>[
+                          FlatButton(
+                            onPressed: () => Navigator.of(c).pop(),
+                            child: const Text('Close'),
+                          ),
+                        ],
+                      );
+                    });
+              },
             ),
           );
         },
