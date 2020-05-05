@@ -81,7 +81,7 @@ class InformationListItem extends StatelessWidget {
         fontSize: 12, height: 16 / 12, letterSpacing: 1, fontWeight: FontWeight.w600, color: Colors.white);
     return Container(
       key: const Key('informationListItemBadge'),
-      decoration: BoxDecoration(color: AppColor.green, borderRadius: const BorderRadius.all(Radius.circular(10))),
+      decoration: const BoxDecoration(color: AppColor.green, borderRadius: const BorderRadius.all(Radius.circular(10))),
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       child: Center(
         child: Text(
