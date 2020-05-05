@@ -134,14 +134,14 @@ class _TimelinePainter extends CustomPainter {
     @required this.activeLineColor,
     @required this.isFirst,
     @required this.isLast,
+    @required this.itemGap,
     this.isActive = false,
     this.isPrevActive = false,
-    @required this.itemGap,
   })  : linePaint = Paint()
-    ..color = lineColor
-    ..strokeCap = strokeCap
-    ..strokeWidth = strokeWidth
-    ..style = style,
+          ..color = lineColor
+          ..strokeCap = strokeCap
+          ..strokeWidth = strokeWidth
+          ..style = style,
         circlePaint = Paint()
           ..color = indicatorColor
           ..style = indicatorStyle;
@@ -181,20 +181,23 @@ class _TimelinePainter extends CustomPainter {
     );
 
     if (!isFirst) {
-      if (isPrevActive) linePaint.color = activeLineColor;
+      if (isPrevActive) {
+        linePaint.color = activeLineColor;
+      }
       canvas.drawLine(top, centerTop, linePaint);
       linePaint.color = lineColor;
     }
 
     if (!isLast) {
-      if (isActive) linePaint.color = activeLineColor;
+      if (isActive) {
+        linePaint.color = activeLineColor;
+      }
       canvas.drawLine(centerBottom, bottom, linePaint);
       linePaint.color = lineColor;
     }
 
     if (!hideDefaultIndicator) {
-      final Offset offsetCenter = size.centerLeft(Offset(indicatorRadius, 0));
-
+      final offsetCenter = size.centerLeft(Offset(indicatorRadius, 0));
       canvas.drawCircle(offsetCenter, indicatorRadius, circlePaint);
     }
   }
