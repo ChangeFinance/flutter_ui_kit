@@ -21,6 +21,7 @@ class Timelines extends StatelessWidget {
       title: 'Timeline',
       child: Timeline(
         activeLineColor: AppColor.green,
+        lineGap: 0,
         itemGap: 50,
         children: <TimelineModel>[
           TimelineModel(widget: _buildTimelineItem('Previous interest payday', 'Mar 1', true, true), isActive: true),
