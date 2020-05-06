@@ -5,6 +5,7 @@ import 'package:flutter_ui_kit/story_book/prop_updater/double_prop_updater.dart'
 import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
+import 'package:flutter_ui_kit/widgets/big_asset_card.dart';
 import 'package:flutter_ui_kit/widgets/card.dart';
 import 'package:flutter_ui_kit/widgets/news/news_card.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
@@ -19,6 +20,7 @@ class AppCards extends StatelessWidget {
             _emptyCardStory(),
             _dialogCardStory(),
             _newsCardStory(),
+            _bigAssetCardStory(),
           ],
         ),
       ),
@@ -39,24 +41,9 @@ class AppCards extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'elevation',
-                  min: 1,
-                  max: 4),
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'margin',
-                  min: 0,
-                  max: 20),
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'borderRadius',
-                  min: 0,
-                  max: 20)
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'elevation', min: 1, max: 4),
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'margin', min: 0, max: 20),
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'borderRadius', min: 0, max: 20)
             ],
           );
         },
@@ -94,24 +81,9 @@ class AppCards extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'elevation',
-                  min: 1,
-                  max: 4),
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'margin',
-                  min: 0,
-                  max: 20),
-              DoublePropUpdater(
-                  props: props,
-                  updateProp: updateProp,
-                  propKey: 'borderRadius',
-                  min: 0,
-                  max: 20)
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'elevation', min: 1, max: 4),
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'margin', min: 0, max: 20),
+              DoublePropUpdater(props: props, updateProp: updateProp, propKey: 'borderRadius', min: 0, max: 20)
             ],
           );
         },
@@ -131,8 +103,7 @@ class AppCards extends StatelessWidget {
                 const ListTile(
                   leading: Icon(Icons.album),
                   title: Text('The Enchanted Nightingale'),
-                  subtitle:
-                      Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
+                  subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
                 ),
                 ButtonTheme.bar(
                   child: ButtonBar(
@@ -173,14 +144,10 @@ class AppCards extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: <Widget>[
-              StringPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'source'),
-              IntPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'time'),
-              StringPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'title'),
-              StringPropUpdater(
-                  props: props, updateProp: updateProp, propKey: 'image')
+              StringPropUpdater(props: props, updateProp: updateProp, propKey: 'source'),
+              IntPropUpdater(props: props, updateProp: updateProp, propKey: 'time'),
+              StringPropUpdater(props: props, updateProp: updateProp, propKey: 'title'),
+              StringPropUpdater(props: props, updateProp: updateProp, propKey: 'image')
             ],
           );
         },
@@ -190,8 +157,39 @@ class AppCards extends StatelessWidget {
           final String title = props['title'];
           final String image = props['image'];
 
-          return NewsCard(
-              title: title, image: image, source: source, time: time);
+          return NewsCard(title: title, image: image, source: source, time: time);
+        },
+      ),
+    );
+  }
+
+  Widget _bigAssetCardStory() {
+    return ExpandableStory(
+      title: 'Big Asset Card',
+      child: PropsExplorer(
+        initialProps: const <String, dynamic>{},
+        formBuilder: (context, props, updateProp) {
+          return Container();
+        },
+        widgetBuilder: (context, props) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              BigAssetCard(
+                title: 'Earn',
+                icon: Icon(Icons.timeline, color: AppColor.green),
+                description: '2.00% APY*',
+                tag: 'COMING SOON',
+                tagIsBadge: true,
+              ),
+              BigAssetCard(
+                title: 'Spend',
+                icon: Icon(Icons.credit_card, color: AppColor.green),
+                description: '€110,546.00',
+                tag: 'Debit card, ATM',
+              ),
+            ],
+          );
         },
       ),
     );
