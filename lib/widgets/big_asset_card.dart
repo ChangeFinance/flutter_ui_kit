@@ -17,7 +17,7 @@ class BigAssetCard extends StatelessWidget {
     return AppCard(
       color: AppColor.deepWhite,
       elevation: 2,
-      borderRadius: 2,
+      borderRadius: 4,
       child: Container(
         width: 156,
         height: 250,
