@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
+import 'package:flutter_ui_kit/text_styles.dart';
+import 'package:flutter_ui_kit/ui/screen_utils.dart';
 import 'package:flutter_ui_kit/widgets.dart';
 
 class BigAssetCard extends StatelessWidget {
@@ -14,12 +16,13 @@ class BigAssetCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final descriptionStyle = TextStyles.style_20_30_regular.copyWith(color: Colors.black);
     return AppCard(
       color: AppColor.deepWhite,
       elevation: 2,
       borderRadius: 4,
       child: Container(
-        constraints: BoxConstraints.loose(const Size(156, 250)),
+        constraints: BoxConstraints.loose(Size(156, ScreenUtils.isSmallScreen(context) ? 200 : 220)),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -29,13 +32,18 @@ class BigAssetCard extends StatelessWidget {
               FittedBox(
                 fit: BoxFit.cover,
                 alignment: Alignment.center,
-                child: SizedBox(width: 24, height: 62, child: icon),
+                child: SizedBox(width: 24, height: 24, child: icon),
               ),
               const SizedBox(height: 12),
-              Text(title, style: const TextStyle(fontSize: 14, height: 20 / 14)),
+              Text(title, style: TextStyles.style_14_20_regular.copyWith(color: Colors.black)),
               const SizedBox(height: 4),
-              Text(description, style: const TextStyle(fontSize: 20, height: 30 / 20)),
-              const SizedBox(height: 60),
+              FittedBox(
+                child: SizedBox(
+                  child: Text(description, style: descriptionStyle),
+                  height: descriptionStyle.height * descriptionStyle.fontSize,
+                ),
+              ),
+              Spacer(),
               _buildTag(),
             ],
           ),
@@ -53,21 +61,29 @@ class BigAssetCard extends StatelessWidget {
       return _buildBadge();
     }
 
-    return Text(tag, style: const TextStyle(fontSize: 14, height: 20 / 14, color: AppColor.semiGrey));
+    return FittedBox(
+      child: SizedBox(
+        height: 20,
+        child: Text(tag, style: TextStyles.style_14_20_regular.copyWith(color: AppColor.semiGrey)),
+      ),
+    );
   }
 
   Widget _buildBadge() {
     const badgeStyle =
         const TextStyle(fontSize: 12, letterSpacing: 1, fontWeight: FontWeight.w600, color: Colors.white);
-    return Container(
-      decoration: const BoxDecoration(color: AppColor.green, borderRadius: const BorderRadius.all(Radius.circular(10))),
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-      height: 20,
-      child: Center(
-        child: Text(
-          tag,
-          style: badgeStyle,
-          textAlign: TextAlign.center,
+    return FittedBox(
+      child: Container(
+        decoration:
+            const BoxDecoration(color: AppColor.green, borderRadius: const BorderRadius.all(Radius.circular(10))),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+        height: 20,
+        child: Center(
+          child: Text(
+            tag,
+            style: badgeStyle,
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
