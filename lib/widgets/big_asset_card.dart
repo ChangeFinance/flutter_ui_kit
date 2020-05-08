@@ -16,8 +16,7 @@ class BigAssetCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final descriptionStyle =
-        ScreenUtils.isSmallScreen(context) ? TextStyles.style_20_30_regular : TextStyles.style_20_30_regular;
+    final descriptionStyle = TextStyles.style_20_30_regular.copyWith(color: Colors.black);
     return AppCard(
       color: AppColor.deepWhite,
       elevation: 2,
@@ -40,7 +39,7 @@ class BigAssetCard extends StatelessWidget {
               const SizedBox(height: 4),
               FittedBox(
                 child: SizedBox(
-                  child: Text(description, style: descriptionStyle.copyWith(color: Colors.black)),
+                  child: Text(description, style: descriptionStyle),
                   height: descriptionStyle.height * descriptionStyle.fontSize,
                 ),
               ),
