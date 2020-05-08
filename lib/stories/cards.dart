@@ -175,18 +175,23 @@ class AppCards extends StatelessWidget {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              BigAssetCard(
-                title: 'Earn',
-                icon: Icon(Icons.timeline, color: AppColor.green),
-                description: '2.00% APY*',
-                tag: 'COMING SOON',
-                tagIsBadge: true,
+              Expanded(
+                child: BigAssetCard(
+                  title: 'Earn',
+                  icon: Icon(Icons.timeline, color: AppColor.green),
+                  description: '2.00% APY*',
+                  tag: 'COMING SOON',
+                  tagIsBadge: true,
+                ),
               ),
-              BigAssetCard(
-                title: 'Spend',
-                icon: Icon(Icons.credit_card, color: AppColor.green),
-                description: '€110,546.00',
-                tag: 'Debit card, ATM',
+              const SizedBox(width: 15),
+              Expanded(
+                child: BigAssetCard(
+                  title: 'Spend',
+                  icon: Icon(Icons.credit_card, color: AppColor.green),
+                  description: '€110,546.00',
+                  tag: 'Debit card, ATM',
+                ),
               ),
             ],
           );
