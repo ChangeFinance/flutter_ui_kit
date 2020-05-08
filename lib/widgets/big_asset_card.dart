@@ -19,8 +19,7 @@ class BigAssetCard extends StatelessWidget {
       elevation: 2,
       borderRadius: 4,
       child: Container(
-        width: 156,
-        height: 250,
+        constraints: BoxConstraints.loose(const Size(156, 250)),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
