@@ -388,6 +388,7 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
         Navigator.of(context).pop();
       },
       completionSecondaryButtonText: 'View order',
+      errorState: false,
     );
   }
 
