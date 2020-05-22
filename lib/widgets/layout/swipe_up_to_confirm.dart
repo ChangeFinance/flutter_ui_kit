@@ -22,6 +22,7 @@ class SwipeUpToConfirmLayout extends StatefulWidget {
   final Function completionPrimaryButtonAction;
   final String completionSecondaryButtonText;
   final Function completionSecondaryButtonAction;
+  final bool errorState;
 
   SwipeUpToConfirmLayout({
     @required this.body,
@@ -37,6 +38,7 @@ class SwipeUpToConfirmLayout extends StatefulWidget {
     this.completionPrimaryButtonAction,
     this.completionSecondaryButtonText = 'Secondary button',
     this.completionSecondaryButtonAction,
+    this.errorState = false
   });
 
   @override
@@ -124,7 +126,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
   Widget build(BuildContext context) {
     return Scaffold(
       key: widget.scaffoldKey,
-      backgroundColor: swipeUpComplete ? AppColor.green : Colors.white,
+      backgroundColor: swipeUpComplete ? (widget.errorState ? AppColor.red : AppColor.green) : Colors.white,
       body: _buildBody(),
     );
   }
@@ -192,8 +194,8 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
         child: Container(
           width: double.infinity,
           height: swiperBaseHeight + swiperHeightOffsetYFromAnimation(_heightAnimation.value),
-          decoration: const BoxDecoration(
-            color: AppColor.green,
+          decoration: BoxDecoration(
+            color: widget.errorState ? AppColor.red : AppColor.green,
             borderRadius: const BorderRadius.only(
               topLeft: const Radius.circular(20),
               topRight: const Radius.circular(20),
@@ -287,9 +289,9 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
   Widget _handle() {
     final screenWidth = MediaQuery.of(context).size.width;
     return DecoratedBox(
-      decoration: const BoxDecoration(
-        color: AppColor.darkerGreen,
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+      decoration: BoxDecoration(
+        color: widget.errorState ? AppColor.shadowColor : AppColor.darkerGreen,
+        borderRadius: const BorderRadius.all(Radius.circular(5)),
       ),
       child: SizedBox(width: screenWidth * 0.2, height: 5),
     );
