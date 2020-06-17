@@ -35,12 +35,14 @@ class CurrencySwitcher extends StatefulWidget {
   final List<String> amounts;
   final Function(int) onSwitch;
   final bool onlySwitchedAmount;
+  final bool hideSwitcher;
 
   CurrencySwitcher({
         @required this.currencyInfoList,
         @required this.amounts,
         this.onSwitch,
-        this.onlySwitchedAmount = false
+        this.onlySwitchedAmount = false,
+        this.hideSwitcher = false,
       })
       : assert(currencyInfoList != null && currencyInfoList.length == 2);
 
@@ -74,7 +76,7 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
-            child: SwitcherButton(
+            child: widget.hideSwitcher ? Container() : SwitcherButton(
               labels: [infoList[0].label, infoList[1].label],
               onSwitch: _switch,
             ),
