@@ -76,9 +76,12 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 4.0),
-            child: widget.hideSwitcher ? Container() : SwitcherButton(
-              labels: [infoList[0].label, infoList[1].label],
-              onSwitch: _switch,
+            child: Opacity(
+              opacity: widget.hideSwitcher ? 0 : 1,
+              child: SwitcherButton(
+                labels: [infoList[0].label, infoList[1].label],
+                onSwitch: widget.hideSwitcher ? (_) {} : _switch,
+              ),
             ),
           ),
         ],
