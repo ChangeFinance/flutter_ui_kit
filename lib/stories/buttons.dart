@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
@@ -39,6 +41,7 @@ class Buttons extends StatelessWidget {
           'fullWidth': false,
           'narrow': false,
           'taskDuration': 300,
+          'overrideColor': false,
         },
         formBuilder: (context, props, updateProp) {
           return ListView(
@@ -71,6 +74,11 @@ class Buttons extends StatelessWidget {
                 updateProp: updateProp,
                 propKey: 'narrow',
               ),
+              BoolPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'overrideColor',
+              ),
             ],
           );
         },
@@ -87,11 +95,15 @@ class Buttons extends StatelessWidget {
             };
           }
 
+          const colors = [Colors.red, Colors.blue, Colors.purple, Colors.teal, Colors.brown];
+          final randIndex = Random().nextInt(5);
+
           return FilledButton(
             props['text'],
             onPressed: onPressed,
             fullWidth: props['fullWidth'],
             narrow: props['narrow'],
+            color: props['overrideColor'] ? colors[randIndex] : null,
           );
         },
       ),

@@ -10,6 +10,7 @@ class FilledButton extends StatefulWidget {
   final bool narrow;
   final EdgeInsetsGeometry padding;
   final TextStyle textStyle;
+  final Color color;
 
   FilledButton(
     this.text, {
@@ -18,6 +19,7 @@ class FilledButton extends StatefulWidget {
     this.narrow = false,
     this.padding,
     this.textStyle,
+    this.color,
     Key key,
   })  : assert(text != null),
         super(key: key);
@@ -28,6 +30,8 @@ class FilledButton extends StatefulWidget {
 
 class _FilledButtonState extends State<FilledButton> with ButtonMixin {
   bool _enabled = true;
+
+  Color get color => widget.color;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +57,8 @@ class _FilledButtonState extends State<FilledButton> with ButtonMixin {
         textColor: AppColor.deepWhite,
         disabledTextColor: AppColor.deepWhite,
         disabledColor: AppColor.mediumGrey,
-        highlightColor: AppColor.darkerGreen,
+        color: color,
+        highlightColor: color ?? AppColor.darkerGreen,
       ),
     );
   }
