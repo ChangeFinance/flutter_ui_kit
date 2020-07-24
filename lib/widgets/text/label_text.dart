@@ -16,7 +16,7 @@ class LabelText extends StatelessWidget {
       style: theme.body1.copyWith(
           color: AppColor.semiGrey,
           fontSize: 12.0,
-          fontFamily: 'Circular',
+          fontFamily: 'DINNextLTPro',
           letterSpacing: 1.0,
           height: 1.0,
           fontWeight: FontWeight.normal),

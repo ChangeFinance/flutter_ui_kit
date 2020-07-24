@@ -298,7 +298,7 @@ class TransactionListItem extends StatelessWidget {
     return const TextStyle(
         height: 1.428,
         fontSize: 14.0,
-        fontFamily: 'Circular',
+        fontFamily: 'DINNextLTPro',
         fontWeight: FontWeight.normal,
         letterSpacing: 0.02,
         color: AppColor.semiGrey);
@@ -308,7 +308,7 @@ class TransactionListItem extends StatelessWidget {
     return const TextStyle(
         height: 1.428,
         fontSize: 14.0,
-        fontFamily: 'Circular',
+        fontFamily: 'DINNextLTPro',
         fontWeight: FontWeight.normal,
         letterSpacing: 0.02,
         color: AppColor.deepBlack);
@@ -318,7 +318,7 @@ class TransactionListItem extends StatelessWidget {
     return const TextStyle(
         height: 1.428,
         fontSize: 14.0,
-        fontFamily: 'Circular',
+        fontFamily: 'DINNextLTPro',
         fontWeight: FontWeight.normal,
         letterSpacing: 0.02,
         color: AppColor.semiGrey);

@@ -30,7 +30,7 @@ class CurrencyDisplay extends StatelessWidget {
 
   static const TextStyle _tickerStyle = TextStyle(
       fontSize: 38.0,
-      fontFamily: 'Circular',
+      fontFamily: 'DINNextLTPro',
       fontWeight: FontWeight.bold,
       letterSpacing: 0,
       textBaseline: TextBaseline.alphabetic,

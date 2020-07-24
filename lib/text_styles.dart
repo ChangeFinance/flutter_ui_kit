@@ -7,7 +7,7 @@ class TextStyles {
   // line height = lineheight_in_px / font_size
   // letter_spacing = letter_spacing_em / 0.0625
   static const letterSpacingConstant = 0.0625;
-  static const _fontFamily = 'Circular';
+  static const _fontFamily = 'DINNextLTPro';
 
   // ignore: non_constant_identifier_names
   static const TextStyle style_48_52_bold = const TextStyle(
