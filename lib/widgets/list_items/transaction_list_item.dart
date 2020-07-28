@@ -257,7 +257,7 @@ class TransactionListItem extends StatelessWidget {
         width: amountFieldWidth,
         constraints: BoxConstraints(maxWidth: maxAmountWidth, minWidth: 60.0),
         child: Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 4.0),
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 3.0),
             child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,

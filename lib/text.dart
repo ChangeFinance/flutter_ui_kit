@@ -79,7 +79,7 @@ class AppText {
       fontSize: 12.0,
       fontStyle: FontStyle.normal,
       fontWeight: FontWeight.w400,
-      fontFamily: 'CircularPro-Book');
+      fontFamily: 'DINNextLTPro');
 
   static const TextStyle body3SemiGray = TextStyle(
       fontSize: 12.0,

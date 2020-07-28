@@ -4,6 +4,7 @@ import 'package:flutter_ui_kit/widgets/odometer/text_run.dart';
 import 'package:intl/intl.dart' as intl;
 
 import '../text.dart';
+import '../text_styles.dart';
 
 class AssetRate extends StatelessWidget {
   final String symbol;
@@ -21,9 +22,9 @@ class AssetRate extends StatelessWidget {
       children: <Widget>[
         RichText(
             text: TextSpan(children: [
-          new TextSpan(text: '$symbol ', style: AppText.body2),
-          new TextSpan(text: '$value', style: AppText.header0.copyWith(fontWeight: FontWeight.bold)),
-          new TextSpan(text: '$cents', style: AppText.body2),
+          new TextSpan(text: '$symbol', style: TextStyles.style_40_60_regular),
+          new TextSpan(text: '$value', style: TextStyles.style_40_60_regular),
+          new TextSpan(text: '$cents', style: TextStyles.style_40_60_regular),
         ]))
       ],
     );
@@ -43,17 +44,14 @@ class AnimatedAssetRate extends StatelessWidget {
     this.rateStream, {
     this.decimalPlaces = 2,
   })  : assert(decimalPlaces > 0),
-        largeTextStyle = AppText.header0.copyWith(fontWeight: FontWeight.bold),
+        largeTextStyle = TextStyles.style_40_60_regular,
         smallTextStyle =
-            AppText.body2.copyWith(height: (AppText.header0.fontSize / AppText.body2.fontSize).roundToDouble()){
-    rateStream.listen((r) {});
-  }
+            AppText.body2.copyWith(height: (AppText.header0.fontSize / AppText.body2.fontSize).roundToDouble());
 
   String _lastFormattedRate = '0.00';
 
   @override
   Widget build(BuildContext context) {
-    final smallTextStyle = this.smallTextStyle.copyWith(height: 3);
 
     return StreamBuilder<String>(
       stream: rateStream?.map(_formatRate)?.distinct()?.where((r) => r != _lastFormattedRate),
@@ -78,10 +76,10 @@ class AnimatedAssetRate extends StatelessWidget {
           children: <Widget>[
             Odometer(
               [
-                TextRun(symbol, symbol, smallTextStyle),
+                TextRun(symbol, symbol, largeTextStyle),
                 TextRun(curHundrethsPart, prevHundrethsPart, largeTextStyle),
-                TextRun('.', '.', smallTextStyle),
-                TextRun(curCentsPart, prevCentsPart, smallTextStyle),
+                TextRun('.', '.', largeTextStyle),
+                TextRun(curCentsPart, prevCentsPart, largeTextStyle),
               ],
             ),
           ],

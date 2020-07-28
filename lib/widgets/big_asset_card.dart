@@ -76,7 +76,7 @@ class BigAssetCard extends StatelessWidget {
       child: Container(
         decoration:
             const BoxDecoration(color: AppColor.green, borderRadius: const BorderRadius.all(Radius.circular(10))),
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+        padding: const EdgeInsets.fromLTRB(5,3,5,0),
         height: 20,
         child: Center(
           child: Text(

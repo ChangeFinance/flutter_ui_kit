@@ -26,6 +26,7 @@ class TextStyles {
     height: 60 / 40,
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.w400,
+    letterSpacing: -3,
     color: Colors.black,
   );
 

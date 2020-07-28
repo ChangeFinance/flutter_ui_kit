@@ -24,7 +24,7 @@ class Heading extends StatelessWidget {
                 style: const TextStyle(
                     color: Colors.black,
                   fontSize: 30,
-                  fontFamily: 'CircularPro-Book',
+                  fontFamily: 'DINNextLTPro',
                   fontWeight: FontWeight.bold
                 ),
                 textAlign: TextAlign.center,
