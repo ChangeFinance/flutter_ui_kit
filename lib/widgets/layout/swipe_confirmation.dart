@@ -71,7 +71,7 @@ class SwipeConfirmation extends StatelessWidget {
 
   Widget _labelTitle() => Text(
         labelTitle,
-        style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold),
+        style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w500),
         textAlign: TextAlign.center,
       );
 

@@ -18,7 +18,7 @@ class BalanceAmount extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: new Text(data,
               style: theme.body1
-                  .copyWith(fontWeight: FontWeight.bold, fontSize: 36.0)),
+                  .copyWith(fontWeight: FontWeight.w500, fontSize: 36.0)),
         ),
       ],
     );

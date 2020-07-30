@@ -50,7 +50,7 @@ class LabelValuePair extends StatelessWidget {
             ? MainAxisAlignment.center
             : MainAxisAlignment.start,
         children: [
-          Flexible(child: value != null ? value :  Text(data, style: const TextStyle(fontSize: 16 , fontFamily: 'Circular', color: Colors.black, height: 1.5, fontWeight: FontWeight.bold))),
+          Flexible(child: value != null ? value :  Text(data, style: const TextStyle(fontSize: 16 , fontFamily: 'DINNextLTPro', color: Colors.black, height: 1.5, fontWeight: FontWeight.w500))),
           _buildCopyToClipboardIcon(context, data),
         ],
       ),

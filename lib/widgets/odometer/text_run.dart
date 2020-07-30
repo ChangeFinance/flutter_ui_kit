@@ -36,10 +36,6 @@ class TextRun {
     painter.textScaleFactor = 1.0;
     painter.layout();
 
-    if (currentText == '1') {
-      return Size(painter.size.width + 1, painter.size.height);
-    }
-
     return painter.size;
   }
 }

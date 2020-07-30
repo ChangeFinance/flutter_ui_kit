@@ -65,7 +65,7 @@ class OdometerBadge extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: badgeHeight / 4),
+                  padding: EdgeInsets.fromLTRB(10, badgeHeight / 4 + 1, 10, badgeHeight / 4),
                   child: Shimmer.fromColors(
                     key: new Key(textRuns.map((r) => '${r.initialText}-${r.currentText}').join(',')),
                     enabled: false,

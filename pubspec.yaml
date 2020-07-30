@@ -65,6 +65,12 @@ flutter:
       fonts:
         - asset: lib/fonts/CircularPro-Book.ttf
           weight: 400
+    - family: DINNextLTPro
+      fonts:
+        - asset: lib/fonts/DINNextLTPro-Regular.otf
+          weight: 400
+        - asset: lib/fonts/DINNextLTPro-Medium.otf
+          weight: 500
 
   assets:
     - assets/update-app.svg

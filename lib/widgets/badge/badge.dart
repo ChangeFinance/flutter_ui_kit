@@ -38,7 +38,7 @@ class Badge extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: padding),
+                      padding: const EdgeInsets.fromLTRB(10, badgeHeight / 4, 10, badgeHeight / 4),
                       child:
                       Shimmer.fromColors(
                         key: new Key(text),

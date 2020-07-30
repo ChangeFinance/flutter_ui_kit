@@ -257,7 +257,7 @@ class TransactionListItem extends StatelessWidget {
         width: amountFieldWidth,
         constraints: BoxConstraints(maxWidth: maxAmountWidth, minWidth: 60.0),
         child: Padding(
-            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 4.0),
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 3.0),
             child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -298,7 +298,7 @@ class TransactionListItem extends StatelessWidget {
     return const TextStyle(
         height: 1.428,
         fontSize: 14.0,
-        fontFamily: 'Circular',
+        fontFamily: 'DINNextLTPro',
         fontWeight: FontWeight.normal,
         letterSpacing: 0.02,
         color: AppColor.semiGrey);
@@ -308,7 +308,7 @@ class TransactionListItem extends StatelessWidget {
     return const TextStyle(
         height: 1.428,
         fontSize: 14.0,
-        fontFamily: 'Circular',
+        fontFamily: 'DINNextLTPro',
         fontWeight: FontWeight.normal,
         letterSpacing: 0.02,
         color: AppColor.deepBlack);
@@ -318,7 +318,7 @@ class TransactionListItem extends StatelessWidget {
     return const TextStyle(
         height: 1.428,
         fontSize: 14.0,
-        fontFamily: 'Circular',
+        fontFamily: 'DINNextLTPro',
         fontWeight: FontWeight.normal,
         letterSpacing: 0.02,
         color: AppColor.semiGrey);
