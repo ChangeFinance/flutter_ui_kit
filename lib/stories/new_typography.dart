@@ -136,7 +136,7 @@ class Typography extends StatelessWidget {
 
   Widget _buildStyleInfo(BuildContext context, TextStyle textStyle, String useDescription) {
     const titleTextStyle = const TextStyle(
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w500,
       color: Colors.black,
       fontSize: 16,
       height: 24 / 16,
@@ -151,7 +151,7 @@ class Typography extends StatelessWidget {
                 : textStyle.letterSpacing * TextStyles.letterSpacingConstant) *
             100)
         .toInt();
-    final fw = textStyle.fontWeight == FontWeight.bold ? 'bold' : 'regular';
+    final fw = textStyle.fontWeight == FontWeight.w500 ? 'medium' : 'regular';
     final title = '${sz}px / ${lh}px / $sp% spacing / $fw';
 
     final subTitle1 = '$lhPct% line height (${lh}px)';

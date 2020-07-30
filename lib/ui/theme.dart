@@ -25,7 +25,7 @@ final ThemeData theme = ui_kit.theme.copyWith(
 const _buttonTextStyle = const TextStyle(
   fontSize: 16.0,
   fontFamily: 'DINNextLTPro',
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w500,
 );
 
 const _iconTheme = const IconThemeData(size: 36.0);
@@ -44,7 +44,7 @@ const TextStyle subHeadingStyle = const TextStyle(
   color: Colors.black,
   fontSize: 18.0,
   fontFamily: 'DINNextLTPro',
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w500,
 );
 
 const _bodyStyle = const TextStyle(
@@ -74,14 +74,14 @@ const _appBarTitleStyle = const TextStyle(
   color: AppColors.primary,
   fontSize: 11.8,
   fontFamily: 'DINNextLTPro',
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w500,
   letterSpacing: 2.0,
 );
 
 const _inputStyle = const TextStyle(
   fontSize: 12.0,
   fontFamily: 'DINNextLTPro',
-  fontWeight: FontWeight.bold,
+  fontWeight: FontWeight.w500,
 );
 
 const _inputHintStyle = const TextStyle(

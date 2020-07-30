@@ -25,7 +25,7 @@ class Heading extends StatelessWidget {
                     color: Colors.black,
                   fontSize: 30,
                   fontFamily: 'DINNextLTPro',
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.w500
                 ),
                 textAlign: TextAlign.center,
             ),

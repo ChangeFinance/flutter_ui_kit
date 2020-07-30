@@ -15,7 +15,7 @@ class StatusText extends StatelessWidget {
       style: theme.body1.copyWith(
           color: AppColors.primaryColor,
           fontSize: 12.0,
-          fontWeight: FontWeight.bold),
+          fontWeight: FontWeight.w500),
     );
   }
 }
