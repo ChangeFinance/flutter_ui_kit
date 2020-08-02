@@ -217,13 +217,13 @@ class Layouts extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 child: Text('Add Euro or cryptocurrency to your Change account.',
                                     textAlign: TextAlign.left,
-                                    style: Theme.of(context).textTheme.body2.copyWith(color: AppColor.semiGrey)),
+                                    style: Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey)),
                               )),
                           Padding(
                               padding: const EdgeInsets.only(bottom: 30.0),
                               child: Text('I want to deposit:',
                                   textAlign: TextAlign.left,
-                                  style: Theme.of(context).textTheme.body2.copyWith(color: AppColor.semiGrey))),
+                                  style: Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey))),
                           Expanded(
                               flex: 1,
                               child: CustomRadio(
@@ -283,7 +283,7 @@ class Layouts extends StatelessWidget {
                                       children: [
                                         TextSpan(
                                           text: 'What is token swap?',
-                                          style: Theme.of(context).textTheme.body2.copyWith(color: AppColor.semiGrey),
+                                          style: Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey),
                                         ),
                                       ],
                                     ),

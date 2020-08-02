@@ -72,7 +72,7 @@ class AppTypography extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text('Body 2 - Book; 14pt',
-                    style: Theme.of(context).textTheme.body2),
+                    style: Theme.of(context).textTheme.bodyText1),
           )
         ],
       ),

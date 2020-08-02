@@ -12,7 +12,7 @@ class StatusText extends StatelessWidget {
     final theme = Theme.of(context).textTheme;
     return new Text(
       data,
-      style: theme.body1.copyWith(
+      style: theme.bodyText2.copyWith(
           color: AppColors.primaryColor,
           fontSize: 12.0,
           fontWeight: FontWeight.w500),
