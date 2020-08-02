@@ -57,6 +57,8 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
         return false;
       case TargetPlatform.iOS:
         return true;
+      default:
+        return false;
     }
   }
 
@@ -127,6 +129,10 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
             namesRoute: true,
             child: widget.title,
           );
+          break;
+        default:
+          title = widget.title;
+          break;
       }
 
       final theme = Theme.of(context);

@@ -261,7 +261,7 @@ class Layouts extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 14.0),
                                   child: Text('CNG tokens give you the right to become shareholder of Change',
-                                      style: Theme.of(context).textTheme.body1),
+                                      style: Theme.of(context).textTheme.bodyText2),
                                 ),
                               ),
                               const SizedBox(
