@@ -20,12 +20,12 @@ class Heading extends StatelessWidget {
 
   TextStyle _textStyle(BuildContext context) {
     switch(headingType) {
-      case HeadingType.HEADING_0: return Theme.of(context).textTheme.display4;
-      case HeadingType.HEADING_1: return Theme.of(context).textTheme.display3;
-      case HeadingType.HEADING_2: return Theme.of(context).textTheme.display2;
-      case HeadingType.HEADING_3: return Theme.of(context).textTheme.display1;
-      case HeadingType.HEADING_4: return Theme.of(context).textTheme.subhead;
-      default: return Theme.of(context).textTheme.display2;
+      case HeadingType.HEADING_0: return Theme.of(context).textTheme.headline1;
+      case HeadingType.HEADING_1: return Theme.of(context).textTheme.headline2;
+      case HeadingType.HEADING_2: return Theme.of(context).textTheme.headline3;
+      case HeadingType.HEADING_3: return Theme.of(context).textTheme.headline4;
+      case HeadingType.HEADING_4: return Theme.of(context).textTheme.subtitle1;
+      default: return Theme.of(context).textTheme.headline3;
     }
   }
 }

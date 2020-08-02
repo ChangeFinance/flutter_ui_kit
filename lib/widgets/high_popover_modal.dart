@@ -340,7 +340,7 @@ Future<T> showModalBottomSheetCustom<T>({
 /// bottom sheet.
 ///
 /// To rebuild the bottom sheet (e.g. if it is stateful), call
-/// [PersistentBottomSheetController.setState] on the controller returned by
+/// setState on the controller returned by
 /// this method.
 ///
 /// The new bottom sheet becomes a [LocalHistoryEntry] for the enclosing

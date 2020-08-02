@@ -89,7 +89,7 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
 
   @override
   Widget build(BuildContext context) {
-    final FlexibleSpaceBarSettings settings = context.inheritFromWidgetOfExactType(FlexibleSpaceBarSettings);
+    final settings = context.dependOnInheritedWidgetOfExactType<FlexibleSpaceBarSettings>();
     assert(settings != null, 'A FlexibleSpaceBar must be wrapped in the widget returned by FlexibleSpaceBar.createSettings().');
 
     final children = <Widget>[];
@@ -138,7 +138,7 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
       final theme = Theme.of(context);
       final opacity = settings.toolbarOpacity;
       if (opacity > 0.0) {
-        var titleStyle = theme.primaryTextTheme.title;
+        var titleStyle = theme.primaryTextTheme.headline6;
         titleStyle = titleStyle.copyWith(
           color: titleStyle.color.withOpacity(opacity)
         );
