@@ -44,7 +44,7 @@ class _OutlinedButtonState extends State<OutlinedButton> with ButtonMixin {
         child: OutlineButton(
           child: Text(
             widget.text,
-            style: Theme.of(context).textTheme.body1.copyWith(
+            style: Theme.of(context).textTheme.bodyText2.copyWith(
                   color: !widget.alt
                       ? getTextColorOnWhiteBackground(
                           enabled: _enabled,
