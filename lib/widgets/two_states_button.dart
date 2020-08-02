@@ -83,7 +83,7 @@ class _TwoStatesButtonState extends State<TwoStatesButton> with ButtonMixin {
         child: Text(
           _currentText,
           style: (widget.textStyle != null) ? widget.textStyle :
-          Theme.of(context).textTheme.body1.copyWith(
+          Theme.of(context).textTheme.bodyText2.copyWith(
               color: AppColor.deepWhite,
               fontSize: getFontSize(narrow: widget.narrow, fullWidth: widget.fullWidth)
           ),
