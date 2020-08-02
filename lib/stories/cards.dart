@@ -105,7 +105,7 @@ class AppCards extends StatelessWidget {
                   title: Text('The Enchanted Nightingale'),
                   subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
                 ),
-                ButtonTheme.bar(
+                ButtonBarTheme(
                   child: ButtonBar(
                     children: <Widget>[
                       TextButton(
