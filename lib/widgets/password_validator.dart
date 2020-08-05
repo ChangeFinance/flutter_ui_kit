@@ -169,7 +169,7 @@ class _PasswordValidatorState extends State<PasswordValidator> {
           style: const TextStyle(
             fontSize: 16.0,
             color: Colors.black,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
           ),
         ),
         const Padding(

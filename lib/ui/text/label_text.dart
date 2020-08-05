@@ -16,7 +16,7 @@ class LabelText extends StatelessWidget {
           color: AppColors.primaryColor,
           fontSize: 12.0,
           letterSpacing: 2.0,
-          fontWeight: FontWeight.bold),
+          fontWeight: FontWeight.w500),
     );
   }
 }

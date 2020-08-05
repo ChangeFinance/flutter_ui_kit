@@ -16,7 +16,7 @@ class AmountText extends StatelessWidget {
       child: new Text(
         data,
         style:
-            theme.body1.copyWith(fontWeight: FontWeight.bold, fontSize: 16.0),
+            theme.body1.copyWith(fontWeight: FontWeight.w500, fontSize: 16.0),
         textAlign: TextAlign.center,
       ),
     );

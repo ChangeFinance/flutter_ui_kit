@@ -63,7 +63,7 @@ class PinText extends StatelessWidget {
       height: 28.0,
       decoration: BoxDecoration(border: Border(bottom: BorderSide(color: underlineColor, width: 2.0))),
       child: Text(character,
-        style: AppText.body1.copyWith(fontWeight: FontWeight.bold),
+        style: AppText.body1.copyWith(fontWeight: FontWeight.w500),
         textAlign: TextAlign.center
       )
     );

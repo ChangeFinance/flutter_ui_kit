@@ -4,7 +4,7 @@ import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/theme.dart';
 import 'package:intl/intl.dart';
 
-import '../text.dart';
+import '../text_styles.dart';
 
 enum CurrencyDisplaySize { small, large }
 
@@ -30,14 +30,13 @@ class CurrencyDisplay extends StatelessWidget {
 
   static const TextStyle _tickerStyle = TextStyle(
       fontSize: 38.0,
-      fontFamily: 'Circular',
-      fontWeight: FontWeight.bold,
+      fontFamily: 'DINNextLTPro',
       letterSpacing: 0,
       textBaseline: TextBaseline.alphabetic,
       color: AppColor.deepBlack);
 
   TextStyle get textStyle =>
-      size == CurrencyDisplaySize.large ? AppText.header0 : _smallTextStyle;
+      size == CurrencyDisplaySize.large ? TextStyles.style_40_60_regular : _smallTextStyle;
 
   TextStyle get tickerTextStyle =>
       size == CurrencyDisplaySize.large ? _tickerStyle : _smallTextStyle;

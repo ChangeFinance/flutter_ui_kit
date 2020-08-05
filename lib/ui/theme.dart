@@ -24,8 +24,8 @@ final ThemeData theme = ui_kit.theme.copyWith(
 
 const _buttonTextStyle = const TextStyle(
   fontSize: 16.0,
-  fontFamily: 'Circular',
-  fontWeight: FontWeight.bold,
+  fontFamily: 'DINNextLTPro',
+  fontWeight: FontWeight.w500,
 );
 
 const _iconTheme = const IconThemeData(size: 36.0);
@@ -34,7 +34,7 @@ const _textDisplayColor = const Color(0xFF9B9B9B);
 
 const _headingStyle = const TextStyle(
   fontSize: 28,
-  fontFamily: 'Circular',
+  fontFamily: 'DINNextLTPro',
   fontWeight: FontWeight.w800,
   letterSpacing: 0,
   height: 0.7,
@@ -43,21 +43,21 @@ const _headingStyle = const TextStyle(
 const TextStyle subHeadingStyle = const TextStyle(
   color: Colors.black,
   fontSize: 18.0,
-  fontFamily: 'Circular',
-  fontWeight: FontWeight.bold,
+  fontFamily: 'DINNextLTPro',
+  fontWeight: FontWeight.w500,
 );
 
 const _bodyStyle = const TextStyle(
   color: Colors.black,
   fontSize: 14.0,
-  fontFamily: 'Circular',
+  fontFamily: 'DINNextLTPro',
   fontWeight: FontWeight.normal,
 );
 
 const _bodyStyle2 = const TextStyle(
   color: Colors.black,
   fontSize: 11.0,
-  fontFamily: 'Circular',
+  fontFamily: 'DINNextLTPro',
   fontWeight: FontWeight.normal,
   letterSpacing: 0.5,
 );
@@ -65,7 +65,7 @@ const _bodyStyle2 = const TextStyle(
 const _captionTextStyle = const TextStyle(
   color: _textDisplayColor,
   fontSize: 11.0,
-  fontFamily: 'Circular',
+  fontFamily: 'DINNextLTPro',
   fontWeight: FontWeight.normal,
   letterSpacing: 0.5,
 );
@@ -73,28 +73,28 @@ const _captionTextStyle = const TextStyle(
 const _appBarTitleStyle = const TextStyle(
   color: AppColors.primary,
   fontSize: 11.8,
-  fontFamily: 'Circular',
-  fontWeight: FontWeight.bold,
+  fontFamily: 'DINNextLTPro',
+  fontWeight: FontWeight.w500,
   letterSpacing: 2.0,
 );
 
 const _inputStyle = const TextStyle(
   fontSize: 12.0,
-  fontFamily: 'Circular',
-  fontWeight: FontWeight.bold,
+  fontFamily: 'DINNextLTPro',
+  fontWeight: FontWeight.w500,
 );
 
 const _inputHintStyle = const TextStyle(
   color: AppColors.hint,
   fontSize: 18.0,
-  fontFamily: 'Circular',
+  fontFamily: 'DINNextLTPro',
   fontWeight: FontWeight.normal,
 );
 
 const _inputHelperStyle = const TextStyle(
   color: AppColors.hint,
   fontSize: 12.0,
-  fontFamily: 'Circular',
+  fontFamily: 'DINNextLTPro',
   fontWeight: FontWeight.normal,
 );
 

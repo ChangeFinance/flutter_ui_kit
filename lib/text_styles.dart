@@ -7,7 +7,7 @@ class TextStyles {
   // line height = lineheight_in_px / font_size
   // letter_spacing = letter_spacing_em / 0.0625
   static const letterSpacingConstant = 0.0625;
-  static const _fontFamily = 'Circular';
+  static const _fontFamily = 'DINNextLTPro';
 
   // ignore: non_constant_identifier_names
   static const TextStyle style_48_52_bold = const TextStyle(
@@ -15,7 +15,7 @@ class TextStyles {
     fontSize: 48,
     height: 52 / 48,
     fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
     letterSpacing: -0.01 / letterSpacingConstant,
     color: Colors.black,
   );
@@ -26,6 +26,7 @@ class TextStyles {
     height: 60 / 40,
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.w400,
+    letterSpacing: -3,
     color: Colors.black,
   );
 
@@ -34,7 +35,7 @@ class TextStyles {
     fontSize: 32,
     height: 36 / 32,
     fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
     color: Colors.black,
   );
 
@@ -43,7 +44,7 @@ class TextStyles {
     fontSize: 24,
     height: 36 / 24,
     fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
     color: Colors.black,
   );
 
@@ -71,7 +72,7 @@ class TextStyles {
     fontSize: 16,
     height: 24 / 16,
     fontStyle: FontStyle.normal,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
     color: Colors.black,
     letterSpacing: 0.02 / letterSpacingConstant,
   );

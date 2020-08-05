@@ -85,7 +85,7 @@ class Graph extends StatelessWidget {
       final paint = Paint();
       context.drawRRect(
           RRect.fromRectAndRadius(
-              Rect.fromLTWH(offset.dx - 3, offset.dy - 3, 68, 20),
+              Rect.fromLTWH(offset.dx - 5, offset.dy - 3, 68, 18),
               const Radius.circular(6.0)),
           paint);
       tp.paint(context, offset);

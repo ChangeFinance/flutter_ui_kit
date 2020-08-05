@@ -13,7 +13,7 @@ void main() {
       expect(find.byType(RichText), findsOneWidget);
       final RichText richText = find.byType(RichText).evaluate().first.widget;
       final richTextText = richText.text.toPlainText();
-      expect(richTextText, '€ 8,750.10');
+      expect(richTextText, '€8,750.10');
     });
 
     testWidgets('renders negative value', (WidgetTester tester) async {
@@ -24,7 +24,7 @@ void main() {
       expect(find.byType(RichText), findsOneWidget);
       final RichText richText = find.byType(RichText).evaluate().first.widget;
       final richTextText = richText.text.toPlainText();
-      expect(richTextText, '€ -8,701.48');
+      expect(richTextText, '€-8,701.48');
     });
   });
 }
