@@ -45,10 +45,12 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
   Animation<double> animation;
   AnimationController controller;
+  Size _digitSize;
 
   @override
   void initState() {
     super.initState();
+    _digitSize = TextRun.getSingleDigitSize('5', textStyle);
     _initAnimation();
   }
 
@@ -80,16 +82,15 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
-    final digitSize = TextRun.getSingleDigitSize('${animation.value.roundToDouble().toInt()}', textStyle);
     return Container(
       decoration: boxDecoration,
       child: SizedOverflowBox(
         alignment: Alignment.topCenter,
-        size: digitSize,
+        size: _digitSize,
         child: ClipRect(
-          clipper: _CustomDigitClipper(digitSize),
+          clipper: _CustomDigitClipper(_digitSize),
           child: Transform.translate(
-            offset: Offset(0, -animation.value * digitSize.height),
+            offset: Offset(0, -animation.value * _digitSize.height),
             child: Column(
               children: List<Widget>.generate(10, (int i) {
                 final txt = '$i';
