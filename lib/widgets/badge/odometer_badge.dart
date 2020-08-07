@@ -31,6 +31,7 @@ class UnstyledTextRun {
   }
 }
 
+// ignore: must_be_immutable
 class OdometerBadge extends StatelessWidget {
   final List<UnstyledTextRun> textRuns;
   final Color baseColor;
@@ -52,9 +53,7 @@ class OdometerBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (odometerSize == null) {
-      odometerSize = _getOdometerSize();
-    }
+    odometerSize ??= _getOdometerSize();
     final badgeHeight = odometerSize.height + 2;
 
     return Container(
