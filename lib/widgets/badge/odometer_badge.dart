@@ -31,6 +31,7 @@ class UnstyledTextRun {
   }
 }
 
+// ignore: must_be_immutable
 class OdometerBadge extends StatelessWidget {
   final List<UnstyledTextRun> textRuns;
   final Color baseColor;
@@ -39,8 +40,7 @@ class OdometerBadge extends StatelessWidget {
   final TextStyle textStyle;
   final double minWidth;
 
-  const OdometerBadge(
-    this.textRuns, {
+  OdometerBadge(this.textRuns, {
     Key key,
     this.baseColor = Colors.white,
     this.bgColor = AppColor.green,
@@ -49,9 +49,11 @@ class OdometerBadge extends StatelessWidget {
     this.minWidth,
   }) : super(key: key);
 
+  Size odometerSize;
+
   @override
   Widget build(BuildContext context) {
-    final odometerSize = _getOdometerSize();
+    odometerSize ??= _getOdometerSize();
     final badgeHeight = odometerSize.height + 2;
 
     return Container(
@@ -110,8 +112,8 @@ class OdometerBadge extends StatelessWidget {
     }
   }
 
-  List<Widget> _getChildrenForEqualFormatChildren(
-      List<MapEntry<String, TextStyle>> initial, List<MapEntry<String, TextStyle>> current) {
+  List<Widget> _getChildrenForEqualFormatChildren(List<MapEntry<String, TextStyle>> initial,
+      List<MapEntry<String, TextStyle>> current) {
     final children = <Widget>[];
     for (var i = 0; i < initial.length; i++) {
       final initialVal = int.tryParse(initial[i].key);
@@ -128,8 +130,8 @@ class OdometerBadge extends StatelessWidget {
     return children;
   }
 
-  List<Widget> _getChildrenForUnequalFormatChildren(
-      List<MapEntry<String, TextStyle>> initial, List<MapEntry<String, TextStyle>> current) {
+  List<Widget> _getChildrenForUnequalFormatChildren(List<MapEntry<String, TextStyle>> initial,
+      List<MapEntry<String, TextStyle>> current) {
     final children = <Widget>[];
     var dotAdded = false;
     for (var i = 0; i < current.length; i++) {

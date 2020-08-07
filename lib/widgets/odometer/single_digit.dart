@@ -46,6 +46,7 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
   Animation<double> animation;
   AnimationController controller;
   Size _digitSize;
+  static const text = '0\n1\n2\n3\n4\n5\n6\n7\n8\n9';
 
   @override
   void initState() {
@@ -91,11 +92,9 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
           clipper: _CustomDigitClipper(_digitSize),
           child: Transform.translate(
             offset: Offset(0, -animation.value * _digitSize.height),
-            child: Column(
-              children: List<Widget>.generate(10, (int i) {
-                final txt = '$i';
-                return Text(txt, style: textStyle);
-              }),
+            child: Text(
+              text,
+              style: textStyle,
             ),
           ),
         ),
@@ -111,7 +110,7 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 }
 
 class _CustomDigitClipper extends CustomClipper<Rect> {
-  _CustomDigitClipper(this.digitSize);
+  const _CustomDigitClipper(this.digitSize);
 
   final Size digitSize;
 
@@ -121,7 +120,7 @@ class _CustomDigitClipper extends CustomClipper<Rect> {
   }
 
   @override
-  bool shouldReclip(CustomClipper<Rect> oldClipper) {
-    return true;
+  bool shouldReclip(_CustomDigitClipper oldClipper) {
+    return false;
   }
 }

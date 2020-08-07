@@ -3,14 +3,17 @@ import 'package:characters/characters.dart';
 import 'package:flutter_ui_kit/widgets/odometer/single_digit.dart';
 import 'package:flutter_ui_kit/widgets/odometer/text_run.dart';
 
+// ignore: must_be_immutable
 class Odometer extends StatelessWidget {
   final List<TextRun> textRuns;
+  Size size;
 
-  Odometer(this.textRuns, {Key key}) : super(key: key);
+  Odometer(this.textRuns, {Key key}) :super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
-    final size = _getSize();
+    size ??= _getSize();
     return SizedOverflowBox(
       size: size,
       child: Row(
