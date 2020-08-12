@@ -9,7 +9,7 @@ final ThemeData theme = ui_kit.theme.copyWith(
     inputDecorationTheme: _inputDecorationTheme,
     iconTheme: _iconTheme,
     toggleableActiveColor: AppColors.primary,
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline6: _headingStyle,
       bodyText2: _bodyStyle,
       bodyText1: _bodyStyle2,

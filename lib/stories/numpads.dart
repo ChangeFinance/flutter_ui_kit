@@ -76,7 +76,7 @@ Widget _numPadStory() {
                                   textAlign: TextAlign.left,
                                   style: Theme.of(context).textTheme.headline3.copyWith(fontWeight: FontWeight.normal),
                                   decoration:
-                                      InputDecoration.collapsed(hintText: '0', hintStyle: AppText.numPadTextStyle)))))),
+                                      const InputDecoration.collapsed(hintText: '0', hintStyle: AppText.numPadTextStyle)))))),
               Container(
                   height: 240.0,
                   child: NumPadText(
@@ -144,7 +144,7 @@ class _PasscodeNumpadStory extends StatelessWidget {
                                     controller: _textEditingController,
                                     textAlign: TextAlign.left,
                                     style: Theme.of(context).textTheme.headline3.copyWith(fontWeight: FontWeight.normal),
-                                    decoration: InputDecoration.collapsed(
+                                    decoration: const InputDecoration.collapsed(
                                         hintText: '0', hintStyle: AppText.numPadTextStyle)))))),
                 Container(
                     height: 240.0,
@@ -159,7 +159,7 @@ class _PasscodeNumpadStory extends StatelessWidget {
                         _showDialog(context, '', 'Action button pressed');
                       },
                       hasSecondaryActionButton: props['hasSecondaryActionButton'],
-                      secondaryActionWidget: Icon(Icons.fingerprint, color: AppColor.green, size: 25),
+                      secondaryActionWidget: const Icon(Icons.fingerprint, color: AppColor.green, size: 25),
                       onSecondaryActionButtonPressed: () {
                         _showDialog(context, '', 'Secondary action button pressed');
                       },

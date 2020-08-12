@@ -28,7 +28,7 @@ dependencies:
     git:
       url: https://github.com/ChangeFinance/flutter_sparkline.git
       ref: master
-  intl: ^0.15.8
+  intl: ^0.16.1
   shimmer: ^1.0.1
   animated_widgets:
     git:
@@ -36,7 +36,7 @@ dependencies:
       ref: master
   alpha2_countries: ^1.0.5
   url_launcher: 5.0.3
-  rxdart: ^0.22.2
+  rxdart: ^0.23.1
   flare_flutter: 1.8.3
   responsive_grid: ^1.1.1
   characters: ^1.0.0
