@@ -1,0 +1,18 @@
+name: Feature branch
+
+on:
+  push:
+    branches-ignore:
+      - 'master'
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '1.20.1'
+    - run: flutter pub get
+    - run: flutter analyze
+    - run: flutter test --concurrency=4
