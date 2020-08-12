@@ -19,8 +19,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^0.17.4
-  flutter_cupertino_date_picker: ^1.0.26
+  flutter_svg: ^0.18.0
+  flutter_cupertino_date_picker:
+    git:
+      url: https://github.com/imshashank/flutter-cupertino-date-picker
+      ref: master
   flutter_sparkline:
     git:
       url: https://github.com/ChangeFinance/flutter_sparkline.git
@@ -36,7 +39,7 @@ dependencies:
   rxdart: ^0.22.2
   flare_flutter: 1.8.3
   responsive_grid: ^1.1.1
-  characters: ^0.3.0
+  characters: ^1.0.0
 
 dev_dependencies:
   flutter_test:
