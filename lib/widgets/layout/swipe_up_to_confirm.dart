@@ -94,7 +94,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
     _heightAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: Interval(0, 1, curve: Curves.easeOut),
+        curve: const Interval(0, 1, curve: Curves.easeOut),
       ),
     )..addStatusListener((AnimationStatus status) {
         if (status == AnimationStatus.completed && _controller.value == 1) {
@@ -105,21 +105,21 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
       });
 
     _opacityAnimation = Tween<double>(begin: 1, end: 0)
-        .animate(CurvedAnimation(parent: _controller, curve: Interval(0, 0.2, curve: Curves.easeOut)));
+        .animate(CurvedAnimation(parent: _controller, curve: const Interval(0, 0.2, curve: Curves.easeOut)));
 
     _slideInController = AnimationController(vsync: this, duration: const Duration(milliseconds: slideInDuration))
       ..addListener(() {
         setState(() {});
       });
     _confirmViewOpacity = Tween<double>(begin: 0, end: 1)
-        .animate(CurvedAnimation(parent: _slideInController, curve: Interval(0, 0.8, curve: Curves.easeOut)))
+        .animate(CurvedAnimation(parent: _slideInController, curve: const Interval(0, 0.8, curve: Curves.easeOut)))
           ..addListener(() {
             setState(() {});
           });
     _confirmViewLabelTranslation = Tween<double>(begin: 80, end: 0)
-        .animate(CurvedAnimation(parent: _slideInController, curve: Interval(0, 1, curve: Curves.easeOut)));
+        .animate(CurvedAnimation(parent: _slideInController, curve: const Interval(0, 1, curve: Curves.easeOut)));
     _confirmViewButtonTranslation = Tween<double>(begin: 150, end: 0)
-        .animate(CurvedAnimation(parent: _slideInController, curve: Interval(0, 1, curve: Curves.easeOut)));
+        .animate(CurvedAnimation(parent: _slideInController, curve: const Interval(0, 1, curve: Curves.easeOut)));
   }
 
   @override
