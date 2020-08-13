@@ -13,7 +13,7 @@ class Odometer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    size ??= _getSize();
+    size ??= _getSize(MediaQuery.of(context).textScaleFactor);
     return SizedOverflowBox(
       size: size,
       child: Row(
@@ -102,11 +102,11 @@ class Odometer extends StatelessWidget {
     return false;
   }
 
-  Size _getSize() {
+  Size _getSize(double textScaleFactor) {
     var w = 0.0;
     var h = 0.0;
     textRuns.forEach((r) {
-      final size = r.getSize();
+      final size = r.getSize(textScaleFactor: textScaleFactor);
       w += size.width;
       if (size.height > h) {
         h = size.height;

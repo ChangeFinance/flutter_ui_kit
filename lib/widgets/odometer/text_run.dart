@@ -7,8 +7,8 @@ class TextRun {
 
   TextRun(this.currentText, this.initialText, this.textStyle) : assert(isValidPair(currentText, initialText));
 
-  static Size getSingleDigitSize(String digit, TextStyle textStyle) {
-    return TextRun(digit, '0', textStyle).getSize();
+  static Size getSingleDigitSize(String digit, TextStyle textStyle, {double textScaleFactor = 1.0}) {
+    return TextRun(digit, '0', textStyle).getSize(textScaleFactor: textScaleFactor);
   }
 
   static bool isNumberOrDot(String text) {
@@ -28,12 +28,12 @@ class TextRun {
     return true;
   }
 
-  Size getSize() {
+  Size getSize({double textScaleFactor = 1.0}) {
     final painter = TextPainter();
     painter.text = TextSpan(style: textStyle, text: '$currentText');
     painter.textDirection = TextDirection.ltr;
     painter.textAlign = TextAlign.left;
-    painter.textScaleFactor = 1.0;
+    painter.textScaleFactor = textScaleFactor;
     painter.layout();
 
     return painter.size;

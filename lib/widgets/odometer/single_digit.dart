@@ -45,13 +45,11 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
   Animation<double> animation;
   AnimationController controller;
-  Size _digitSize;
   static const text = '0\n1\n2\n3\n4\n5\n6\n7\n8\n9';
 
   @override
   void initState() {
     super.initState();
-    _digitSize = TextRun.getSingleDigitSize('5', textStyle);
     _initAnimation();
   }
 
@@ -83,6 +81,7 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    final _digitSize = TextRun.getSingleDigitSize('5', textStyle, textScaleFactor: MediaQuery.of(context).textScaleFactor);
     return Container(
       decoration: boxDecoration,
       child: SizedOverflowBox(
