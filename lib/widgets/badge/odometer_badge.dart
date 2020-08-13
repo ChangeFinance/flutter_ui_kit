@@ -53,7 +53,9 @@ class OdometerBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    odometerSize ??= _getOdometerSize();
+    final textScaleFactor = MediaQuery.of(context).textScaleFactor;
+    odometerSize ??= _getOdometerSize(textScaleFactor);
+//    final odometerSize = _getOdometerSize(textScaleFactor);
     final badgeHeight = odometerSize.height + 2;
 
     return Container(
@@ -76,7 +78,7 @@ class OdometerBadge extends StatelessWidget {
                     loop: 1,
                     period: const Duration(milliseconds: 750),
                     child: SizedOverflowBox(
-                      size: _getOdometerSize(),
+                      size: _getOdometerSize(textScaleFactor),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -169,12 +171,12 @@ class OdometerBadge extends StatelessWidget {
     return false;
   }
 
-  Size _getOdometerSize() {
+  Size _getOdometerSize(double textScaleFactor) {
     var w = 0.0;
     var h = 0.0;
     textRuns.forEach((r) {
       Characters(r.currentText).forEach((c) {
-        final size = TextRun.getSingleDigitSize(c, textStyle);
+        final size = TextRun.getSingleDigitSize(c, textStyle, textScaleFactor: textScaleFactor);
         w += size.width;
         if (size.height > h) {
           h = size.height;
