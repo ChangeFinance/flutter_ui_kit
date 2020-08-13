@@ -55,7 +55,6 @@ class OdometerBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final textScaleFactor = MediaQuery.of(context).textScaleFactor;
     odometerSize ??= _getOdometerSize(textScaleFactor);
-//    final odometerSize = _getOdometerSize(textScaleFactor);
     final badgeHeight = odometerSize.height + 2;
 
     return Container(
