@@ -22,8 +22,9 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           repository: ChangeFinance/flutter_ui_kit
           token: ${{ secrets.REPO_CI_TOKEN }}
-      - run: ./scripts/increment-git-tag-patch.sh
+      - name: Run increment script
+        run: ./scripts/increment-git-tag-patch.sh
