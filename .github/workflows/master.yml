@@ -1,0 +1,30 @@
+name: Master
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '1.9.1+hotfix.6'
+    - run: flutter pub get
+    - run: flutter analyze
+    - run: flutter test --concurrency=4
+
+  update-version:
+    name: Update Flutter UI Kit Version
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: ChangeFinance/flutter_ui_kit
+          token: ${{ secrets.REPO_CI_TOKEN }}
+      - run: ./scripts/increment-git-tag-patch.sh
