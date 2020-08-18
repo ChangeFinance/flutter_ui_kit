@@ -14,9 +14,9 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: ChangeFinance/flutter_ui_kit
-        token: ${{ secrets.REPO_CI_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.17.2
       env:
-        GITHUB_TOKEN: ${{ secrets.REPO_CI_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
