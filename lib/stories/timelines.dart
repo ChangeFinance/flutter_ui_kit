@@ -34,10 +34,10 @@ class Timelines extends StatelessWidget {
               isActive: false),
           TimelineModel(widget: _buildTimelineItem('Next interest payday', 'Apr 1', false, false), isActive: false),
         ],
-        indicators: <Widget>[
-          Icon(Icons.check_circle, color: AppColor.green),
-          Icon(Icons.check_circle_outline, color: AppColor.semiGrey),
-          Icon(Icons.check_circle_outline, color: AppColor.semiGrey),
+        indicators: const <Widget>[
+          const Icon(Icons.check_circle, color: AppColor.green),
+          const Icon(Icons.check_circle_outline, color: AppColor.semiGrey),
+          const Icon(Icons.check_circle_outline, color: AppColor.semiGrey),
         ],
       ),
     );

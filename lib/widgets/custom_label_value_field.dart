@@ -86,29 +86,6 @@ class LabelValueEditableField extends StatelessWidget {
       ),
     );
   }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-          other is LabelValueEditableField &&
-              runtimeType == other.runtimeType &&
-              labelText == other.labelText &&
-              valueText == other.valueText &&
-              value == other.value &&
-              textAlign == other.textAlign &&
-              editable == other.editable &&
-              padding == other.padding &&
-              route == other.route;
-
-  @override
-  int get hashCode =>
-      labelText.hashCode ^
-      valueText.hashCode ^
-      value.hashCode ^
-      textAlign.hashCode ^
-      editable.hashCode ^
-      padding.hashCode ^
-      route.hashCode;
 }
 
 enum ValueLabelTextAlign { center, left }

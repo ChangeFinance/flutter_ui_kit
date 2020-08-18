@@ -42,11 +42,11 @@ class TopMoversCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             new Text(currencyName),
-                            new Text(currencyCode, style: theme.textTheme.body1.copyWith(color: Colors.grey))
+                            new Text(currencyCode, style: theme.textTheme.bodyText2.copyWith(color: Colors.grey))
                           ]
                       )
                   ),
-                  new Text(percentage, style: theme.textTheme.display2.copyWith(color: color))
+                  new Text(percentage, style: theme.textTheme.headline3.copyWith(color: color))
                 ]
             )
         )

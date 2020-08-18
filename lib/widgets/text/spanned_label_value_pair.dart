@@ -38,19 +38,4 @@ class SpannedLabelValuePair extends StatelessWidget {
       ),
     );
   }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-          other is SpannedLabelValuePair &&
-              runtimeType == other.runtimeType &&
-              labelText == other.labelText &&
-              values == other.values &&
-              padding == other.padding;
-
-  @override
-  int get hashCode =>
-      labelText.hashCode ^
-      values.hashCode ^
-      padding.hashCode;
 }
