@@ -10,15 +10,15 @@ final ThemeData theme = ui_kit.theme.copyWith(
     iconTheme: _iconTheme,
     toggleableActiveColor: AppColors.primary,
     textTheme: const TextTheme(
-      headline6: _headingStyle,
-      bodyText2: _bodyStyle,
-      bodyText1: _bodyStyle2,
+      title: _headingStyle,
+      body1: _bodyStyle,
+      body2: _bodyStyle2,
       button: _buttonTextStyle,
       caption: _captionTextStyle,
-      headline4: _appBarTitleStyle,
-      headline3: AppText.header2,
-      headline2: AppText.header1,
-      subtitle1: _bodyStyle,
+      display1: _appBarTitleStyle,
+      display2: AppText.header2,
+      display3: AppText.header1,
+      subhead: _bodyStyle,
     )
 );
 

@@ -43,7 +43,7 @@ class BigAssetCard extends StatelessWidget {
                   height: descriptionStyle.height * descriptionStyle.fontSize,
                 ),
               ),
-              const Spacer(),
+              Spacer(),
               _buildTag(),
             ],
           ),

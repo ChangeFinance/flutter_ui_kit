@@ -211,9 +211,6 @@ class _ModalBottomSheetState<T> extends State<_ModalBottomSheet<T>> {
       case TargetPlatform.fuchsia:
         routeLabel = localizations.dialogLabel;
         break;
-      default:
-        routeLabel = '';
-        break;
     }
 
     return GestureDetector(
@@ -340,7 +337,7 @@ Future<T> showModalBottomSheetCustom<T>({
 /// bottom sheet.
 ///
 /// To rebuild the bottom sheet (e.g. if it is stateful), call
-/// setState on the controller returned by
+/// [PersistentBottomSheetController.setState] on the controller returned by
 /// this method.
 ///
 /// The new bottom sheet becomes a [LocalHistoryEntry] for the enclosing

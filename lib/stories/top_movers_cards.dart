@@ -5,7 +5,7 @@ class TopMoversCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: const SingleChildScrollView(
+        child: SingleChildScrollView(
             child: const Padding(
                 padding: EdgeInsets.all(15),
                 child: const TopMoversCard(

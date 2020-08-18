@@ -38,7 +38,6 @@ class CustomDatePicker extends StatelessWidget {
                             hintStyle: const TextStyle(color: Colors.white30),
                           ),
                           onTap: () {
-                            _clearFocus(context);
                             _showDatePicker(context);
                           }))),
           new Flexible(
@@ -55,7 +54,6 @@ class CustomDatePicker extends StatelessWidget {
                       hintStyle: const TextStyle(color: Colors.black26),
                     ),
                     onTap: () {
-                      _clearFocus(context);
                       _showDatePicker(context);
                     },
                   ))),
@@ -73,18 +71,10 @@ class CustomDatePicker extends StatelessWidget {
                       hintStyle: const TextStyle(color: Colors.black26),
                     ),
                     onTap: () {
-                      _clearFocus(context);
                       _showDatePicker(context);
                     },
                   )))
         ]));
-  }
-
-  void _clearFocus(BuildContext context) {
-    final currentFocus = FocusScope.of(context);
-    if (currentFocus.hasPrimaryFocus) {
-      currentFocus.unfocus();
-    }
   }
 
   void _showDatePicker(BuildContext context) {
@@ -120,7 +110,4 @@ class DisabledFocusNode extends FocusNode {
   bool consumeKeyboardToken() {
     return false;
   }
-
-  @override
-  bool get hasFocus => false;
 }

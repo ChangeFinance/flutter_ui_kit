@@ -13,7 +13,7 @@ class LabelText extends StatelessWidget {
         .textTheme;
     return new Text(
       data,
-      style: theme.bodyText2.copyWith(
+      style: theme.body1.copyWith(
           color: AppColor.semiGrey,
           fontSize: 12.0,
           fontFamily: 'DINNextLTPro',

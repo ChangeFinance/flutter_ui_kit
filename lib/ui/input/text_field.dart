@@ -180,7 +180,7 @@ class DecoratedTextField extends StatelessWidget {
         focusNode: focusNode,
         autofocus: autofocus ?? false,
         autocorrect: autocorrect,
-        style: theme.textTheme.bodyText2,
+        style: theme.textTheme.body1,
         enableInteractiveSelection: enableInteractiveSelection,
         decoration: InputDecoration(
           enabled: enabled,

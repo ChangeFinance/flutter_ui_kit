@@ -16,7 +16,7 @@ class CurrencyDisplay extends StatelessWidget {
   final bool showCursor;
 
   static final TextStyle _smallTextStyle =
-      theme.textTheme.bodyText1.copyWith(color: AppColor.semiGrey);
+      theme.textTheme.body2.copyWith(color: AppColor.semiGrey);
 
   static NumberFormat get numberFormatter => NumberFormat('######.##');
   static NumberFormat get smallNumberFormatter => NumberFormat('#.######');

@@ -57,8 +57,6 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
         return false;
       case TargetPlatform.iOS:
         return true;
-      default:
-        return false;
     }
   }
 
@@ -89,7 +87,7 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
 
   @override
   Widget build(BuildContext context) {
-    final settings = context.dependOnInheritedWidgetOfExactType<FlexibleSpaceBarSettings>();
+    final FlexibleSpaceBarSettings settings = context.inheritFromWidgetOfExactType(FlexibleSpaceBarSettings);
     assert(settings != null, 'A FlexibleSpaceBar must be wrapped in the widget returned by FlexibleSpaceBar.createSettings().');
 
     final children = <Widget>[];
@@ -129,16 +127,12 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
             namesRoute: true,
             child: widget.title,
           );
-          break;
-        default:
-          title = widget.title;
-          break;
       }
 
       final theme = Theme.of(context);
       final opacity = settings.toolbarOpacity;
       if (opacity > 0.0) {
-        var titleStyle = theme.primaryTextTheme.headline6;
+        var titleStyle = theme.primaryTextTheme.title;
         titleStyle = titleStyle.copyWith(
           color: titleStyle.color.withOpacity(opacity)
         );
