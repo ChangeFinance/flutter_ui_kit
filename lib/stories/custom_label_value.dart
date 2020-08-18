@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CustomLabelValue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
         child: const LabelValueEditableField(
             labelText: 'First Name',
             valueText: 'John',

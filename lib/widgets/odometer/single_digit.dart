@@ -17,19 +17,6 @@ class SingleDigit extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _SingleDigitState();
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SingleDigit &&
-          runtimeType == other.runtimeType &&
-          textStyle == other.textStyle &&
-          boxDecoration == other.boxDecoration &&
-          initialValue == other.initialValue &&
-          finalValue == other.finalValue;
-
-  @override
-  int get hashCode => textStyle.hashCode ^ boxDecoration.hashCode ^ initialValue.hashCode ^ finalValue.hashCode;
 }
 
 class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin {
