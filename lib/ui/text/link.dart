@@ -14,7 +14,7 @@ class Link extends StatelessWidget {
       onTap: onTap,
       child: Text(
         data,
-        style: Theme.of(context).textTheme.bodyText2.copyWith(
+        style: Theme.of(context).textTheme.body1.copyWith(
             color: AppColors.primaryColor,
             decoration: TextDecoration.underline,
             decorationStyle: TextDecorationStyle.solid),

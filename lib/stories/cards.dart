@@ -105,7 +105,7 @@ class AppCards extends StatelessWidget {
                   title: Text('The Enchanted Nightingale'),
                   subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
                 ),
-                ButtonBarTheme(
+                ButtonTheme.bar(
                   child: ButtonBar(
                     children: <Widget>[
                       TextButton(
@@ -178,7 +178,7 @@ class AppCards extends StatelessWidget {
               Expanded(
                 child: BigAssetCard(
                   title: 'Earn',
-                  icon: const Icon(Icons.timeline, color: AppColor.green),
+                  icon: Icon(Icons.timeline, color: AppColor.green),
                   description: '2.00% APY*',
                   tag: 'COMING SOON',
                   tagIsBadge: true,
@@ -188,7 +188,7 @@ class AppCards extends StatelessWidget {
               Expanded(
                 child: BigAssetCard(
                   title: 'Spend',
-                  icon: const Icon(Icons.credit_card, color: AppColor.green),
+                  icon: Icon(Icons.credit_card, color: AppColor.green),
                   description: '€110,546.00',
                   tag: 'Debit card, ATM',
                 ),

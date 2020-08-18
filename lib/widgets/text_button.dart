@@ -42,7 +42,7 @@ class _TextButtonState extends State<TextButton> with ButtonMixin {
           widget.text,
           style: (widget.textStyle != null)
               ? widget.textStyle
-              : Theme.of(context).textTheme.bodyText2.copyWith(
+              : Theme.of(context).textTheme.body1.copyWith(
                     color: !widget.alt
                         ? getTextColorOnWhiteBackground(
                             enabled: _enabled,

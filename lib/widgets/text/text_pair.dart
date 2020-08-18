@@ -16,12 +16,12 @@ class TextPair extends StatelessWidget {
     return new Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(heading, style: theme.headline4, textAlign: TextAlign.left),
+        Text(heading, style: theme.display1, textAlign: TextAlign.left),
         Padding(
             padding: const EdgeInsets.only(top: 10.0),
             child: Text(
               body,
-              style: theme.bodyText1.copyWith(color: textColor),
+              style: theme.body2.copyWith(color: textColor),
             ))
       ],
     );

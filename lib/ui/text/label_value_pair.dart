@@ -65,6 +65,29 @@ class LabelValuePair extends StatelessWidget {
     return CopyToClipboard(value: value);
   }
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is LabelValuePair &&
+              runtimeType == other.runtimeType &&
+              labelText == other.labelText &&
+              valueText == other.valueText &&
+              value == other.value &&
+              textAlign == other.textAlign &&
+              copyToClipboardEnabled == other.copyToClipboardEnabled &&
+              padding == other.padding;
+
+  @override
+  int get hashCode =>
+      labelText.hashCode ^
+      valueText.hashCode ^
+      value.hashCode ^
+      textAlign.hashCode ^
+      copyToClipboardEnabled.hashCode ^
+      padding.hashCode;
+
+
+
 }
 
 enum ValueLabelTextAlign { center, left }

@@ -152,13 +152,19 @@ void testNarrowProp({
   group('narrow prop', () {
     testWidgets('if true renders smaller padding', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton(narrow: true)));
-      final MaterialButton button = find.byType(underlyingMaterialButtonType).evaluate().single.widget;
+      final button =
+          // ignore: avoid_as
+          find.byType(underlyingMaterialButtonType).evaluate().single.widget
+              as MaterialButton;
       expect(button.padding, ButtonStyleConstants.narrowPadding);
     });
 
     testWidgets('if false renders larger padding', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton(narrow: false)));
-      final MaterialButton button = find.byType(underlyingMaterialButtonType).evaluate().single.widget;
+      final button =
+          // ignore: avoid_as
+          find.byType(underlyingMaterialButtonType).evaluate().single.widget
+              as MaterialButton;
       expect(button.padding, ButtonStyleConstants.widePadding);
     });
   });
@@ -176,14 +182,19 @@ void testPaddingProp({
     testWidgets('if padding is passed, overwrite default', (WidgetTester tester) async {
       const padding = const EdgeInsets.all(8.0);
       await tester.pumpWidget(wrapInMaterialApp(buildButton(padding: padding)));
-      final MaterialButton button = find.byType(underlyingMaterialButtonType).evaluate().single.widget;
+      final button =
+          // ignore: avoid_as
+          find.byType(underlyingMaterialButtonType).evaluate().single.widget
+              as MaterialButton;
       expect(button.padding, padding);
     });
 
     testWidgets('if padding is null, defaults to', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton(padding: null)));
-      final MaterialButton button =
-          find.byType(underlyingMaterialButtonType).evaluate().single.widget;
+      final button =
+          // ignore: avoid_as
+          find.byType(underlyingMaterialButtonType).evaluate().single.widget
+              as MaterialButton;
       expect(button.padding.vertical, 2 * ButtonStyleConstants.wideVerticalPadding);
     });
   });

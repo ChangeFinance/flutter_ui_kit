@@ -18,14 +18,14 @@ final ThemeData theme = ThemeData(
 const Color primaryColor = AppColor.green;
 
 TextTheme _textTheme = const TextTheme(
-  headline1: AppText.header0,
-  headline2: AppText.header1,
-  headline3: AppText.header2,
-  headline4: AppText.header3,
-  headline6: AppText.header2,
-  subtitle1: AppText.header4,
-  bodyText1: AppText.body2,
-  bodyText2: AppText.body1,
+  display4: AppText.header0,
+  display3: AppText.header1,
+  display2: AppText.header2,
+  display1: AppText.header3,
+  title: AppText.header2,
+  subhead: AppText.header4,
+  body2: AppText.body2,
+  body1: AppText.body1,
   caption: AppText.button1
 );
 

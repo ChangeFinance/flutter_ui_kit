@@ -21,13 +21,13 @@ class Body extends StatelessWidget {
   TextStyle _textStyle(TextTheme textTheme) {
     switch (style) {
       case BodyStyle.title:
-        return textTheme.headline6;
+        return textTheme.title;
       case BodyStyle.caption:
         return textTheme.caption;
       case BodyStyle.body2:
-        return textTheme.bodyText1;
+        return textTheme.body2;
       default:
-        return textTheme.bodyText2;
+        return textTheme.body1;
     }
   }
 }
