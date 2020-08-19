@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui_kit/widgets.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_ui_kit/widgets/layout/generic_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/information_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/swipe_up_to_confirm.dart';
 import 'package:flutter_ui_kit/widgets/layout/titled_generic_template.dart';
+import 'package:flutter_ui_kit/widgets/layout/utility_generic_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/utility_template.dart';
 import 'package:flutter_ui_kit/widgets/text/heading.dart';
 import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
@@ -14,10 +16,12 @@ import 'package:flutter_ui_kit/widgets/text/label_value_pair.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 import '../color.dart';
+import '../text.dart';
 
 class Layouts extends StatelessWidget {
   static const String informationLayoutRoute = '/information-layout-page';
   static const String utilityLayoutRoute = '/utility-layout-page';
+  static const String utilityGenericLayoutRoute = 'utility-generic-layout-page';
   static const String dismissibleLayoutRoute = '/dismissible-layout-page';
   static const String infoLayoutRoute = '/info-layout-page';
   static const String paymentMethodLayout = '/payment-method';
@@ -35,6 +39,7 @@ class Layouts extends StatelessWidget {
           children: [
             _informationLayout(context),
             _utilityLayout(context),
+            _utilityGenericLayout(context),
             _dismissibleLayout(context),
             _infoLayout(context),
             _paymentMethod(context),
@@ -60,6 +65,61 @@ class Layouts extends StatelessWidget {
                     builder: (_) => UtilityTemplate(
                         'Update your app',
                         'Get the latest version of Change to make sure you have access to the latest features and updates.',
+                        SvgPicture.asset(
+                          'assets/update-app.svg',
+                          width: 285.0,
+                          height: 215.0,
+                        ),
+                        FilledButton(
+                          'Update app',
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          fullWidth: true,
+                          narrow: false,
+                        ))));
+          },
+          fullWidth: false,
+          narrow: false,
+        ),
+      ),
+    );
+  }
+
+  Widget _utilityGenericLayout(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(30.0),
+      child: Center(
+        child: FilledButton(
+          'I\'m all about that generic utility',
+          onPressed: () {
+            Navigator.push<dynamic>(
+                context,
+                MaterialPageRoute<dynamic>(
+                    settings: const RouteSettings(name: utilityGenericLayoutRoute),
+                    builder: (_) => UtilityGenericTemplate(
+                        'Update your app',
+                        Column(
+                          children: <Widget>[
+                            Text('Get the latest version of Change.',
+                                textAlign: TextAlign.center,
+                                style: AppText.body1.copyWith(color: AppColor.semiGrey)),
+                            RichText(
+                              textAlign: TextAlign.center,
+                              text: TextSpan(
+                                text: 'If you have any questions, please contact ',
+                                style: AppText.body1
+                                    .copyWith(color: AppColor.semiGrey),
+                                children: [
+                                  new TextSpan(
+                                      text: 'support@getchange.com',
+                                      style:
+                                      const TextStyle(color: AppColor.green),
+                                      recognizer: new TapGestureRecognizer()
+                                        ..onTap = () {}),],),
+                            )
+                          ],
+                        ),
                         SvgPicture.asset(
                           'assets/update-app.svg',
                           width: 285.0,
