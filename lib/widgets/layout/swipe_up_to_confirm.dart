@@ -46,7 +46,7 @@ class SwipeUpToConfirmLayout extends StatefulWidget {
 }
 
 class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with TickerProviderStateMixin {
-  final double swiperBaseHeight = 150;
+  double swiperBaseHeight = 150;
 
   AnimationController _controller;
   Animation<double> _heightAnimation;
@@ -165,6 +165,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
   }
 
   Widget _buildContent() {
+    swiperBaseHeight = MediaQuery.of(context).size.height * 0.18;
     return Expanded(
       child: GestureDetector(
         onTap: () {
