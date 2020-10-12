@@ -10,8 +10,9 @@ class CustomDatePicker extends StatelessWidget {
   final _yearCtrl = TextEditingController();
   final Callback onChange;
   final DateTime dateTime;
+  final Callback onConfirm;
 
-  CustomDatePicker({@required this.onChange, this.dateTime});
+  CustomDatePicker({@required this.onChange, this.dateTime, this.onConfirm});
 
   @override
   Widget build(BuildContext context) {
@@ -102,6 +103,7 @@ class CustomDatePicker extends StatelessWidget {
       onConfirm: (_dateTime, List<int> index) {
         updateState(_dateTime);
         onChange(_dateTime);
+        onConfirm(_dateTime);
       },
     );
   }
