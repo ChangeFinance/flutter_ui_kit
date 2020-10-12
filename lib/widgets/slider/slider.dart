@@ -10,13 +10,15 @@ class AppSlider extends StatelessWidget {
   final EdgeInsetsGeometry dotsPadding;
   final double dotSize;
   final double distanceBetweenCenterOfDots;
+  final ValueChanged<int> onPageChanged;
 
   const AppSlider(
       {@required this.slides,
       @required this.pageController,
       this.dotsPadding = const EdgeInsets.all(20.0),
       this.dotSize,
-      this.distanceBetweenCenterOfDots})
+      this.distanceBetweenCenterOfDots,
+      this.onPageChanged})
       : assert(slides != null),
         assert(pageController != null);
 
@@ -32,7 +34,8 @@ class AppSlider extends StatelessWidget {
         itemCount: slides.length,
         itemBuilder: (BuildContext context, int index) {
           return slides.elementAt(index);
-        });
+        },
+        onPageChanged: onPageChanged);
   }
 
   Widget buildDots() {
