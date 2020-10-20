@@ -23,6 +23,7 @@ class SwipeUpToConfirmLayout extends StatefulWidget {
   final String completionSecondaryButtonText;
   final Function completionSecondaryButtonAction;
   final bool errorState;
+  final Function onBack;
 
   SwipeUpToConfirmLayout({
     @required this.body,
@@ -38,7 +39,8 @@ class SwipeUpToConfirmLayout extends StatefulWidget {
     this.completionPrimaryButtonAction,
     this.completionSecondaryButtonText = 'Secondary button',
     this.completionSecondaryButtonAction,
-    this.errorState = false
+    this.errorState = false,
+    this.onBack
   });
 
   @override
@@ -127,14 +129,14 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
     return Scaffold(
       key: widget.scaffoldKey,
       backgroundColor: swipeUpComplete ? (widget.errorState ? AppColor.red : AppColor.green) : Colors.white,
-      body: _buildBody(),
+      body: _buildBody(widget.onBack),
     );
   }
 
-  Widget _buildBody() {
+  Widget _buildBody(Function onBack) {
     return Stack(
       children: <Widget>[
-        _appbarAndContent(),
+        _appbarAndContent(onBack),
         _nextSwiper(),
       ],
     );
@@ -146,17 +148,26 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
     return offsetVal;
   }
 
-  Widget _appbarAndContent() {
+  Widget _appbarAndContent(Function onBack) {
     return Positioned(
       top: 0,
       left: 0,
       right: 0,
       bottom: swiperBaseHeight,
       child: Transform.translate(
-        offset: Offset(0, -swiperHeightOffsetYFromAnimation(_heightAnimation.value)),
+        offset: Offset(
+            0, -swiperHeightOffsetYFromAnimation(_heightAnimation.value)),
         child: Column(
           children: <Widget>[
-            MainAppBar(centerTitle: true, title: Text(widget.title, style: AppText.header3)),
+            MainAppBar(
+                centerTitle: true,
+                title: Text(widget.title, style: AppText.header3),
+                leading: BackButton(onPressed: () {
+                  if (onBack != null) {
+                    onBack();
+                  }
+                  Navigator.maybePop(context);
+                })),
             _buildContent(),
           ],
         ),
