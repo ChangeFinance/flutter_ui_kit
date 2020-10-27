@@ -35,7 +35,7 @@ dependencies:
       url: https://github.com/ChangeFinance/AnimatedWidgets.git
       ref: master
   alpha2_countries: ^1.0.5
-  url_launcher: 5.0.3
+  url_launcher: ^5.7.2
   rxdart: ^0.24.1
   flare_flutter: 1.8.3
   responsive_grid: ^1.1.1
