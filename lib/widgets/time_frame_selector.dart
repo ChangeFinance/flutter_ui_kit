@@ -34,12 +34,14 @@ class TimeFrameSelector extends StatefulWidget {
   final Callback onChange;
   final TimeFrame defaultTimeFrame;
   final TimeFrame maxTimeFrame;
+  final Color enabledTimeFrameColor;
   final List<TimeFrame> exclude;
 
   const TimeFrameSelector({
     Key key,
     this.exclude = const [TimeFrame.THREE_MONTHS, TimeFrame.SIX_MONTHS, TimeFrame.THREE_YEARS],
     this.defaultTimeFrame = TimeFrame.ONE_DAY,
+    this.enabledTimeFrameColor,
     this.maxTimeFrame = TimeFrame.ONE_YEAR,
     this.onChange,
   }) : super(key: key);
@@ -73,6 +75,7 @@ class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
     final checkedButton = FilledButton(TimeFrameHelper.getValue(selected),
         onPressed: onPressed,
         textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite),
+        color: widget.enabledTimeFrameColor,
         padding: const EdgeInsets.all(0.0));
     final uncheckedButton = TextButton(
       TimeFrameHelper.getValue(selected),
