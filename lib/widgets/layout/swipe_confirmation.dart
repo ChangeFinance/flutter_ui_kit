@@ -12,6 +12,7 @@ class SwipeConfirmation extends StatelessWidget {
   final Widget labelIcon;
   final String primaryButtonText;
   final Function primaryButtonAction;
+  final bool primaryButtonEnabled;
   final String secondaryButtonText;
   final Function secondaryButtonAction;
 
@@ -25,6 +26,7 @@ class SwipeConfirmation extends StatelessWidget {
     this.labelIcon,
     this.primaryButtonText = 'Done',
     this.primaryButtonAction,
+    this.primaryButtonEnabled = true,
     this.secondaryButtonText,
     this.secondaryButtonAction,
   }) : super(key: key);
@@ -84,20 +86,14 @@ class SwipeConfirmation extends StatelessWidget {
   Widget _buildButtons() {
     final buttons = <Widget>[];
     if (primaryButtonText != null && primaryButtonText != '') {
-      buttons.add(OutlinedButton(
-          primaryButtonText,
-          onPressed: primaryButtonAction,
-          fullWidth: true,
-          narrow: false,
-          alt: true
+      buttons.add(Opacity(
+        opacity: primaryButtonEnabled ? 1.0 : 0.5,
+        child: OutlinedButton(primaryButtonText,
+            onPressed: primaryButtonEnabled ? primaryButtonAction : null, fullWidth: true, narrow: false, alt: true),
       ));
     }
     if (secondaryButtonText != null && secondaryButtonText != '') {
-      buttons.add(TextButton(
-          secondaryButtonText,
-          onPressed: secondaryButtonAction,
-          alt: true
-      ));
+      buttons.add(TextButton(secondaryButtonText, onPressed: secondaryButtonAction, alt: true));
     }
 
     return Positioned(
