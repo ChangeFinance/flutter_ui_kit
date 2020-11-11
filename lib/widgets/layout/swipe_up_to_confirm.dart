@@ -20,6 +20,7 @@ class SwipeUpToConfirmLayout extends StatefulWidget {
   final SwipeMode swipeMode;
   final String completionPrimaryButtonText;
   final Function completionPrimaryButtonAction;
+  final bool completionPrimaryButtonEnabled;
   final String completionSecondaryButtonText;
   final Function completionSecondaryButtonAction;
   final bool errorState;
@@ -37,6 +38,7 @@ class SwipeUpToConfirmLayout extends StatefulWidget {
     this.completeScreenLabelIcon,
     this.completionPrimaryButtonText = 'Primary button',
     this.completionPrimaryButtonAction,
+    this.completionPrimaryButtonEnabled = true,
     this.completionSecondaryButtonText = 'Secondary button',
     this.completionSecondaryButtonAction,
     this.errorState = false,
@@ -249,6 +251,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
       labelText: widget.completeScreenLabelText,
       primaryButtonText: widget.completionPrimaryButtonText,
       primaryButtonAction: widget.completionPrimaryButtonAction,
+      primaryButtonEnabled: widget.completionPrimaryButtonEnabled,
       secondaryButtonText: widget.completionSecondaryButtonText,
       secondaryButtonAction: widget.completionSecondaryButtonAction,
       labelTranslation: _confirmViewLabelTranslation,

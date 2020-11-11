@@ -414,6 +414,7 @@ class SwipeUpToConfirmLayoutWrapper extends StatefulWidget {
 
 class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWrapper> {
   SwipeMode swipeMode = SwipeMode.swipe;
+  bool doneButtonEnabled = true;
 
   @override
   Widget build(BuildContext context) {
@@ -444,6 +445,7 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
         Navigator.of(context).pop();
       },
       completionPrimaryButtonText: 'Done',
+      completionPrimaryButtonEnabled: doneButtonEnabled,
       completionSecondaryButtonAction: () {
         Navigator.of(context).pop();
       },
@@ -465,6 +467,12 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
             } else {
               swipeMode = SwipeMode.swipe;
             }
+          });
+        }),
+        const SizedBox(height: 20),
+        FilledButton(doneButtonEnabled ? 'Disable Done button' : 'Enable Done button', onPressed: () {
+          setState(() {
+            doneButtonEnabled = !doneButtonEnabled;
           });
         })
       ],
