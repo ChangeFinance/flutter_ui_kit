@@ -90,9 +90,9 @@ class BottomSheet extends StatefulWidget {
   _BottomSheetState createState() => _BottomSheetState();
 
   /// Creates an animation controller suitable for controlling a [BottomSheet].
-  static AnimationController createAnimationController(TickerProvider vsync) {
+  static AnimationController createAnimationController(TickerProvider vsync, {Duration customDuration}) {
     return AnimationController(
-      duration: _kBottomSheetDuration,
+      duration: customDuration ?? _kBottomSheetDuration,
       debugLabel: 'BottomSheet',
       vsync: vsync,
     );
@@ -252,9 +252,13 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
     this.builder,
     this.theme,
     this.barrierLabel,
+    this.animationCurve,
+    this.animationDuration,
     RouteSettings settings,
   }) : super(settings: settings);
 
+  final Cubic animationCurve;
+  final Duration animationDuration;
   final WidgetBuilder builder;
   final ThemeData theme;
 
@@ -270,13 +274,18 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
   @override
   Color get barrierColor => Colors.black54;
 
+  @override
+  Animation<double> get animation {
+    return animationCurve != null ? CurvedAnimation(parent: controller, curve: animationCurve) : super.animation;
+  }
+
   AnimationController _animationController;
 
   @override
   AnimationController createAnimationController() {
     assert(_animationController == null);
-    _animationController = BottomSheet.createAnimationController(navigator.overlay);
-    return BottomSheet.createAnimationController(navigator.overlay);
+    _animationController = BottomSheet.createAnimationController(navigator.overlay, customDuration: animationDuration);
+    return BottomSheet.createAnimationController(navigator.overlay, customDuration: animationDuration);
   }
 
   @override
@@ -323,6 +332,8 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
 Future<T> showModalBottomSheetCustom<T>({
   @required BuildContext context,
   @required WidgetBuilder builder,
+  Cubic animationCurve,
+  Duration animationDuration,
 }) {
   assert(context != null);
   assert(builder != null);
@@ -330,7 +341,11 @@ Future<T> showModalBottomSheetCustom<T>({
   return Navigator.push(context, _ModalBottomSheetRoute<T>(
     builder: builder,
     theme: Theme.of(context, shadowThemeOnly: true),
-    barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+    barrierLabel: MaterialLocalizations
+        .of(context)
+        .modalBarrierDismissLabel,
+    animationCurve: animationCurve,
+    animationDuration: animationDuration,
   ));
 }
 
