@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_sparkline/flutter_sparkline.dart';
+import 'package:flutter_ui_kit/charts/sparkline.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/text.dart';
 import 'package:intl/intl.dart' as intl;
@@ -14,12 +14,11 @@ class Graph extends StatelessWidget {
   final List<double> data;
 
   const Graph(
-      { @required this.data,
-        this.enableMaxMin = false,
-        this.labelPrefix = '€',
-        this.enableGradient = true,
-        this.lineColor = AppColor.green
-      });
+      {@required this.data,
+      this.enableMaxMin = false,
+      this.labelPrefix = '€',
+      this.enableGradient = true,
+      this.lineColor = AppColor.green});
 
   void _drawMaxMinMarkers(Canvas context, double width, double height) {
     const offsetLeftX = 35.0;
@@ -77,8 +76,8 @@ class Graph extends StatelessWidget {
 
       final x = i * widthNormalizer + lineWidth / 2;
       final y = isFlat
-        ? height / 2
-        : height - (item - minValue) * heightNormalizer + lineWidth / 2;
+          ? height / 2
+          : height - (item - minValue) * heightNormalizer + lineWidth / 2;
       final offset =
           new Offset(_calcXForMarker(x, width), _calcYForMarker(y, height));
 
