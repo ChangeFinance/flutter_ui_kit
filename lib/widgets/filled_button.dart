@@ -65,7 +65,9 @@ class _FilledButtonState extends State<FilledButton> with ButtonMixin {
 
   void _setEnabled(bool enabled) {
     if (_enabled != enabled) {
-      setState(() => _enabled = enabled);
+      if (mounted) {
+        setState(() => _enabled = enabled);
+      }
     }
   }
 }
