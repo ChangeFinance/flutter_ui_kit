@@ -9,6 +9,7 @@ analyzer:
     prefer_const_constructors_in_immutables: ignore
   exclude:
     - 'lib/generated/**'
+    - 'lib/charts/**'
 linter:
   rules:
     - always_declare_return_types
