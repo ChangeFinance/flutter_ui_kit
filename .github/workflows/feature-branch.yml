@@ -2,8 +2,7 @@ name: Feature branch
 
 on:
   push:
-    branches-ignore:
-      - 'master'
+    pull_request:
 
 jobs:
   test:
@@ -24,6 +23,7 @@ jobs:
             junit-report: false
     name: Tests on ${{ matrix.flutters.version }}
     runs-on: ubuntu-latest
+    fail-fast: false
     continue-on-error: ${{ matrix.flutters.error-skip }}
     steps:
       - uses: actions/checkout@v2
