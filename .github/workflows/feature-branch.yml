@@ -9,31 +9,43 @@ jobs:
   test:
     strategy:
       matrix:
-        flutter-version: [ 1.20.4, 1.22.0, 2.0.0 ]
-    name: Tests on ${{ matrix.flutter-version }}
+        flutters:
+          - version: 1.20.4
+            error-skip: false
+            new-analyze: false
+            junit-report: true
+          - version: 1.22.0
+            error-skip: false
+            new-analyze: false
+            junit-report: true
+          - version: 2.0.0
+            error-skip: true
+            new-analyze: false
+            junit-report: false
+    name: Tests on ${{ matrix.flutters.version }}
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.flutter-version == '2.0.0' }}
+    continue-on-error: ${{ flutters.error-skip }}
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: ${{ matrix.flutter-version }}
+          flutter-version: ${{ matrix.flutters.version }}
       - name: Install dependencies
         run: flutter pub get
       - name: Analyze code
         run: flutter analyze --no-fatal-warnings --no-fatal-infos
-        if: matrix.flutter-version == '2.0.0'
+        if: matrix.flutters.new-analyze
       - name: Analyze code
         run: flutter analyze
-        if: matrix.flutter-version != '2.0.0'
-      - run: flutter test --concurrency=6 --machine > tests.json
+        if: matrix.flutters.new-analyze
+      - run: flutter test --concurrency=4 --machine > tests.json
       - run: flutter pub run junitreport:tojunit --input tests.json --output TEST-report.xml
-        if: success() || failure()
+        if: (success() || failure()) && flutters.junit-report
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: Unit Test Results (Flutter ${{ matrix.flutter-version }})
+          name: Test Results (Flutter ${{ matrix.flutters.version }})
           path: TEST-report.xml
 
   publish-test-results:
