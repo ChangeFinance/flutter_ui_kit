@@ -20,14 +20,14 @@ jobs:
           flutter-version: ${{ matrix.flutter-version }}
       - name: Install dependencies
         run: flutter pub get
-      - if: matrix.flutter-version == '2.0.0'
-        name: Analyze code for ${{ matrix.flutter-version }}
+      - name: Analyze code for ${{ matrix.flutter-version }}
         run: flutter analyze --no-fatal-warnings --no-fatal-infos
-      - if: matrix.flutter-version != '2.0.0'
-        name: Analyze code for ${{ matrix.flutter-version }}
+        if: matrix.flutter-version == '2.0.0'
+      - name: Analyze code for ${{ matrix.flutter-version }}
         run: flutter analyze
+        if: matrix.flutter-version != '2.0.0'
       - name: Tests
-      - run: flutter pub run junitreport:tojunit --input tests.json --output TEST-report.xml
+        run: flutter pub run junitreport:tojunit --input tests.json --output TEST-report.xml
         if: always()
       - name: JUnit Report for ${{ matrix.flutter-version }}
         uses: mikepenz/action-junit-report@v2
