@@ -37,7 +37,7 @@ jobs:
         if: matrix.flutters.new-analyze
       - name: Analyze code
         run: flutter analyze
-        if: matrix.flutters.new-analyze
+        if: !matrix.flutters.new-analyze
       - run: flutter test --concurrency=4 --machine > tests.json
       - run: flutter pub run junitreport:tojunit --input tests.json --output TEST-report.xml
         if: (success() || failure()) && matrix.flutters.junit-report
@@ -63,4 +63,4 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         with:
           check_name: Test Results
-          files: TEST-report.xml
+          files: "artifacts/**/*.xml"
