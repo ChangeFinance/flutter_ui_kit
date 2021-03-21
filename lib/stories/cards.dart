@@ -108,11 +108,11 @@ class AppCards extends StatelessWidget {
                 ButtonBarTheme(
                   child: ButtonBar(
                     children: <Widget>[
-                      TextButton(
+                      ChgTextButton(
                         'BUY TICKETS',
                         onPressed: () {},
                       ),
-                      TextButton(
+                      ChgTextButton(
                         'LISTEN',
                         onPressed: () {},
                       ),

@@ -146,7 +146,7 @@ class Popover extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextButton('Cancel', onPressed: () {
+                child: ChgTextButton('Cancel', onPressed: () {
                   Navigator.pop(context, 'Cancel button');
                 }),
               )

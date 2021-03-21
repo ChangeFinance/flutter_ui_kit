@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart' as mat;
+import 'package:flutter/widgets.dart';
 import 'package:flutter_ui_kit/color.dart';
-import 'package:flutter/material.dart';
 
 import 'button_common.dart';
 
+@Deprecated('Use ChgOutlinedButton')
 class OutlinedButton extends StatefulWidget {
   final String text;
   final FutureCallback onPressed;
@@ -41,27 +43,26 @@ class _OutlinedButtonState extends State<OutlinedButton> with ButtonMixin {
         onTapCancel: () {
           setState(() => _pressing = false);
         },
-        child: OutlineButton(
+        child: mat.OutlineButton(
           child: Text(
             widget.text,
-            style: Theme.of(context).textTheme.bodyText2.copyWith(
+            style: mat.Theme.of(context).textTheme.bodyText2.copyWith(
                   color: !widget.alt
                       ? getTextColorOnWhiteBackground(
                           enabled: _enabled,
                           pressing: _pressing,
                           onPressed: widget.onPressed,
                         )
-                      : (_enabled ? Colors.white : AppColor.mediumGrey),
+                      : (_enabled ? mat.Colors.white : AppColor.mediumGrey),
                   fontSize: getFontSize(narrow: widget.narrow, fullWidth: widget.fullWidth),
                 ),
           ),
-          onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
-              ? null
-              : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed),
+          onPressed:
+              isDisabled(enabled: _enabled, onPressed: widget.onPressed) ? null : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed),
           padding: widget.padding ?? getPadding(narrow: widget.narrow),
-          textColor: widget.alt ? Colors.white : AppColor.green,
-          borderSide: BorderSide(color: widget.alt ? Colors.white : AppColor.green),
-          highlightedBorderColor: widget.alt ? Colors.white : AppColor.green,
+          textColor: widget.alt ? mat.Colors.white : AppColor.green,
+          borderSide: BorderSide(color: widget.alt ? mat.Colors.white : AppColor.green),
+          highlightedBorderColor: widget.alt ? mat.Colors.white : AppColor.green,
           disabledBorderColor: AppColor.mediumGrey,
         ),
       ),
@@ -71,4 +72,24 @@ class _OutlinedButtonState extends State<OutlinedButton> with ButtonMixin {
   void _setEnabled(bool enabled) {
     setState(() => _enabled = enabled);
   }
+}
+
+class ChgOutlinedButton extends OutlinedButton {
+  ChgOutlinedButton(
+    String text, {
+    FutureCallback onPressed,
+    bool fullWidth,
+    bool narrow,
+    EdgeInsetsGeometry padding,
+    bool alt,
+    Key key,
+  }) : super(
+          text,
+          onPressed: onPressed,
+          fullWidth: fullWidth,
+          narrow: narrow,
+          padding: padding,
+          alt: alt,
+          key: key,
+        );
 }

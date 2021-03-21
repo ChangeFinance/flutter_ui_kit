@@ -15,7 +15,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({FutureCallback onPressed}) =>
-          TextButton(buttonText, onPressed: onPressed),
+          ChgTextButton(buttonText, onPressed: onPressed),
     );
 
     testTextProp(
@@ -23,7 +23,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => TextButton(buttonText, onPressed: () {}),
+      buildButton: () => ChgTextButton(buttonText, onPressed: () {}),
     );
 
     testOnPressedProp(
@@ -32,7 +32,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({FutureCallback onPressed}) =>
-          TextButton(buttonText, onPressed: onPressed),
+          ChgTextButton(buttonText, onPressed: onPressed),
       underlyingMaterialButtonType: FlatButton,
     );
 
@@ -42,7 +42,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({EdgeInsetsGeometry padding}) =>
-          TextButton(buttonText, onPressed: () {}, padding: padding),
+          ChgTextButton(buttonText, onPressed: () {}, padding: padding),
       underlyingMaterialButtonType: FlatButton,
     );
 
@@ -51,7 +51,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({TextStyle textStyle}) => TextButton(
+      buildButton: ({TextStyle textStyle}) => ChgTextButton(
         buttonText,
         textStyle: textStyle,
         onPressed: () {}

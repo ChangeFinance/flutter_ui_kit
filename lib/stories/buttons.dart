@@ -178,7 +178,7 @@ class Buttons extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 10),
             color: props['alt'] ? AppColor.green : Colors.white,
-            child: OutlinedButton(
+            child: ChgOutlinedButton(
               props['text'],
               onPressed: onPressed,
               fullWidth: props['fullWidth'],
@@ -246,7 +246,7 @@ class Buttons extends StatelessWidget {
           return Container(
             width: double.infinity,
             color: props['alt'] ? AppColor.green : Colors.white,
-            child: TextButton(
+            child: ChgTextButton(
               props['text'],
               onPressed: onPressed,
               alt: props['alt'],
