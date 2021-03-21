@@ -24,7 +24,7 @@ jobs:
             junit-report: false
     name: Tests on ${{ matrix.flutters.version }}
     runs-on: ubuntu-latest
-    continue-on-error: ${{ flutters.error-skip }}
+    continue-on-error: ${{ matrix.flutters.error-skip }}
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
@@ -40,7 +40,7 @@ jobs:
         if: matrix.flutters.new-analyze
       - run: flutter test --concurrency=4 --machine > tests.json
       - run: flutter pub run junitreport:tojunit --input tests.json --output TEST-report.xml
-        if: (success() || failure()) && flutters.junit-report
+        if: (success() || failure()) && matrix.flutters.junit-report
       - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v2
