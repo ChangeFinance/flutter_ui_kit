@@ -6,13 +6,32 @@ on:
       - 'master'
 
 jobs:
-  test:
+  test-future:
+    name: "Flutter 2.0 capability check"
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.0.0'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Analyze code
+        run: flutter analyze --no-fatal-warnings --no-fatal-infos
+      - name: Tests
+        run: flutter test --concurrency=4
+
+  test-current:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: subosito/flutter-action@v1
-      with:
-        flutter-version: '1.20.4'
-    - run: flutter pub get
-    - run: flutter analyze --no-fatal-warnings --no-fatal-infos
-    - run: flutter test --concurrency=4
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.20.4'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Analyze code
+        run: flutter analyze
+      - name: Tests
+        run: flutter test --concurrency=4
