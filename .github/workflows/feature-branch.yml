@@ -14,5 +14,5 @@ jobs:
       with:
         flutter-version: '1.20.4'
     - run: flutter pub get
-    - run: flutter analyze
+    - run: flutter analyze --no-fatal-warnings --no-fatal-infos
     - run: flutter test --concurrency=4

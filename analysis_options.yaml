@@ -7,6 +7,7 @@ analyzer:
     # treat missing returns as a warning (not a hint)
     missing_return: ignore
     prefer_const_constructors_in_immutables: ignore
+    deprecated_member_use_from_same_package: warning
   exclude:
     - 'lib/generated/**'
     - 'lib/charts/**'
