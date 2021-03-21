@@ -9,7 +9,6 @@ import 'package:flutter_ui_kit/widgets/big_asset_card.dart';
 import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 import 'package:flutter_ui_kit/widgets/card.dart';
 import 'package:flutter_ui_kit/widgets/news/news_card.dart';
-import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 class AppCards extends StatelessWidget {
   @override
