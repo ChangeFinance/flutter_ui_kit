@@ -57,7 +57,7 @@ class CustomRadioState extends State<CustomRadio> {
       ),
       floatingActionButton: Padding(
           padding: const EdgeInsets.only(left: 10.0),
-          child: new FilledButton(
+          child: new ChgFilledButton(
             'Next',
             fullWidth: true,
             onPressed: () {

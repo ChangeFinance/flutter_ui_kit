@@ -17,7 +17,7 @@ void main() {
       value = BehaviorSubject<String>();
       widget = MaterialApp(
         home: Scaffold(
-          body: StreamTextField(
+          body: ChgStreamTextField(
             value: value,
             onChanged: value.add,
             labelText: 'Field',
@@ -47,7 +47,7 @@ void main() {
       final onFocusMockFunction = MockVoidFunction();
       widget = MaterialApp(
         home: Scaffold(
-          body: StreamTextField(
+          body: ChgStreamTextField(
             value: value,
             onChanged: value.add,
             focusNode: FocusNode(),
@@ -66,7 +66,7 @@ void main() {
       final onBlurMockFunction = MockVoidFunction();
       widget = MaterialApp(
         home: Scaffold(
-          body: StreamTextField(
+          body: ChgStreamTextField(
             value: value,
             onChanged: value.add,
             focusNode: FocusNode(),

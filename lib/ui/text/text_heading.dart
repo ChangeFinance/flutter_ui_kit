@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 
-class Heading extends StatelessWidget {
+class ChgTextHeading extends StatelessWidget {
   final String data;
   final BoxConstraints constraints;
 
-  const Heading(this.data, {this.constraints});
+  const ChgTextHeading(this.data, {this.constraints});
 
   @override
   Widget build(BuildContext context) {

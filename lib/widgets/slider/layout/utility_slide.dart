@@ -36,7 +36,7 @@ class UtilitySlide extends StatelessWidget {
               child: Container(
                 child: Column(
                   children: <Widget>[
-                    Heading(
+                    ChgHeading(
                       heading,
                       headingType: HeadingType.HEADING_1,
                       textAlign: TextAlign.center,

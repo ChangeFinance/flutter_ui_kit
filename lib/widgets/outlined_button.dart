@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'button_common.dart';
 
-class OutlinedButton extends StatefulWidget {
+class ChgOutlinedButton extends StatefulWidget {
   final String text;
   final FutureCallback onPressed;
   final bool fullWidth;
@@ -11,7 +11,7 @@ class OutlinedButton extends StatefulWidget {
   final EdgeInsetsGeometry padding;
   final bool alt;
 
-  OutlinedButton(
+  ChgOutlinedButton(
     this.text, {
     @required this.onPressed,
     this.fullWidth = false,
@@ -23,10 +23,10 @@ class OutlinedButton extends StatefulWidget {
         super(key: key);
 
   @override
-  _OutlinedButtonState createState() => _OutlinedButtonState();
+  _ChgOutlinedButtonState createState() => _ChgOutlinedButtonState();
 }
 
-class _OutlinedButtonState extends State<OutlinedButton> with ButtonMixin {
+class _ChgOutlinedButtonState extends State<ChgOutlinedButton> with ButtonMixin {
   bool _enabled = true;
   bool _pressing = false;
 

@@ -17,7 +17,7 @@ class BigAssetCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final descriptionStyle = TextStyles.style_20_30_regular.copyWith(color: Colors.black);
-    return AppCard(
+    return ChgAppCard(
       color: AppColor.deepWhite,
       elevation: 2,
       borderRadius: 4,

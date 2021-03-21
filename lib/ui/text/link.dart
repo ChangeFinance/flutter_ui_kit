@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 
-class Link extends StatelessWidget {
+class ChgLink extends StatelessWidget {
   final String data;
   final Function onTap;
 
-  const Link(this.data, {this.onTap});
+  const ChgLink(
+    this.data, {
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +18,10 @@ class Link extends StatelessWidget {
       child: Text(
         data,
         style: Theme.of(context).textTheme.bodyText2.copyWith(
-            color: AppColors.primaryColor,
-            decoration: TextDecoration.underline,
-            decorationStyle: TextDecorationStyle.solid),
+              color: AppColors.primaryColor,
+              decoration: TextDecoration.underline,
+              decorationStyle: TextDecorationStyle.solid,
+            ),
       ),
     );
   }

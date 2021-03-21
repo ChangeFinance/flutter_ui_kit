@@ -153,13 +153,13 @@ void testNarrowProp({
     testWidgets('if true renders smaller padding', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton(narrow: true)));
       final MaterialButton button = find.byType(underlyingMaterialButtonType).evaluate().single.widget;
-      expect(button.padding, ButtonStyleConstants.narrowPadding);
+      expect(button.padding, ChgButtonStyleConstants.narrowPadding);
     });
 
     testWidgets('if false renders larger padding', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton(narrow: false)));
       final MaterialButton button = find.byType(underlyingMaterialButtonType).evaluate().single.widget;
-      expect(button.padding, ButtonStyleConstants.widePadding);
+      expect(button.padding, ChgButtonStyleConstants.widePadding);
     });
   });
 }
@@ -184,7 +184,7 @@ void testPaddingProp({
       await tester.pumpWidget(wrapInMaterialApp(buildButton(padding: null)));
       final MaterialButton button =
           find.byType(underlyingMaterialButtonType).evaluate().single.widget;
-      expect(button.padding.vertical, 2 * ButtonStyleConstants.wideVerticalPadding);
+      expect(button.padding.vertical, 2 * ChgButtonStyleConstants.wideVerticalPadding);
     });
   });
 }
@@ -205,7 +205,7 @@ void testFontSize({
         narrow: true,
       )));
       expect(tester.widget<Text>(find.text(buttonText)).style.fontSize,
-          ButtonStyleConstants.smallFontSize);
+          ChgButtonStyleConstants.smallFontSize);
     });
   });
 }
@@ -226,7 +226,7 @@ void testFontStyle({
               textStyle: AppText.body2
           )));
           expect(tester.widget<Text>(find.text(buttonText)).style.fontSize,
-              ButtonStyleConstants.smallFontSize);
+              ChgButtonStyleConstants.smallFontSize);
         });
 
   });

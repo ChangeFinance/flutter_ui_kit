@@ -24,9 +24,9 @@ const _elevationToShadow = const <int, BoxShadow>{
   )
 };
 
-class AppCard extends StatelessWidget {
+class ChgAppCard extends StatelessWidget {
 
-  const AppCard({
+  const ChgAppCard({
     Key key,
     this.child,
     this.margin = const EdgeInsets.all(0.0),

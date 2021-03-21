@@ -65,7 +65,7 @@ class __ShakerStoryState extends State<_ShakerStory> {
                 shakeDuration: Duration(milliseconds: durationMs),
               ),
               const SizedBox(height: 10),
-              FilledButton(
+              ChgFilledButton(
                 'Shake',
                 onPressed: () {
                   setState(() {

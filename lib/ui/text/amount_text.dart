@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AmountText extends StatelessWidget {
+class ChgAmountText extends StatelessWidget {
   final String data;
   final EdgeInsets padding;
 
-  const AmountText(
-      {@required this.data, this.padding = const EdgeInsets.all(6.0)});
+  const ChgAmountText({
+    @required this.data,
+    this.padding = const EdgeInsets.all(6.0),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +17,10 @@ class AmountText extends StatelessWidget {
       padding: padding,
       child: new Text(
         data,
-        style:
-            theme.bodyText2.copyWith(fontWeight: FontWeight.w500, fontSize: 16.0),
+        style: theme.bodyText2.copyWith(
+          fontWeight: FontWeight.w500,
+          fontSize: 16.0,
+        ),
         textAlign: TextAlign.center,
       ),
     );

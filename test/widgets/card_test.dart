@@ -12,7 +12,7 @@ void main() {
 
     testWidgets('renders child widget', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(
-          const AppCard(
+          const ChgAppCard(
             child: const Text('Text Content')
           )
         )
@@ -24,7 +24,7 @@ void main() {
     testWidgets('sets correct default properties', (WidgetTester tester) async {
       const child = Text('Text Content');
       await tester.pumpWidget(wrapInMaterialApp(
-          const AppCard(
+          const ChgAppCard(
               child: child
           )
         )
@@ -49,7 +49,7 @@ void main() {
     testWidgets('passes correct properties', (WidgetTester tester) async {
       const child = Text('Text Content');
       await tester.pumpWidget(wrapInMaterialApp(
-          const AppCard(
+          const ChgAppCard(
               child: child,
               elevation: 3,
               margin: EdgeInsets.all(11.0),

@@ -16,7 +16,7 @@ void main() {
     testWidgets('renders icon', (tester) async {
       await tester.pumpWidget(const Directionality(
           textDirection: TextDirection.ltr,
-          child: const CopyToClipboard(value: '123456')));
+          child: const ChgCopyToClipboard(value: '123456')));
       expect(find.byType(Icon), findsOneWidget);
     });
 
@@ -24,7 +24,7 @@ void main() {
       final onTapCallback = MockVoidFunction();
       setUpTestMethodChannel('flutter/platform', const JSONMethodCodec());
       await tester.pumpWidget(MaterialApp(
-        home: Scaffold(body: CopyToClipboard(value: '123456', onTapCallback: onTapCallback.call)),
+        home: Scaffold(body: ChgCopyToClipboard(value: '123456', onTapCallback: onTapCallback.call)),
       ));
       await tester.tap(find.byType(Icon));
       expectMethodCall('Clipboard.setData', arguments: <String, dynamic>{

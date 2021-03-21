@@ -13,7 +13,7 @@ void main() {
       value = BehaviorSubject<bool>();
       widget = MaterialApp(
         home: Scaffold(
-          body: StreamCheckboxField(
+          body: ChgStreamCheckboxField(
             value: value,
             onChanged: value.add,
             label: const Text('Field'),

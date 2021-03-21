@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'copy_to_clipboard.dart';
 import 'label_text.dart';
 
-class LabelValuePair extends StatelessWidget {
+class ChgLabelValuePair extends StatelessWidget {
   final String labelText;
   final String valueText;
   final Widget value;
-  final ValueLabelTextAlign textAlign;
+  final ChgValueLabelTextAlign textAlign;
   final bool copyToClipboardEnabled;
   final EdgeInsets padding;
 
-  const LabelValuePair({
+  const ChgLabelValuePair({
     @required this.labelText,
     this.valueText,
     this.copyToClipboardEnabled = false,
@@ -38,8 +38,8 @@ class LabelValuePair extends StatelessWidget {
     );
   }
 
-  bool _isCenterAligned(ValueLabelTextAlign textAlign) {
-    return textAlign != null && textAlign == ValueLabelTextAlign.center;
+  bool _isCenterAligned(ChgValueLabelTextAlign textAlign) {
+    return textAlign != null && textAlign == ChgValueLabelTextAlign.center;
   }
 
   Widget _buildBody(BuildContext context, Widget value, String data, {EdgeInsets padding}) {
@@ -66,5 +66,5 @@ class LabelValuePair extends StatelessWidget {
 
 }
 
-enum ValueLabelTextAlign { center, left }
+enum ChgValueLabelTextAlign { center, left }
 

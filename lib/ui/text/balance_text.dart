@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BalanceAmount extends StatelessWidget {
+class ChgBalanceAmount extends StatelessWidget {
   final String data;
   final EdgeInsets padding;
 
-  const BalanceAmount(
-      {@required this.data, this.padding = const EdgeInsets.all(6.0)});
+  const ChgBalanceAmount({
+    @required this.data,
+    this.padding = const EdgeInsets.all(6.0),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +18,13 @@ class BalanceAmount extends StatelessWidget {
       children: [
         FittedBox(
           fit: BoxFit.scaleDown,
-          child: new Text(data,
-              style: theme.bodyText2
-                  .copyWith(fontWeight: FontWeight.w500, fontSize: 36.0)),
+          child: Text(
+            data,
+            style: theme.bodyText2.copyWith(
+              fontWeight: FontWeight.w500,
+              fontSize: 36.0,
+            ),
+          ),
         ),
       ],
     );

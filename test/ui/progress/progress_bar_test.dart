@@ -10,7 +10,7 @@ void main() {
         data: const MediaQueryData(size: Size.square(15.0)),
         child: Directionality(
           textDirection: TextDirection.ltr,
-          child: ProgressBar(
+          child: ChgProgressBar(
             progress: 1.0,
             progressKey: key,
           ),
@@ -28,7 +28,7 @@ void main() {
         data: const MediaQueryData(size: Size.square(15.0)),
         child: Directionality(
           textDirection: TextDirection.ltr,
-          child: ProgressBar(
+          child: ChgProgressBar(
             progress: 0.0,
             progressKey: key,
           ),

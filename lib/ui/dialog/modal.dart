@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@deprecated
 class Modal extends StatelessWidget {
   final List<Widget> children;
 
@@ -12,4 +13,8 @@ class Modal extends StatelessWidget {
       children: children,
     );
   }
+}
+
+class ChgModal extends Modal {
+
 }

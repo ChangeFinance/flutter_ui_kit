@@ -52,7 +52,7 @@ class AppCards extends StatelessWidget {
           final double margin = props['margin'];
           final double borderRadius = props['borderRadius'];
 
-          return AppCard(
+          return ChgAppCard(
             color: AppColor.deepWhite,
             elevation: elevation.toInt(),
             margin: EdgeInsets.all(margin),
@@ -92,7 +92,7 @@ class AppCards extends StatelessWidget {
           final double margin = props['margin'];
           final double borderRadius = props['borderRadius'];
 
-          return AppCard(
+          return ChgAppCard(
             color: AppColor.deepWhite,
             elevation: elevation.toInt(),
             margin: EdgeInsets.all(margin),
@@ -108,11 +108,11 @@ class AppCards extends StatelessWidget {
                 ButtonBarTheme(
                   child: ButtonBar(
                     children: <Widget>[
-                      TextButton(
+                      ChgTextButton(
                         'BUY TICKETS',
                         onPressed: () {},
                       ),
-                      TextButton(
+                      ChgTextButton(
                         'LISTEN',
                         onPressed: () {},
                       ),

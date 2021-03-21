@@ -55,7 +55,7 @@ class Layouts extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Center(
-        child: FilledButton(
+        child: ChgFilledButton(
           'I\'m all about that utility',
           onPressed: () {
             Navigator.push<dynamic>(
@@ -70,7 +70,7 @@ class Layouts extends StatelessWidget {
                           width: 285.0,
                           height: 215.0,
                         ),
-                        FilledButton(
+                        ChgFilledButton(
                           'Update app',
                           onPressed: () {
                             Navigator.pop(context);
@@ -90,7 +90,7 @@ class Layouts extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Center(
-        child: FilledButton(
+        child: ChgFilledButton(
           'I\'m all about that generic utility',
           onPressed: () {
             Navigator.push<dynamic>(
@@ -125,7 +125,7 @@ class Layouts extends StatelessWidget {
                           width: 285.0,
                           height: 215.0,
                         ),
-                        FilledButton(
+                        ChgFilledButton(
                           'Update app',
                           onPressed: () {
                             Navigator.pop(context);
@@ -145,7 +145,7 @@ class Layouts extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Center(
-        child: FilledButton(
+        child: ChgFilledButton(
           'I\'m all about that txt txt pic',
           onPressed: () {
             Navigator.push<dynamic>(
@@ -160,7 +160,7 @@ class Layouts extends StatelessWidget {
                             width: 200.0,
                             height: 200.0,
                           ),
-                          FilledButton(
+                          ChgFilledButton(
                             'Back',
                             onPressed: () {
                               Navigator.pop(context);
@@ -182,7 +182,7 @@ class Layouts extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Center(
-        child: FilledButton(
+        child: ChgFilledButton(
           'I\'m all about that close button',
           onPressed: () {
             Navigator.push<dynamic>(
@@ -190,7 +190,7 @@ class Layouts extends StatelessWidget {
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: dismissibleLayoutRoute),
                     builder: (_) => GenericTemplate(
-                        const Heading('How can we make Change better?',
+                        const ChgHeading('How can we make Change better?',
                             headingType: HeadingType.HEADING_1, textAlign: TextAlign.left),
                         Padding(
                             padding: const EdgeInsets.only(top: 20.0),
@@ -203,7 +203,7 @@ class Layouts extends StatelessWidget {
                               autofocus: true,
                               onSaved: (String value) {},
                             )),
-                        FilledButton('SEND', fullWidth: true, onPressed: () {
+                        ChgFilledButton('SEND', fullWidth: true, onPressed: () {
                           print('you clicked send');
                         }),
                         leadingWidget: const CloseButton())));
@@ -219,18 +219,18 @@ class Layouts extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(30.0),
         child: Center(
-            child: FilledButton('I\'m all about that info button', onPressed: () {
+            child: ChgFilledButton('I\'m all about that info button', onPressed: () {
           Navigator.push<dynamic>(
               context,
               MaterialPageRoute<dynamic>(
                 settings: const RouteSettings(name: infoLayoutRoute),
                 builder: (_) => GenericTemplate(
-                    const Heading('Invite a friend and you both get €10 worth of Bitcoin',
+                    const ChgHeading('Invite a friend and you both get €10 worth of Bitcoin',
                         headingType: HeadingType.HEADING_2, textAlign: TextAlign.left),
                     Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: Column(children: <Widget>[
-                          const LabelValuePair(
+                          const ChgLabelValuePair(
                               labelText: 'Invite Link',
                               valueText: 'getchange.com/r/2415',
                               copyToClipboardEnabled: true),
@@ -243,7 +243,7 @@ class Layouts extends StatelessWidget {
                             ),
                           ),
                         ])),
-                    FilledButton('Invite friends', fullWidth: true, onPressed: () {
+                    ChgFilledButton('Invite friends', fullWidth: true, onPressed: () {
                       print('you clicked invite friends');
                     }),
                     tailingWidget: [
@@ -261,13 +261,13 @@ class Layouts extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(30.0),
         child: Center(
-            child: FilledButton('I\'m all about that payment methods', onPressed: () {
+            child: ChgFilledButton('I\'m all about that payment methods', onPressed: () {
           Navigator.push<dynamic>(
               context,
               MaterialPageRoute<dynamic>(
                 settings: const RouteSettings(name: infoLayoutRoute),
                 builder: (_) => GenericTemplate(
-                    const Heading('Deposit', headingType: HeadingType.HEADING_2, textAlign: TextAlign.left),
+                    const ChgHeading('Deposit', headingType: HeadingType.HEADING_2, textAlign: TextAlign.left),
                     Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
@@ -304,7 +304,7 @@ class Layouts extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Center(
-        child: FilledButton(
+        child: ChgFilledButton(
           'I\'m all about landing page',
           onPressed: () {
             Navigator.push<dynamic>(
@@ -315,7 +315,7 @@ class Layouts extends StatelessWidget {
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
-                              const Heading('Exchange CAG tokens to new equity like CNG tokens',
+                              const ChgHeading('Exchange CAG tokens to new equity like CNG tokens',
                                   headingType: HeadingType.HEADING_1, textAlign: TextAlign.left),
                               Container(
                                 child: Padding(
@@ -353,7 +353,7 @@ class Layouts extends StatelessWidget {
                             ],
                           ),
                           Column(children: <Widget>[
-                            FilledButton(
+                            ChgFilledButton(
                               'Go to Swap',
                               onPressed: () {
                                 print('Test');
@@ -361,7 +361,7 @@ class Layouts extends StatelessWidget {
                               fullWidth: true,
                               narrow: false,
                             ),
-                            TextButton(
+                            ChgTextButton(
                               'I\'m not CNG owner',
                               onPressed: () {
                                 print('Test');
@@ -390,7 +390,7 @@ class Layouts extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30),
       child: Center(
-        child: FilledButton(
+        child: ChgFilledButton(
           'Swipe up to confirm layout',
           onPressed: () {
             Navigator.push<dynamic>(
@@ -460,7 +460,7 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
       children: <Widget>[
         const Text('Swipe view'),
         const SizedBox(height: 20),
-        FilledButton(swipeMode == SwipeMode.static ? 'Enable Swiping' : 'Disable Swiping', onPressed: () {
+        ChgFilledButton(swipeMode == SwipeMode.static ? 'Enable Swiping' : 'Disable Swiping', onPressed: () {
           setState(() {
             if (swipeMode == SwipeMode.swipe) {
               swipeMode = SwipeMode.static;
@@ -470,7 +470,7 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
           });
         }),
         const SizedBox(height: 20),
-        FilledButton(doneButtonEnabled ? 'Disable Done button' : 'Enable Done button', onPressed: () {
+        ChgFilledButton(doneButtonEnabled ? 'Disable Done button' : 'Enable Done button', onPressed: () {
           setState(() {
             doneButtonEnabled = !doneButtonEnabled;
           });

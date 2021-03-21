@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'button_common.dart';
 
-class FilledButton extends StatefulWidget {
+class ChgFilledButton extends StatefulWidget {
   final String text;
   final FutureCallback onPressed;
   final bool fullWidth;
@@ -12,7 +12,7 @@ class FilledButton extends StatefulWidget {
   final TextStyle textStyle;
   final Color color;
 
-  FilledButton(
+  ChgFilledButton(
     this.text, {
     @required this.onPressed,
     this.fullWidth = false,
@@ -25,10 +25,10 @@ class FilledButton extends StatefulWidget {
         super(key: key);
 
   @override
-  _FilledButtonState createState() => _FilledButtonState();
+  _ChgFilledButtonState createState() => _ChgFilledButtonState();
 }
 
-class _FilledButtonState extends State<FilledButton> with ButtonMixin {
+class _ChgFilledButtonState extends State<ChgFilledButton> with ButtonMixin {
   bool _enabled = true;
 
   Color get color => widget.color;

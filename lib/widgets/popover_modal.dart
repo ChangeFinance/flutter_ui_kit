@@ -3,7 +3,7 @@ import 'package:flutter_ui_kit/color.dart';
 
 import 'high_popover_modal.dart';
 
-class PopoverModal {
+class ChgPopoverModal {
   Future<T> showPopover<T>(BuildContext context, Widget child, {Cubic animationCurve, Duration animationDuration}) {
     return showModalBottomSheetCustom<T>(
       context: context,

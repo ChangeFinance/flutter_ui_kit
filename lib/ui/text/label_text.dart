@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 
-class LabelText extends StatelessWidget {
+class ChgLabelText extends StatelessWidget {
   final String data;
 
-  const LabelText(this.data);
+  const ChgLabelText(this.data);
 
   @override
   Widget build(BuildContext context) {

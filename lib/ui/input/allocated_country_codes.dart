@@ -1,3 +1,4 @@
+@deprecated
 final List<String> eeaCountryCodes = [
   'FI',
   'AT',
@@ -44,6 +45,7 @@ final List<String> eeaCountryCodes = [
   'GB',
 ];
 
+@deprecated
 final List<String> strictJurisdictionCountryCodes = [
   'US',
   'JP',

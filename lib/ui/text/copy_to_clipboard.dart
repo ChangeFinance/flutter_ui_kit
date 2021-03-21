@@ -3,11 +3,14 @@ import 'package:flutter/services.dart';
 
 import '../colors.dart';
 
-class CopyToClipboard extends StatelessWidget {
+class ChgCopyToClipboard extends StatelessWidget {
   final String value;
   final Function onTapCallback;
 
-  const CopyToClipboard({this.value, this.onTapCallback});
+  const ChgCopyToClipboard({
+    this.value,
+    this.onTapCallback,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +24,16 @@ class CopyToClipboard extends StatelessWidget {
               size: 20.0,
             )),
         onTap: () {
-          if (onTapCallback != null)
+          if (onTapCallback != null) {
             onTapCallback();
-          Clipboard.setData(new ClipboardData(text: value));
-          const snackBar =
-              const SnackBar(content: const Text('Copied to clipboard'));
-          Scaffold.of(context).showSnackBar(snackBar);
+          }
+          Clipboard.setData(
+            new ClipboardData(text: value),
+          );
+          const snackBar = const SnackBar(
+            content: const Text('Copied to clipboard'),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
       ),
     );

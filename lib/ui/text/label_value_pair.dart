@@ -30,7 +30,7 @@ class LabelValuePair extends StatelessWidget {
                 ? CrossAxisAlignment.center
                 : CrossAxisAlignment.start,
             children: [
-              LabelText(labelText.toUpperCase()),
+              ChgLabelText(labelText.toUpperCase()),
               _buildBody(context, value, valueText, padding: padding),
             ],
           ),
@@ -62,7 +62,7 @@ class LabelValuePair extends StatelessWidget {
     if (!copyToClipboardEnabled) {
       return Container();
     }
-    return CopyToClipboard(value: value);
+    return ChgCopyToClipboard(value: value);
   }
 
 }

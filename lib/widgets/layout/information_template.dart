@@ -40,7 +40,7 @@ class InformationTemplate extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Heading(
+                    ChgHeading(
                       heading,
                       headingType: HeadingType.HEADING_2,
                       textAlign: TextAlign.left,

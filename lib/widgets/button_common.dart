@@ -5,7 +5,7 @@ typedef FutureCallback = Future<void> Function();
 
 typedef EnabledSetter = void Function(bool enabled);
 
-class ButtonStyleConstants {
+class ChgButtonStyleConstants {
   static const double narrowVerticalPadding = 11.5;
   static const double wideVerticalPadding = 17.5;
   static const double horizontalPadding = 48.0;
@@ -21,7 +21,7 @@ mixin ButtonMixin {
   double matchParentWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
   EdgeInsetsGeometry getPadding({bool narrow = false}) {
-    return narrow ? ButtonStyleConstants.narrowPadding : ButtonStyleConstants.widePadding;
+    return narrow ? ChgButtonStyleConstants.narrowPadding : ChgButtonStyleConstants.widePadding;
   }
 
   bool isDisabled({
@@ -40,9 +40,9 @@ mixin ButtonMixin {
 
   double getFontSize({bool narrow, bool fullWidth = false}) {
     if (_isSmall(narrow: narrow, fullWidth: fullWidth)) {
-      return ButtonStyleConstants.smallFontSize;
+      return ChgButtonStyleConstants.smallFontSize;
     }
-    return ButtonStyleConstants.fontSize;
+    return ChgButtonStyleConstants.fontSize;
   }
 
   Future<void> disableButtonWhileOnPressedExecutes({

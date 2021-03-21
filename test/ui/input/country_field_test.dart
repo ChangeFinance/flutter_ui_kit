@@ -12,7 +12,7 @@ void main() {
       value = BehaviorSubject<String>();
       widget = MaterialApp(
         home: Scaffold(
-          body: StreamCountryTextField(
+          body: ChgStreamCountryTextField(
             value: value,
             onChanged: value.add,
             labelText: 'Field',
@@ -27,7 +27,7 @@ void main() {
 
     testWidgets('chooses country', (WidgetTester tester) async {
       await tester.pumpWidget(widget);
-      await tester.tap(find.byType(StreamCountryTextField));
+      await tester.tap(find.byType(ChgStreamCountryTextField));
       await tester.pump();
       await tester.tap(find.text('Afghanistan'));
       await tester.pumpAndSettle();
@@ -40,7 +40,7 @@ void main() {
         (WidgetTester tester) async {
       widget = MaterialApp(
         home: Scaffold(
-          body: StreamCountryTextField(
+          body: ChgStreamCountryTextField(
             value: value,
             onChanged: value.add,
             labelText: 'Field',
@@ -49,7 +49,7 @@ void main() {
         ),
       );
       await tester.pumpWidget(widget);
-      await tester.tap(find.byType(StreamCountryTextField));
+      await tester.tap(find.byType(ChgStreamCountryTextField));
       await tester.pump();
       expect(find.text('Afghanistan'), findsNothing);
       await tester.tap(find.text('Austria'));
@@ -63,7 +63,7 @@ void main() {
         (WidgetTester tester) async {
       widget = MaterialApp(
         home: Scaffold(
-          body: StreamCountryTextField(
+          body: ChgStreamCountryTextField(
             value: value,
             onChanged: value.add,
             labelText: 'Field',
@@ -72,7 +72,7 @@ void main() {
         ),
       );
       await tester.pumpWidget(widget);
-      await tester.tap(find.byType(StreamCountryTextField));
+      await tester.tap(find.byType(ChgStreamCountryTextField));
       await tester.pump();
       expect(find.text('United States'), findsNothing);
     });

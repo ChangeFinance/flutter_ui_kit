@@ -25,7 +25,7 @@ class TopMoversCard extends StatelessWidget {
 
   Widget _buildCard(BuildContext context) {
     final color = isGrowing ? AppColor.green : AppColor.red;
-    return AppCard(
+    return ChgAppCard(
         color: AppColor.deepWhite,
         elevation: 2,
         borderRadius: 4,

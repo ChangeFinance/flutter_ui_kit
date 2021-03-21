@@ -88,12 +88,12 @@ class SwipeConfirmation extends StatelessWidget {
     if (primaryButtonText != null && primaryButtonText != '') {
       buttons.add(Opacity(
         opacity: primaryButtonEnabled ? 1.0 : 0.5,
-        child: OutlinedButton(primaryButtonText,
+        child: ChgOutlinedButton(primaryButtonText,
             onPressed: primaryButtonEnabled ? primaryButtonAction : null, fullWidth: true, narrow: false, alt: true),
       ));
     }
     if (secondaryButtonText != null && secondaryButtonText != '') {
-      buttons.add(TextButton(secondaryButtonText, onPressed: secondaryButtonAction, alt: true));
+      buttons.add(ChgTextButton(secondaryButtonText, onPressed: secondaryButtonAction, alt: true));
     }
 
     return Positioned(

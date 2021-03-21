@@ -6,7 +6,7 @@ import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 class Popover extends StatelessWidget {
-  final PopoverModal popover = PopoverModal();
+  final ChgPopoverModal popover = ChgPopoverModal();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class Popover extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Center(
-        child: FilledButton(
+        child: ChgFilledButton(
           'Show Large Popover',
           onPressed: () {
             _onExampleOnePressed(context);
@@ -45,7 +45,7 @@ class Popover extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Center(
-        child: FilledButton(
+        child: ChgFilledButton(
           'Show Small Popover',
           onPressed: () {
             _onExampleTwoPressed(context);
@@ -61,7 +61,7 @@ class Popover extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30.0),
       child: Center(
-        child: FilledButton(
+        child: ChgFilledButton(
           'Show Action Popover',
           onPressed: () {
             _onExampleThreePressed(context);
@@ -80,7 +80,7 @@ class Popover extends StatelessWidget {
           padding: const EdgeInsets.all(30.0),
           child: Column(
             children: const <Widget>[
-              const Heading('Example Header',
+              const ChgHeading('Example Header',
                   headingType: HeadingType.HEADING_2),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -102,7 +102,7 @@ class Popover extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: const <Widget>[
-              const Heading('Example Header',
+              const ChgHeading('Example Header',
                   headingType: HeadingType.HEADING_2),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -125,7 +125,7 @@ class Popover extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Heading('Example Header',
+              const ChgHeading('Example Header',
                   headingType: HeadingType.HEADING_2),
               const Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -136,7 +136,7 @@ class Popover extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: FilledButton(
+                child: ChgFilledButton(
                   'Ok',
                   onPressed: () {
                     Navigator.pop(context, 'Ok button');
@@ -146,7 +146,7 @@ class Popover extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: TextButton('Cancel', onPressed: () {
+                child: ChgTextButton('Cancel', onPressed: () {
                   Navigator.pop(context, 'Cancel button');
                 }),
               )

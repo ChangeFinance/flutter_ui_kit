@@ -47,7 +47,7 @@ class WizardStory extends StatelessWidget {
       children: <Widget>[
         const Align(
             alignment: Alignment.centerLeft,
-            child: Heading('Mandatory page',
+            child: ChgHeading('Mandatory page',
                 headingType: HeadingType.HEADING_1, textAlign: TextAlign.left)),
         Padding(
             padding: const EdgeInsets.only(top: 20.0),
@@ -71,7 +71,7 @@ class WizardStory extends StatelessWidget {
       children: <Widget>[
         const Align(
             alignment: Alignment.centerLeft,
-            child: Heading('Do this later',
+            child: ChgHeading('Do this later',
                 headingType: HeadingType.HEADING_1, textAlign: TextAlign.left)),
         Padding(
             padding: const EdgeInsets.only(top: 20.0),
@@ -95,7 +95,7 @@ class WizardStory extends StatelessWidget {
       children: <Widget>[
         const Align(
             alignment: Alignment.centerLeft,
-            child: Heading('Skippable page',
+            child: ChgHeading('Skippable page',
                 headingType: HeadingType.HEADING_1, textAlign: TextAlign.left)),
         Padding(
             padding: const EdgeInsets.only(top: 20.0),

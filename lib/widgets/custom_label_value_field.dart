@@ -8,7 +8,7 @@ class LabelValueEditableField extends StatelessWidget {
   final String labelText;
   final String valueText;
   final Widget value;
-  final ValueLabelTextAlign textAlign;
+  final ChgValueLabelTextAlign textAlign;
   final bool editable;
   final EdgeInsets padding;
   final String route;
@@ -44,8 +44,8 @@ class LabelValueEditableField extends StatelessWidget {
     );
   }
 
-  bool _isCenterAligned(ValueLabelTextAlign textAlign) {
-    return textAlign != null && textAlign == ValueLabelTextAlign.center;
+  bool _isCenterAligned(ChgValueLabelTextAlign textAlign) {
+    return textAlign != null && textAlign == ChgValueLabelTextAlign.center;
   }
 
   Widget _buildBody(BuildContext context, Widget value, String data, {EdgeInsets padding}) {
@@ -88,5 +88,5 @@ class LabelValueEditableField extends StatelessWidget {
   }
 }
 
-enum ValueLabelTextAlign { center, left }
+enum ChgValueLabelTextAlign { center, left }
 

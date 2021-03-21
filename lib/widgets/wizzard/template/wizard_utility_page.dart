@@ -34,7 +34,7 @@ class WizardUtilityPage extends StatelessWidget {
                 constraints: BoxConstraints(maxWidth: picture.width),
                 child: Column(
                   children: <Widget>[
-                    Heading(
+                    ChgHeading(
                       heading,
                       headingType: HeadingType.HEADING_1,
                       textAlign: TextAlign.center,
