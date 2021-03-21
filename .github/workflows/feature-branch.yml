@@ -9,10 +9,10 @@ jobs:
   test:
     strategy:
       matrix:
-        flutter-version: [ 2.0.0, 1.20.4, 1.22.0]
+        flutter-version: [1.20.4, 1.22.0, 2.0.0]
     name: Tests on ${{ matrix.flutter-version }}
     runs-on: ubuntu-latest
-    continue-on-error: true
+    continue-on-error: matrix.flutter-version == '2.0.0'
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
@@ -29,9 +29,10 @@ jobs:
       - run: flutter test --concurrency=6 --machine > tests.json
       - run: flutter pub run junitreport:tojunit --input tests.json --output TEST-report.xml
         if: always()
-      - name: JUnit Report
+      - name: JUnit Report ${{ matrix.flutter-version }}
         uses: mikepenz/action-junit-report@v2
         if: always()
         with:
           report_paths: 'TEST-*.xml'
+          check_name: Flutter ${{ matrix.flutter-version }} test Report
           github_token: ${{ secrets.GITHUB_TOKEN }}
