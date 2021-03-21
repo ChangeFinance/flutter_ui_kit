@@ -7,11 +7,11 @@ import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/list_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
+import 'package:flutter_ui_kit/widgets/buttons/outlined_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
-import 'package:flutter_ui_kit/widgets/outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/widgets/switcher_button.dart';
-import 'package:flutter_ui_kit/widgets/text_button.dart';
 import 'package:flutter_ui_kit/widgets/two_states_button.dart';
 
 class Buttons extends StatelessWidget {
@@ -20,13 +20,7 @@ class Buttons extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        children: [
-          _filledButtonStory(),
-          _outlinedButtonStory(),
-          _textButtonStory(),
-          _switcherButtonStory(),
-          _twoStatesButtonStory()
-        ],
+        children: [_filledButtonStory(), _outlinedButtonStory(), _textButtonStory(), _switcherButtonStory(), _twoStatesButtonStory()],
       ),
     );
   }

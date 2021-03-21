@@ -1,10 +1,9 @@
-import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_kit/color.dart';
 
-import 'button_common.dart';
+import '../button_common.dart';
 
-@Deprecated('Use ChgFilledButton from widgets/buttons')
-class FilledButton extends StatefulWidget {
+class ChgFilledButton extends StatefulWidget {
   final String text;
   final FutureCallback onPressed;
   final bool fullWidth;
@@ -13,7 +12,7 @@ class FilledButton extends StatefulWidget {
   final TextStyle textStyle;
   final Color color;
 
-  FilledButton(
+  ChgFilledButton(
     this.text, {
     @required this.onPressed,
     this.fullWidth = false,
@@ -26,10 +25,10 @@ class FilledButton extends StatefulWidget {
         super(key: key);
 
   @override
-  _FilledButtonState createState() => _FilledButtonState();
+  _ChgFilledButtonState createState() => _ChgFilledButtonState();
 }
 
-class _FilledButtonState extends State<FilledButton> with ButtonMixin {
+class _ChgFilledButtonState extends State<ChgFilledButton> with ButtonMixin {
   bool _enabled = true;
 
   Color get color => widget.color;
@@ -43,10 +42,20 @@ class _FilledButtonState extends State<FilledButton> with ButtonMixin {
           widget.text,
           style: (widget.textStyle != null)
               ? widget.textStyle
-              : Theme.of(context).textTheme.bodyText2.copyWith(color: AppColor.deepWhite, fontSize: getFontSize(narrow: widget.narrow, fullWidth: widget.fullWidth)),
+              : Theme.of(context).textTheme.bodyText2.copyWith(
+                    color: AppColor.deepWhite,
+                    fontSize: getFontSize(
+                      narrow: widget.narrow,
+                      fullWidth: widget.fullWidth,
+                    ),
+                  ),
         ),
-        onPressed:
-            isDisabled(enabled: _enabled, onPressed: widget.onPressed) ? null : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed),
+        onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
+            ? null
+            : () => disableButtonWhileOnPressedExecutes(
+                  setEnabled: _setEnabled,
+                  onPressed: widget.onPressed,
+                ),
         padding: widget.padding ?? getPadding(narrow: widget.narrow),
         elevation: 0.0,
         highlightElevation: 0.0,

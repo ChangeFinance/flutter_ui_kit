@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_kit/widgets/outlined_button.dart';
-import 'package:flutter_ui_kit/widgets/text_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/outlined_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 
 class SwipeConfirmation extends StatelessWidget {
   final Animation<double> labelTranslation;

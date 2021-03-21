@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/popover_modal.dart';
 import 'package:flutter_ui_kit/widgets/text/heading.dart';
 import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
-import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 class Popover extends StatelessWidget {
   final PopoverModal popover = PopoverModal();
@@ -15,11 +15,7 @@ class Popover extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          children: [
-            _popoverExampleOne(context),
-            _popoverExampleTwo(context),
-            _popoverExampleThree(context)
-          ],
+          children: [_popoverExampleOne(context), _popoverExampleTwo(context), _popoverExampleThree(context)],
         ),
       ),
     );
@@ -80,8 +76,7 @@ class Popover extends StatelessWidget {
           padding: const EdgeInsets.all(30.0),
           child: Column(
             children: const <Widget>[
-              const Heading('Example Header',
-                  headingType: HeadingType.HEADING_2),
+              const Heading('Example Header', headingType: HeadingType.HEADING_2),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: const Text(
@@ -102,8 +97,7 @@ class Popover extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: const <Widget>[
-              const Heading('Example Header',
-                  headingType: HeadingType.HEADING_2),
+              const Heading('Example Header', headingType: HeadingType.HEADING_2),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: const Text(
@@ -120,13 +114,11 @@ class Popover extends StatelessWidget {
     final result = popover.showPopover<String>(
         context,
         Padding(
-          padding: const EdgeInsets.only(
-              left: 30.0, top: 30.0, bottom: 5.0, right: 30.0),
+          padding: const EdgeInsets.only(left: 30.0, top: 30.0, bottom: 5.0, right: 30.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Heading('Example Header',
-                  headingType: HeadingType.HEADING_2),
+              const Heading('Example Header', headingType: HeadingType.HEADING_2),
               const Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: const Text(

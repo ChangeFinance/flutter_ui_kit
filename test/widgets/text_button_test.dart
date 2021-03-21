@@ -1,5 +1,6 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_ui_kit/widgets/button_common.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as mat;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
 
@@ -14,8 +15,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) =>
-          ChgTextButton(buttonText, onPressed: onPressed),
+      buildButton: ({FutureCallback onPressed}) => TextButton(buttonText, onPressed: onPressed),
     );
 
     testTextProp(
@@ -23,7 +23,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => ChgTextButton(buttonText, onPressed: () {}),
+      buildButton: () => TextButton(buttonText, onPressed: () {}),
     );
 
     testOnPressedProp(
@@ -31,9 +31,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) =>
-          ChgTextButton(buttonText, onPressed: onPressed),
-      underlyingMaterialButtonType: FlatButton,
+      buildButton: ({FutureCallback onPressed}) => TextButton(buttonText, onPressed: onPressed),
+      underlyingMaterialButtonType: mat.FlatButton,
     );
 
     testPaddingProp(
@@ -41,9 +40,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({EdgeInsetsGeometry padding}) =>
-          ChgTextButton(buttonText, onPressed: () {}, padding: padding),
-      underlyingMaterialButtonType: FlatButton,
+      buildButton: ({EdgeInsetsGeometry padding}) => TextButton(buttonText, onPressed: () {}, padding: padding),
+      underlyingMaterialButtonType: mat.FlatButton,
     );
 
     testFontStyle(
@@ -51,12 +49,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({TextStyle textStyle}) => ChgTextButton(
-        buttonText,
-        textStyle: textStyle,
-        onPressed: () {}
-      ),
+      buildButton: ({TextStyle textStyle}) => TextButton(buttonText, textStyle: textStyle, onPressed: () {}),
     );
-
   });
 }

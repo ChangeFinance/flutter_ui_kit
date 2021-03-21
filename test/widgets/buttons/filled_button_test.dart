@@ -1,32 +1,20 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_ui_kit/widgets/button_common.dart';
-import 'package:flutter_ui_kit/widgets/outlined_button.dart';
-import 'package:flutter/material.dart' as mat;
+import 'package:flutter_ui_kit/widgets/buttons/filled_button.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'common_button_tests.dart';
+import '../common_button_tests.dart';
 
 void main() {
-  group('OutlinedButton', () {
+  group('ChgFilledButton', () {
     const buttonText = 'Click me';
-
-    testPressingState(
-      group: group,
-      setUp: setUp,
-      testWidgets: testWidgets,
-      buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) => OutlinedButton(
-        buttonText,
-        onPressed: onPressed,
-      ),
-    );
 
     testTextProp(
       group: group,
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => OutlinedButton(
+      buildButton: () => ChgFilledButton(
         buttonText,
         onPressed: () {},
       ),
@@ -37,11 +25,11 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) => OutlinedButton(
+      buildButton: ({FutureCallback onPressed}) => ChgFilledButton(
         buttonText,
         onPressed: onPressed,
       ),
-      underlyingMaterialButtonType: mat.OutlineButton,
+      underlyingMaterialButtonType: RaisedButton,
     );
 
     testFullWidthProp(
@@ -49,12 +37,12 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool fullWidth}) => OutlinedButton(
+      buildButton: ({bool fullWidth}) => ChgFilledButton(
         buttonText,
         onPressed: () {},
         fullWidth: fullWidth,
       ),
-      underlyingMaterialButtonType: mat.OutlineButton,
+      underlyingMaterialButtonType: RaisedButton,
     );
 
     testNarrowProp(
@@ -62,12 +50,12 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool narrow}) => OutlinedButton(
+      buildButton: ({bool narrow}) => ChgFilledButton(
         buttonText,
         onPressed: () {},
         narrow: narrow,
       ),
-      underlyingMaterialButtonType: mat.OutlineButton,
+      underlyingMaterialButtonType: RaisedButton,
     );
 
     testPaddingProp(
@@ -75,12 +63,12 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({EdgeInsetsGeometry padding}) => OutlinedButton(
+      buildButton: ({EdgeInsetsGeometry padding}) => ChgFilledButton(
         buttonText,
         onPressed: () {},
         padding: padding,
       ),
-      underlyingMaterialButtonType: mat.OutlineButton,
+      underlyingMaterialButtonType: RaisedButton,
     );
 
     testFontSize(
@@ -88,11 +76,24 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool narrow, bool fullWidth}) => OutlinedButton(
+      buildButton: ({bool narrow, bool fullWidth}) => ChgFilledButton(
         buttonText,
         onPressed: () {},
         narrow: narrow,
         fullWidth: fullWidth,
+      ),
+    );
+
+    testFontStyle(
+      group: group,
+      setUp: setUp,
+      testWidgets: testWidgets,
+      buttonText: buttonText,
+      buildButton: ({TextStyle textStyle}) => ChgFilledButton(
+        buttonText,
+        textStyle: textStyle,
+        onPressed: () {},
+        narrow: true,
       ),
     );
   });

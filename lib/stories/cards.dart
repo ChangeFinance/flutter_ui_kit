@@ -6,6 +6,7 @@ import 'package:flutter_ui_kit/story_book/prop_updater/int_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/big_asset_card.dart';
+import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 import 'package:flutter_ui_kit/widgets/card.dart';
 import 'package:flutter_ui_kit/widgets/news/news_card.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
-import 'package:flutter_ui_kit/widgets/text_button.dart';
 import 'package:flutter_ui_kit/widgets/time_frame_selector.dart';
 
 import '../wrap_in_material_app.dart';
@@ -22,14 +22,14 @@ void main() {
       await tester.pumpWidget(wrapInMaterialApp(
           TimeFrameSelector(onChange: onChangeTextField)
       ));
-      expect(find.byType(TextButton).evaluate().length, 5);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(FilledButton).evaluate().length, 1);
       final initFilledButton = tester.widget(find.byType(FilledButton));
       final FilledButton initContainerWidget = initFilledButton;
       expect(initContainerWidget.text, '1D');
       await tester.tap(find.text('1Y'));
       await tester.pump();
-      expect(find.byType(TextButton).evaluate().length, 5);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(FilledButton).evaluate().length, 1);
       final widget = tester.widget(find.byType(FilledButton));
       final FilledButton containerWidget = widget;
@@ -45,7 +45,7 @@ void main() {
           TimeFrameSelector(key: timeFrameSelectorKey, onChange: onChangeTextField)
       ));
       expect(find.byType(TimeFrameSelector), findsOneWidget);
-      expect(find.byType(TextButton).evaluate().length, 5);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(FilledButton).evaluate().length, 1);
       await tester.tap(find.text('1Y'));
       await tester.pump();
@@ -61,7 +61,7 @@ void main() {
           TimeFrameSelector(maxTimeFrame: TimeFrame.FIVE_YEARS, onChange: onChangeTextField)
       ));
       expect(find.byType(TimeFrameSelector), findsOneWidget);
-      expect(find.byType(TextButton).evaluate().length, 5);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.text('1D'), findsOneWidget);
       expect(find.text('1W'), findsOneWidget);
       expect(find.text('1M'), findsOneWidget);

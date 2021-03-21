@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/text.dart';
+import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
-import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 typedef Callback = void Function(String value);
 
