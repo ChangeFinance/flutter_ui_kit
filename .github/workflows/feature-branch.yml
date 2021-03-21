@@ -9,7 +9,7 @@ jobs:
   test:
     strategy:
       matrix:
-        flutter-version: [1.20.4, 1.22.0, 2.0.0]
+        flutter-version: [ 1.20.4, 1.22.0, 2.0.0 ]
     name: Tests on ${{ matrix.flutter-version }}
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.flutter-version == '2.0.0' }}
@@ -30,11 +30,11 @@ jobs:
       - run: flutter pub run junitreport:tojunit --input tests.json --output TEST-report.xml
         if: success() || failure()
       - name: Upload Test Results
-          if: always()
-          uses: actions/upload-artifact@v2
-          with:
-            name: Unit Test Results (Flutter ${{ matrix.flutter-version }})
-            path: TEST-report.xml
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: Unit Test Results (Flutter ${{ matrix.flutter-version }})
+          path: TEST-report.xml
 
   publish-test-results:
     name: "Publish Tests Results"
