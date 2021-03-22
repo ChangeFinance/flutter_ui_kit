@@ -32,24 +32,15 @@ class _PlainButtonState extends State<PlainButton> with ButtonMixin {
   Widget build(BuildContext context) {
     return TextButton(
       child: Text(widget.text),
-      style: ButtonStyle(
-        elevation: MaterialStateProperty.resolveWith<double>((Set<MaterialState> states) {
-          return 0;
-        }),
-        padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>((Set<MaterialState> states) {
-          return widget.padding ??
-              const EdgeInsets.symmetric(
-                vertical: 17.5,
-                horizontal: 18.5,
-              );
-        }),
-        textStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {
-          return widget.textStyle != null
-              ? widget.textStyle
-              : Theme.of(context).textTheme.bodyText2.copyWith(
-                    color: widget.alt ? AppColor.ltDeepWhite : AppColor.ltGreenPrimary,
-                  );
-        }),
+      style: TextButton.styleFrom(
+        elevation: 0,
+        primary: widget.alt ? AppColor.ltDeepWhite : AppColor.ltGreenPrimary,
+        padding: widget.padding ??
+            const EdgeInsets.symmetric(
+              vertical: 17.5,
+              horizontal: 18.5,
+            ),
+        textStyle: widget.textStyle != null ? widget.textStyle : Theme.of(context).textTheme.bodyText2,
       ),
       onPressed: isDisabled(
         enabled: _enabled,

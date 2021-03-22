@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_ui_kit/color.dart';
 
+import '../../color.dart';
 import 'button_common.dart';
 
 class BorderedButton extends StatefulWidget {
@@ -37,46 +37,29 @@ class _BorderedButtonState extends State<BorderedButton> with ButtonMixin {
     return Container(
       width: widget.fullWidth ? matchParentWidth(context) : null,
       child: OutlinedButton(
-        style: ButtonStyle(
-          elevation: MaterialStateProperty.resolveWith<double>((Set<MaterialState> states) {
-            return 0;
-          }),
-          padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>((Set<MaterialState> states) {
-            return widget.padding ?? getPadding(narrow: widget.narrow);
-          }),
-          shape: MaterialStateProperty.resolveWith<OutlinedBorder>((Set<MaterialState> states) {
-            return const StadiumBorder();
-          }),
+        style: OutlinedButton.styleFrom(
+          elevation: 0,
+          animationDuration: const Duration(milliseconds: 400),
+          shape: const StadiumBorder(),
+          primary: widget.alt ? AppColor.ltDeepWhite : AppColor.ltGreenPrimary,
+          padding: widget.padding ?? getPadding(narrow: widget.narrow),
+          textStyle: widget.textStyle != null
+              ? widget.textStyle
+              : Theme.of(context).textTheme.bodyText2.copyWith(
+                    fontSize: getFontSize(
+                      narrow: widget.narrow,
+                      fullWidth: widget.fullWidth,
+                    ),
+                  ),
+        ).copyWith(
           side: MaterialStateProperty.resolveWith<BorderSide>((Set<MaterialState> states) {
-            return BorderSide(
-              color: states.contains(MaterialState.disabled)
-                  ? AppColor.ltGrayMedium
-                  : widget.alt
-                      ? AppColor.ltDeepWhite
-                      : AppColor.ltGreenPrimary,
-            );
-          }),
-          overlayColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-            if (states.contains(MaterialState.pressed)) {
-              return AppColor.ltGreenDark;
-            }
-            return AppColor.ltGreenPrimary;
-          }),
-          textStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {
-            return (widget.textStyle != null)
-                ? widget.textStyle
-                : Theme.of(context).textTheme.bodyText2.copyWith(
-                      fontSize: getFontSize(
-                        narrow: widget.narrow,
-                        fullWidth: widget.fullWidth,
-                      ),
-                    );
-          }),
-          foregroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
             if (states.contains(MaterialState.disabled)) {
-              return AppColor.ltGrayMedium;
+              return const BorderSide(color: AppColor.ltGrayMedium);
             }
-            return widget.alt ? AppColor.ltDeepWhite : AppColor.ltGreenPrimary;
+            if (widget.alt) {
+              return const BorderSide(color: AppColor.ltDeepWhite);
+            }
+            return const BorderSide(color: AppColor.ltGreenPrimary);
           }),
         ),
         child: Text(widget.text),
