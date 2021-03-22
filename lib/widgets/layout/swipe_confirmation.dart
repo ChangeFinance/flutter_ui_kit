@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/widgets/buttons/outlined_button.dart';
 import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 
@@ -73,7 +74,7 @@ class SwipeConfirmation extends StatelessWidget {
   Widget _labelTitle() => Text(
         labelTitle,
         style: const TextStyle(
-          color: Colors.white,
+          color: AppColor.ltDeepWhite,
           fontSize: 28,
           fontWeight: FontWeight.w500,
         ),
@@ -82,7 +83,7 @@ class SwipeConfirmation extends StatelessWidget {
 
   Widget _labelText() => Text(
         labelText,
-        style: const TextStyle(color: Colors.white, fontSize: 16),
+        style: const TextStyle(color: AppColor.ltDeepWhite, fontSize: 16),
         textAlign: TextAlign.center,
       );
 
@@ -91,7 +92,7 @@ class SwipeConfirmation extends StatelessWidget {
     if (primaryButtonText != null && primaryButtonText != '') {
       buttons.add(Opacity(
         opacity: primaryButtonEnabled ? 1.0 : 0.5,
-        child: ChgOutlinedButton(
+        child: BorderedButton(
           primaryButtonText,
           onPressed: primaryButtonEnabled ? primaryButtonAction : null,
           fullWidth: true,
@@ -101,7 +102,7 @@ class SwipeConfirmation extends StatelessWidget {
       ));
     }
     if (secondaryButtonText != null && secondaryButtonText != '') {
-      buttons.add(ChgTextButton(
+      buttons.add(PlainButton(
         secondaryButtonText,
         onPressed: secondaryButtonAction,
         alt: true,

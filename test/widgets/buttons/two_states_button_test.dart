@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_ui_kit/widgets/button_common.dart';
-import 'package:flutter_ui_kit/widgets/two_states_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/button_common.dart';
+import 'package:flutter_ui_kit/widgets/buttons/two_states_button.dart';
 import 'package:mockito/mockito.dart';
 
-import '../wrap_in_material_app.dart';
-import 'common_button_tests.dart';
+import '../../wrap_in_material_app.dart';
+import '../common_button_tests.dart';
 
 void main() {
   group('TwoStatesButton', ()
@@ -70,7 +70,7 @@ void main() {
       buildButton: ({FutureCallback onPressed}) =>
           TwoStatesButton(firstText, secondText, timerInterval, onPressed: onPressed,
             onButtonCallback: (){},),
-      underlyingMaterialButtonType: RaisedButton,
+      underlyingMaterialButtonType: ElevatedButton,
     );
 
     testNarrowProp(
@@ -82,7 +82,7 @@ void main() {
           TwoStatesButton(firstText, secondText, timerInterval, onPressed: (){},
               onButtonCallback: (){},
               narrow: narrow),
-      underlyingMaterialButtonType: RaisedButton,
+      underlyingMaterialButtonType: ElevatedButton,
     );
 
     testPaddingProp(
@@ -93,7 +93,7 @@ void main() {
       buildButton: ({EdgeInsetsGeometry padding}) =>
           TwoStatesButton(firstText, secondText, timerInterval, onPressed: (){},
               onButtonCallback: (){}, padding: padding),
-      underlyingMaterialButtonType: RaisedButton,
+      underlyingMaterialButtonType: ElevatedButton,
     );
 
     testFontSize(

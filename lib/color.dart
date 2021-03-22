@@ -34,4 +34,14 @@ class AppColor {
   static const Color semiGrey = Color(0xFF9DA0A6);
 
   static const Color shadowColor = Color(0x1f0D0F10);
+
+  static const Color ltGreenPrimary = Color(0xff3edbb5);
+  static const Color dtGreenPrimary = Color(0xff36bf9e);
+
+  static const Color ltGreenDark = Color(0xff39cca8);
+  static const Color dtGreenDark = Color(0xff35937c);
+
+  static const Color ltGrayMedium = Color(0xffdfe1e6);
+  static const Color ltDeepWhite = Color(0xffffffff);
+  // static const Color dtGrayMedium = Color(0xff35937c);
 }

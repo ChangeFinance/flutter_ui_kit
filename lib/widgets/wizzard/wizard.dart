@@ -3,7 +3,7 @@ import 'package:flutter_ui_kit/widgets/layout/app_bar.dart';
 import 'package:flutter_ui_kit/widgets/layout/page_template.dart';
 import 'package:flutter_ui_kit/widgets/wizzard/wizard_binder.dart';
 
-import '../filled_button.dart';
+import '../buttons/filled_button.dart';
 
 class Wizard extends StatefulWidget {
   

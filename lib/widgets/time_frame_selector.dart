@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
-import 'package:flutter_ui_kit/widgets/filled_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/filled_button.dart';
 
 typedef Callback = void Function(String value);
 
@@ -77,7 +77,7 @@ class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
         textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite),
         color: widget.enabledTimeFrameColor,
         padding: const EdgeInsets.all(0.0));
-    final uncheckedButton = ChgTextButton(
+    final uncheckedButton = PlainButton(
       TimeFrameHelper.getValue(selected),
       onPressed: onPressed,
       textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepBlack),
@@ -90,8 +90,11 @@ class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
   }
 
   Expanded _buildDisableItem(TimeFrame selected) {
-    final uncheckedButton = ChgTextButton(TimeFrameHelper.getValue(selected),
-        textStyle: AppText.graphTextStyle.copyWith(color: AppColor.semiGrey), padding: const EdgeInsets.all(0.0));
+    final uncheckedButton = PlainButton(
+      TimeFrameHelper.getValue(selected),
+      textStyle: AppText.graphTextStyle.copyWith(color: AppColor.semiGrey),
+      padding: const EdgeInsets.all(0.0),
+    );
 
     return Expanded(flex: 1, child: Container(height: 22.0, child: uncheckedButton));
   }

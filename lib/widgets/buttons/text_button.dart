@@ -1,17 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_ui_kit/color.dart';
-import 'package:flutter/material.dart' as mat;
 
-import '../button_common.dart';
+import 'button_common.dart';
 
-class ChgTextButton extends StatefulWidget {
+class PlainButton extends StatefulWidget {
   final String text;
   final FutureCallback onPressed;
   final EdgeInsetsGeometry padding;
   final TextStyle textStyle;
   final bool alt;
 
-  ChgTextButton(
+  PlainButton(
     this.text, {
     @required this.onPressed,
     this.padding,
@@ -22,54 +22,44 @@ class ChgTextButton extends StatefulWidget {
         super(key: key);
 
   @override
-  _ChgTextButtonState createState() => _ChgTextButtonState();
+  _TextButtonState createState() => _TextButtonState();
 }
 
-class _ChgTextButtonState extends State<ChgTextButton> with ButtonMixin {
+class _TextButtonState extends State<PlainButton> with ButtonMixin {
   bool _enabled = true;
-  bool _pressing = false;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTapDown: (_) {
-        setState(() => _pressing = true);
-      },
-      onTapCancel: () {
-        setState(() => _pressing = false);
-      },
-      child: mat.FlatButton(
-        child: Text(
-          widget.text,
-          style: (widget.textStyle != null)
+    return TextButton(
+      child: Text(widget.text),
+      style: ButtonStyle(
+        elevation: MaterialStateProperty.resolveWith<double>((Set<MaterialState> states) {
+          return 0;
+        }),
+        padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>((Set<MaterialState> states) {
+          return widget.padding ??
+              const EdgeInsets.symmetric(
+                vertical: 17.5,
+                horizontal: 18.5,
+              );
+        }),
+        textStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {
+          return widget.textStyle != null
               ? widget.textStyle
-              : mat.Theme.of(context).textTheme.bodyText2.copyWith(
-                    color: !widget.alt
-                        ? getTextColorOnWhiteBackground(
-                            enabled: _enabled,
-                            pressing: _pressing,
-                            onPressed: widget.onPressed,
-                          )
-                        : (_enabled ? mat.Colors.white : AppColor.mediumGrey),
-                    fontSize: 12.0,
-                  ),
-        ),
-        onPressed: isDisabled(
-          enabled: _enabled,
-          onPressed: widget.onPressed,
-        )
-            ? null
-            : () => disableButtonWhileOnPressedExecutes(
-                  setEnabled: _setEnabled,
-                  onPressed: widget.onPressed,
-                ),
-        textColor: widget.alt ? mat.Colors.white : AppColor.green,
-        padding: widget.padding ??
-            const EdgeInsets.symmetric(
-              vertical: 17.5,
-              horizontal: 18.5,
-            ),
+              : Theme.of(context).textTheme.bodyText2.copyWith(
+                    color: widget.alt ? AppColor.ltDeepWhite : AppColor.ltGreenPrimary,
+                  );
+        }),
       ),
+      onPressed: isDisabled(
+        enabled: _enabled,
+        onPressed: widget.onPressed,
+      )
+          ? null
+          : () => disableButtonWhileOnPressedExecutes(
+                setEnabled: _setEnabled,
+                onPressed: widget.onPressed,
+              ),
     );
   }
 

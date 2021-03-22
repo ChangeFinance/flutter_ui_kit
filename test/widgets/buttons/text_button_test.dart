@@ -1,12 +1,12 @@
-import 'package:flutter_ui_kit/widgets/button_common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_kit/widgets/buttons/button_common.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 
 import '../common_button_tests.dart';
 
 void main() {
-  group('ChgTextButton', () {
+  group('TextButton', () {
     const buttonText = 'Click me';
 
     testPressingState(
@@ -14,10 +14,11 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) => ChgTextButton(
+      buildButton: ({FutureCallback onPressed}) => PlainButton(
         buttonText,
         onPressed: onPressed,
       ),
+      underlyingMaterialButtonType: TextButton,
     );
 
     testTextProp(
@@ -25,10 +26,11 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => ChgTextButton(
+      buildButton: () => PlainButton(
         buttonText,
         onPressed: () {},
       ),
+      underlyingMaterialButtonType: TextButton,
     );
 
     testOnPressedProp(
@@ -36,11 +38,11 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) => ChgTextButton(
+      buildButton: ({FutureCallback onPressed}) => PlainButton(
         buttonText,
         onPressed: onPressed,
       ),
-      underlyingMaterialButtonType: FlatButton,
+      underlyingMaterialButtonType: TextButton,
     );
 
     testPaddingProp(
@@ -48,12 +50,12 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({EdgeInsetsGeometry padding}) => ChgTextButton(
+      buildButton: ({EdgeInsetsGeometry padding}) => PlainButton(
         buttonText,
         onPressed: () {},
         padding: padding,
       ),
-      underlyingMaterialButtonType: FlatButton,
+      underlyingMaterialButtonType: TextButton,
     );
 
     testFontStyle(
@@ -61,11 +63,12 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({TextStyle textStyle}) => ChgTextButton(
+      buildButton: ({TextStyle textStyle}) => PlainButton(
         buttonText,
         textStyle: textStyle,
         onPressed: () {},
       ),
+      underlyingMaterialButtonType: TextButton,
     );
   });
 }

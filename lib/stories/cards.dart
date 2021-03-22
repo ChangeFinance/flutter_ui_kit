@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as mat;
+import 'package:flutter/widgets.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/double_prop_updater.dart';
@@ -100,19 +101,19 @@ class AppCards extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album),
+                const mat.ListTile(
+                  leading: Icon(mat.Icons.album),
                   title: Text('The Enchanted Nightingale'),
                   subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
                 ),
-                ButtonBarTheme(
-                  child: ButtonBar(
+                mat.ButtonBarTheme(
+                  child: mat.ButtonBar(
                     children: <Widget>[
-                      ChgTextButton(
+                      PlainButton(
                         'BUY TICKETS',
                         onPressed: () {},
                       ),
-                      ChgTextButton(
+                      PlainButton(
                         'LISTEN',
                         onPressed: () {},
                       ),
@@ -178,7 +179,7 @@ class AppCards extends StatelessWidget {
               Expanded(
                 child: BigAssetCard(
                   title: 'Earn',
-                  icon: const Icon(Icons.timeline, color: AppColor.green),
+                  icon: const Icon(mat.Icons.timeline, color: AppColor.green),
                   description: '2.00% APY*',
                   tag: 'COMING SOON',
                   tagIsBadge: true,
@@ -188,7 +189,7 @@ class AppCards extends StatelessWidget {
               Expanded(
                 child: BigAssetCard(
                   title: 'Spend',
-                  icon: const Icon(Icons.credit_card, color: AppColor.green),
+                  icon: const Icon(mat.Icons.credit_card, color: AppColor.green),
                   description: '€110,546.00',
                   tag: 'Debit card, ATM',
                 ),

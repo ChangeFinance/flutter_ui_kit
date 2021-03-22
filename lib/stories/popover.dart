@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as mat;
+import 'package:flutter/widgets.dart';
 import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
-import 'package:flutter_ui_kit/widgets/filled_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/popover_modal.dart';
 import 'package:flutter_ui_kit/widgets/text/heading.dart';
 import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
@@ -15,7 +16,11 @@ class Popover extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          children: [_popoverExampleOne(context), _popoverExampleTwo(context), _popoverExampleThree(context)],
+          children: [
+            _popoverExampleOne(context),
+            _popoverExampleTwo(context),
+            _popoverExampleThree(context),
+          ],
         ),
       ),
     );
@@ -138,7 +143,7 @@ class Popover extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ChgTextButton('Cancel', onPressed: () {
+                child: PlainButton('Cancel', onPressed: () {
                   Navigator.pop(context, 'Cancel button');
                 }),
               )
@@ -148,14 +153,14 @@ class Popover extends StatelessWidget {
 
     result.then((value) {
       value ??= 'Nothing';
-      showDialog<void>(
+      mat.showDialog<void>(
           context: context,
           builder: (BuildContext context) {
-            return AlertDialog(
+            return mat.AlertDialog(
               title: const Text('You clicked'),
               content: Text(value),
               actions: <Widget>[
-                FlatButton(
+                mat.FlatButton(
                     child: const Text('Thats nice'),
                     onPressed: () {
                       Navigator.pop(context);

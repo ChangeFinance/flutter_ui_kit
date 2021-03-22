@@ -1,12 +1,13 @@
-import 'package:flutter_ui_kit/widgets/button_common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_ui_kit/widgets/buttons/button_common.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/widgets/buttons/outlined_button.dart';
 
 import '../common_button_tests.dart';
 
 void main() {
-  group('ChgOutlinedButton', () {
+  group('BorderedButton', () {
     const buttonText = 'Click me';
 
     testPressingState(
@@ -14,7 +15,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) => ChgOutlinedButton(buttonText, onPressed: onPressed),
+      buildButton: ({FutureCallback onPressed}) => BorderedButton(buttonText, onPressed: onPressed),
+      underlyingMaterialButtonType: OutlinedButton,
     );
 
     testTextProp(
@@ -22,7 +24,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => ChgOutlinedButton(buttonText, onPressed: () {}),
+      buildButton: () => BorderedButton(buttonText, onPressed: () {}),
+      underlyingMaterialButtonType: OutlinedButton,
     );
 
     testOnPressedProp(
@@ -30,8 +33,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) => ChgOutlinedButton(buttonText, onPressed: onPressed),
-      underlyingMaterialButtonType: OutlineButton,
+      buildButton: ({FutureCallback onPressed}) => BorderedButton(buttonText, onPressed: onPressed),
+      underlyingMaterialButtonType: OutlinedButton,
     );
 
     testFullWidthProp(
@@ -39,8 +42,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool fullWidth}) => ChgOutlinedButton(buttonText, onPressed: () {}, fullWidth: fullWidth),
-      underlyingMaterialButtonType: OutlineButton,
+      buildButton: ({bool fullWidth}) => BorderedButton(buttonText, onPressed: () {}, fullWidth: fullWidth),
+      underlyingMaterialButtonType: OutlinedButton,
     );
 
     testNarrowProp(
@@ -48,8 +51,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool narrow}) => ChgOutlinedButton(buttonText, onPressed: () {}, narrow: narrow),
-      underlyingMaterialButtonType: OutlineButton,
+      buildButton: ({bool narrow}) => BorderedButton(buttonText, onPressed: () {}, narrow: narrow),
+      underlyingMaterialButtonType: OutlinedButton,
     );
 
     testPaddingProp(
@@ -57,8 +60,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({EdgeInsetsGeometry padding}) => ChgOutlinedButton(buttonText, onPressed: () {}, padding: padding),
-      underlyingMaterialButtonType: OutlineButton,
+      buildButton: ({EdgeInsetsGeometry padding}) => BorderedButton(buttonText, onPressed: () {}, padding: padding),
+      underlyingMaterialButtonType: OutlinedButton,
     );
 
     testFontSize(
@@ -66,12 +69,13 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool narrow, bool fullWidth}) => ChgOutlinedButton(
+      buildButton: ({bool narrow, bool fullWidth}) => BorderedButton(
         buttonText,
         onPressed: () {},
         narrow: narrow,
         fullWidth: fullWidth,
       ),
+      underlyingMaterialButtonType: OutlinedButton,
     );
   });
 }

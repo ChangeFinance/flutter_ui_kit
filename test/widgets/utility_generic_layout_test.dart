@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/text.dart';
-import 'package:flutter_ui_kit/widgets/filled_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/layout/utility_generic_template.dart';
 
 import '../wrap_in_material_app.dart';

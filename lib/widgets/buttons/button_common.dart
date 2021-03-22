@@ -9,10 +9,8 @@ class ButtonStyleConstants {
   static const double narrowVerticalPadding = 11.5;
   static const double wideVerticalPadding = 17.5;
   static const double horizontalPadding = 48.0;
-  static const EdgeInsetsGeometry narrowPadding =
-      const EdgeInsets.symmetric(vertical: narrowVerticalPadding, horizontal: horizontalPadding);
-  static const EdgeInsetsGeometry widePadding =
-      const EdgeInsets.symmetric(vertical: wideVerticalPadding, horizontal: horizontalPadding);
+  static const EdgeInsetsGeometry narrowPadding = const EdgeInsets.symmetric(vertical: narrowVerticalPadding, horizontal: horizontalPadding);
+  static const EdgeInsetsGeometry widePadding = const EdgeInsets.symmetric(vertical: wideVerticalPadding, horizontal: horizontalPadding);
   static const double fontSize = 16.0;
   static const double smallFontSize = 14.0;
 }
