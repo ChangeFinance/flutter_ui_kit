@@ -34,10 +34,10 @@ jobs:
         run: flutter pub get
       - name: Analyze code
         run: flutter analyze --no-fatal-warnings --no-fatal-infos
-        if: matrix.flutters.new-analyze
+        if: matrix.flutters.experimental == true
       - name: Analyze code
         run: flutter analyze
-        if: matrix.flutters.new-analyze == false
+        if: matrix.flutters.experimental == false
       - run: flutter test --concurrency=4 --machine > tests.json
       - run: flutter pub run junitreport:tojunit --input tests.json --output TEST-report.xml
         if: (success() || failure()) && matrix.flutters.junit-report
