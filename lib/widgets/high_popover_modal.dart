@@ -110,17 +110,22 @@ class _BottomSheetState extends State<BottomSheet> {
   bool get _dismissUnderway => widget.animationController.status == AnimationStatus.reverse;
 
   void _handleDragUpdate(DragUpdateDetails details) {
+    // ignore: always_put_control_body_on_new_line
     if (_dismissUnderway) return;
     widget.animationController.value -= details.primaryDelta / (_childHeight ?? details.primaryDelta);
   }
 
   void _handleDragEnd(DragEndDetails details) {
+    // ignore: always_put_control_body_on_new_line
     if (_dismissUnderway) return;
     if (details.velocity.pixelsPerSecond.dy > _kMinFlingVelocity) {
       final flingVelocity = -details.velocity.pixelsPerSecond.dy / _childHeight;
+      // ignore: always_put_control_body_on_new_line
       if (widget.animationController.value > 0.0) widget.animationController.fling(velocity: flingVelocity);
+      // ignore: always_put_control_body_on_new_line
       if (flingVelocity < 0.0) widget.onClosing();
     } else if (widget.animationController.value < _kCloseProgressThreshold) {
+      // ignore: always_put_control_body_on_new_line
       if (widget.animationController.value > 0.0) widget.animationController.fling(velocity: -1.0);
       widget.onClosing();
     } else {
@@ -287,6 +292,7 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
       removeTop: true,
       child: _ModalBottomSheet<T>(route: this),
     );
+    // ignore: always_put_control_body_on_new_line
     if (theme != null) bottomSheet = Theme(data: theme, child: bottomSheet);
     return bottomSheet;
   }
