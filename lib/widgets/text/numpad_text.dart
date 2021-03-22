@@ -61,7 +61,7 @@ class _NumPadTextState extends State<NumPadText> {
     }
 
     if (_text == '0') {
-      if (key == '0') {
+      if (key == '0' && widget.decimalPlaces > 0) {
         _text = '0.';
       } else if (key != '.') {
         _text = '';
@@ -108,10 +108,11 @@ class _NumPadTextState extends State<NumPadText> {
   }
 
   KeyItem buildKeyItem(String val) {
+    final keyChar = val == '.' && widget.decimalPlaces == 0 ? '' : val;
     return KeyItem(
-      value: val,
-      child: (val != 'C')
-          ? Text(val,
+      value: keyChar,
+      child: (keyChar != 'C')
+          ? Text(keyChar,
               textAlign: TextAlign.center, style: AppText.numPadTextStyle)
           : const Icon(Icons.arrow_back, size: 24.0, color: AppColor.deepBlack),
       onKeyTap: onKeyTapped,
@@ -152,13 +153,19 @@ class KeyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: InkResponse(
-            radius: 30,
-            splashColor: AppColor.brightGreen,
-            highlightColor: Colors.white,
-            onLongPress: () => onKeyLongPress(value),
-            onTap: () => onKeyTap(value),
-            child: Container(alignment: Alignment.center, child: child)));
+    if (value.isNotEmpty) {
+      return Expanded(
+          child: InkResponse(
+              radius: 30,
+              splashColor: AppColor.brightGreen,
+              highlightColor: Colors.white,
+              onLongPress: () => onKeyLongPress(value),
+              onTap: () => onKeyTap(value),
+              child: Container(alignment: Alignment.center, child: child)));
+    } else {
+      return const Expanded(
+          child: SizedBox(width: 20, height: 20)
+      );
+    }
   }
 }

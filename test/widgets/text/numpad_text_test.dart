@@ -50,5 +50,11 @@ void main() {
       await tester.pump();
       expect(_textEditingController.text, '123.123456');
     });
+
+    testWidgets('does not render dot when decimalPlaces=0', (WidgetTester tester) async {
+      final testNumPad = NumPadText(onChange: onChange, decimalPlaces: 0);
+      await tester.pumpWidget(wrapInMaterialApp(testNumPad));
+      expect(find.text('.'), findsNothing);
+    });
   });
 }
