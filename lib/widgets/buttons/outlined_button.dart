@@ -57,7 +57,9 @@ class _BorderedButtonState extends State<BorderedButton> with ButtonMixin {
             );
           }),
           overlayColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-            if (states.contains(MaterialState.pressed)) return AppColor.ltGreenDark;
+            if (states.contains(MaterialState.pressed)) {
+              return AppColor.ltGreenDark;
+            }
             return AppColor.ltGreenPrimary;
           }),
           textStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {
@@ -71,7 +73,9 @@ class _BorderedButtonState extends State<BorderedButton> with ButtonMixin {
                     );
           }),
           foregroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-            if (states.contains(MaterialState.disabled)) return AppColor.ltGrayMedium;
+            if (states.contains(MaterialState.disabled)) {
+              return AppColor.ltGrayMedium;
+            }
             return widget.alt ? AppColor.ltDeepWhite : AppColor.ltGreenPrimary;
           }),
         ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-@Deprecated('Use ChgStreamCheckboxField')
 class StreamCheckboxField extends StatelessWidget {
   final Stream<bool> value;
   final ValueChanged<bool> onChanged;
@@ -32,7 +31,6 @@ class StreamCheckboxField extends StatelessWidget {
   }
 }
 
-@Deprecated('Use ChgCheckboxField')
 class CheckboxField extends StatelessWidget {
   final bool value;
   final ValueChanged<bool> onChanged;

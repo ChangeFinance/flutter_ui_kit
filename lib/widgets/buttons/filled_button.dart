@@ -1,5 +1,5 @@
-import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_kit/color.dart';
 
 import 'button_common.dart';
 
@@ -57,11 +57,15 @@ class _FilledButtonState extends State<FilledButton> with ButtonMixin {
             return const StadiumBorder();
           }),
           overlayColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-            if (states.contains(MaterialState.pressed)) return AppColor.ltGreenDark;
+            if (states.contains(MaterialState.pressed)) {
+              return AppColor.ltGreenDark;
+            }
             return widget.color ?? AppColor.ltGreenPrimary;
           }),
           backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-            if (states.contains(MaterialState.disabled)) return AppColor.ltGrayMedium;
+            if (states.contains(MaterialState.disabled)) {
+              return AppColor.ltGrayMedium;
+            }
             return widget.color ?? AppColor.ltGreenPrimary;
           }),
           textStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {

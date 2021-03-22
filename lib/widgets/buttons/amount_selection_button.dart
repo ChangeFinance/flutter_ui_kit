@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
+import '../../ui/colors.dart';
 
-@Deprecated('User ChgAmountSelectionButton')
 class AmountSelectionButton extends StatelessWidget {
   final String text;
   final Function onPressed;
@@ -29,8 +28,4 @@ class AmountSelectionButton extends StatelessWidget {
       ),
     );
   }
-}
-
-class ChgAmountSelectionButton extends AmountSelectionButton {
-  const ChgAmountSelectionButton(String text, {Function onPressed}) : super(text, onPressed: onPressed);
 }

@@ -1,10 +1,12 @@
+// @dart = 2.8
+
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/buttons/button_common.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import '../wrap_in_material_app.dart';
@@ -136,13 +138,13 @@ void testNarrowProp({
   group('narrow prop', () {
     testWidgets('if true renders smaller padding', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton(narrow: true)));
-      final ButtonStyleButton button = findButtonStyleButton(underlyingMaterialButtonType);
+      final button = findButtonStyleButton(underlyingMaterialButtonType);
       expect(button.style.padding.resolve(interactiveStates), ButtonStyleConstants.narrowPadding);
     });
 
     testWidgets('if false renders larger padding', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton(narrow: false)));
-      final ButtonStyleButton button = findButtonStyleButton(underlyingMaterialButtonType);
+      final button = findButtonStyleButton(underlyingMaterialButtonType);
       expect(button.style.padding.resolve(interactiveStates), ButtonStyleConstants.widePadding);
     });
   });

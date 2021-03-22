@@ -22,10 +22,10 @@ class PlainButton extends StatefulWidget {
         super(key: key);
 
   @override
-  _TextButtonState createState() => _TextButtonState();
+  _PlainButtonState createState() => _PlainButtonState();
 }
 
-class _TextButtonState extends State<PlainButton> with ButtonMixin {
+class _PlainButtonState extends State<PlainButton> with ButtonMixin {
   bool _enabled = true;
 
   @override
