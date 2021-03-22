@@ -11,6 +11,7 @@ analyzer:
   exclude:
     - 'lib/generated/**'
     - 'lib/charts/**'
+    - 'lib/stories/**'
 linter:
   rules:
     - always_declare_return_types

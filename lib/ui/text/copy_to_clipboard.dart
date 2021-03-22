@@ -7,7 +7,10 @@ class CopyToClipboard extends StatelessWidget {
   final String value;
   final Function onTapCallback;
 
-  const CopyToClipboard({this.value, this.onTapCallback});
+  const CopyToClipboard({
+    this.value,
+    this.onTapCallback,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +24,11 @@ class CopyToClipboard extends StatelessWidget {
               size: 20.0,
             )),
         onTap: () {
-          if (onTapCallback != null)
+          if (onTapCallback != null) {
             onTapCallback();
+          }
           Clipboard.setData(new ClipboardData(text: value));
-          const snackBar =
-              const SnackBar(content: const Text('Copied to clipboard'));
+          const snackBar = const SnackBar(content: const Text('Copied to clipboard'));
           Scaffold.of(context).showSnackBar(snackBar);
         },
       ),
