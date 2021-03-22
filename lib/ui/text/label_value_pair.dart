@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'copy_to_clipboard.dart';
+import '../../widgets/text/copy_to_clipboard.dart';
 import 'label_text.dart';
 
 class LabelValuePair extends StatelessWidget {
@@ -11,14 +11,7 @@ class LabelValuePair extends StatelessWidget {
   final bool copyToClipboardEnabled;
   final EdgeInsets padding;
 
-  const LabelValuePair({
-    @required this.labelText,
-    this.valueText,
-    this.copyToClipboardEnabled = false,
-    this.textAlign,
-    this.value,
-    this.padding
-  });
+  const LabelValuePair({@required this.labelText, this.valueText, this.copyToClipboardEnabled = false, this.textAlign, this.value, this.padding});
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +19,7 @@ class LabelValuePair extends StatelessWidget {
       children: [
         Expanded(
           child: Column(
-            crossAxisAlignment: _isCenterAligned(textAlign)
-                ? CrossAxisAlignment.center
-                : CrossAxisAlignment.start,
+            crossAxisAlignment: _isCenterAligned(textAlign) ? CrossAxisAlignment.center : CrossAxisAlignment.start,
             children: [
               LabelText(labelText.toUpperCase()),
               _buildBody(context, value, valueText, padding: padding),
@@ -47,9 +38,7 @@ class LabelValuePair extends StatelessWidget {
     return Padding(
       padding: padding ?? const EdgeInsets.only(bottom: 16.0),
       child: Row(
-        mainAxisAlignment: _isCenterAligned(textAlign)
-            ? MainAxisAlignment.center
-            : MainAxisAlignment.start,
+        mainAxisAlignment: _isCenterAligned(textAlign) ? MainAxisAlignment.center : MainAxisAlignment.start,
         children: [
           Flexible(child: value != null ? value : Text(data)),
           _buildCopyToClipboardIcon(context, data),
@@ -64,8 +53,6 @@ class LabelValuePair extends StatelessWidget {
     }
     return CopyToClipboard(value: value);
   }
-
 }
 
 enum ValueLabelTextAlign { center, left }
-

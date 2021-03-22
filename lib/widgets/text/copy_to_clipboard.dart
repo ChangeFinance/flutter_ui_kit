@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_ui_kit/color.dart';
+
+import '../../ui/colors.dart';
 
 class CopyToClipboard extends StatelessWidget {
   final String value;
+  final String title;
+  final Color color;
+  final Function onTapCallback;
 
-  const CopyToClipboard({this.value});
+  const CopyToClipboard({
+    this.value,
+    this.onTapCallback,
+    this.title = 'Copied to clipboard',
+    this.color = AppColors.secondary,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +22,25 @@ class CopyToClipboard extends StatelessWidget {
       padding: const EdgeInsets.only(left: 4.0),
       child: GestureDetector(
         child: IconTheme(
-            data: IconTheme.of(context).copyWith(color: AppColor.green ),
-            child: const Icon(
-              Icons.content_copy,
-              size: 20.0,
-            )),
+          data: IconTheme.of(context).copyWith(
+            color: color,
+          ),
+          child: const Icon(
+            Icons.content_copy,
+            size: 20.0,
+          ),
+        ),
         onTap: () {
-          Clipboard.setData(new ClipboardData(text: value));
-          const snackBar =
-              const SnackBar(content: const Text('Copied to clipboard'));
-          Scaffold.of(context).showSnackBar(snackBar);
+          Clipboard.setData(
+            ClipboardData(text: value),
+          );
+          final snackBar = SnackBar(
+            content: Text(title),
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          if (onTapCallback != null) {
+            onTapCallback();
+          }
         },
       ),
     );
