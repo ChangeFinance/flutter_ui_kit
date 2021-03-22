@@ -14,18 +14,22 @@ jobs:
             error-skip: false
             experimental: false
             junit-report: true
-          - version: 1.22.0
+            channel: stable
+          - version: 1.22.6
             error-skip: false
             experimental: false
             junit-report: true
+            channel: stable
           - version: 1.23.0-18.1.pre
             error-skip: false
             experimental: false
             junit-report: true
-          - version: 2.0.0
+            channel: beta
+          - version: 2.0.3
             experimental: true
             new-analyze: false
             junit-report: false
+            channel: stable
     name: Tests on ${{ matrix.flutters.version }}
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.flutters.experimental }}
@@ -34,6 +38,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: ${{ matrix.flutters.version }}
+          channel: ${{ matrix.flutters.channel }}
       - name: Install dependencies
         run: flutter pub get
       - name: Analyze code
