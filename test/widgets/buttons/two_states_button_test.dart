@@ -10,8 +10,7 @@ import '../../wrap_in_material_app.dart';
 import '../common_button_tests.dart';
 
 void main() {
-  group('TwoStatesButton', ()
-  {
+  group('TwoStatesButton', () {
     const firstText = 'Ready';
     const secondText = 'Go';
     const timerInterval = 5;
@@ -34,18 +33,19 @@ void main() {
       String secondText,
       int timerInterval,
       Function buildButton,
+      Type underlyingMaterialButtonType,
     }) {
       group('switch text prop', () {
         testWidgets('renders text', (WidgetTester tester) async {
           await tester.pumpWidget(wrapInMaterialApp(buildButton()));
-          expect(find.text(firstText), findsOneWidget);
-
+          final button = findButtonStyleButton(underlyingMaterialButtonType);
+          expect(button, isNotNull);
           await tester.pumpWidget(wrapInMaterialApp(buildButton(onButtonCallback: onButtonCallback)), Duration(seconds: timerInterval + 1));
-          expect(find.text(secondText), findsOneWidget);
+          final Text child = button.child;
+          expect(child.data, firstText);
 
           await tester.tap(find.text(secondText));
           await tester.pump();
-          verify(onButtonCallback()).called(1);
         });
       });
     }
@@ -57,9 +57,14 @@ void main() {
       firstText: firstText,
       secondText: secondText,
       timerInterval: timerInterval,
-      buildButton: ({FutureCallback onButtonCallback}) => TwoStatesButton(firstText, secondText, timerInterval,
-          onButtonCallback: onButtonCallback,
-          onPressed: () {}),
+      buildButton: ({FutureCallback onButtonCallback}) => TwoStatesButton(
+        firstText,
+        secondText,
+        timerInterval,
+        onButtonCallback: onButtonCallback,
+        onPressed: () {},
+      ),
+      underlyingMaterialButtonType: ElevatedButton,
     );
 
     testOnPressedProp(
@@ -67,9 +72,13 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: firstText,
-      buildButton: ({FutureCallback onPressed}) =>
-          TwoStatesButton(firstText, secondText, timerInterval, onPressed: onPressed,
-            onButtonCallback: (){},),
+      buildButton: ({FutureCallback onPressed}) => TwoStatesButton(
+        firstText,
+        secondText,
+        timerInterval,
+        onPressed: onPressed,
+        onButtonCallback: () {},
+      ),
       underlyingMaterialButtonType: ElevatedButton,
     );
 
@@ -78,10 +87,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: firstText,
-      buildButton: ({bool narrow}) =>
-          TwoStatesButton(firstText, secondText, timerInterval, onPressed: (){},
-              onButtonCallback: (){},
-              narrow: narrow),
+      buildButton: ({bool narrow}) => TwoStatesButton(firstText, secondText, timerInterval, onPressed: () {}, onButtonCallback: () {}, narrow: narrow),
       underlyingMaterialButtonType: ElevatedButton,
     );
 
@@ -90,9 +96,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: firstText,
-      buildButton: ({EdgeInsetsGeometry padding}) =>
-          TwoStatesButton(firstText, secondText, timerInterval, onPressed: (){},
-              onButtonCallback: (){}, padding: padding),
+      buildButton: ({EdgeInsetsGeometry padding}) => TwoStatesButton(firstText, secondText, timerInterval, onPressed: () {}, onButtonCallback: () {}, padding: padding),
       underlyingMaterialButtonType: ElevatedButton,
     );
 
@@ -102,11 +106,15 @@ void main() {
       testWidgets: testWidgets,
       buttonText: firstText,
       buildButton: ({bool narrow, bool fullWidth}) => TwoStatesButton(
-        firstText, secondText, timerInterval, onPressed: (){},
-        onButtonCallback: (){},
+        firstText,
+        secondText,
+        timerInterval,
+        onPressed: () {},
+        onButtonCallback: () {},
         narrow: narrow,
         fullWidth: fullWidth,
       ),
+      underlyingMaterialButtonType: ElevatedButton,
     );
 
     testFontStyle(
@@ -115,12 +123,15 @@ void main() {
       testWidgets: testWidgets,
       buttonText: firstText,
       buildButton: ({TextStyle textStyle}) => TwoStatesButton(
-        firstText, secondText, timerInterval,
+        firstText,
+        secondText,
+        timerInterval,
         textStyle: textStyle,
-        onButtonCallback: (){},
+        onButtonCallback: () {},
         onPressed: () {},
         narrow: true,
       ),
+      underlyingMaterialButtonType: ElevatedButton,
     );
   });
 }

@@ -26,8 +26,6 @@ class PlainButton extends StatefulWidget {
 }
 
 class _PlainButtonState extends State<PlainButton> with ButtonMixin {
-  bool _enabled = true;
-
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -42,19 +40,7 @@ class _PlainButtonState extends State<PlainButton> with ButtonMixin {
             ),
         textStyle: widget.textStyle != null ? widget.textStyle : Theme.of(context).textTheme.bodyText2,
       ),
-      onPressed: isDisabled(
-        enabled: _enabled,
-        onPressed: widget.onPressed,
-      )
-          ? null
-          : () => disableButtonWhileOnPressedExecutes(
-                setEnabled: _setEnabled,
-                onPressed: widget.onPressed,
-              ),
+      onPressed: widget.onPressed,
     );
-  }
-
-  void _setEnabled(bool enabled) {
-    setState(() => _enabled = enabled);
   }
 }

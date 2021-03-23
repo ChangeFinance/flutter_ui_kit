@@ -19,7 +19,7 @@ class FilledButton extends StatefulWidget {
     this.narrow = false,
     this.padding,
     this.textStyle,
-    this.color,
+    this.color = AppColor.ltGreenPrimary,
     Key key,
   })  : assert(text != null),
         super(key: key);
@@ -29,23 +29,13 @@ class FilledButton extends StatefulWidget {
 }
 
 class _FilledButtonState extends State<FilledButton> with ButtonMixin {
-  bool _enabled = true;
-
   @override
   Widget build(BuildContext context) {
     return Container(
       width: widget.fullWidth ? matchParentWidth(context) : null,
       child: ElevatedButton(
         child: Text(widget.text),
-        onPressed: isDisabled(
-          enabled: _enabled,
-          onPressed: widget.onPressed,
-        )
-            ? null
-            : () => disableButtonWhileOnPressedExecutes(
-                  setEnabled: _setEnabled,
-                  onPressed: widget.onPressed,
-                ),
+        onPressed: widget.onPressed,
         style: ButtonStyle(
           elevation: MaterialStateProperty.resolveWith<double>((Set<MaterialState> states) {
             return 0;
@@ -84,13 +74,5 @@ class _FilledButtonState extends State<FilledButton> with ButtonMixin {
         ),
       ),
     );
-  }
-
-  void _setEnabled(bool enabled) {
-    if (_enabled != enabled) {
-      if (mounted) {
-        setState(() => _enabled = enabled);
-      }
-    }
   }
 }

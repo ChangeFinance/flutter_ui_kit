@@ -1,5 +1,5 @@
-import 'package:flutter_ui_kit/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_kit/theme.dart';
 
 MaterialApp wrapInMaterialApp(Widget widget) {
   return MaterialApp(

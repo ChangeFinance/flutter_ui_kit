@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_kit/color.dart';
 
+import '../../color.dart';
 import 'button_common.dart';
 
 class TwoStatesButton extends StatefulWidget {
@@ -37,7 +37,6 @@ class TwoStatesButton extends StatefulWidget {
 }
 
 class _TwoStatesButtonState extends State<TwoStatesButton> with ButtonMixin {
-  bool _enabled = true;
   Timer _timer;
   String _currentText;
   bool _resetState = false;
@@ -80,40 +79,15 @@ class _TwoStatesButtonState extends State<TwoStatesButton> with ButtonMixin {
     return Container(
       width: widget.fullWidth ? matchParentWidth(context) : null,
       child: ElevatedButton(
-        child: Text(
-          _currentText,
-          style: (widget.textStyle != null)
-              ? widget.textStyle
-              : Theme.of(context).textTheme.bodyText2.copyWith(
-                    color: AppColor.deepWhite,
-                    fontSize: getFontSize(
-                      narrow: widget.narrow,
-                      fullWidth: widget.fullWidth,
-                    ),
-                  ),
-        ),
-        onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
-            ? null
-            : () {
-                if (_timer.isActive) {
-                  disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed);
-                } else {
-                  _startTimer();
-                  widget.onButtonCallback();
-                }
-              },
-        style: ButtonStyle(
-          elevation: MaterialStateProperty.resolveWith<double>((Set<MaterialState> states) {
-            return 0;
-          }),
-          padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry>((Set<MaterialState> states) {
-            return widget.padding ?? getPadding(narrow: widget.narrow);
-          }),
-          shape: MaterialStateProperty.resolveWith<OutlinedBorder>((Set<MaterialState> states) {
-            return const StadiumBorder();
-          }),
+        child: Text(_currentText),
+        onPressed: widget.onPressed,
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          padding: widget.padding ?? getPadding(narrow: widget.narrow),
+          shape: const StadiumBorder(),
+        ).copyWith(
           textStyle: MaterialStateProperty.resolveWith<TextStyle>((Set<MaterialState> states) {
-            return (widget.textStyle != null)
+            return widget.textStyle != null
                 ? widget.textStyle
                 : Theme.of(context).textTheme.bodyText2.copyWith(
                       fontSize: getFontSize(
@@ -128,11 +102,5 @@ class _TwoStatesButtonState extends State<TwoStatesButton> with ButtonMixin {
         ),
       ),
     );
-  }
-
-  void _setEnabled(bool enabled) {
-    if (_enabled != enabled) {
-      setState(() => _enabled = enabled);
-    }
   }
 }

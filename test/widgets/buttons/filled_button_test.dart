@@ -1,7 +1,7 @@
-import 'package:flutter_ui_kit/widgets/buttons/button_common.dart';
-import 'package:flutter_ui_kit/widgets/buttons/filled_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_ui_kit/widgets.dart';
+import 'package:flutter_ui_kit/widgets/buttons/filled_button.dart';
 
 import '../common_button_tests.dart';
 

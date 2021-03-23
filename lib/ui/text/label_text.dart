@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
+import '../../color.dart';
 
 class LabelText extends StatelessWidget {
   final String data;
@@ -13,10 +13,11 @@ class LabelText extends StatelessWidget {
     return new Text(
       data,
       style: theme.bodyText2.copyWith(
-          color: AppColors.primaryColor,
-          fontSize: 12.0,
-          letterSpacing: 2.0,
-          fontWeight: FontWeight.w500),
+        color: AppColor.ltGreenPrimary,
+        fontSize: 12.0,
+        letterSpacing: 2.0,
+        fontWeight: FontWeight.w500,
+      ),
     );
   }
 }

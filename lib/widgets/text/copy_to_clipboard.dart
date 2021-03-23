@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../ui/colors.dart';
+import '../../color.dart';
 
 class CopyToClipboard extends StatelessWidget {
   final String value;
@@ -13,7 +13,7 @@ class CopyToClipboard extends StatelessWidget {
     this.value,
     this.onTapCallback,
     this.title = 'Copied to clipboard',
-    this.color = AppColors.secondary,
+    this.color = AppColor.ltGreenPrimary,
   });
 
   @override

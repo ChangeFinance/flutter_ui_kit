@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
+import '../../color.dart';
 
 class Link extends StatelessWidget {
   final String data;
@@ -15,9 +15,10 @@ class Link extends StatelessWidget {
       child: Text(
         data,
         style: Theme.of(context).textTheme.bodyText2.copyWith(
-            color: AppColors.primaryColor,
-            decoration: TextDecoration.underline,
-            decorationStyle: TextDecorationStyle.solid),
+              color: AppColor.ltGreenPrimary,
+              decoration: TextDecoration.underline,
+              decorationStyle: TextDecorationStyle.solid,
+            ),
       ),
     );
   }

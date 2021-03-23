@@ -30,8 +30,6 @@ class BorderedButton extends StatefulWidget {
 }
 
 class _BorderedButtonState extends State<BorderedButton> with ButtonMixin {
-  bool _enabled = true;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -56,20 +54,14 @@ class _BorderedButtonState extends State<BorderedButton> with ButtonMixin {
             if (states.contains(MaterialState.disabled)) {
               return const BorderSide(color: AppColor.ltGrayMedium);
             }
-            if (widget.alt) {
-              return const BorderSide(color: AppColor.ltDeepWhite);
-            }
-            return const BorderSide(color: AppColor.ltGreenPrimary);
+            return BorderSide(
+              color: widget.alt ? AppColor.ltDeepWhite : AppColor.ltGreenPrimary,
+            );
           }),
         ),
         child: Text(widget.text),
-        onPressed:
-            isDisabled(enabled: _enabled, onPressed: widget.onPressed) ? null : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed),
+        onPressed: widget.onPressed,
       ),
     );
-  }
-
-  void _setEnabled(bool enabled) {
-    setState(() => _enabled = enabled);
   }
 }
