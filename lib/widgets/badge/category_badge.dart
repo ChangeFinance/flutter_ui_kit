@@ -53,6 +53,7 @@ class _CategoryBadgeState extends State<CategoryBadge> {
         ? const Border.fromBorderSide(BorderSide(color: AppColor.deepWhite))
         : const Border.fromBorderSide(BorderSide(color: tagDefaultBgColor));
     return Container(
+        key: Key('${widget.name}_container'),
         width: null,
         height: badgeHeight,
         decoration: BoxDecoration(
