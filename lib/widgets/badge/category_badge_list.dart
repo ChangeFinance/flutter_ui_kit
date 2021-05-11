@@ -3,7 +3,8 @@ import 'package:flutter_ui_kit/widgets/badge/category_badge.dart';
 
 class CategoryBadgeList extends StatefulWidget {
   final List<CategoryBadge> models;
-  CategoryBadgeList({this.models});
+  final Function(CategoryBadge selectedBadge) onChange;
+  CategoryBadgeList({this.models, this.onChange});
 
   @override
   CategoryBadgeListState createState() {
@@ -22,7 +23,11 @@ class CategoryBadgeListState extends State<CategoryBadgeList> {
       final isSelected = model.name == selectedModel?.name;
       void onTap (String name) {
         setState(() {
+          final previousSelectedName = selectedModel?.name;
           selectedModel = widget.models.firstWhere((element) => element.name == name, orElse: ()=>null);
+          if (selectedModel?.name != previousSelectedName) {
+            widget.onChange?.call(selectedModel);
+          }
         });
         model.onTap?.call(name);
       }

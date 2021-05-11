@@ -266,7 +266,10 @@ Widget _categoryBageListStory() {
           tagText: '1',
           name: 'STARTUPS',
         ),
-      ]
+      ],
+      onChange: (CategoryBadge selected) {
+        print (selected?.name);
+      },
     ),
   );
 }
