@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
+import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/double_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/dropdown_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart';
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/badge/badge.dart';
+import 'package:flutter_ui_kit/widgets/badge/category_badge.dart';
+import 'package:flutter_ui_kit/widgets/badge/category_badge_list.dart';
 import 'package:flutter_ui_kit/widgets/badge/multivalue_badge.dart';
 import 'package:flutter_ui_kit/widgets/badge/odometer_badge.dart';
 
@@ -40,6 +43,8 @@ Widget _badgesStory() {
       _simpleBadgeStory(),
       _multiValueBadgeStory(),
       _OdometerBadgeStory(),
+      _categoryBadgeStory(),
+      _categoryBageListStory()
     ],
   )));
 }
@@ -189,4 +194,79 @@ class _OdometerBadgeStory extends StatelessWidget {
     }
     return runs;
   }
+}
+
+
+Widget _categoryBadgeStory() {
+  return ExpandableStory(
+      title: 'Category Badge',
+      child: PropsExplorer(
+          initialProps: const <String, dynamic>{'text': 'US Stocks CFDs', 'tagText': '22', 'selected': true},
+          formBuilder: (context, props, updateProp) {
+            return ListView(physics: const NeverScrollableScrollPhysics(), shrinkWrap: true, children: <Widget>[
+              StringPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'text',
+              ),
+              StringPropUpdater(
+                props: props,
+                updateProp: updateProp,
+                propKey: 'tagText',
+              ),
+              BoolPropUpdater(props: props, updateProp: updateProp, propKey: 'selected'),
+            ]);
+          },
+          widgetBuilder: (context, props) {
+            final bool isSelected = props['selected'];
+            return Column(mainAxisSize: MainAxisSize.min, children: [
+              Container(
+                  child: Center(
+                      child: CategoryBadge(
+                          text: props['text'],
+                          tagText: props['tagText'],
+                          selected: isSelected
+                      ))),
+            ]);
+          }));
+}
+
+Widget _categoryBageListStory() {
+  return ExpandableStory(
+    title: 'Category Badge List',
+    child: CategoryBadgeList(
+      models: [
+        CategoryBadge(
+          text: 'Cryptocurrencies',
+          tagText: '22',
+          name: 'CRYPTO',
+        ),
+        CategoryBadge(
+          text: 'Cryptocurrencies CFDs',
+          tagText: '1',
+          name: 'CRYPTO_CFD',
+        ),
+        CategoryBadge(
+          text: 'Commodities CFDs',
+          tagText: '1',
+          name: 'COMMODITY_CFD',
+        ),
+        CategoryBadge(
+          text: 'US Stock CFDs',
+          tagText: '1',
+          name: 'US_STOCK_CFD',
+        ),
+        CategoryBadge(
+          text: 'Indexes CFDs',
+          tagText: '1',
+          name: 'INDEX_CFD',
+        ),
+        CategoryBadge(
+          text: 'Startups',
+          tagText: '1',
+          name: 'STARTUPS',
+        ),
+      ]
+    ),
+  );
 }
