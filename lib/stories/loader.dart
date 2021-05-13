@@ -19,12 +19,18 @@ class _LoadersState extends State<Loaders> {
 
     return Scaffold(
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                    30,
+                  ),
+                )),
             child: const Text(
               'Show loader',
               style: const TextStyle(color: Colors.white),
             ),
-            color: Colors.blue,
             onPressed: () {
               pr.show();
             }),

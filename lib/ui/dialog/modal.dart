@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 class Modal extends StatelessWidget {
   final List<Widget> children;
 
-  const Modal({this.children});
+  const Modal({
+    this.children,
+  });
 
   @override
   Widget build(BuildContext context) {

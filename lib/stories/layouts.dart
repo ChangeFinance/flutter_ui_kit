@@ -1,9 +1,11 @@
 import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as mat;
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_ui_kit/widgets.dart';
+import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 import 'package:flutter_ui_kit/widgets/customradio/custom_radio.dart';
-import 'package:flutter_ui_kit/widgets/filled_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/layout/generic_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/information_template.dart';
 import 'package:flutter_ui_kit/widgets/layout/swipe_up_to_confirm.dart';
@@ -13,7 +15,6 @@ import 'package:flutter_ui_kit/widgets/layout/utility_template.dart';
 import 'package:flutter_ui_kit/widgets/text/heading.dart';
 import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
 import 'package:flutter_ui_kit/widgets/text/label_value_pair.dart';
-import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 import '../color.dart';
 import '../text.dart';
@@ -60,7 +61,7 @@ class Layouts extends StatelessWidget {
           onPressed: () {
             Navigator.push<dynamic>(
                 context,
-                MaterialPageRoute<dynamic>(
+                mat.MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: utilityLayoutRoute),
                     builder: (_) => UtilityTemplate(
                         'Update your app',
@@ -95,28 +96,22 @@ class Layouts extends StatelessWidget {
           onPressed: () {
             Navigator.push<dynamic>(
                 context,
-                MaterialPageRoute<dynamic>(
+                mat.MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: utilityGenericLayoutRoute),
                     builder: (_) => UtilityGenericTemplate(
                         'Update your app',
                         Column(
                           children: <Widget>[
-                            Text('Get the latest version of Change.',
-                                textAlign: TextAlign.center,
-                                style: AppText.body1.copyWith(color: AppColor.semiGrey)),
+                            Text('Get the latest version of Change.', textAlign: TextAlign.center, style: AppText.body1.copyWith(color: AppColor.semiGrey)),
                             RichText(
                               textAlign: TextAlign.center,
                               text: TextSpan(
                                 text: 'If you have any questions, please contact ',
-                                style: AppText.body1
-                                    .copyWith(color: AppColor.semiGrey),
+                                style: AppText.body1.copyWith(color: AppColor.semiGrey),
                                 children: [
-                                  new TextSpan(
-                                      text: 'support@getchange.com',
-                                      style:
-                                      const TextStyle(color: AppColor.green),
-                                      recognizer: new TapGestureRecognizer()
-                                        ..onTap = () {}),],),
+                                  new TextSpan(text: 'support@getchange.com', style: const TextStyle(color: AppColor.green), recognizer: new TapGestureRecognizer()..onTap = () {}),
+                                ],
+                              ),
                             )
                           ],
                         ),
@@ -150,7 +145,7 @@ class Layouts extends StatelessWidget {
           onPressed: () {
             Navigator.push<dynamic>(
                 context,
-                MaterialPageRoute<dynamic>(
+                mat.MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: informationLayoutRoute),
                     builder: (_) => InformationTemplate(
                           'Information template',
@@ -168,7 +163,7 @@ class Layouts extends StatelessWidget {
                             fullWidth: true,
                             narrow: false,
                           ),
-                          leadingWidget: const BackButton(),
+                          leadingWidget: const mat.BackButton(),
                         )));
           },
           fullWidth: false,
@@ -187,18 +182,17 @@ class Layouts extends StatelessWidget {
           onPressed: () {
             Navigator.push<dynamic>(
                 context,
-                MaterialPageRoute<dynamic>(
+                mat.MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: dismissibleLayoutRoute),
                     builder: (_) => GenericTemplate(
-                        const Heading('How can we make Change better?',
-                            headingType: HeadingType.HEADING_1, textAlign: TextAlign.left),
+                        const Heading('How can we make Change better?', headingType: HeadingType.HEADING_1, textAlign: TextAlign.left),
                         Padding(
                             padding: const EdgeInsets.only(top: 20.0),
-                            child: TextFormField(
-                              decoration: const InputDecoration(
+                            child: mat.TextFormField(
+                              decoration: const mat.InputDecoration(
                                 labelText: 'Give us your feedback',
-                                labelStyle: TextStyle(fontSize: 18, color: Colors.black, height: -1.0),
-                                focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+                                labelStyle: TextStyle(fontSize: 18, color: mat.Colors.black, height: -1.0),
+                                focusedBorder: mat.UnderlineInputBorder(borderSide: BorderSide(color: mat.Colors.grey)),
                               ),
                               autofocus: true,
                               onSaved: (String value) {},
@@ -206,7 +200,7 @@ class Layouts extends StatelessWidget {
                         FilledButton('SEND', fullWidth: true, onPressed: () {
                           print('you clicked send');
                         }),
-                        leadingWidget: const CloseButton())));
+                        leadingWidget: const mat.CloseButton())));
           },
           fullWidth: false,
           narrow: false,
@@ -222,18 +216,14 @@ class Layouts extends StatelessWidget {
             child: FilledButton('I\'m all about that info button', onPressed: () {
           Navigator.push<dynamic>(
               context,
-              MaterialPageRoute<dynamic>(
+              mat.MaterialPageRoute<dynamic>(
                 settings: const RouteSettings(name: infoLayoutRoute),
                 builder: (_) => GenericTemplate(
-                    const Heading('Invite a friend and you both get €10 worth of Bitcoin',
-                        headingType: HeadingType.HEADING_2, textAlign: TextAlign.left),
+                    const Heading('Invite a friend and you both get €10 worth of Bitcoin', headingType: HeadingType.HEADING_2, textAlign: TextAlign.left),
                     Padding(
                         padding: const EdgeInsets.only(top: 20.0),
                         child: Column(children: <Widget>[
-                          const LabelValuePair(
-                              labelText: 'Invite Link',
-                              valueText: 'getchange.com/r/2415',
-                              copyToClipboardEnabled: true),
+                          const LabelValuePair(labelText: 'Invite Link', valueText: 'getchange.com/r/2415', copyToClipboardEnabled: true),
                           Expanded(
                             flex: 1,
                             child: SvgPicture.asset(
@@ -247,8 +237,8 @@ class Layouts extends StatelessWidget {
                       print('you clicked invite friends');
                     }),
                     tailingWidget: [
-                      IconButton(
-                          icon: const Icon(Icons.info_outline),
+                      mat.IconButton(
+                          icon: const Icon(mat.Icons.info_outline),
                           onPressed: () {
                             Navigator.pop(context);
                           })
@@ -264,7 +254,7 @@ class Layouts extends StatelessWidget {
             child: FilledButton('I\'m all about that payment methods', onPressed: () {
           Navigator.push<dynamic>(
               context,
-              MaterialPageRoute<dynamic>(
+              mat.MaterialPageRoute<dynamic>(
                 settings: const RouteSettings(name: infoLayoutRoute),
                 builder: (_) => GenericTemplate(
                     const Heading('Deposit', headingType: HeadingType.HEADING_2, textAlign: TextAlign.left),
@@ -276,14 +266,11 @@ class Layouts extends StatelessWidget {
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text('Add Euro or cryptocurrency to your Change account.',
-                                    textAlign: TextAlign.left,
-                                    style: Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey)),
+                                    textAlign: TextAlign.left, style: mat.Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey)),
                               )),
                           Padding(
                               padding: const EdgeInsets.only(bottom: 30.0),
-                              child: Text('I want to deposit:',
-                                  textAlign: TextAlign.left,
-                                  style: Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey))),
+                              child: Text('I want to deposit:', textAlign: TextAlign.left, style: mat.Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey))),
                           Expanded(
                               flex: 1,
                               child: CustomRadio(
@@ -291,8 +278,8 @@ class Layouts extends StatelessWidget {
                               )),
                         ])),
                     const SizedBox.shrink(),
-                    leadingWidget: IconButton(
-                        icon: const Icon(Icons.arrow_back),
+                    leadingWidget: mat.IconButton(
+                        icon: const Icon(mat.Icons.arrow_back),
                         onPressed: () {
                           Navigator.pop(context);
                         })),
@@ -309,19 +296,17 @@ class Layouts extends StatelessWidget {
           onPressed: () {
             Navigator.push<dynamic>(
                 context,
-                MaterialPageRoute<dynamic>(
+                mat.MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: dismissibleLayoutRoute),
                     builder: (_) => TitledGenericTemplate(
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
-                              const Heading('Exchange CAG tokens to new equity like CNG tokens',
-                                  headingType: HeadingType.HEADING_1, textAlign: TextAlign.left),
+                              const Heading('Exchange CAG tokens to new equity like CNG tokens', headingType: HeadingType.HEADING_1, textAlign: TextAlign.left),
                               Container(
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 14.0),
-                                  child: Text('CNG tokens give you the right to become shareholder of Change',
-                                      style: Theme.of(context).textTheme.bodyText2),
+                                  child: Text('CNG tokens give you the right to become shareholder of Change', style: mat.Theme.of(context).textTheme.bodyText2),
                                 ),
                               ),
                               const SizedBox(
@@ -343,7 +328,7 @@ class Layouts extends StatelessWidget {
                                       children: [
                                         TextSpan(
                                           text: 'What is token swap?',
-                                          style: Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey),
+                                          style: mat.Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey),
                                         ),
                                       ],
                                     ),
@@ -361,14 +346,14 @@ class Layouts extends StatelessWidget {
                               fullWidth: true,
                               narrow: false,
                             ),
-                            TextButton(
+                            PlainButton(
                               'I\'m not CNG owner',
                               onPressed: () {
                                 print('Test');
                               },
                             ),
                           ]),
-                          leadingWidget: const CloseButton(),
+                          leadingWidget: const mat.CloseButton(),
                           title: const Text(
                             'CAG Token Swap',
                           ),
@@ -395,7 +380,7 @@ class Layouts extends StatelessWidget {
           onPressed: () {
             Navigator.push<dynamic>(
               context,
-              MaterialPageRoute<dynamic>(
+              mat.MaterialPageRoute<dynamic>(
                 settings: const RouteSettings(name: swipeUpToConfirmLayoutRoute),
                 builder: (_) => SwipeUpToConfirmLayoutWrapper(),
               ),
@@ -428,7 +413,7 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
         margin: const EdgeInsets.symmetric(vertical: 30),
         child: const Text(
           'Hello world',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: mat.Colors.white),
         ),
       ),
       swipeCompleteCallback: () {
@@ -439,7 +424,7 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
       completeScreenLabelIcon: const SizedBox(
         width: 100,
         height: 100,
-        child: const Text('ICON', style: const TextStyle(color: Colors.white)),
+        child: const Text('ICON', style: const TextStyle(color: mat.Colors.white)),
       ),
       completionPrimaryButtonAction: () {
         Navigator.of(context).pop();

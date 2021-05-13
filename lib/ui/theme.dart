@@ -1,25 +1,25 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/theme.dart' as ui_kit;
 
+import '../color.dart';
 import 'colors.dart';
 
 final ThemeData theme = ui_kit.theme.copyWith(
-    inputDecorationTheme: _inputDecorationTheme,
-    iconTheme: _iconTheme,
-    toggleableActiveColor: AppColors.primary,
-    textTheme: const TextTheme(
-      headline6: _headingStyle,
-      bodyText2: _bodyStyle,
-      bodyText1: _bodyStyle2,
-      button: _buttonTextStyle,
-      caption: _captionTextStyle,
-      headline4: _appBarTitleStyle,
-      headline3: AppText.header2,
-      headline2: AppText.header1,
-      subtitle1: _bodyStyle,
-    )
+  inputDecorationTheme: _inputDecorationTheme,
+  iconTheme: _iconTheme,
+  toggleableActiveColor: AppColor.ltGreenPrimary,
+  textTheme: const TextTheme(
+    headline6: _headingStyle,
+    bodyText2: _bodyStyle,
+    bodyText1: _bodyStyle2,
+    button: _buttonTextStyle,
+    caption: _captionTextStyle,
+    headline4: _appBarTitleStyle,
+    headline3: AppText.header2,
+    headline2: AppText.header1,
+    subtitle1: _bodyStyle,
+  ),
 );
 
 const _buttonTextStyle = const TextStyle(
@@ -71,7 +71,7 @@ const _captionTextStyle = const TextStyle(
 );
 
 const _appBarTitleStyle = const TextStyle(
-  color: AppColors.primary,
+  color: AppColor.ltGreenPrimary,
   fontSize: 11.8,
   fontFamily: 'DINNextLTPro',
   fontWeight: FontWeight.w500,
@@ -99,10 +99,13 @@ const _inputHelperStyle = const TextStyle(
 );
 
 const _inputDecorationTheme = const InputDecorationTheme(
-    labelStyle: _inputStyle,
-    hintStyle: _inputHintStyle,
-    helperStyle: _inputHelperStyle,
-    prefixStyle: _bodyStyle,
-    suffixStyle: _bodyStyle,
-    contentPadding:
-        const EdgeInsets.symmetric(vertical: 18.0, horizontal: 18.0));
+  labelStyle: _inputStyle,
+  hintStyle: _inputHintStyle,
+  helperStyle: _inputHelperStyle,
+  prefixStyle: _bodyStyle,
+  suffixStyle: _bodyStyle,
+  contentPadding: const EdgeInsets.symmetric(
+    vertical: 18.0,
+    horizontal: 18.0,
+  ),
+);

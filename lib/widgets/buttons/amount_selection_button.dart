@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../colors.dart';
+import '../../color.dart';
+import '../../ui/colors.dart';
 
 class AmountSelectionButton extends StatelessWidget {
   final String text;
@@ -19,15 +20,19 @@ class AmountSelectionButton extends StatelessWidget {
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(4),
             border: Border.all(
-                color: AppColors.colorNeutralLight,
-                width: 1.0,
-                style: BorderStyle.solid),
+              color: AppColors.colorNeutralLight,
+              width: 1.0,
+              style: BorderStyle.solid,
+            ),
           ),
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
-            child:
-                Text(text, style: const TextStyle(color: AppColors.secondary)),
+            padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
+            child: Text(
+              text,
+              style: const TextStyle(
+                color: AppColor.ltGreenPrimary,
+              ),
+            ),
           ),
         ),
       ),

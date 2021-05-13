@@ -28,13 +28,7 @@ class _ChangeIconState extends State<ChangeIcon> {
     PackageInfo.fromPlatform().then((packageInfo) {
       print(packageInfo.packageName);
       var iconPath = '';
-      if (packageInfo.packageName == 'com.example.changeUiKit' ||
-          packageInfo.packageName == 'com.getchange.flutter_ui_kit')
-        iconPath = 'lib/assets/icons/${widget.iconData.getIconPath()}';
-      else
-        iconPath =
-            'packages/flutter_ui_kit/assets/icons/${widget.iconData.getIconPath()}';
-
+      iconPath = 'lib/assets/icons/${widget.iconData.getIconPath()}';
       rootBundle.loadString(iconPath).then((svgValue) {
         setState(() {
           _svgContents = svgValue;
@@ -48,7 +42,6 @@ class _ChangeIconState extends State<ChangeIcon> {
     if (_svgContents == null) {
       return Container();
     }
-    return SvgPicture.string(_svgContents,
-        width: widget.width, height: widget.height);
+    return SvgPicture.string(_svgContents, width: widget.width, height: widget.height);
   }
 }

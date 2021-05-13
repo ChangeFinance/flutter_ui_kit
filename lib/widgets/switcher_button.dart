@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/change_app_icons.dart';
+
+import '../color.dart';
 
 class SwitcherButton extends StatefulWidget {
   final List<String> labels;
   final Function(int) onSwitch;
   final bool showLabel;
 
-  SwitcherButton({@required this.labels, this.onSwitch, this.showLabel = true});
+  SwitcherButton({
+    @required this.labels,
+    this.onSwitch,
+    this.showLabel = true,
+  });
 
   @override
   _SwitcherButtonState createState() => _SwitcherButtonState();
@@ -34,10 +39,18 @@ class _SwitcherButtonState extends State<SwitcherButton> {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      padding: const EdgeInsets.all(10),
+    return TextButton(
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.all(10),
+      ).copyWith(
+        overlayColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+          if (states.contains(MaterialState.pressed)) {
+            return AppColor.grey;
+          }
+          return null;
+        }),
+      ),
       onPressed: _switch,
-      splashColor: AppColor.grey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,

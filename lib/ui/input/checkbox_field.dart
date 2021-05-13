@@ -10,7 +10,7 @@ class StreamCheckboxField extends StatelessWidget {
     this.value,
     this.onChanged,
     this.label,
-    this.height
+    this.height,
   });
 
   @override
@@ -43,7 +43,7 @@ class CheckboxField extends StatelessWidget {
     this.onChanged,
     this.label,
     this.errorText,
-    this.boxHeight
+    this.boxHeight,
   });
 
   @override
@@ -75,7 +75,7 @@ class CheckboxField extends StatelessWidget {
 
   Widget buildCheckboxListTile(double boxHeight) {
     double height;
-    if(boxHeight == null) {
+    if (boxHeight == null) {
       height = 45.00;
     } else {
       height = boxHeight;
@@ -91,4 +91,34 @@ class CheckboxField extends StatelessWidget {
       ),
     );
   }
+}
+
+class ChgCheckboxField extends CheckboxField {
+  const ChgCheckboxField({
+    bool value,
+    ValueChanged<bool> onChanged,
+    Widget label,
+    String errorText,
+    double boxHeight,
+  }) : super(
+          value: value,
+          onChanged: onChanged,
+          label: label,
+          errorText: errorText,
+          boxHeight: boxHeight,
+        );
+}
+
+class ChgStreamCheckboxField extends StreamCheckboxField {
+  const ChgStreamCheckboxField({
+    Stream<bool> value,
+    ValueChanged<bool> onChanged,
+    Widget label,
+    double height,
+  }) : super(
+          value: value,
+          onChanged: onChanged,
+          label: label,
+          height: height,
+        );
 }

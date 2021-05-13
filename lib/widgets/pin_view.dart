@@ -10,12 +10,17 @@ class PinView extends StatelessWidget {
   final bool displayText;
   final bool error;
 
-  PinView(this.length, this.text, {this.displayText = false, this.error = false});
+  PinView(
+    this.length,
+    this.text, {
+    this.displayText = false,
+    this.error = false,
+  });
 
   @override
   Widget build(BuildContext context) {
     final content = displayText
-        ? List<Widget>.generate(length, (index) => PinText(character: index <= text.runes.length - 1 ? String.fromCharCode(text.runes.elementAt(index)): '', error: error))
+        ? List<Widget>.generate(length, (index) => PinText(character: index <= text.runes.length - 1 ? String.fromCharCode(text.runes.elementAt(index)) : '', error: error))
         : List<Widget>.generate(length, (index) => PinDot(active: index <= text.runes.length - 1));
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
@@ -39,7 +44,9 @@ class PinDot extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: active ? AppColor.darkerGreen : AppColor.paleGreen),
+        borderRadius: BorderRadius.circular(15),
+        color: active ? AppColor.darkerGreen : AppColor.paleGreen,
+      ),
       child: const SizedBox(width: 15, height: 15),
     );
   }
@@ -50,22 +57,35 @@ class PinText extends StatelessWidget {
   final String character;
   final bool error;
 
-  const PinText({@required this.character, @required this.error});
+  const PinText({
+    @required this.character,
+    @required this.error,
+  });
 
   @override
   Widget build(BuildContext context) {
     final underlineColor = error
         ? AppColors.warning
-        : character == '' ? AppColors.primaryColor : AppColors.primaryColorDarker;
+        : character == ''
+            ? AppColor.ltGreenPrimary
+            : AppColors.primaryColorDarker;
 
     return Container(
       width: 56.0,
       height: 28.0,
-      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: underlineColor, width: 2.0))),
-      child: Text(character,
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: underlineColor,
+            width: 2.0,
+          ),
+        ),
+      ),
+      child: Text(
+        character,
         style: AppText.body1.copyWith(fontWeight: FontWeight.w500),
-        textAlign: TextAlign.center
-      )
+        textAlign: TextAlign.center,
+      ),
     );
   }
 }

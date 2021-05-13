@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_ui_kit/widgets/outlined_button.dart';
-import 'package:flutter_ui_kit/widgets/text_button.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_ui_kit/color.dart';
+import 'package:flutter_ui_kit/widgets/buttons/outlined_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/text_button.dart';
 
 class SwipeConfirmation extends StatelessWidget {
   final Animation<double> labelTranslation;
@@ -73,13 +73,17 @@ class SwipeConfirmation extends StatelessWidget {
 
   Widget _labelTitle() => Text(
         labelTitle,
-        style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w500),
+        style: const TextStyle(
+          color: AppColor.ltDeepWhite,
+          fontSize: 28,
+          fontWeight: FontWeight.w500,
+        ),
         textAlign: TextAlign.center,
       );
 
   Widget _labelText() => Text(
         labelText,
-        style: const TextStyle(color: Colors.white, fontSize: 16),
+        style: const TextStyle(color: AppColor.ltDeepWhite, fontSize: 16),
         textAlign: TextAlign.center,
       );
 
@@ -88,12 +92,21 @@ class SwipeConfirmation extends StatelessWidget {
     if (primaryButtonText != null && primaryButtonText != '') {
       buttons.add(Opacity(
         opacity: primaryButtonEnabled ? 1.0 : 0.5,
-        child: OutlinedButton(primaryButtonText,
-            onPressed: primaryButtonEnabled ? primaryButtonAction : null, fullWidth: true, narrow: false, alt: true),
+        child: BorderedButton(
+          primaryButtonText,
+          onPressed: primaryButtonEnabled ? primaryButtonAction : null,
+          fullWidth: true,
+          narrow: false,
+          alt: true,
+        ),
       ));
     }
     if (secondaryButtonText != null && secondaryButtonText != '') {
-      buttons.add(TextButton(secondaryButtonText, onPressed: secondaryButtonAction, alt: true));
+      buttons.add(PlainButton(
+        secondaryButtonText,
+        onPressed: secondaryButtonAction,
+        alt: true,
+      ));
     }
 
     return Positioned(

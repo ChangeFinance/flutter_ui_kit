@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/widgets/customradio/radio_item.dart';
 import 'package:flutter_ui_kit/widgets/customradio/radio_model.dart';
-import 'package:flutter_ui_kit/widgets/filled_button.dart';
+import 'package:flutter_ui_kit/widgets/buttons/filled_button.dart';
 
 class CustomRadio extends StatefulWidget {
   final List<RadioModel> radioElements;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_kit/color.dart';
 
 typedef FutureCallback = Future<void> Function();
 
@@ -9,10 +8,8 @@ class ButtonStyleConstants {
   static const double narrowVerticalPadding = 11.5;
   static const double wideVerticalPadding = 17.5;
   static const double horizontalPadding = 48.0;
-  static const EdgeInsetsGeometry narrowPadding =
-      const EdgeInsets.symmetric(vertical: narrowVerticalPadding, horizontal: horizontalPadding);
-  static const EdgeInsetsGeometry widePadding =
-      const EdgeInsets.symmetric(vertical: wideVerticalPadding, horizontal: horizontalPadding);
+  static const EdgeInsetsGeometry narrowPadding = const EdgeInsets.symmetric(vertical: narrowVerticalPadding, horizontal: horizontalPadding);
+  static const EdgeInsetsGeometry widePadding = const EdgeInsets.symmetric(vertical: wideVerticalPadding, horizontal: horizontalPadding);
   static const double fontSize = 16.0;
   static const double smallFontSize = 14.0;
 }
@@ -29,13 +26,6 @@ mixin ButtonMixin {
     FutureCallback onPressed,
   }) {
     return !enabled || onPressed == null;
-  }
-
-  Color getTextColorOnWhiteBackground({bool enabled, bool pressing, FutureCallback onPressed}) {
-    if (isDisabled(enabled: enabled, onPressed: onPressed)) {
-      return AppColor.mediumGrey;
-    }
-    return pressing ? AppColor.darkerGreen : AppColor.green;
   }
 
   double getFontSize({bool narrow, bool fullWidth = false}) {
