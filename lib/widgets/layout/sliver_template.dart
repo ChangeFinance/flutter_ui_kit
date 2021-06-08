@@ -9,12 +9,12 @@ class SliverTemplate extends StatefulWidget {
 
   final Widget pinWidget;
   final Widget content;
-  final List<Widget> sliverList;
+  final List<Widget>? sliverList;
   final bool isPinned;
   final Widget appBarTitleWidget;
   final Widget backgroundWidget;
-  final FloatingActionButton floatingActionButton;
-  final ScrollController scrollController;
+  final FloatingActionButton? floatingActionButton;
+  final ScrollController? scrollController;
 
 
   const SliverTemplate({
@@ -46,7 +46,7 @@ class _SliverTemplateState extends State<SliverTemplate> {
     final sliverAppBarHeight = SliverTemplate.getSliverAppBarHeight(context);
     final topAppBarBox =
         // ignore: avoid_as
-        topAppBarKey.currentContext.findRenderObject() as RenderBox;
+        topAppBarKey.currentContext!.findRenderObject() as RenderBox;
     final topAppBarHeight = topAppBarBox.size.height;
     if (sliverAppBarHeight - offset <= topAppBarHeight) {
       setState(() {
@@ -64,8 +64,9 @@ class _SliverTemplateState extends State<SliverTemplate> {
     return Scaffold(
       floatingActionButton: widget.floatingActionButton,
       body: NotificationListener<ScrollNotification>(
-        onNotification: (sn) {
-          _scrollListener(sn.metrics.pixels, context);
+        onNotification: (ScrollNotification? sn) {
+          _scrollListener(sn?.metrics.pixels ?? 0, context);
+          return true;
         },
         child: CustomScrollView(
           controller: widget.scrollController,
@@ -109,7 +110,7 @@ class _SliverTemplateState extends State<SliverTemplate> {
             ),
             SliverList(
               delegate: SliverChildListDelegate(
-                widget.sliverList,
+                widget.sliverList!,
               ),
             ),
           ],

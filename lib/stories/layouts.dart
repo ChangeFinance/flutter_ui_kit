@@ -57,8 +57,8 @@ class Layouts extends StatelessWidget {
       child: Center(
         child: ChgFilledButton(
           'I\'m all about that utility',
-          onPressed: () {
-            Navigator.push<dynamic>(
+          onPressed: () async {
+            await Navigator.push<dynamic>(
                 context,
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: utilityLayoutRoute),
@@ -72,7 +72,7 @@ class Layouts extends StatelessWidget {
                         ),
                         ChgFilledButton(
                           'Update app',
-                          onPressed: () {
+                          onPressed: () async {
                             Navigator.pop(context);
                           },
                           fullWidth: true,
@@ -92,8 +92,8 @@ class Layouts extends StatelessWidget {
       child: Center(
         child: ChgFilledButton(
           'I\'m all about that generic utility',
-          onPressed: () {
-            Navigator.push<dynamic>(
+          onPressed: () async {
+            await Navigator.push<dynamic>(
                 context,
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: utilityGenericLayoutRoute),
@@ -127,7 +127,7 @@ class Layouts extends StatelessWidget {
                         ),
                         ChgFilledButton(
                           'Update app',
-                          onPressed: () {
+                          onPressed: () async {
                             Navigator.pop(context);
                           },
                           fullWidth: true,
@@ -147,8 +147,8 @@ class Layouts extends StatelessWidget {
       child: Center(
         child: ChgFilledButton(
           'I\'m all about that txt txt pic',
-          onPressed: () {
-            Navigator.push<dynamic>(
+          onPressed: () async {
+            await Navigator.push<dynamic>(
                 context,
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: informationLayoutRoute),
@@ -162,7 +162,7 @@ class Layouts extends StatelessWidget {
                           ),
                           ChgFilledButton(
                             'Back',
-                            onPressed: () {
+                            onPressed: () async {
                               Navigator.pop(context);
                             },
                             fullWidth: true,
@@ -184,8 +184,8 @@ class Layouts extends StatelessWidget {
       child: Center(
         child: ChgFilledButton(
           'I\'m all about that close button',
-          onPressed: () {
-            Navigator.push<dynamic>(
+          onPressed: () async {
+            await Navigator.push<dynamic>(
                 context,
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: dismissibleLayoutRoute),
@@ -201,9 +201,9 @@ class Layouts extends StatelessWidget {
                                 focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
                               ),
                               autofocus: true,
-                              onSaved: (String value) {},
+                              onSaved: (String? value) {},
                             )),
-                        ChgFilledButton('SEND', fullWidth: true, onPressed: () {
+                        ChgFilledButton('SEND', fullWidth: true, onPressed: () async {
                           print('you clicked send');
                         }),
                         leadingWidget: const CloseButton())));
@@ -219,8 +219,8 @@ class Layouts extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(30.0),
         child: Center(
-            child: ChgFilledButton('I\'m all about that info button', onPressed: () {
-          Navigator.push<dynamic>(
+            child: ChgFilledButton('I\'m all about that info button', onPressed: () async {
+          await Navigator.push<dynamic>(
               context,
               MaterialPageRoute<dynamic>(
                 settings: const RouteSettings(name: infoLayoutRoute),
@@ -243,7 +243,7 @@ class Layouts extends StatelessWidget {
                             ),
                           ),
                         ])),
-                    ChgFilledButton('Invite friends', fullWidth: true, onPressed: () {
+                    ChgFilledButton('Invite friends', fullWidth: true, onPressed: () async {
                       print('you clicked invite friends');
                     }),
                     tailingWidget: [
@@ -261,8 +261,8 @@ class Layouts extends StatelessWidget {
     return Padding(
         padding: const EdgeInsets.all(30.0),
         child: Center(
-            child: ChgFilledButton('I\'m all about that payment methods', onPressed: () {
-          Navigator.push<dynamic>(
+            child: ChgFilledButton('I\'m all about that payment methods', onPressed: () async {
+          await Navigator.push<dynamic>(
               context,
               MaterialPageRoute<dynamic>(
                 settings: const RouteSettings(name: infoLayoutRoute),
@@ -277,13 +277,13 @@ class Layouts extends StatelessWidget {
                                 alignment: Alignment.centerLeft,
                                 child: Text('Add Euro or cryptocurrency to your Change account.',
                                     textAlign: TextAlign.left,
-                                    style: Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey)),
+                                    style: Theme.of(context).textTheme.bodyText1!.copyWith(color: AppColor.semiGrey)),
                               )),
                           Padding(
                               padding: const EdgeInsets.only(bottom: 30.0),
                               child: Text('I want to deposit:',
                                   textAlign: TextAlign.left,
-                                  style: Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey))),
+                                  style: Theme.of(context).textTheme.bodyText1!.copyWith(color: AppColor.semiGrey))),
                           Expanded(
                               flex: 1,
                               child: CustomRadio(
@@ -306,8 +306,8 @@ class Layouts extends StatelessWidget {
       child: Center(
         child: ChgFilledButton(
           'I\'m all about landing page',
-          onPressed: () {
-            Navigator.push<dynamic>(
+          onPressed: () async {
+            await Navigator.push<dynamic>(
                 context,
                 MaterialPageRoute<dynamic>(
                     settings: const RouteSettings(name: dismissibleLayoutRoute),
@@ -343,7 +343,7 @@ class Layouts extends StatelessWidget {
                                       children: [
                                         TextSpan(
                                           text: 'What is token swap?',
-                                          style: Theme.of(context).textTheme.bodyText1.copyWith(color: AppColor.semiGrey),
+                                          style: Theme.of(context).textTheme.bodyText1!.copyWith(color: AppColor.semiGrey),
                                         ),
                                       ],
                                     ),
@@ -355,7 +355,7 @@ class Layouts extends StatelessWidget {
                           Column(children: <Widget>[
                             ChgFilledButton(
                               'Go to Swap',
-                              onPressed: () {
+                              onPressed: () async {
                                 print('Test');
                               },
                               fullWidth: true,
@@ -363,7 +363,7 @@ class Layouts extends StatelessWidget {
                             ),
                             ChgTextButton(
                               'I\'m not CNG owner',
-                              onPressed: () {
+                              onPressed: () async {
                                 print('Test');
                               },
                             ),
@@ -392,8 +392,8 @@ class Layouts extends StatelessWidget {
       child: Center(
         child: ChgFilledButton(
           'Swipe up to confirm layout',
-          onPressed: () {
-            Navigator.push<dynamic>(
+          onPressed: () async {
+            await Navigator.push<dynamic>(
               context,
               MaterialPageRoute<dynamic>(
                 settings: const RouteSettings(name: swipeUpToConfirmLayoutRoute),
@@ -460,7 +460,7 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
       children: <Widget>[
         const Text('Swipe view'),
         const SizedBox(height: 20),
-        ChgFilledButton(swipeMode == SwipeMode.static ? 'Enable Swiping' : 'Disable Swiping', onPressed: () {
+        ChgFilledButton(swipeMode == SwipeMode.static ? 'Enable Swiping' : 'Disable Swiping', onPressed: () async {
           setState(() {
             if (swipeMode == SwipeMode.swipe) {
               swipeMode = SwipeMode.static;
@@ -470,7 +470,7 @@ class _SwipeUpToConfirmLayoutWrapperState extends State<SwipeUpToConfirmLayoutWr
           });
         }),
         const SizedBox(height: 20),
-        ChgFilledButton(doneButtonEnabled ? 'Disable Done button' : 'Enable Done button', onPressed: () {
+        ChgFilledButton(doneButtonEnabled ? 'Disable Done button' : 'Enable Done button', onPressed: () async {
           setState(() {
             doneButtonEnabled = !doneButtonEnabled;
           });

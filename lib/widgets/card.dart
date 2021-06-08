@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../color.dart';
 
-const _elevationToShadow = const <int, BoxShadow>{
+const _elevationToShadow = const <int, BoxShadow?>{
   1: null,
   2: const BoxShadow(
       color: AppColor.shadowColor,
@@ -27,7 +27,7 @@ const _elevationToShadow = const <int, BoxShadow>{
 class ChgAppCard extends StatelessWidget {
 
   const ChgAppCard({
-    Key key,
+    Key? key,
     this.child,
     this.margin = const EdgeInsets.all(0.0),
     this.color = AppColor.deepWhite,
@@ -39,8 +39,8 @@ class ChgAppCard extends StatelessWidget {
   final Color color;
   final int elevation;
   final EdgeInsetsGeometry margin;
-  final Widget child;
-  final double borderRadius;
+  final Widget? child;
+  final double? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class ChgAppCard extends StatelessWidget {
         decoration: new BoxDecoration(
             color: AppColor.deepWhite,
             border: null,
-            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+            borderRadius: BorderRadius.all(Radius.circular(borderRadius!)),
             boxShadow: boxShadow==null ? null : [boxShadow]
         ),
       ),

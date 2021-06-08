@@ -3,16 +3,16 @@ import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
 
 class ChgHeading extends StatelessWidget {
   final String data;
-  final BoxConstraints constraints;
-  final HeadingType headingType;
-  final TextAlign textAlign;
+  final BoxConstraints? constraints;
+  final HeadingType? headingType;
+  final TextAlign? textAlign;
 
   const ChgHeading(
     this.data, {
     this.constraints,
     this.headingType,
     this.textAlign,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -24,7 +24,7 @@ class ChgHeading extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle(BuildContext context) {
+  TextStyle? _textStyle(BuildContext context) {
     switch (headingType) {
       case HeadingType.HEADING_0:
         return Theme.of(context).textTheme.headline1;

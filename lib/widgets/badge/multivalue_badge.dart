@@ -5,9 +5,9 @@ import 'badge.dart';
 
 class MultiValueBadge extends StatefulWidget {
   final List<String> texts;
-  final double minWidth;
-  final TextStyle textStyle;
-  final Color bgColor;
+  final double? minWidth;
+  final TextStyle? textStyle;
+  final Color? bgColor;
 
   MultiValueBadge(this.texts, {this.minWidth, this.textStyle, this.bgColor})
   :assert(texts!=null),

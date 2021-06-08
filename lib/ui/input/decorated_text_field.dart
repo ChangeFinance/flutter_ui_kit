@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
 class DecoratedTextField extends StatelessWidget {
-  final Function onChanged;
+  final Function? onChanged;
   final int maxLines;
   final TextCapitalization textCapitalization;
-  final String labelText;
-  final String errorText;
+  final String? labelText;
+  final String? errorText;
   final TextInputType keyboardType;
   final bool obscureText;
-  final String hintText;
-  final String helperText;
-  final TextEditingController controller;
-  final bool autofocus;
-  final FocusNode focusNode;
-  final Widget prefixIcon;
-  final String prefixText;
-  final TextStyle prefixStyle;
-  final Widget suffixIcon;
-  final String suffixText;
+  final String? hintText;
+  final String? helperText;
+  final TextEditingController? controller;
+  final bool? autofocus;
+  final FocusNode? focusNode;
+  final Widget? prefixIcon;
+  final String? prefixText;
+  final TextStyle? prefixStyle;
+  final Widget? suffixIcon;
+  final String? suffixText;
   final bool enabled;
-  final bool autocorrect;
+  final bool? autocorrect;
   final bool enableInteractiveSelection;
 
   const DecoratedTextField({
@@ -52,7 +52,7 @@ class DecoratedTextField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 8.0),
       child: new TextField(
-        onChanged: onChanged,
+        onChanged: onChanged as void Function(String)?,
         maxLines: maxLines,
         textCapitalization: textCapitalization,
         obscureText: obscureText,
@@ -60,7 +60,7 @@ class DecoratedTextField extends StatelessWidget {
         controller: controller,
         focusNode: focusNode,
         autofocus: autofocus ?? false,
-        autocorrect: autocorrect,
+        autocorrect: autocorrect!,
         style: theme.textTheme.bodyText2,
         enableInteractiveSelection: enableInteractiveSelection,
         decoration: InputDecoration(

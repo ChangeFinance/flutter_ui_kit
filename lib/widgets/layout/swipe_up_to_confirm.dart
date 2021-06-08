@@ -10,25 +10,25 @@ enum SwipeMode { swipe, static }
 
 class SwipeUpToConfirmLayout extends StatefulWidget {
   final String title;
-  final GlobalKey<ScaffoldState> scaffoldKey;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
   final Widget body;
   final Widget swiperDisplay;
-  final Function swipeCompleteCallback;
-  final String completeScreenLabelTitle;
-  final String completeScreenLabelText;
-  final Widget completeScreenLabelIcon;
+  final Function? swipeCompleteCallback;
+  final String? completeScreenLabelTitle;
+  final String? completeScreenLabelText;
+  final Widget? completeScreenLabelIcon;
   final SwipeMode swipeMode;
   final String completionPrimaryButtonText;
-  final Function completionPrimaryButtonAction;
+  final Function? completionPrimaryButtonAction;
   final bool completionPrimaryButtonEnabled;
   final String completionSecondaryButtonText;
-  final Function completionSecondaryButtonAction;
+  final Function? completionSecondaryButtonAction;
   final bool errorState;
-  final Function onBack;
+  final Function? onBack;
 
   SwipeUpToConfirmLayout({
-    @required this.body,
-    @required this.swiperDisplay,
+    required this.body,
+    required this.swiperDisplay,
     this.title = '',
     this.scaffoldKey,
     this.swipeMode = SwipeMode.swipe,
@@ -52,9 +52,9 @@ class SwipeUpToConfirmLayout extends StatefulWidget {
 class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with TickerProviderStateMixin {
   double swiperBaseHeight = 150;
 
-  AnimationController _controller;
-  Animation<double> _heightAnimation;
-  Animation<double> _opacityAnimation;
+  late AnimationController _controller;
+  late Animation<double> _heightAnimation;
+  late Animation<double> _opacityAnimation;
 
   double dyStartPosition = 0;
   double dyEndPosition = 0;
@@ -66,10 +66,10 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
   static const int swipeUpDuration = 300;
   static const int slideInDuration = 500;
 
-  AnimationController _slideInController;
-  Animation<double> _confirmViewLabelTranslation;
-  Animation<double> _confirmViewButtonTranslation;
-  Animation<double> _confirmViewOpacity;
+  late AnimationController _slideInController;
+  Animation<double>? _confirmViewLabelTranslation;
+  Animation<double>? _confirmViewButtonTranslation;
+  Animation<double>? _confirmViewOpacity;
 
   @override
   void initState() {
@@ -135,7 +135,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
     );
   }
 
-  Widget _buildBody(Function onBack) {
+  Widget _buildBody(Function? onBack) {
     return Stack(
       children: <Widget>[
         _appbarAndContent(onBack),
@@ -150,7 +150,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
     return offsetVal;
   }
 
-  Widget _appbarAndContent(Function onBack) {
+  Widget _appbarAndContent(Function? onBack) {
     return Positioned(
       top: 0,
       left: 0,
@@ -277,7 +277,7 @@ class _SwipeUpToConfirmLayoutState extends State<SwipeUpToConfirmLayout> with Ti
     setState(() {
       isTouchingScreen = true;
       dyEndPosition = details.globalPosition.dy;
-      isSwipingUp = details.primaryDelta <= 0;
+      isSwipingUp = details.primaryDelta! <= 0;
     });
     final dragDistance = (dyStartPosition - dyEndPosition).abs();
     _controller.value = dragDistance / screenHeight;

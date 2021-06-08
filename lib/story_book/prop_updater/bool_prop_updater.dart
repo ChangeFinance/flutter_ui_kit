@@ -9,10 +9,10 @@ class BoolPropUpdater extends StatelessWidget {
   final String propKey;
 
   BoolPropUpdater({
-    @required this.props,
-    @required this.updateProp,
-    @required this.propKey,
-    Key key,
+    required this.props,
+    required this.updateProp,
+    required this.propKey,
+    Key? key,
   })  : assert(props != null),
         assert(updateProp != null),
         assert(propKey != null),

@@ -11,7 +11,7 @@ import 'package:flutter/widgets.dart';
 // https://github.com/flutter/flutter/issues/17887
 class CustomFlexibleSpaceBar extends StatefulWidget {
   const CustomFlexibleSpaceBar({
-    Key key,
+    Key? key,
     this.title,
     this.background,
     this.centerTitle,
@@ -20,17 +20,17 @@ class CustomFlexibleSpaceBar extends StatefulWidget {
   }) : assert(collapseMode != null),
        super(key: key);
 
-  final Widget title;
-  final Widget background;
-  final bool centerTitle;
+  final Widget? title;
+  final Widget? background;
+  final bool? centerTitle;
   final CollapseMode collapseMode;
-  final EdgeInsetsGeometry titlePadding;
+  final EdgeInsetsGeometry? titlePadding;
   static Widget createSettings({
-    @required double currentExtent,
-    @required Widget child,
-    double toolbarOpacity,
-    double minExtent,
-    double maxExtent,
+    required double currentExtent,
+    required Widget child,
+    double? toolbarOpacity,
+    double? minExtent,
+    double? maxExtent,
   }) {
     assert(currentExtent != null);
     return FlexibleSpaceBarSettings(
@@ -47,7 +47,7 @@ class CustomFlexibleSpaceBar extends StatefulWidget {
 }
 
 class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
-  bool _getEffectiveCenterTitle(ThemeData theme) {
+  bool? _getEffectiveCenterTitle(ThemeData theme) {
     if (widget.centerTitle != null)
       return widget.centerTitle;
     assert(theme.platform != null);
@@ -89,7 +89,7 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
 
   @override
   Widget build(BuildContext context) {
-    final settings = context.dependOnInheritedWidgetOfExactType<FlexibleSpaceBarSettings>();
+    final settings = context.dependOnInheritedWidgetOfExactType<FlexibleSpaceBarSettings>()!;
     assert(settings != null, 'A FlexibleSpaceBar must be wrapped in the widget returned by FlexibleSpaceBar.createSettings().');
 
     final children = <Widget>[];
@@ -112,13 +112,13 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
           left: 0.0,
           right: 0.0,
           height: settings.maxExtent,
-          child: widget.background,
+          child: widget.background!,
         ));
       }
     }
 
     if (widget.title != null) {
-      Widget title;
+      Widget? title;
       switch (defaultTargetPlatform) {
         case TargetPlatform.iOS:
           title = widget.title;
@@ -138,11 +138,11 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
       final theme = Theme.of(context);
       final opacity = settings.toolbarOpacity;
       if (opacity > 0.0) {
-        var titleStyle = theme.primaryTextTheme.headline6;
+        var titleStyle = theme.primaryTextTheme.headline6!;
         titleStyle = titleStyle.copyWith(
-          color: titleStyle.color.withOpacity(opacity)
+          color: titleStyle.color!.withOpacity(opacity)
         );
-        final effectiveCenterTitle = _getEffectiveCenterTitle(theme);
+        final effectiveCenterTitle = _getEffectiveCenterTitle(theme)!;
         final padding = widget.titlePadding ??
           EdgeInsetsDirectional.only(
             start: effectiveCenterTitle ? 0.0 : 72.0,
@@ -161,7 +161,7 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
               alignment: titleAlignment,
               child: DefaultTextStyle(
                 style: titleStyle,
-                child: title,
+                child: title!,
               ),
             ),
           ),

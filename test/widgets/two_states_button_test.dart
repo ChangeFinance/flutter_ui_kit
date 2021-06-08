@@ -17,7 +17,7 @@ void main() {
     const timerInterval = 5;
     Future future;
     Completer completer;
-    FutureCallback onButtonCallback;
+    late FutureCallback onButtonCallback;
 
     setUp(() {
       completer = Completer<void>();
@@ -27,21 +27,21 @@ void main() {
     });
 
     void testSwitchTextProp({
-      Function group,
-      Function setUp,
-      Function testWidgets,
-      String firstText,
-      String secondText,
-      int timerInterval,
-      Function buildButton,
+      required Function group,
+      Function? setUp,
+      Function? testWidgets,
+      String? firstText,
+      String? secondText,
+      int? timerInterval,
+      Function? buildButton,
     }) {
       group('switch text prop', () {
-        testWidgets('renders text', (WidgetTester tester) async {
-          await tester.pumpWidget(wrapInMaterialApp(buildButton()));
-          expect(find.text(firstText), findsOneWidget);
+        testWidgets!('renders text', (WidgetTester tester) async {
+          await tester.pumpWidget(wrapInMaterialApp(buildButton!()));
+          expect(find.text(firstText!), findsOneWidget);
 
-          await tester.pumpWidget(wrapInMaterialApp(buildButton(onButtonCallback: onButtonCallback)), Duration(seconds: timerInterval + 1));
-          expect(find.text(secondText), findsOneWidget);
+          await tester.pumpWidget(wrapInMaterialApp(buildButton(onButtonCallback: onButtonCallback)), Duration(seconds: timerInterval! + 1));
+          expect(find.text(secondText!), findsOneWidget);
 
           await tester.tap(find.text(secondText));
           await tester.pump();
@@ -57,9 +57,9 @@ void main() {
       firstText: firstText,
       secondText: secondText,
       timerInterval: timerInterval,
-      buildButton: ({FutureCallback onButtonCallback}) => TwoStatesButton(firstText, secondText, timerInterval,
+      buildButton: ({FutureCallback? onButtonCallback}) => TwoStatesButton(firstText, secondText, timerInterval,
           onButtonCallback: onButtonCallback,
-          onPressed: () {}),
+          onPressed: () {} as Future<void> Function()?),
     );
 
     testOnPressedProp(
@@ -67,7 +67,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: firstText,
-      buildButton: ({FutureCallback onPressed}) =>
+      buildButton: ({FutureCallback? onPressed}) =>
           TwoStatesButton(firstText, secondText, timerInterval, onPressed: onPressed,
             onButtonCallback: (){},),
       underlyingMaterialButtonType: RaisedButton,
@@ -78,8 +78,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: firstText,
-      buildButton: ({bool narrow}) =>
-          TwoStatesButton(firstText, secondText, timerInterval, onPressed: (){},
+      buildButton: ({bool? narrow}) =>
+          TwoStatesButton(firstText, secondText, timerInterval, onPressed: (){} as Future<void> Function()?,
               onButtonCallback: (){},
               narrow: narrow),
       underlyingMaterialButtonType: RaisedButton,
@@ -90,8 +90,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: firstText,
-      buildButton: ({EdgeInsetsGeometry padding}) =>
-          TwoStatesButton(firstText, secondText, timerInterval, onPressed: (){},
+      buildButton: ({EdgeInsetsGeometry? padding}) =>
+          TwoStatesButton(firstText, secondText, timerInterval, onPressed: (){} as Future<void> Function()?,
               onButtonCallback: (){}, padding: padding),
       underlyingMaterialButtonType: RaisedButton,
     );
@@ -101,8 +101,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: firstText,
-      buildButton: ({bool narrow, bool fullWidth}) => TwoStatesButton(
-        firstText, secondText, timerInterval, onPressed: (){},
+      buildButton: ({bool? narrow, bool? fullWidth}) => TwoStatesButton(
+        firstText, secondText, timerInterval, onPressed: (){} as Future<void> Function()?,
         onButtonCallback: (){},
         narrow: narrow,
         fullWidth: fullWidth,
@@ -114,11 +114,11 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: firstText,
-      buildButton: ({TextStyle textStyle}) => TwoStatesButton(
+      buildButton: ({TextStyle? textStyle}) => TwoStatesButton(
         firstText, secondText, timerInterval,
         textStyle: textStyle,
         onButtonCallback: (){},
-        onPressed: () {},
+        onPressed: () {} as Future<void> Function()?,
         narrow: true,
       ),
     );

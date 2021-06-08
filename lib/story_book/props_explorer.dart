@@ -19,21 +19,18 @@ class PropsExplorer extends StatefulWidget {
   final FormBuilder formBuilder;
 
   PropsExplorer({
-    @required this.initialProps,
-    @required this.widgetBuilder,
-    @required this.formBuilder,
-    Key key,
-  })  : assert(initialProps != null),
-        assert(widgetBuilder != null),
-        assert(formBuilder != null),
-        super(key: key);
+    required this.initialProps,
+    required this.widgetBuilder,
+    required this.formBuilder,
+    Key? key,
+  })  : super(key: key);
 
   @override
   _PropsExplorerState createState() => _PropsExplorerState();
 }
 
 class _PropsExplorerState extends State<PropsExplorer> {
-  Map<String, dynamic> _props;
+  late Map<String, dynamic> _props;
 
   @override
   void initState() {

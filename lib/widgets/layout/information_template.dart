@@ -9,8 +9,8 @@ import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
 import 'app_bar.dart';
 
 class InformationTemplate extends StatelessWidget {
-  final Widget leadingWidget;
-  final List<Widget> tailingWidget;
+  final Widget? leadingWidget;
+  final List<Widget>? tailingWidget;
   final SvgPicture picture;
   final String heading;
   final String body;

@@ -8,7 +8,7 @@ class SingleDigit extends StatefulWidget {
   final int finalValue;
 
   SingleDigit({
-    Key key,
+    Key? key,
     this.boxDecoration = const BoxDecoration(color: Colors.transparent),
     this.textStyle = const TextStyle(color: Colors.black, fontSize: 30),
     this.initialValue = 0,
@@ -30,8 +30,8 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
   bool get isReverse => finalValue < currentValue;
 
-  Animation<double> animation;
-  AnimationController controller;
+  late Animation<double> animation;
+  AnimationController? controller;
   static const text = '0\n1\n2\n3\n4\n5\n6\n7\n8\n9';
 
   @override
@@ -58,12 +58,12 @@ class _SingleDigitState extends State<SingleDigit> with TickerProviderStateMixin
 
     final durationMillis = numCycles > 0 ? 1150 ~/ numCycles : 500;
     controller = AnimationController(duration: Duration(milliseconds: durationMillis), vsync: this);
-    final curvedAnimation = CurvedAnimation(parent: controller, curve: Curves.easeOutQuint);
+    final curvedAnimation = CurvedAnimation(parent: controller!, curve: Curves.easeOutQuint);
     animation = Tween<double>(begin: currentValue.toDouble(), end: finalValue.toDouble()).animate(curvedAnimation)
       ..addListener(() {
         setState(() {});
       });
-    controller.forward();
+    controller!.forward();
   }
 
   @override

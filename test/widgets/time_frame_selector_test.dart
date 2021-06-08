@@ -25,14 +25,14 @@ void main() {
       expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(ChgFilledButton).evaluate().length, 1);
       final initFilledButton = tester.widget(find.byType(ChgFilledButton));
-      final ChgFilledButton initContainerWidget = initFilledButton;
+      final ChgFilledButton initContainerWidget = initFilledButton as ChgFilledButton;
       expect(initContainerWidget.text, '1D');
       await tester.tap(find.text('1Y'));
       await tester.pump();
       expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(ChgFilledButton).evaluate().length, 1);
       final widget = tester.widget(find.byType(ChgFilledButton));
-      final ChgFilledButton containerWidget = widget;
+      final ChgFilledButton containerWidget = widget as ChgFilledButton;
       expect(containerWidget.text, '1Y');
     });
 
@@ -50,7 +50,7 @@ void main() {
       await tester.tap(find.text('1Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame, TimeFrame.ONE_YEAR);
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame, TimeFrame.ONE_YEAR);
 
     });
 
@@ -87,13 +87,13 @@ void main() {
       await tester.tap(find.text('1Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_YEAR);
 
       await tester.tap(find.text('5Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_YEAR);
     });
 
@@ -118,25 +118,25 @@ void main() {
       await tester.tap(find.text('1W'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_WEEK);
 
       await tester.tap(find.text('1M'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_MONTH);
 
       await tester.tap(find.text('1Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_MONTH);
 
       await tester.tap(find.text('5Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_MONTH);
     });
 

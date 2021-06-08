@@ -8,7 +8,7 @@ class PasswordValidator extends StatefulWidget {
   final List<Color> colorList;
 
   const PasswordValidator({
-    Key key,
+    Key? key,
     this.password = 'Password123*',
     this.hintList = const [
       'Try making it longer then 8 digits and adding capital characters that makes it difficult for others to guess.',

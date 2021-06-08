@@ -7,7 +7,7 @@ import 'package:flutter_ui_kit/widgets/customradio/radio_model.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 
 class CustomRadio extends StatefulWidget {
-  final List<RadioModel> radioElements;
+  final List<RadioModel>? radioElements;
   const CustomRadio({this.radioElements});
 
   @override
@@ -32,26 +32,26 @@ class CustomRadio extends StatefulWidget {
 }
 
 class CustomRadioState extends State<CustomRadio> {
-  List<RadioModel> radioElements;
+  List<RadioModel>? radioElements;
   CustomRadioState({this.radioElements});
-  String selectedRadioModel;
+  String? selectedRadioModel;
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new ListView.builder(
-        itemCount: radioElements.length,
+        itemCount: radioElements!.length,
         itemBuilder: (BuildContext context, int index) {
           return new InkWell(
             splashColor: AppColor.darkerGreen,
             onTap: () {
               setState(() {
-                radioElements.forEach((element) => element.isSelected = false);
-                radioElements[index].isSelected = true;
-                selectedRadioModel = radioElements[index].textShortform;
+                radioElements!.forEach((element) => element.isSelected = false);
+                radioElements![index].isSelected = true;
+                selectedRadioModel = radioElements![index].textShortform;
               });
             },
-            child: new RadioItem(radioElements[index]),
+            child: new RadioItem(radioElements![index]),
           );
         },
       ),
@@ -60,7 +60,7 @@ class CustomRadioState extends State<CustomRadio> {
           child: new ChgFilledButton(
             'Next',
             fullWidth: true,
-            onPressed: () {
+            onPressed: () async {
               print('You selected: $selectedRadioModel');
             },
           )),

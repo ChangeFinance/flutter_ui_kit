@@ -60,7 +60,7 @@ class WizardStory extends StatelessWidget {
                     borderSide: BorderSide(color: Colors.grey)),
               ),
               autofocus: true,
-              onSaved: (String value) {},
+              onSaved: (String? value) {},
             )),
       ],
     );
@@ -84,7 +84,7 @@ class WizardStory extends StatelessWidget {
                     borderSide: BorderSide(color: Colors.grey)),
               ),
               autofocus: true,
-              onSaved: (String value) {},
+              onSaved: (String? value) {},
             )),
       ],
     );
@@ -108,7 +108,7 @@ class WizardStory extends StatelessWidget {
                     borderSide: BorderSide(color: Colors.grey)),
               ),
               autofocus: true,
-              onSaved: (String value) {},
+              onSaved: (String? value) {},
             )),
       ],
     );

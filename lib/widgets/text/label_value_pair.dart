@@ -4,14 +4,14 @@ import 'label_text.dart';
 
 class ChgLabelValuePair extends StatelessWidget {
   final String labelText;
-  final String valueText;
-  final Widget value;
-  final ChgValueLabelTextAlign textAlign;
+  final String? valueText;
+  final Widget? value;
+  final ChgValueLabelTextAlign? textAlign;
   final bool copyToClipboardEnabled;
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   const ChgLabelValuePair({
-    @required this.labelText,
+    required this.labelText,
     this.valueText,
     this.copyToClipboardEnabled = false,
     this.textAlign,
@@ -38,11 +38,11 @@ class ChgLabelValuePair extends StatelessWidget {
     );
   }
 
-  bool _isCenterAligned(ChgValueLabelTextAlign textAlign) {
+  bool _isCenterAligned(ChgValueLabelTextAlign? textAlign) {
     return textAlign != null && textAlign == ChgValueLabelTextAlign.center;
   }
 
-  Widget _buildBody(BuildContext context, Widget value, String data, {EdgeInsets padding}) {
+  Widget _buildBody(BuildContext context, Widget? value, String? data, {EdgeInsets? padding}) {
     return Padding(
       padding: padding ?? const EdgeInsets.only(bottom: 16.0),
       child: Row(
@@ -50,14 +50,14 @@ class ChgLabelValuePair extends StatelessWidget {
             ? MainAxisAlignment.center
             : MainAxisAlignment.start,
         children: [
-          Flexible(child: value != null ? value :  Text(data, style: const TextStyle(fontSize: 16 , fontFamily: 'DINNextLTPro', color: Colors.black, height: 1.5, fontWeight: FontWeight.w500))),
+          Flexible(child: value != null ? value :  Text(data!, style: const TextStyle(fontSize: 16 , fontFamily: 'DINNextLTPro', color: Colors.black, height: 1.5, fontWeight: FontWeight.w500))),
           _buildCopyToClipboardIcon(context, data),
         ],
       ),
     );
   }
 
-  Widget _buildCopyToClipboardIcon(BuildContext context, String value) {
+  Widget _buildCopyToClipboardIcon(BuildContext context, String? value) {
     if (!copyToClipboardEnabled) {
       return Container();
     }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ChgStreamCheckboxField extends StatelessWidget {
-  final Stream<bool> value;
-  final ValueChanged<bool> onChanged;
-  final Widget label;
-  final double height;
+  final Stream<bool>? value;
+  final ValueChanged<bool?>? onChanged;
+  final Widget? label;
+  final double? height;
 
   const ChgStreamCheckboxField({this.value, this.onChanged, this.label, this.height});
 
@@ -15,11 +15,11 @@ class ChgStreamCheckboxField extends StatelessWidget {
       stream: value,
       builder: (context, snapshot) {
         return CheckboxField(
-          value: snapshot.data,
+          value: snapshot.data!,
           onChanged: onChanged,
           label: label,
           boxHeight: height,
-          errorText: snapshot.error,
+          errorText: snapshot.error as String?,
         );
       },
     );
@@ -28,12 +28,12 @@ class ChgStreamCheckboxField extends StatelessWidget {
 
 class CheckboxField extends StatelessWidget {
   final bool value;
-  final ValueChanged<bool> onChanged;
-  final Widget label;
-  final String errorText;
-  final double boxHeight;
+  final ValueChanged<bool?>? onChanged;
+  final Widget? label;
+  final String? errorText;
+  final double? boxHeight;
 
-  const CheckboxField({this.value, this.onChanged, this.label, this.errorText, this.boxHeight});
+  const CheckboxField({required this.value, this.onChanged, this.label, this.errorText, this.boxHeight});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class CheckboxField extends StatelessWidget {
     );
   }
 
-  Widget buildCheckboxListTile(double boxHeight) {
+  Widget buildCheckboxListTile(double? boxHeight) {
     double height;
     if (boxHeight == null) {
       height = 45.00;
@@ -80,7 +80,7 @@ class CheckboxField extends StatelessWidget {
       ),
       child: CheckboxListTile(
         // ignore: avoid_bool_literals_in_conditional_expressions
-        value: value ?? false,
+        value: value,
         onChanged: onChanged,
         controlAffinity: ListTileControlAffinity.leading,
         title: label,

@@ -9,15 +9,15 @@ import 'allocated_country_codes.dart';
 import 'text_field.dart';
 
 class ChgStreamCountryTextField extends StatefulWidget {
-  final Stream<String> value;
-  final ValueChanged onChanged;
-  final String labelText;
-  final bool autofocus;
+  final Stream<String>? value;
+  final ValueChanged? onChanged;
+  final String? labelText;
+  final bool? autofocus;
   final bool onlyEEACountries;
   final bool hideStrictJurisdictionCountries;
 
   const ChgStreamCountryTextField({
-    Key key,
+    Key? key,
     this.value,
     this.onChanged,
     this.labelText,
@@ -49,7 +49,7 @@ class ChgStreamCountryTextFieldState extends State<ChgStreamCountryTextField> {
             return _buildDialog(context, countries);
           });
       if (country != null) {
-        widget.onChanged(country);
+        widget.onChanged!(country);
       }
       _focus.unfocus();
     }

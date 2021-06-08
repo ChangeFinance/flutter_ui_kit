@@ -4,30 +4,30 @@ import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/change_app_icons.dart';
 
 class SwitcherButton extends StatefulWidget {
-  final List<String> labels;
-  final Function(int) onSwitch;
+  final List<String>? labels;
+  final Function(int)? onSwitch;
   final bool showLabel;
 
-  SwitcherButton({@required this.labels, this.onSwitch, this.showLabel = true});
+  SwitcherButton({required this.labels, this.onSwitch, this.showLabel = true});
 
   @override
   _SwitcherButtonState createState() => _SwitcherButtonState();
 }
 
 class _SwitcherButtonState extends State<SwitcherButton> {
-  List<String> get labels => widget.labels;
+  List<String>? get labels => widget.labels;
 
-  Function(int) get onSwitch => widget.onSwitch;
+  Function(int)? get onSwitch => widget.onSwitch;
 
   String get currentLabel {
-    if (labels.isEmpty) {
+    if (labels!.isEmpty) {
       _currentIndex = 0;
       return '';
     }
-    if (_currentIndex >= labels.length) {
-      _currentIndex = labels.length - 1;
+    if (_currentIndex >= labels!.length) {
+      _currentIndex = labels!.length - 1;
     }
-    return labels[_currentIndex];
+    return labels![_currentIndex];
   }
 
   int _currentIndex = 0;
@@ -52,14 +52,14 @@ class _SwitcherButtonState extends State<SwitcherButton> {
 
   void _switch() {
     setState(() {
-      if (_currentIndex == labels.length - 1) {
+      if (_currentIndex == labels!.length - 1) {
         _currentIndex = 0;
       } else {
         _currentIndex++;
       }
 
       if (onSwitch != null) {
-        onSwitch(_currentIndex);
+        onSwitch!(_currentIndex);
       }
     });
   }

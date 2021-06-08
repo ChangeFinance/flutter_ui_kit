@@ -5,18 +5,18 @@ import 'button_common.dart';
 
 class ChgTextButton extends StatefulWidget {
   final String text;
-  final FutureCallback onPressed;
-  final EdgeInsetsGeometry padding;
-  final TextStyle textStyle;
-  final bool alt;
+  final FutureCallback? onPressed;
+  final EdgeInsetsGeometry? padding;
+  final TextStyle? textStyle;
+  final bool? alt;
 
   ChgTextButton(
     this.text, {
-    @required this.onPressed,
+    this.onPressed,
     this.padding,
     this.textStyle,
     this.alt = false,
-    Key key,
+    Key? key,
   })  : assert(text != null),
         super(key: key);
 
@@ -42,8 +42,8 @@ class _ChgTextButtonState extends State<ChgTextButton> with ButtonMixin {
           widget.text,
           style: (widget.textStyle != null)
               ? widget.textStyle
-              : Theme.of(context).textTheme.bodyText2.copyWith(
-                    color: !widget.alt
+              : Theme.of(context).textTheme.bodyText2!.copyWith(
+                    color: !widget.alt!
                         ? getTextColorOnWhiteBackground(
                             enabled: _enabled,
                             pressing: _pressing,
@@ -55,8 +55,8 @@ class _ChgTextButtonState extends State<ChgTextButton> with ButtonMixin {
         ),
         onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
             ? null
-            : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed),
-        textColor: widget.alt ? Colors.white : AppColor.green,
+            : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed!),
+        textColor: widget.alt! ? Colors.white : AppColor.green,
         padding: widget.padding ?? const EdgeInsets.symmetric(vertical: 17.5, horizontal: 18.5),
       ),
     );

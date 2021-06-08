@@ -6,7 +6,7 @@ import '../colors.dart';
 
 class ChgTextHeading extends StatelessWidget {
   final String data;
-  final BoxConstraints constraints;
+  final BoxConstraints? constraints;
 
   const ChgTextHeading(this.data, {this.constraints});
 

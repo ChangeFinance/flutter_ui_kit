@@ -31,7 +31,7 @@ class Popover extends StatelessWidget {
       child: Center(
         child: ChgFilledButton(
           'Show Large Popover',
-          onPressed: () {
+          onPressed: () async {
             _onExampleOnePressed(context);
           },
           fullWidth: false,
@@ -47,7 +47,7 @@ class Popover extends StatelessWidget {
       child: Center(
         child: ChgFilledButton(
           'Show Small Popover',
-          onPressed: () {
+          onPressed: () async {
             _onExampleTwoPressed(context);
           },
           fullWidth: false,
@@ -63,7 +63,7 @@ class Popover extends StatelessWidget {
       child: Center(
         child: ChgFilledButton(
           'Show Action Popover',
-          onPressed: () {
+          onPressed: () async {
             _onExampleThreePressed(context);
           },
           fullWidth: false,
@@ -138,7 +138,7 @@ class Popover extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ChgFilledButton(
                   'Ok',
-                  onPressed: () {
+                  onPressed: () async {
                     Navigator.pop(context, 'Ok button');
                   },
                   fullWidth: true,
@@ -146,7 +146,7 @@ class Popover extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ChgTextButton('Cancel', onPressed: () {
+                child: ChgTextButton('Cancel', onPressed: () async {
                   Navigator.pop(context, 'Cancel button');
                 }),
               )
@@ -161,11 +161,11 @@ class Popover extends StatelessWidget {
           builder: (BuildContext context) {
             return AlertDialog(
               title: const Text('You clicked'),
-              content: Text(value),
+              content: Text(value!),
               actions: <Widget>[
                 FlatButton(
                     child: const Text('Thats nice'),
-                    onPressed: () {
+                    onPressed: () async {
                       Navigator.pop(context);
                     })
               ],

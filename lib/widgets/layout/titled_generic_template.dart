@@ -6,11 +6,11 @@ import 'app_bar.dart';
 
 class TitledGenericTemplate extends StatelessWidget {
 
-  final Widget leadingWidget;
-  final List<Widget> tailingWidget;
+  final Widget? leadingWidget;
+  final List<Widget>? tailingWidget;
 
-  final Widget title;
-  final SvgPicture picture;
+  final Widget? title;
+  final SvgPicture? picture;
   final Widget child;
   final Widget formSubmitAction;
 
@@ -53,6 +53,6 @@ class TitledGenericTemplate extends StatelessWidget {
         child: Align(alignment: Alignment.bottomCenter, child:picture),
       );
     }
-    return null;
+    return const SizedBox.shrink();
   }
 }

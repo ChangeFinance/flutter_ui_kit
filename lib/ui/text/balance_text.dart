@@ -5,7 +5,7 @@ class ChgBalanceAmount extends StatelessWidget {
   final EdgeInsets padding;
 
   const ChgBalanceAmount({
-    @required this.data,
+    required this.data,
     this.padding = const EdgeInsets.all(6.0),
   });
 
@@ -20,7 +20,7 @@ class ChgBalanceAmount extends StatelessWidget {
           fit: BoxFit.scaleDown,
           child: Text(
             data,
-            style: theme.bodyText2.copyWith(
+            style: theme.bodyText2!.copyWith(
               fontWeight: FontWeight.w500,
               fontSize: 36.0,
             ),

@@ -15,7 +15,7 @@ import '../color.dart';
 
 const _colorList = ['Red', 'Green'];
 
-Color _optionToColor(String optionSelected) {
+Color _optionToColor(String? optionSelected) {
   switch (optionSelected) {
     case 'Red':
       return AppColor.red;
@@ -218,7 +218,7 @@ Widget _categoryBadgeStory() {
             ]);
           },
           widgetBuilder: (context, props) {
-            final bool isSelected = props['selected'];
+            final bool? isSelected = props['selected'];
             return Column(mainAxisSize: MainAxisSize.min, children: [
               Container(
                   child: Center(
@@ -267,7 +267,7 @@ Widget _categoryBageListStory() {
           name: 'STARTUPS',
         ),
       ],
-      onChange: (CategoryBadge selected) {
+      onChange: (CategoryBadge? selected) {
         print (selected?.name);
       },
     ),

@@ -31,11 +31,11 @@ void main() {
       );
 
       final widget = tester.widget(find.byType(underlyingWidget));
-      final Container containerWidget = widget;
+      final Container containerWidget = widget as Container;
       expect(containerWidget.margin, EdgeInsets.zero);
       expect(containerWidget.child, child);
 
-      final BoxDecoration decoration = containerWidget.decoration;
+      final BoxDecoration decoration = containerWidget.decoration as BoxDecoration;
       expect(decoration.color, AppColor.deepWhite);
       expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(4)));
       expect(decoration.boxShadow, [const BoxShadow(
@@ -59,11 +59,11 @@ void main() {
       );
 
       final widget = tester.widget(find.byType(underlyingWidget));
-      final Container containerWidget = widget;
+      final Container containerWidget = widget as Container;
       expect(containerWidget.margin, const EdgeInsets.all(11.0));
       expect(containerWidget.child, child);
 
-      final BoxDecoration decoration = containerWidget.decoration;
+      final BoxDecoration decoration = containerWidget.decoration as BoxDecoration;
       expect(decoration.color, AppColor.deepWhite);
       expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(1)));
       expect(decoration.boxShadow, [const BoxShadow(

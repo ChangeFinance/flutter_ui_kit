@@ -1,27 +1,27 @@
 
 class WizardBinder {
 
-  Function callToAction;
-  Function start;
-  Function next;
-  Function end;
+  Function? callToAction;
+  Function? start;
+  Function? next;
+  Function? end;
 
-  String getCallToAction(int index) {
+  String? getCallToAction(int index) {
     if (callToAction == null) {
       return null;
     }
-    return callToAction(index);
+    return callToAction!(index);
   }
 
   void onStart() {
     if (start != null) {
-      start();
+      start!();
     }
   }
 
-  bool onNext(int index) {
+  bool? onNext(int index) {
     if (next != null) {
-      return next(index);
+      return next!(index);
     } else {
       return true;
     }
@@ -30,7 +30,7 @@ class WizardBinder {
 
   void onEnd() {
     if (end != null) {
-      end();
+      end!();
     }
   }
 }

@@ -5,8 +5,8 @@ class ExpandableStory extends StatelessWidget {
   final Widget child;
 
   const ExpandableStory({
-    @required this.child,
-    @required this.title,
+    required this.child,
+    required this.title,
   })  : assert(child != null),
         assert(title != null),
         super();

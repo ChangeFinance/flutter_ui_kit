@@ -10,8 +10,8 @@ class MockVoidFunction extends Mock implements Function {
 
 void main() {
   group('StreamTextField', () {
-    BehaviorSubject<String> value;
-    MaterialApp widget;
+    BehaviorSubject<String>? value;
+    late MaterialApp widget;
 
     setUp(() {
       value = BehaviorSubject<String>();
@@ -19,7 +19,7 @@ void main() {
         home: Scaffold(
           body: ChgStreamTextField(
             value: value,
-            onChanged: value.add,
+            onChanged: value!.add as void Function(dynamic)?,
             labelText: 'Field',
           ),
         )
@@ -27,7 +27,7 @@ void main() {
     });
 
     tearDown(() {
-      value.close();
+      value!.close();
     });
 
     testWidgets('renders TextField', (WidgetTester tester) async {
@@ -39,8 +39,8 @@ void main() {
         (WidgetTester tester) async {
       await tester.pumpWidget(widget);
       final textField = tester.widget<TextField>(find.byType(TextField));
-      textField.onChanged('a');
-      await expectLater(value.take(1), emitsInOrder(<String>['a']));
+      textField.onChanged!('a');
+      await expectLater(value!.take(1), emitsInOrder(<String>['a']));
     });
 
     testWidgets('on focus triggers onFocus', (WidgetTester tester) async {
@@ -49,7 +49,7 @@ void main() {
         home: Scaffold(
           body: ChgStreamTextField(
             value: value,
-            onChanged: value.add,
+            onChanged: value!.add as void Function(dynamic)?,
             focusNode: FocusNode(),
             labelText: 'Field',
             onFocus: onFocusMockFunction.call,
@@ -68,10 +68,10 @@ void main() {
         home: Scaffold(
           body: ChgStreamTextField(
             value: value,
-            onChanged: value.add,
+            onChanged: value!.add as void Function(dynamic)?,
             focusNode: FocusNode(),
             labelText: 'Field',
-            onBlur: onBlurMockFunction,
+            onBlur: onBlurMockFunction as void Function()?,
           ),
         ),
       );
@@ -80,7 +80,7 @@ void main() {
       final textField = tester.widget<TextField>(find.byType(TextField));
       await tester.tap(find.byType(TextField));
       await tester.pump();
-      textField.focusNode.unfocus();
+      textField.focusNode!.unfocus();
       await tester.pumpAndSettle();
       verify(onBlurMockFunction.call());
     });
@@ -88,7 +88,7 @@ void main() {
     testWidgets('on error shows error text', (WidgetTester tester) async {
       await tester.pumpWidget(widget);
       expect(find.text('Error'), findsNothing);
-      value.addError('Error');
+      value!.addError('Error');
       await tester.pumpAndSettle();
       expect(find.text('Error'), findsOneWidget);
     });

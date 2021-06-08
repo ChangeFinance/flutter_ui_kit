@@ -14,6 +14,8 @@ import 'package:flutter_ui_kit/widgets/switcher_button.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
 import 'package:flutter_ui_kit/widgets/two_states_button.dart';
 
+import '../widgets.dart';
+
 class Buttons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -83,7 +85,7 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          Function onPressed = () {};
+          Function? onPressed = () {};
 
           if (props['enabled'] == false) {
             onPressed = null;
@@ -106,7 +108,7 @@ class Buttons extends StatelessWidget {
 
           return ChgFilledButton(
             props['text'],
-            onPressed: onPressed,
+            onPressed: onPressed as Future<void> Function()?,
             fullWidth: props['fullWidth'],
             narrow: props['narrow'],
             color: props['overrideColor'] ? colors[randIndex] : null,
@@ -168,7 +170,7 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          Function onPressed = () {};
+          Function? onPressed = () {};
 
           if (props['enabled'] == false) {
             onPressed = null;
@@ -186,7 +188,7 @@ class Buttons extends StatelessWidget {
             color: props['alt'] ? AppColor.green : Colors.white,
             child: ChgOutlinedButton(
               props['text'],
-              onPressed: onPressed,
+              onPressed: onPressed as Future<void> Function()?,
               fullWidth: props['fullWidth'],
               narrow: props['narrow'],
               alt: props['alt'],
@@ -237,7 +239,7 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          Function onPressed = () {};
+          Function? onPressed = () {};
 
           if (props['enabled'] == false) {
             onPressed = null;
@@ -254,7 +256,7 @@ class Buttons extends StatelessWidget {
             color: props['alt'] ? AppColor.green : Colors.white,
             child: ChgTextButton(
               props['text'],
-              onPressed: onPressed,
+              onPressed: onPressed as Future<void> Function()?,
               alt: props['alt'],
             ),
           );
@@ -284,7 +286,7 @@ class Buttons extends StatelessWidget {
                 props: props,
                 updateProp: updateProp,
                 propKey: 'buttonLabels',
-                listToTextConverter: listToTextConverter,
+                listToTextConverter: listToTextConverter as String Function<T>(List<T>),
                 textToListConverter: textToListConverter,
                 hintText: 'comma-separated list of strings e.g EUR,BTC,USD',
               )
@@ -292,7 +294,7 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          final List<String> labels = props['buttonLabels'];
+          final List<String>? labels = props['buttonLabels'];
           return Column(
             children: <Widget>[
               SwitcherButton(
@@ -358,8 +360,8 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          Function onPressed = () {};
-          Function onRefreshRate = () {};
+          FutureCallback? onPressed = () async {};
+          Function? onRefreshRate = () async {};
 
           if (props['enabled'] == false) {
             onPressed = null;

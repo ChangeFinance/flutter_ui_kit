@@ -13,8 +13,8 @@ class OnPageSelectedMock extends Mock implements Function {
 }
 
 void main() {
-  int dotsCount;
-  PageController pageController;
+  int? dotsCount;
+  late PageController pageController;
 
   setUp(() {
     dotsCount = 4;
@@ -29,7 +29,7 @@ void main() {
       ),
     );
 
-    expect(find.byType(Dot), findsNWidgets(dotsCount));
+    expect(find.byType(Dot), findsNWidgets(dotsCount!));
   });
 
   testWidgets('calls onPageSelected callback when dot is tapped',
@@ -47,7 +47,7 @@ void main() {
 
     await tester.tap(find.byType(Dot).last);
 
-    verify(onPageSelected(dotsCount - 1)).called(1);
+    verify(onPageSelected(dotsCount! - 1)).called(1);
   });
 
   testWidgets('uses pageController to determine which dot to highlight',

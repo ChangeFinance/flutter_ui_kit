@@ -4,7 +4,7 @@ enum BodyStyle { body1, body2, caption, title }
 
 class ChgBody extends StatelessWidget {
   final String data;
-  final BodyStyle style;
+  final BodyStyle? style;
   final TextAlign textAlign;
 
   const ChgBody(
@@ -22,7 +22,7 @@ class ChgBody extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle(TextTheme textTheme) {
+  TextStyle? _textStyle(TextTheme textTheme) {
     switch (style) {
       case BodyStyle.title:
         return textTheme.headline6;

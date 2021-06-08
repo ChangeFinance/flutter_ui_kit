@@ -12,7 +12,7 @@ class ChgLabelText extends StatelessWidget {
     final theme = Theme.of(context).textTheme;
     return new Text(
       data,
-      style: theme.bodyText2.copyWith(
+      style: theme.bodyText2!.copyWith(
           color: AppColors.primaryColor,
           fontSize: 12.0,
           letterSpacing: 2.0,

@@ -5,30 +5,30 @@ import 'package:flutter/material.dart';
 import 'decorated_text_field.dart';
 
 class ChgStreamTextField extends StatefulWidget {
-  final Stream<String> value;
-  final ValueChanged onChanged;
+  final Stream<String>? value;
+  final ValueChanged? onChanged;
   final int maxLines;
   final TextCapitalization textCapitalization;
-  final VoidCallback onBlur;
-  final VoidCallback onFocus;
-  final String labelText;
+  final VoidCallback? onBlur;
+  final VoidCallback? onFocus;
+  final String? labelText;
   final TextInputType keyboardType;
   final bool obscureText;
-  final String hintText;
-  final String helperText;
-  final bool autofocus;
-  final FocusNode focusNode;
-  final Widget prefixIcon;
-  final String prefixText;
-  final TextStyle prefixStyle;
-  final Widget suffixIcon;
-  final String suffixText;
+  final String? hintText;
+  final String? helperText;
+  final bool? autofocus;
+  final FocusNode? focusNode;
+  final Widget? prefixIcon;
+  final String? prefixText;
+  final TextStyle? prefixStyle;
+  final Widget? suffixIcon;
+  final String? suffixText;
   final bool enabled;
   final bool autocorrect;
   final bool enableInteractiveSelection;
 
   const ChgStreamTextField({
-    Key key,
+    Key? key,
     this.value,
     this.onChanged,
     this.maxLines = 1,
@@ -59,24 +59,24 @@ class ChgStreamTextField extends StatefulWidget {
 }
 
 class ChgStreamTextFieldState extends State<ChgStreamTextField> {
-  TextEditingController _controller;
-  FocusNode _focusNode;
+  TextEditingController? _controller;
+  FocusNode? _focusNode;
 
   @override
   void initState() {
     super.initState();
     _controller = TextEditingController();
     _focusNode = widget.focusNode ?? FocusNode();
-    _focusNode.addListener(_handleFocusChange);
+    _focusNode!.addListener(_handleFocusChange);
   }
 
   void _handleFocusChange() {
-    if (!_focusNode.hasFocus && widget.onBlur != null) {
-      widget.onBlur();
+    if (!_focusNode!.hasFocus && widget.onBlur != null) {
+      widget.onBlur!();
     }
 
-    if (_focusNode.hasFocus && widget.onFocus != null) {
-      widget.onFocus();
+    if (_focusNode!.hasFocus && widget.onFocus != null) {
+      widget.onFocus!();
     }
   }
 
@@ -85,8 +85,8 @@ class ChgStreamTextFieldState extends State<ChgStreamTextField> {
     return StreamBuilder<String>(
         stream: widget.value,
         builder: (context, snapshot) {
-          if (snapshot.data != _controller.text && !snapshot.hasError) {
-            _controller.text = snapshot.data;
+          if (snapshot.data != _controller!.text && !snapshot.hasError) {
+            _controller!.text = snapshot.data!;
           }
           return DecoratedTextField(
             prefixIcon: widget.prefixIcon,
@@ -101,7 +101,7 @@ class ChgStreamTextFieldState extends State<ChgStreamTextField> {
             obscureText: widget.obscureText,
             labelText: widget.labelText,
             hintText: widget.hintText,
-            errorText: snapshot.error,
+            errorText: snapshot.error as String?,
             helperText: widget.helperText,
             keyboardType: widget.keyboardType,
             autofocus: widget.autofocus,
@@ -116,7 +116,7 @@ class ChgStreamTextFieldState extends State<ChgStreamTextField> {
   @override
   void dispose() {
     super.dispose();
-    _controller.dispose();
-    _focusNode.dispose();
+    _controller!.dispose();
+    _focusNode!.dispose();
   }
 }

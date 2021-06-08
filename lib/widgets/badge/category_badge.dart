@@ -4,11 +4,11 @@ import 'package:flutter/widgets.dart';
 import '../../color.dart';
 
 class CategoryBadge extends StatefulWidget {
-  final String text;
-  final String tagText;
-  final bool selected;
-  final String name;
-  final Function(String name) onTap;
+  final String? text;
+  final String? tagText;
+  final bool? selected;
+  final String? name;
+  final Function(String? name)? onTap;
 
   CategoryBadge({this.text, this.tagText = '', this.selected = false, this.onTap, this.name});
 
@@ -48,8 +48,8 @@ class _CategoryBadgeState extends State<CategoryBadge> {
     }
     final bgColor = pressed
         ? pressedBgColor
-        : widget.selected ? selectedBgColor : normalBgColor;
-    final border = pressed || widget.selected
+        : widget.selected! ? selectedBgColor : normalBgColor;
+    final border = pressed || widget.selected!
         ? const Border.fromBorderSide(BorderSide(color: AppColor.deepWhite))
         : const Border.fromBorderSide(BorderSide(color: tagDefaultBgColor));
     return Container(
@@ -71,7 +71,7 @@ class _CategoryBadgeState extends State<CategoryBadge> {
             onTap: () {
               setPressed(false);
               if (widget.onTap != null) {
-                widget.onTap(widget.name);
+                widget.onTap!(widget.name);
               }
             },
             onTapCancel: () {
@@ -92,19 +92,19 @@ class _CategoryBadgeState extends State<CategoryBadge> {
 
   Widget _text() {
     final textColor =
-        pressed || widget.selected ? selectedTextColor : normalTextColor;
+        pressed || widget.selected! ? selectedTextColor : normalTextColor;
     return Container(
         margin: const EdgeInsets.only(left: 8.0),
-        child: Text(widget.text,
+        child: Text(widget.text!,
             style: defaultTextStyle.copyWith(color: textColor),
             textAlign: TextAlign.center));
   }
 
   Widget _tag() {
-    final loading = widget.tagText.isEmpty;
+    final loading = widget.tagText!.isEmpty;
     final tagBgColor = pressed
         ? tagPressedBgColor
-        : widget.selected
+        : widget.selected!
             ? tagSelectedBgColor
             : loading ? tagDefaultEmptyBgColor : tagDefaultBgColor;
 
@@ -124,7 +124,7 @@ class _CategoryBadgeState extends State<CategoryBadge> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                      child: Text(widget.tagText,
+                      child: Text(widget.tagText!,
                           style: defaultTextStyle, textAlign: TextAlign.center),
                     )
                   ])),

@@ -22,8 +22,8 @@ void main() {
       expect(find.text('Badge Content'), findsOneWidget);
       expect(find.text('21'), findsOneWidget);
       final widget = tester.widget(find.byKey(const Key('BADGE_container')));
-      final Container containerWidget = widget;
-      final BoxDecoration decoration = containerWidget.decoration;
+      final Container containerWidget = widget as Container;
+      final BoxDecoration decoration = containerWidget.decoration as BoxDecoration;
       expect(decoration.color, AppColor.deepWhite);
       expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(18)));
       expect(decoration.border, const Border.fromBorderSide(BorderSide(color: AppColor.semiGrey)));
@@ -43,8 +43,8 @@ void main() {
       expect(find.text('Badge Content'), findsOneWidget);
       expect(find.text('21'), findsOneWidget);
       final widget = tester.widget(find.byKey(const Key('BADGE_container')));
-      final Container containerWidget = widget;
-      final BoxDecoration decoration = containerWidget.decoration;
+      final Container containerWidget = widget as Container;
+      final BoxDecoration decoration = containerWidget.decoration as BoxDecoration;
       expect(decoration.color, AppColor.green);
       expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(18)));
       expect(decoration.border, const Border.fromBorderSide(BorderSide(color: AppColor.deepWhite)));

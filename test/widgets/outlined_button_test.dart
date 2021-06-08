@@ -14,7 +14,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) =>
+      buildButton: ({FutureCallback? onPressed}) =>
           ChgOutlinedButton(buttonText, onPressed: onPressed),
     );
 
@@ -23,7 +23,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => ChgOutlinedButton(buttonText, onPressed: () {}),
+      buildButton: () => ChgOutlinedButton(buttonText, onPressed: () {} as Future<void> Function()?),
     );
 
     testOnPressedProp(
@@ -31,7 +31,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) =>
+      buildButton: ({FutureCallback? onPressed}) =>
           ChgOutlinedButton(buttonText, onPressed: onPressed),
       underlyingMaterialButtonType: OutlineButton,
     );
@@ -41,8 +41,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool fullWidth}) =>
-          ChgOutlinedButton(buttonText, onPressed: () {}, fullWidth: fullWidth),
+      buildButton: ({bool? fullWidth}) =>
+          ChgOutlinedButton(buttonText, onPressed: () {} as Future<void> Function()?, fullWidth: fullWidth),
       underlyingMaterialButtonType: OutlineButton,
     );
 
@@ -51,8 +51,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool narrow}) =>
-          ChgOutlinedButton(buttonText, onPressed: () {}, narrow: narrow),
+      buildButton: ({bool? narrow}) =>
+          ChgOutlinedButton(buttonText, onPressed: () {} as Future<void> Function()?, narrow: narrow),
       underlyingMaterialButtonType: OutlineButton,
     );
 
@@ -61,8 +61,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({EdgeInsetsGeometry padding}) =>
-          ChgOutlinedButton(buttonText, onPressed: () {}, padding: padding),
+      buildButton: ({EdgeInsetsGeometry? padding}) =>
+          ChgOutlinedButton(buttonText, onPressed: () {} as Future<void> Function()?, padding: padding),
       underlyingMaterialButtonType: OutlineButton,
     );
 
@@ -71,9 +71,9 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool narrow, bool fullWidth}) => ChgOutlinedButton(
+      buildButton: ({bool? narrow, bool? fullWidth}) => ChgOutlinedButton(
             buttonText,
-            onPressed: () {},
+            onPressed: () {} as Future<void> Function()?,
             narrow: narrow,
             fullWidth: fullWidth,
           ),

@@ -5,8 +5,8 @@ import 'package:rxdart/rxdart.dart';
 
 void main() {
   group('Country Text Field', () {
-    BehaviorSubject<String> value;
-    MaterialApp widget;
+    BehaviorSubject<String>? value;
+    late MaterialApp widget;
 
     setUp(() {
       value = BehaviorSubject<String>();
@@ -14,7 +14,7 @@ void main() {
         home: Scaffold(
           body: ChgStreamCountryTextField(
             value: value,
-            onChanged: value.add,
+            onChanged: value!.add as void Function(dynamic)?,
             labelText: 'Field',
           ),
         ),
@@ -22,7 +22,7 @@ void main() {
     });
 
     tearDown(() {
-      value.close();
+      value!.close();
     });
 
     testWidgets('chooses country', (WidgetTester tester) async {
@@ -31,7 +31,7 @@ void main() {
       await tester.pump();
       await tester.tap(find.text('Afghanistan'));
       await tester.pumpAndSettle();
-      value.listen(expectAsync1((country) {
+      value!.listen(expectAsync1((country) {
         expect(country, 'Afghanistan');
       }));
     });
@@ -42,7 +42,7 @@ void main() {
         home: Scaffold(
           body: ChgStreamCountryTextField(
             value: value,
-            onChanged: value.add,
+            onChanged: value!.add as void Function(dynamic)?,
             labelText: 'Field',
             onlyEEACountries: true,
           ),
@@ -54,7 +54,7 @@ void main() {
       expect(find.text('Afghanistan'), findsNothing);
       await tester.tap(find.text('Austria'));
       await tester.pumpAndSettle();
-      value.listen(expectAsync1((country) {
+      value!.listen(expectAsync1((country) {
         expect(country, 'Austria');
       }));
     });
@@ -65,7 +65,7 @@ void main() {
         home: Scaffold(
           body: ChgStreamCountryTextField(
             value: value,
-            onChanged: value.add,
+            onChanged: value!.add as void Function(dynamic)?,
             labelText: 'Field',
             hideStrictJurisdictionCountries: true,
           ),

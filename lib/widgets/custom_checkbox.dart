@@ -4,16 +4,16 @@ import 'change_app_icons.dart';
 
 class CustomCheckbox extends StatelessWidget {
 
-  final bool isChecked;
+  final bool? isChecked;
   final ValueChanged<bool> onChanged;
-  final Widget label;
-  final String errorText;
+  final Widget? label;
+  final String? errorText;
 
 
   const CustomCheckbox({
-    @required this.isChecked,
-    @required this.onChanged,
-    Key key,
+    required this.isChecked,
+    required this.onChanged,
+    Key? key,
     this.label,
     this.errorText,
   }) : super(key: key);
@@ -33,7 +33,7 @@ class CustomCheckbox extends StatelessWidget {
       constraints: const BoxConstraints.tightFor(width: double.infinity),
       padding: const EdgeInsets.only(left: 35.0),
       child: Text(
-          errorText,
+          errorText!,
           style: TextStyle(color: theme.errorColor, fontSize: 12.0)
       ),
     );
@@ -41,7 +41,7 @@ class CustomCheckbox extends StatelessWidget {
 
   Widget buildCheckboxTile() {
     return GestureDetector (
-      onTap: (){onChanged(!isChecked);},
+      onTap: (){onChanged(!isChecked!);},
       child: Container(
         margin: const EdgeInsets.only(top: 14.00),
         child: new Row(
@@ -51,7 +51,7 @@ class CustomCheckbox extends StatelessWidget {
             new Container(
                 height: 24.0,
                 width: 24.0,
-                child: _icon(isChecked)
+                child: _icon(isChecked!)
             ),
             new Container(
                 margin: const EdgeInsets.only(left: 10.0, right: 10.00),

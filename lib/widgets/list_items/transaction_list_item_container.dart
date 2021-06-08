@@ -4,19 +4,19 @@ import 'package:flutter/material.dart';
 import '../../color.dart';
 
 class TransactionListItemContainer extends StatelessWidget {
-  final String title;
-  final List<Widget> transactionListItems;
+  final String? title;
+  final List<Widget>? transactionListItems;
 
   const TransactionListItemContainer({this.title, this.transactionListItems});
 
   @override
   Widget build(BuildContext context) {
-    if (transactionListItems.isEmpty) {
+    if (transactionListItems!.isEmpty) {
       return const SizedBox.shrink();
     }
     final widgets = <Widget>[];
-    widgets.add(_getTitle(title));
-    widgets.addAll(transactionListItems);
+    widgets.add(_getTitle(title!));
+    widgets.addAll(transactionListItems!);
 
     return Container(
         decoration: const BoxDecoration(

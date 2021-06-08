@@ -1,4 +1,5 @@
 import 'package:characters/characters.dart';
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -36,12 +37,12 @@ class OdometerBadge extends StatelessWidget {
   final List<UnstyledTextRun> textRuns;
   final Color baseColor;
   final Color bgColor;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final TextStyle textStyle;
-  final double minWidth;
+  final double? minWidth;
 
   OdometerBadge(this.textRuns, {
-    Key key,
+    Key? key,
     this.baseColor = Colors.white,
     this.bgColor = AppColor.green,
     this.onTap,
@@ -49,13 +50,13 @@ class OdometerBadge extends StatelessWidget {
     this.minWidth,
   }) : super(key: key);
 
-  Size odometerSize;
+  Size? odometerSize;
 
   @override
   Widget build(BuildContext context) {
     final textScaleFactor = MediaQuery.of(context).textScaleFactor;
     odometerSize ??= _getOdometerSize(textScaleFactor);
-    final badgeHeight = odometerSize.height + 2;
+    final badgeHeight = odometerSize!.height + 2;
 
     return Container(
         decoration: BoxDecoration(
@@ -136,7 +137,7 @@ class OdometerBadge extends StatelessWidget {
     final children = <Widget>[];
     var dotAdded = false;
     for (var i = 0; i < current.length; i++) {
-      int finalVal, initialVal;
+      int? finalVal, initialVal;
       if ('.' == current[i].key) {
         dotAdded = true;
       } else {
@@ -157,7 +158,7 @@ class OdometerBadge extends StatelessWidget {
   }
 
   bool _hasDot(List<MapEntry<String, TextStyle>> l) =>
-      l.firstWhere((en) => en.key == ('.'), orElse: () => null) != null;
+      l.firstWhereOrNull((en) => en.key == ('.')) != null;
 
   bool _equalDotIndex(List<MapEntry<String, TextStyle>> l1, List<MapEntry<String, TextStyle>> l2) {
     if (!_hasDot(l1) && !_hasDot(l2)) {
@@ -183,9 +184,9 @@ class OdometerBadge extends StatelessWidget {
       });
     });
 
-    if (minWidth != null && w < minWidth) {
-      w = minWidth;
+    if (minWidth != null && w < minWidth!) {
+      w = minWidth!;
     }
-    return Size(w, h + 2);
+    return Size(w!, h + 2);
   }
 }

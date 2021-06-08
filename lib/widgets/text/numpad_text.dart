@@ -6,16 +6,16 @@ typedef Callback = void Function(String value);
 
 class NumPadText extends StatefulWidget {
   final Callback onChange;
-  final int decimalPlaces;
-  final bool clearOnLongPress;
-  final int textLengthLimit;
+  final int? decimalPlaces;
+  final bool? clearOnLongPress;
+  final int? textLengthLimit;
   final String startNumPadText;
   final bool needNumPadTextUpdate;
   final bool noTextCache;
-  final Callback onKey;
+  final Callback? onKey;
 
   const NumPadText(
-      {@required this.onChange,
+      {required this.onChange,
       this.clearOnLongPress = false,
       this.textLengthLimit = 0,
       this.startNumPadText = '',
@@ -38,7 +38,7 @@ class _NumPadTextState extends State<NumPadText> {
   bool shouldRestrictDecimalPlaces(String result) {
     return widget.decimalPlaces != null &&
         result.contains('.') &&
-        result.substring(result.indexOf('.')).length > widget.decimalPlaces + 1;
+        result.substring(result.indexOf('.')).length > widget.decimalPlaces! + 1;
   }
 
   bool _checkPressedClear(String key) {
@@ -71,16 +71,16 @@ class _NumPadTextState extends State<NumPadText> {
     if (alreadyHasADot(key, _text)) {
       return false;
     }
-    if (widget.textLengthLimit > 0 && (_text + key).length > widget.textLengthLimit) {
+    if (widget.textLengthLimit! > 0 && (_text + key).length > widget.textLengthLimit!) {
       return false;
     }
     _text += key;
     return true;
   }
 
-  void onKeyTapped(String key) {
+  dynamic onKeyTapped(String key) {
     if (widget.noTextCache && widget.onKey != null) {
-      widget.onKey(key);
+      widget.onKey!(key);
       return;
     }
 
@@ -101,7 +101,7 @@ class _NumPadTextState extends State<NumPadText> {
   }
 
   void onKeyLongPressed(String key) {
-    if (key == 'C' && widget.clearOnLongPress) {
+    if (key == 'C' && widget.clearOnLongPress!) {
       _text = '';
       widget.onChange(_text);
     }
@@ -144,11 +144,11 @@ class _NumPadTextState extends State<NumPadText> {
 class KeyItem extends StatelessWidget {
   final Widget child;
   final String value;
-  final Function(String value) onKeyTap;
-  final Function(String value) onKeyLongPress;
+  final Function(String value)? onKeyTap;
+  final Function(String value)? onKeyLongPress;
 
   const KeyItem(
-      {@required this.child, this.value, this.onKeyTap, this.onKeyLongPress});
+      {required this.child, required this.value, this.onKeyTap, this.onKeyLongPress});
 
   @override
   Widget build(BuildContext context) {
@@ -157,8 +157,8 @@ class KeyItem extends StatelessWidget {
             radius: 30,
             splashColor: AppColor.brightGreen,
             highlightColor: Colors.white,
-            onLongPress: () => onKeyLongPress(value),
-            onTap: () => onKeyTap(value),
+            onLongPress: onKeyLongPress == null ? () => onKeyLongPress!(value) : (){},
+            onTap: () => onKeyTap!(value),
             child: Container(alignment: Alignment.center, child: child)));
   }
 }

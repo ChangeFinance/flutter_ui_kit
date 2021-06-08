@@ -10,11 +10,11 @@ class DropdownPropUpdater extends StatefulWidget {
   final List<String> options;
 
   DropdownPropUpdater({
-    @required this.props,
-    @required this.updateProp,
-    @required this.propKey,
-    @required this.options,
-    Key key,
+    required this.props,
+    required this.updateProp,
+    required this.propKey,
+    required this.options,
+    Key? key,
   })  : assert(props != null),
         assert(updateProp != null),
         assert(propKey != null),
@@ -28,7 +28,7 @@ class DropdownPropUpdater extends StatefulWidget {
 }
 
 class _DropdownPropUpdaterState extends State<DropdownPropUpdater> {
-  String dropdownValue;
+  String? dropdownValue;
 
   @override
   Widget build(BuildContext context){
@@ -38,7 +38,7 @@ class _DropdownPropUpdaterState extends State<DropdownPropUpdater> {
       title: Text(_getLabel()),
       trailing: DropdownButton(
         value: dropdownValue,
-        onChanged: (String newValue) {
+        onChanged: (String? newValue) {
           dropdownValue = newValue;
           widget.updateProp(widget.propKey, newValue);
         },

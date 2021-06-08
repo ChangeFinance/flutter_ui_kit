@@ -74,7 +74,7 @@ Widget _numPadStory() {
                                   autofocus: false,
                                   controller: _textEditingController,
                                   textAlign: TextAlign.left,
-                                  style: Theme.of(context).textTheme.headline3.copyWith(fontWeight: FontWeight.normal),
+                                  style: Theme.of(context).textTheme.headline3!.copyWith(fontWeight: FontWeight.normal),
                                   decoration:
                                       const InputDecoration.collapsed(hintText: '0', hintStyle: AppText.numPadTextStyle)))))),
               Container(
@@ -143,7 +143,7 @@ class _PasscodeNumpadStory extends StatelessWidget {
                                     autofocus: false,
                                     controller: _textEditingController,
                                     textAlign: TextAlign.left,
-                                    style: Theme.of(context).textTheme.headline3.copyWith(fontWeight: FontWeight.normal),
+                                    style: Theme.of(context).textTheme.headline3!.copyWith(fontWeight: FontWeight.normal),
                                     decoration: const InputDecoration.collapsed(
                                         hintText: '0', hintStyle: AppText.numPadTextStyle)))))),
                 Container(

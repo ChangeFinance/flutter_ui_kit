@@ -4,11 +4,11 @@ import 'package:flutter_ui_kit/widgets/text/label_text.dart';
 
 class SpannedLabelValuePair extends StatelessWidget {
   final String labelText;
-  final List<Widget> values;
-  final EdgeInsets padding;
+  final List<Widget>? values;
+  final EdgeInsets? padding;
 
   const SpannedLabelValuePair({
-    @required this.labelText,
+    required this.labelText,
     this.values,
     this.padding
   });
@@ -22,7 +22,7 @@ class SpannedLabelValuePair extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               LabelText(labelText),
-              _buildBody(context, values, padding: padding),
+              _buildBody(context, values!, padding: padding),
             ],
           ),
         ),
@@ -30,7 +30,7 @@ class SpannedLabelValuePair extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(BuildContext context, List<Widget> values, {EdgeInsets padding}) {
+  Widget _buildBody(BuildContext context, List<Widget> values, {EdgeInsets? padding}) {
     return Padding(
       padding: padding ?? const EdgeInsets.only(bottom: 16.0),
       child: Row(

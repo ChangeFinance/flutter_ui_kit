@@ -9,17 +9,17 @@ class CurrencyInfo {
   final String amount;
 
   CurrencyInfo({
-    @required this.symbol,
-    @required this.label,
+    required this.symbol,
+    required this.label,
     this.amount = '0',
     this.prefix = false
   });
 
   CurrencyInfo copyWith(
-      {String symbol,
-        String label,
-        bool prefix,
-        String amount
+      {String? symbol,
+        String? label,
+        bool? prefix,
+        String? amount
       }) {
     return CurrencyInfo(
         symbol: symbol ?? this.symbol,
@@ -33,13 +33,13 @@ class CurrencyInfo {
 class CurrencySwitcher extends StatefulWidget {
   final List<CurrencyInfo> currencyInfoList;
   final List<String> amounts;
-  final Function(int) onSwitch;
-  final bool onlySwitchedAmount;
+  final Function(int)? onSwitch;
+  final bool? onlySwitchedAmount;
   final bool hideSwitcher;
 
   CurrencySwitcher({
-        @required this.currencyInfoList,
-        @required this.amounts,
+        required this.currencyInfoList,
+        required this.amounts,
         this.onSwitch,
         this.onlySwitchedAmount = false,
         this.hideSwitcher = false,
@@ -54,7 +54,7 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
   List<String> get amounts => widget.amounts;
   List<CurrencyInfo> get infoList => widget.currencyInfoList;
 
-  Function(int) get onSwitch => widget.onSwitch;
+  Function(int)? get onSwitch => widget.onSwitch;
 
   int _currentIndex = 0;
 
@@ -122,8 +122,8 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: _currentIndex == 0 ? [first, const SizedBox(height: 6,), widget.onlySwitchedAmount ? Container() : second]
-          : [second, const SizedBox(height: 6,), widget.onlySwitchedAmount ? Container() : first],
+      children: _currentIndex == 0 ? [first, const SizedBox(height: 6,), widget.onlySwitchedAmount! ? Container() : second]
+          : [second, const SizedBox(height: 6,), widget.onlySwitchedAmount! ? Container() : first],
     );
   }
 
@@ -131,7 +131,7 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
     setState(() {
       _currentIndex = index;
       if (onSwitch != null) {
-        onSwitch(index);
+        onSwitch!(index);
       }
     });
   }

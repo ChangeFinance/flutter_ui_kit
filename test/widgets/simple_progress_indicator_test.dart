@@ -19,14 +19,14 @@ void main() {
       await tester.pumpWidget(wrapInMaterialApp(
         const SimpleProgressIndicator()
       ));
-      final SimpleProgressIndicator progressIndicator = tester.element(find.byType(SimpleProgressIndicator)).widget;
-      final SizedBox sizedBox = tester.element(find.byType(SizedBox)).widget;
-      final LinearProgressIndicator linearProgressIndicator = tester.element(find.byType(LinearProgressIndicator)).widget;
-      final ClipRRect clipRRect = tester.element(find.byType(ClipRRect)).widget;
+      final SimpleProgressIndicator progressIndicator = tester.element(find.byType(SimpleProgressIndicator)).widget as SimpleProgressIndicator;
+      final SizedBox sizedBox = tester.element(find.byType(SizedBox)).widget as SizedBox;
+      final LinearProgressIndicator linearProgressIndicator = tester.element(find.byType(LinearProgressIndicator)).widget as LinearProgressIndicator;
+      final ClipRRect clipRRect = tester.element(find.byType(ClipRRect)).widget as ClipRRect;
       expect(sizedBox.height, 6.0);
       expect(clipRRect.borderRadius, BorderRadius.circular(0.0));
       expect(linearProgressIndicator.value, 0.4);
-      expect(linearProgressIndicator.valueColor.value, const AlwaysStoppedAnimation<Color>(Colors.greenAccent).value);
+      expect(linearProgressIndicator.valueColor!.value, const AlwaysStoppedAnimation<Color>(Colors.greenAccent).value);
       expect(linearProgressIndicator.backgroundColor, Colors.white);
       expect(progressIndicator.percentageFilled, 40.0);
       expect(progressIndicator.roundedBorder, 0.0);
@@ -45,14 +45,14 @@ void main() {
           color: Colors.blue,
         )
       ));
-      final SimpleProgressIndicator progressIndicator = tester.element(find.byType(SimpleProgressIndicator)).widget;
-      final SizedBox sizedBox = tester.element(find.byType(SizedBox)).widget;
-      final LinearProgressIndicator linearProgressIndicator = tester.element(find.byType(LinearProgressIndicator)).widget;
-      final ClipRRect clipRRect = tester.element(find.byType(ClipRRect)).widget;
+      final SimpleProgressIndicator progressIndicator = tester.element(find.byType(SimpleProgressIndicator)).widget as SimpleProgressIndicator;
+      final SizedBox sizedBox = tester.element(find.byType(SizedBox)).widget as SizedBox;
+      final LinearProgressIndicator linearProgressIndicator = tester.element(find.byType(LinearProgressIndicator)).widget as LinearProgressIndicator;
+      final ClipRRect clipRRect = tester.element(find.byType(ClipRRect)).widget as ClipRRect;
       expect(sizedBox.height, 10.0);
       expect(clipRRect.borderRadius, BorderRadius.circular(10.0));
       expect(linearProgressIndicator.value, 0.9);
-      expect(linearProgressIndicator.valueColor.value, const AlwaysStoppedAnimation<Color>(Colors.blue).value);
+      expect(linearProgressIndicator.valueColor!.value, const AlwaysStoppedAnimation<Color>(Colors.blue).value);
       expect(linearProgressIndicator.backgroundColor, Colors.grey[200]);
       expect(progressIndicator.percentageFilled, 90.0);
       expect(progressIndicator.roundedBorder, 10.0);

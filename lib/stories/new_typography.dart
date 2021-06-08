@@ -143,12 +143,12 @@ class Typography extends StatelessWidget {
       letterSpacing: 0.02 / TextStyles.letterSpacingConstant,
     );
 
-    final sz = textStyle.fontSize.toInt();
-    final lh = (sz * textStyle.height).toInt();
+    final sz = textStyle.fontSize!.toInt();
+    final lh = (sz * textStyle.height!).toInt();
     final lhPct = ((lh / sz) * 100).ceil();
     final sp = ((textStyle.letterSpacing == null ?? textStyle.letterSpacing == 0.0
                 ? 0
-                : textStyle.letterSpacing * TextStyles.letterSpacingConstant) *
+                : textStyle.letterSpacing! * TextStyles.letterSpacingConstant) *
             100)
         .toInt();
     final fw = textStyle.fontWeight == FontWeight.w500 ? 'medium' : 'regular';

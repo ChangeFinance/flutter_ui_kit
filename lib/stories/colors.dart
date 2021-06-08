@@ -132,9 +132,9 @@ class AppColors extends StatelessWidget {
 }
 
 class ColorInfoBox extends StatelessWidget {
-  final Color color;
-  final String name;
-  final String usage;
+  final Color? color;
+  final String? name;
+  final String? usage;
 
   const ColorInfoBox({this.color, this.name, this.usage});
 
@@ -151,7 +151,7 @@ class ColorInfoBox extends StatelessWidget {
           ),
           Container(
             width: 100.0,
-            child: Text(name),
+            child: Text(name!),
           ),
           Container(
             width: 100.0,

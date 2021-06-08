@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Widget title;
-  final Widget leading;
+  final Widget? title;
+  final Widget? leading;
   final bool centerTitle;
   final bool implyLeading;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final List<Widget> actions;
 
   const MainAppBar({this.title, this.leading, this.centerTitle = false, this.implyLeading = true, this.backgroundColor, this.actions = const <Widget>[]});

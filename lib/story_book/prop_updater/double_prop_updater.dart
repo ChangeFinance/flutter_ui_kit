@@ -11,12 +11,12 @@ class DoublePropUpdater extends StatelessWidget {
   final double max;
 
   DoublePropUpdater({
-    @required this.props,
-    @required this.updateProp,
-    @required this.propKey,
-    @required this.min,
-    @required this.max,
-    Key key,
+    required this.props,
+    required this.updateProp,
+    required this.propKey,
+    required this.min,
+    required this.max,
+    Key? key,
   })  : assert(props != null),
         assert(updateProp != null),
         assert(propKey != null),

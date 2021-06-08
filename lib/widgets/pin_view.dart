@@ -5,18 +5,18 @@ import '../color.dart';
 import '../text.dart';
 
 class PinView extends StatelessWidget {
-  final int length;
-  final String text;
-  final bool displayText;
-  final bool error;
+  final int? length;
+  final String? text;
+  final bool? displayText;
+  final bool? error;
 
   PinView(this.length, this.text, {this.displayText = false, this.error = false});
 
   @override
   Widget build(BuildContext context) {
-    final content = displayText
-        ? List<Widget>.generate(length, (index) => PinText(character: index <= text.runes.length - 1 ? String.fromCharCode(text.runes.elementAt(index)): '', error: error))
-        : List<Widget>.generate(length, (index) => PinDot(active: index <= text.runes.length - 1));
+    final content = displayText!
+        ? List<Widget>.generate(length!, (index) => PinText(character: index <= text!.runes.length - 1 ? String.fromCharCode(text!.runes.elementAt(index)): '', error: error))
+        : List<Widget>.generate(length!, (index) => PinDot(active: index <= text!.runes.length - 1));
     return Padding(
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: Row(
@@ -33,7 +33,7 @@ class PinView extends StatelessWidget {
 class PinDot extends StatelessWidget {
   final bool active;
 
-  const PinDot({@required this.active});
+  const PinDot({required this.active});
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +48,13 @@ class PinDot extends StatelessWidget {
 @visibleForTesting
 class PinText extends StatelessWidget {
   final String character;
-  final bool error;
+  final bool? error;
 
-  const PinText({@required this.character, @required this.error});
+  const PinText({required this.character, required this.error});
 
   @override
   Widget build(BuildContext context) {
-    final underlineColor = error
+    final underlineColor = error!
         ? AppColors.warning
         : character == '' ? AppColors.primaryColor : AppColors.primaryColorDarker;
 

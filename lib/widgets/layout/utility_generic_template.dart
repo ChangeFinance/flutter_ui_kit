@@ -40,7 +40,7 @@ class UtilityGenericTemplate extends StatelessWidget {
               flex: 1,
               child: Container(
                 constraints: shouldRestrictWidth
-                    ? BoxConstraints(maxWidth: picture.width)
+                    ? BoxConstraints(maxWidth: picture.width!)
                     : const BoxConstraints(),
                 child: Column(
                   children: <Widget>[

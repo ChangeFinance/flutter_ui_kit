@@ -18,7 +18,7 @@ void main() {
       );
       final action = ChgFilledButton(
         'Button',
-        onPressed: () {},
+        onPressed: () {} as Future<void> Function()?,
         fullWidth: true,
         narrow: false,
       );

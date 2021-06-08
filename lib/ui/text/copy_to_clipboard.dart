@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import '../colors.dart';
 
 class ChgCopyToClipboard extends StatelessWidget {
-  final String value;
-  final Function onTapCallback;
+  final String? value;
+  final Function? onTapCallback;
 
   const ChgCopyToClipboard({
     this.value,
@@ -25,7 +25,7 @@ class ChgCopyToClipboard extends StatelessWidget {
             )),
         onTap: () {
           if (onTapCallback != null) {
-            onTapCallback();
+            onTapCallback!();
           }
           Clipboard.setData(
             new ClipboardData(text: value),

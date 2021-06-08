@@ -5,7 +5,7 @@ class ChgAmountText extends StatelessWidget {
   final EdgeInsets padding;
 
   const ChgAmountText({
-    @required this.data,
+    required this.data,
     this.padding = const EdgeInsets.all(6.0),
   });
 
@@ -17,7 +17,7 @@ class ChgAmountText extends StatelessWidget {
       padding: padding,
       child: new Text(
         data,
-        style: theme.bodyText2.copyWith(
+        style: theme.bodyText2!.copyWith(
           fontWeight: FontWeight.w500,
           fontSize: 16.0,
         ),

@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../colors.dart';
 
 class ChgProgressBar extends StatelessWidget {
-  final Key progressKey;
+  final Key? progressKey;
   final double progress;
 
   const ChgProgressBar({
-    @required this.progress,
+    required this.progress,
     this.progressKey,
   }) : assert(progress >= 0 && progress <= 1);
 
