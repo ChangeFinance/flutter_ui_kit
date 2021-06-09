@@ -9,7 +9,7 @@ import '../text_styles.dart';
 enum CurrencyDisplaySize { small, large }
 
 class CurrencyDisplay extends StatelessWidget {
-  final bool? displayAsPrefix;
+  final bool displayAsPrefix;
   final String? currencySymbol;
   final String? amount;
   final CurrencyDisplaySize size;

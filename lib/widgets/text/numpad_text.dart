@@ -85,7 +85,7 @@ class _NumPadTextState extends State<NumPadText> {
     }
 
     if (widget.needNumPadTextUpdate) {
-      _text = widget.startNumPadText;
+      _text = widget.startNumPadText ?? '';
     }
 
     if (!_checkPressedClear(key)) {

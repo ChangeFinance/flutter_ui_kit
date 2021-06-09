@@ -10,7 +10,7 @@ class SwipeConfirmation extends StatelessWidget {
   final String? labelText;
   final String? labelTitle;
   final Widget? labelIcon;
-  final String primaryButtonText;
+  final String? primaryButtonText;
   final Function? primaryButtonAction;
   final bool primaryButtonEnabled;
   final String? secondaryButtonText;
@@ -88,7 +88,7 @@ class SwipeConfirmation extends StatelessWidget {
     if (primaryButtonText != null && primaryButtonText != '') {
       buttons.add(Opacity(
         opacity: primaryButtonEnabled ? 1.0 : 0.5,
-        child: ChgOutlinedButton(primaryButtonText,
+        child: ChgOutlinedButton(primaryButtonText!,
             onPressed: primaryButtonEnabled ? primaryButtonAction as Future<void> Function()? : null, fullWidth: true, narrow: false, alt: true),
       ));
     }
