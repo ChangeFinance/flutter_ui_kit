@@ -37,7 +37,7 @@ void testOnPressedProp({
   Type? underlyingMaterialButtonType,
 }) {
   group('onPressed prop', () {
-    Future? future;
+    late Future<void> future;
     late Completer completer;
     late FutureCallback onPressed;
 
@@ -45,7 +45,7 @@ void testOnPressedProp({
       completer = Completer<void>();
       future = completer.future;
       onPressed = FutureCallbackMock().call;
-      when(onPressed()).thenAnswer(((_) => future!) as Future<void> Function(Invocation));
+      when(onPressed()).thenAnswer((_) => future);
     });
 
     testWidgets!('if onPressed is null should pass null to unrelying button',

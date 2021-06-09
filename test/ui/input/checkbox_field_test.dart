@@ -6,16 +6,16 @@ import 'package:rxdart/rxdart.dart';
 
 void main() {
   group('StreamCheckboxField', () {
-    BehaviorSubject<bool>? value;
+    late BehaviorSubject<bool?> value;
     late MaterialApp widget;
 
     setUp(() {
-      value = BehaviorSubject<bool>();
+      value = BehaviorSubject<bool?>();
       widget = MaterialApp(
         home: Scaffold(
           body: ChgStreamCheckboxField(
             value: value,
-            onChanged: value!.add,
+            onChanged: value.add,
             label: const Text('Field'),
           ),
         ),
@@ -23,7 +23,7 @@ void main() {
     });
 
     tearDown(() {
-      value!.close();
+      value.close();
     });
 
     testWidgets('renders label', (WidgetTester tester) async {
@@ -41,7 +41,7 @@ void main() {
       const errorText = 'Error';
       await tester.pumpWidget(widget);
       expect(find.text(errorText), findsNothing);
-      value!.addError(errorText);
+      value.addError(errorText);
       await tester.pumpAndSettle();
       expect(find.text(errorText), findsOneWidget);
     });

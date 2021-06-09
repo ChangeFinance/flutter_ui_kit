@@ -27,9 +27,9 @@ void main() {
         home: Scaffold(body: ChgCopyToClipboard(value: '123456', onTapCallback: onTapCallback.call)),
       ));
       await tester.tap(find.byType(Icon));
-      expectMethodCall('Clipboard.setData', (arguments: <String, dynamic>{
+      expectMethodCall('Clipboard.setData', arguments: <String, Object>{
         'text': '123456',
-      }) as Map<String, Object>?);
+      });
       verify(onTapCallback.call());
     });
   });

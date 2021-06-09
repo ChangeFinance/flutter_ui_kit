@@ -36,8 +36,8 @@ class MethodCallStubbing {
   }
 
   bool matches(MethodCall methodCall) {
-    return nameMatcher.matches(methodCall.method, null) &&
-        argMatcher.matches(methodCall.arguments, null);
+    return nameMatcher.matches(methodCall.method, <dynamic, dynamic>{}) &&
+        argMatcher.matches(methodCall.arguments, <dynamic, dynamic>{});
   }
 }
 
@@ -48,7 +48,7 @@ MethodCallStubbing whenMethodCall(Matcher nameMatcher, Matcher argMatcher) {
 void expectMethodCall(String name, {Map<String, Object>? arguments}) {
   final methodCall = _log.firstWhere((call) => call.method == name, orElse: () {
     fail('No call found for $name, all calls $_log');
-  } as MethodCall Function()?);
+  });
 
   expect(
     methodCall,

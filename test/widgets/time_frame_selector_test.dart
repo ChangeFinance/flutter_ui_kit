@@ -25,14 +25,16 @@ void main() {
       expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(ChgFilledButton).evaluate().length, 1);
       final initFilledButton = tester.widget(find.byType(ChgFilledButton));
-      final ChgFilledButton initContainerWidget = initFilledButton as ChgFilledButton;
+      // ignore: avoid_as
+      final initContainerWidget = initFilledButton as ChgFilledButton;
       expect(initContainerWidget.text, '1D');
       await tester.tap(find.text('1Y'));
       await tester.pump();
       expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(ChgFilledButton).evaluate().length, 1);
       final widget = tester.widget(find.byType(ChgFilledButton));
-      final ChgFilledButton containerWidget = widget as ChgFilledButton;
+      // ignore: avoid_as
+      final containerWidget = widget as ChgFilledButton;
       expect(containerWidget.text, '1Y');
     });
 

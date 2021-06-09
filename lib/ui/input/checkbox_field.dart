@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChgStreamCheckboxField extends StatelessWidget {
-  final Stream<bool>? value;
+  final Stream<bool?>? value;
   final ValueChanged<bool?>? onChanged;
   final Widget? label;
   final double? height;
@@ -10,12 +10,12 @@ class ChgStreamCheckboxField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<bool>(
+    return StreamBuilder<bool?>(
       initialData: false,
       stream: value,
       builder: (context, snapshot) {
         return CheckboxField(
-          value: snapshot.data!,
+          value: snapshot.data ?? false,
           onChanged: onChanged,
           label: label,
           boxHeight: height,

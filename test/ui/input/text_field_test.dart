@@ -27,7 +27,7 @@ void main() {
     });
 
     tearDown(() {
-      value!.close();
+      value?.close();
     });
 
     testWidgets('renders TextField', (WidgetTester tester) async {
@@ -68,10 +68,12 @@ void main() {
         home: Scaffold(
           body: ChgStreamTextField(
             value: value,
-            onChanged: value!.add as void Function(dynamic)?,
+            onChanged: (dynamic val){ if (val is String ) {
+              value!.add(val);
+            }},
             focusNode: FocusNode(),
             labelText: 'Field',
-            onBlur: onBlurMockFunction as void Function()?,
+            onBlur: onBlurMockFunction,
           ),
         ),
       );
