@@ -14,7 +14,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => ChgFilledButton(buttonText, onPressed: () {} as Future<void> Function()?),
+      buildButton: () => ChgFilledButton(buttonText, onPressed: () async {}),
     );
 
     testOnPressedProp(

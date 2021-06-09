@@ -82,7 +82,7 @@ class ChgStreamTextFieldState extends State<ChgStreamTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<String>(
+    return StreamBuilder<String?>(
         stream: widget.value,
         builder: (context, snapshot) {
           if (snapshot.data != _controller!.text && !snapshot.hasError && snapshot.data != null) {

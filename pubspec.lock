@@ -11,10 +11,12 @@ packages:
   alpha2_countries:
     dependency: "direct main"
     description:
-      name: alpha2_countries
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.5"
+      path: "."
+      ref: flutter-v2
+      resolved-ref: "44890815ede4cbde8e85b907e8923e2ec6a2ee22"
+      url: "git://github.com/ChangeFinance/alpha2_countries.git"
+    source: git
+    version: "2.0.0"
   analyzer:
     dependency: transitive
     description:

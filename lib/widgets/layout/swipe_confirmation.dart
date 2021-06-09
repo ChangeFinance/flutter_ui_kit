@@ -93,7 +93,7 @@ class SwipeConfirmation extends StatelessWidget {
       ));
     }
     if (secondaryButtonText != null && secondaryButtonText != '') {
-      buttons.add(ChgTextButton(secondaryButtonText!, onPressed: secondaryButtonAction as Future<void> Function()?, alt: true));
+      buttons.add(CngTextButton(secondaryButtonText!, onPressed: secondaryButtonAction as Future<void> Function()?, alt: true));
     }
 
     return Positioned(

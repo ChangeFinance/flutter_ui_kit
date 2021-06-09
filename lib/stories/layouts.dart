@@ -361,7 +361,7 @@ class Layouts extends StatelessWidget {
                               fullWidth: true,
                               narrow: false,
                             ),
-                            ChgTextButton(
+                            CngTextButton(
                               'I\'m not CNG owner',
                               onPressed: () async {
                                 print('Test');
