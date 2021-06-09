@@ -10,7 +10,7 @@ class UtilityGenericTemplate extends StatelessWidget {
   final SvgPicture picture;
   final String heading;
   final Widget body;
-  final Widget action;
+  final Widget? action;
   final bool shouldRestrictWidth;
   final bool shouldImplyLeading;
 
@@ -59,7 +59,7 @@ class UtilityGenericTemplate extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: action,
+              child: action ?? SizedBox.shrink(),
             )
           ],
         ),

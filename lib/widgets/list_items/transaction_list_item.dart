@@ -20,11 +20,11 @@ class TransactionListItem extends StatelessWidget {
   static const minRowWidth = 320.0;
 
   const TransactionListItem(
-      {required this.onPressed,
-        required this.amount,
+      { required this.amount,
         required this.transactionIcon,
         required this.title,
         required this.subTitle,
+        this.onPressed,
         this.secondAmount,
         this.amountDecoration = AmountDecoration.NO,
         this.secondAmountDecoration = AmountDecoration.NO,

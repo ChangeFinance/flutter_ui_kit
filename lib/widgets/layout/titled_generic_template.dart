@@ -12,7 +12,7 @@ class TitledGenericTemplate extends StatelessWidget {
   final Widget? title;
   final SvgPicture? picture;
   final Widget child;
-  final Widget formSubmitAction;
+  final Widget? formSubmitAction;
 
   const TitledGenericTemplate(this.child, this.formSubmitAction, {this.leadingWidget, this.tailingWidget, this.title, this.picture,})
       : super();
@@ -38,7 +38,7 @@ class TitledGenericTemplate extends StatelessWidget {
                 children: scrollChildren))),
             Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: formSubmitAction,
+                    child: formSubmitAction ?? const SizedBox.shrink(),
                   )
           ],
         ),

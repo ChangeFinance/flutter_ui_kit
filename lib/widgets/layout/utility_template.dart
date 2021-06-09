@@ -7,7 +7,7 @@ import 'package:flutter_ui_kit/widgets/layout/utility_generic_template.dart';
 
 class UtilityTemplate extends UtilityGenericTemplate {
 
-  UtilityTemplate(String heading, String bodyAsText, SvgPicture picture, Widget action,
+  UtilityTemplate(String heading, String bodyAsText, SvgPicture picture, Widget? action,
       {bool restrictWidth = true, bool implyLeading = false})
       : super(
               heading,

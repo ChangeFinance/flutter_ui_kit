@@ -14,7 +14,7 @@ class ChgFilledButton extends StatefulWidget {
 
   ChgFilledButton(
     this.text, {
-    required this.onPressed,
+    this.onPressed,
     this.fullWidth = false,
     this.narrow = false,
     this.padding,

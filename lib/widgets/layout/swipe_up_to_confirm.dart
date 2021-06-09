@@ -18,10 +18,10 @@ class SwipeUpToConfirmLayout extends StatefulWidget {
   final String? completeScreenLabelText;
   final Widget? completeScreenLabelIcon;
   final SwipeMode swipeMode;
-  final String completionPrimaryButtonText;
+  final String? completionPrimaryButtonText;
   final Function? completionPrimaryButtonAction;
   final bool completionPrimaryButtonEnabled;
-  final String completionSecondaryButtonText;
+  final String? completionSecondaryButtonText;
   final Function? completionSecondaryButtonAction;
   final bool errorState;
   final Function? onBack;
