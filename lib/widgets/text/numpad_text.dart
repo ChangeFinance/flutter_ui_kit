@@ -5,11 +5,11 @@ import 'package:flutter_ui_kit/text.dart';
 typedef Callback = void Function(String value);
 
 class NumPadText extends StatefulWidget {
-  final Callback onChange;
+  final Callback? onChange;
   final int? decimalPlaces;
   final bool? clearOnLongPress;
   final int? textLengthLimit;
-  final String startNumPadText;
+  final String? startNumPadText;
   final bool needNumPadTextUpdate;
   final bool noTextCache;
   final Callback? onKey;
@@ -97,13 +97,17 @@ class _NumPadTextState extends State<NumPadText> {
     if (shouldRestrictDecimalPlaces(_text)) {
       _text = _text.substring(0, _text.length - 1);
     }
-    widget.onChange(_text);
+    if (widget.onChange != null) {
+      widget.onChange!(_text);
+    }
   }
 
   void onKeyLongPressed(String key) {
     if (key == 'C' && widget.clearOnLongPress!) {
       _text = '';
-      widget.onChange(_text);
+      if (widget.onChange != null) {
+        widget.onChange!(_text);
+      }
     }
   }
 

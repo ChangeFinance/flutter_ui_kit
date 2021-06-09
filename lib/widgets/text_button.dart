@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'button_common.dart';
 
-class CngTextButton extends StatefulWidget {
+class ChgTextButton extends StatefulWidget {
   final String text;
   final FutureCallback? onPressed;
   final EdgeInsetsGeometry? padding;
   final TextStyle? textStyle;
   final bool? alt;
 
-  CngTextButton(
+  ChgTextButton(
     this.text, {
     this.onPressed,
     this.padding,
@@ -21,10 +21,10 @@ class CngTextButton extends StatefulWidget {
         super(key: key);
 
   @override
-  _CngTextButtonState createState() => _CngTextButtonState();
+  _ChgTextButtonState createState() => _ChgTextButtonState();
 }
 
-class _CngTextButtonState extends State<CngTextButton> with ButtonMixin {
+class _ChgTextButtonState extends State<ChgTextButton> with ButtonMixin {
   bool _enabled = true;
   bool _pressing = false;
 

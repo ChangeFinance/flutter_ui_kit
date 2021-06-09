@@ -15,7 +15,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({FutureCallback? onPressed}) =>
-          CngTextButton(buttonText, onPressed: onPressed),
+          ChgTextButton(buttonText, onPressed: onPressed),
     );
 
     testTextProp(
@@ -23,7 +23,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => CngTextButton(buttonText, onPressed: () {} as Future<void> Function()?),
+      buildButton: () => ChgTextButton(buttonText, onPressed: () {} as Future<void> Function()?),
     );
 
     testOnPressedProp(
@@ -32,7 +32,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({FutureCallback? onPressed}) =>
-          CngTextButton(buttonText, onPressed: onPressed),
+          ChgTextButton(buttonText, onPressed: onPressed),
       underlyingMaterialButtonType: FlatButton,
     );
 
@@ -42,7 +42,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({EdgeInsetsGeometry? padding}) =>
-          CngTextButton(buttonText, onPressed: () {} as Future<void> Function()?, padding: padding),
+          ChgTextButton(buttonText, onPressed: () {} as Future<void> Function()?, padding: padding),
       underlyingMaterialButtonType: FlatButton,
     );
 
@@ -51,7 +51,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({TextStyle? textStyle}) => CngTextButton(
+      buildButton: ({TextStyle? textStyle}) => ChgTextButton(
         buttonText,
         textStyle: textStyle,
         onPressed: () {} as Future<void> Function()?

@@ -109,11 +109,11 @@ class AppCards extends StatelessWidget {
                   data: ButtonBarTheme.of(context),
                   child: ButtonBar(
                     children: <Widget>[
-                      CngTextButton(
+                      ChgTextButton(
                         'BUY TICKETS',
                         onPressed: () async {},
                       ),
-                      CngTextButton(
+                      ChgTextButton(
                         'LISTEN',
                         onPressed: () async {},
                       ),

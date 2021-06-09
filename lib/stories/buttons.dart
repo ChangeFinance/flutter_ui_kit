@@ -254,7 +254,7 @@ class Buttons extends StatelessWidget {
           return Container(
             width: double.infinity,
             color: props['alt'] ? AppColor.green : Colors.white,
-            child: CngTextButton(
+            child: ChgTextButton(
               props['text'],
               onPressed: onPressed as Future<void> Function()?,
               alt: props['alt'],

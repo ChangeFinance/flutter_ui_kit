@@ -78,7 +78,7 @@ class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
         textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite),
         color: widget.enabledTimeFrameColor,
         padding: const EdgeInsets.all(0.0));
-    final uncheckedButton = CngTextButton(
+    final uncheckedButton = ChgTextButton(
       TimeFrameHelper.getValue(selected),
       onPressed: onPressed,
       textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepBlack),
@@ -91,7 +91,7 @@ class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
   }
 
   Expanded _buildDisableItem(TimeFrame selected) {
-    final uncheckedButton = CngTextButton(TimeFrameHelper.getValue(selected),
+    final uncheckedButton = ChgTextButton(TimeFrameHelper.getValue(selected),
         textStyle: AppText.graphTextStyle.copyWith(color: AppColor.semiGrey), padding: const EdgeInsets.all(0.0));
 
     return Expanded(flex: 1, child: Container(height: 22.0, child: uncheckedButton));

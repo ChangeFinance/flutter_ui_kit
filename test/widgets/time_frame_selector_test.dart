@@ -22,7 +22,7 @@ void main() {
       await tester.pumpWidget(wrapInMaterialApp(
           TimeFrameSelector(onChange: onChangeTextField)
       ));
-      expect(find.byType(CngTextButton).evaluate().length, 5);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(ChgFilledButton).evaluate().length, 1);
       final initFilledButton = tester.widget(find.byType(ChgFilledButton));
       // ignore: avoid_as
@@ -30,7 +30,7 @@ void main() {
       expect(initContainerWidget.text, '1D');
       await tester.tap(find.text('1Y'));
       await tester.pump();
-      expect(find.byType(CngTextButton).evaluate().length, 5);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(ChgFilledButton).evaluate().length, 1);
       final widget = tester.widget(find.byType(ChgFilledButton));
       // ignore: avoid_as
@@ -47,7 +47,7 @@ void main() {
           TimeFrameSelector(key: timeFrameSelectorKey, onChange: onChangeTextField)
       ));
       expect(find.byType(TimeFrameSelector), findsOneWidget);
-      expect(find.byType(CngTextButton).evaluate().length, 5);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.byType(ChgFilledButton).evaluate().length, 1);
       await tester.tap(find.text('1Y'));
       await tester.pump();
@@ -63,7 +63,7 @@ void main() {
           TimeFrameSelector(maxTimeFrame: TimeFrame.FIVE_YEARS, onChange: onChangeTextField)
       ));
       expect(find.byType(TimeFrameSelector), findsOneWidget);
-      expect(find.byType(CngTextButton).evaluate().length, 5);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.text('1D'), findsOneWidget);
       expect(find.text('1W'), findsOneWidget);
       expect(find.text('1M'), findsOneWidget);
