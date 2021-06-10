@@ -54,7 +54,7 @@ class AnimatedAssetRate extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return StreamBuilder<String>(
-      stream: rateStream?.map(_formatRate)?.distinct()?.where((r) => r != _lastFormattedRate),
+      stream: rateStream.map(_formatRate).distinct().where((r) => r != _lastFormattedRate),
       builder: (ctx, snapshot) {
         if (!snapshot.hasData) {
           return Container();

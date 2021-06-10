@@ -97,7 +97,9 @@ class _TwoStatesButtonState extends State<TwoStatesButton> with ButtonMixin {
                 setEnabled: _setEnabled, onPressed: widget.onPressed!);
           } else {
             _startTimer();
-            widget.onButtonCallback!();
+            if (widget.onButtonCallback != null) {
+              widget.onButtonCallback!();
+            }
           }
         },
         padding: widget.padding ?? getPadding(narrow: widget.narrow!),

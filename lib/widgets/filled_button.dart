@@ -21,8 +21,7 @@ class ChgFilledButton extends StatefulWidget {
     this.textStyle,
     this.color,
     Key? key,
-  })  : assert(text != null),
-        super(key: key);
+  })  : super(key: key);
 
   @override
   _ChgFilledButtonState createState() => _ChgFilledButtonState();

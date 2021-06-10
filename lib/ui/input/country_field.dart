@@ -41,7 +41,7 @@ class ChgStreamCountryTextFieldState extends State<ChgStreamCountryTextField> {
 
   void _onFocus() async {
     if (_focus.hasFocus) {
-      final countries = _checkStrictJurisdictionCountries(_checkOnlyEeaCountries(Map<String, String>.fromIterable(Countries().countries)));
+      final countries = _checkStrictJurisdictionCountries(_checkOnlyEeaCountries(Countries().countryMap));
 
       final country = await showDialog<String>(
           context: context,
