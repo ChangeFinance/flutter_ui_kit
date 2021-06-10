@@ -6,14 +6,14 @@ import 'package:rxdart/rxdart.dart';
 
 void main() {
   group('StreamCheckboxField', () {
-    BehaviorSubject<bool> value;
-    MaterialApp widget;
+    late BehaviorSubject<bool?> value;
+    late MaterialApp widget;
 
     setUp(() {
-      value = BehaviorSubject<bool>();
+      value = BehaviorSubject<bool?>();
       widget = MaterialApp(
         home: Scaffold(
-          body: StreamCheckboxField(
+          body: ChgStreamCheckboxField(
             value: value,
             onChanged: value.add,
             label: const Text('Field'),

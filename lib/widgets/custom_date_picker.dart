@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
+import 'package:flutter_cupertino_datetime_picker/flutter_cupertino_datetime_picker.dart';
 
 typedef Callback = void Function(DateTime value);
 
@@ -9,10 +9,10 @@ class CustomDatePicker extends StatelessWidget {
   final _monthCtrl = TextEditingController();
   final _yearCtrl = TextEditingController();
   final Callback onChange;
-  final DateTime dateTime;
-  final Callback onConfirm;
+  final DateTime? dateTime;
+  final Callback? onConfirm;
 
-  CustomDatePicker({@required this.onChange, this.dateTime, this.onConfirm});
+  CustomDatePicker({required this.onChange, this.dateTime, this.onConfirm});
 
   @override
   Widget build(BuildContext context) {
@@ -103,17 +103,19 @@ class CustomDatePicker extends StatelessWidget {
       onConfirm: (_dateTime, List<int> index) {
         updateState(_dateTime);
         onChange(_dateTime);
-        onConfirm(_dateTime);
+        if (onConfirm != null) {
+          onConfirm!(_dateTime);
+        }
       },
     );
   }
 
-  void updateState(DateTime dateTime) {
+  void updateState(DateTime? dateTime) {
     _dayCtrl.text =
-        dateTime != null ? dateTime.day.toString().padLeft(2, '0') : dateTime;
+        dateTime != null ? dateTime.day.toString().padLeft(2, '0') : dateTime as String;
     _monthCtrl.text =
-        dateTime != null ? dateTime.month.toString().padLeft(2, '0') : dateTime;
-    _yearCtrl.text = dateTime != null ? dateTime.year.toString() : dateTime;
+        dateTime != null ? dateTime.month.toString().padLeft(2, '0') : dateTime as String;
+    _yearCtrl.text = dateTime != null ? dateTime.year.toString() : dateTime as String;
   }
 }
 

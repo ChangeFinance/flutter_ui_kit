@@ -10,15 +10,12 @@ class IntPropUpdater extends StatefulWidget {
   final String hintText;
 
   IntPropUpdater({
-    @required this.props,
-    @required this.updateProp,
-    @required this.propKey,
+    required this.props,
+    required this.updateProp,
+    required this.propKey,
     this.hintText = '',
-    Key key,
-  })  : assert(props != null),
-        assert(updateProp != null),
-        assert(propKey != null),
-        assert(props[propKey] != null),
+    Key? key,
+  })  : assert(props[propKey] != null),
         assert(props[propKey] is int),
         super(key: key);
 
@@ -27,12 +24,12 @@ class IntPropUpdater extends StatefulWidget {
 }
 
 class _IntPropUpdaterState extends State<IntPropUpdater> {
-  TextEditingController _controller;
+  TextEditingController? _controller;
 
   @override
   void initState() {
     _controller = TextEditingController();
-    _controller.text = widget.props[widget.propKey].toString();
+    _controller!.text = widget.props[widget.propKey].toString();
     super.initState();
   }
 

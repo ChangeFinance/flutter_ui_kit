@@ -50,9 +50,9 @@ class AppCards extends StatelessWidget {
         widgetBuilder: (context, props) {
           final double elevation = props['elevation'];
           final double margin = props['margin'];
-          final double borderRadius = props['borderRadius'];
+          final double? borderRadius = props['borderRadius'];
 
-          return AppCard(
+          return ChgAppCard(
             color: AppColor.deepWhite,
             elevation: elevation.toInt(),
             margin: EdgeInsets.all(margin),
@@ -90,9 +90,9 @@ class AppCards extends StatelessWidget {
         widgetBuilder: (context, props) {
           final double elevation = props['elevation'];
           final double margin = props['margin'];
-          final double borderRadius = props['borderRadius'];
+          final double? borderRadius = props['borderRadius'];
 
-          return AppCard(
+          return ChgAppCard(
             color: AppColor.deepWhite,
             elevation: elevation.toInt(),
             margin: EdgeInsets.all(margin),
@@ -106,15 +106,16 @@ class AppCards extends StatelessWidget {
                   subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
                 ),
                 ButtonBarTheme(
+                  data: ButtonBarTheme.of(context),
                   child: ButtonBar(
                     children: <Widget>[
-                      TextButton(
+                      ChgTextButton(
                         'BUY TICKETS',
-                        onPressed: () {},
+                        onPressed: () async {},
                       ),
-                      TextButton(
+                      ChgTextButton(
                         'LISTEN',
-                        onPressed: () {},
+                        onPressed: () async {},
                       ),
                     ],
                   ),
@@ -152,10 +153,10 @@ class AppCards extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          final String source = props['source'];
-          final int time = props['time'];
-          final String title = props['title'];
-          final String image = props['image'];
+          final String? source = props['source'];
+          final int? time = props['time'];
+          final String? title = props['title'];
+          final String? image = props['image'];
 
           return NewsCard(title: title, image: image, source: source, time: time);
         },

@@ -4,23 +4,23 @@ import 'package:flutter_ui_kit/widgets/outlined_button.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
 
 class SwipeConfirmation extends StatelessWidget {
-  final Animation<double> labelTranslation;
-  final Animation<double> buttonTranslation;
-  final Animation<double> opacity;
-  final String labelText;
-  final String labelTitle;
-  final Widget labelIcon;
-  final String primaryButtonText;
-  final Function primaryButtonAction;
+  final Animation<double>? labelTranslation;
+  final Animation<double>? buttonTranslation;
+  final Animation<double>? opacity;
+  final String? labelText;
+  final String? labelTitle;
+  final Widget? labelIcon;
+  final String? primaryButtonText;
+  final Function? primaryButtonAction;
   final bool primaryButtonEnabled;
-  final String secondaryButtonText;
-  final Function secondaryButtonAction;
+  final String? secondaryButtonText;
+  final Function? secondaryButtonAction;
 
   const SwipeConfirmation({
-    @required this.labelTranslation,
-    @required this.buttonTranslation,
-    @required this.opacity,
-    Key key,
+    required this.labelTranslation,
+    required this.buttonTranslation,
+    required this.opacity,
+    Key? key,
     this.labelText,
     this.labelTitle,
     this.labelIcon,
@@ -37,7 +37,7 @@ class SwipeConfirmation extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       child: Opacity(
-        opacity: opacity.value,
+        opacity: opacity!.value,
         child: Stack(
           children: <Widget>[
             _buildLabels(),
@@ -57,7 +57,7 @@ class SwipeConfirmation extends StatelessWidget {
           labelIcon ?? Container(),
           const SizedBox(height: 20),
           Transform.translate(
-            offset: Offset(0, labelTranslation.value),
+            offset: Offset(0, labelTranslation!.value),
             child: Column(
               children: <Widget>[
                 _labelTitle(),
@@ -72,13 +72,13 @@ class SwipeConfirmation extends StatelessWidget {
   }
 
   Widget _labelTitle() => Text(
-        labelTitle,
+        labelTitle!,
         style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w500),
         textAlign: TextAlign.center,
       );
 
   Widget _labelText() => Text(
-        labelText,
+        labelText!,
         style: const TextStyle(color: Colors.white, fontSize: 16),
         textAlign: TextAlign.center,
       );
@@ -88,16 +88,16 @@ class SwipeConfirmation extends StatelessWidget {
     if (primaryButtonText != null && primaryButtonText != '') {
       buttons.add(Opacity(
         opacity: primaryButtonEnabled ? 1.0 : 0.5,
-        child: OutlinedButton(primaryButtonText,
-            onPressed: primaryButtonEnabled ? primaryButtonAction : null, fullWidth: true, narrow: false, alt: true),
+        child: ChgOutlinedButton(primaryButtonText!,
+            onPressed: primaryButtonEnabled ? primaryButtonAction as Future<void> Function()? : null, fullWidth: true, narrow: false, alt: true),
       ));
     }
     if (secondaryButtonText != null && secondaryButtonText != '') {
-      buttons.add(TextButton(secondaryButtonText, onPressed: secondaryButtonAction, alt: true));
+      buttons.add(ChgTextButton(secondaryButtonText!, onPressed: secondaryButtonAction as Future<void> Function()?, alt: true));
     }
 
     return Positioned(
-      bottom: 20 + -buttonTranslation.value,
+      bottom: 20 + -buttonTranslation!.value,
       left: 0,
       right: 0,
       child: Padding(

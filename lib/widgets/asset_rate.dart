@@ -7,8 +7,8 @@ import '../text.dart';
 import '../text_styles.dart';
 
 class AssetRate extends StatelessWidget {
-  final String symbol;
-  final double rate;
+  final String? symbol;
+  final double? rate;
   final int decimalPlaces;
 
   const AssetRate(this.symbol, this.rate, {this.decimalPlaces = 2}) : assert(decimalPlaces > 0);
@@ -46,7 +46,7 @@ class AnimatedAssetRate extends StatelessWidget {
   })  : assert(decimalPlaces > 0),
         largeTextStyle = TextStyles.style_40_60_regular,
         smallTextStyle =
-            AppText.body2.copyWith(height: (AppText.header0.fontSize / AppText.body2.fontSize).roundToDouble());
+            AppText.body2.copyWith(height: (AppText.header0.fontSize! / AppText.body2.fontSize!).roundToDouble());
 
   String _lastFormattedRate = '0.00';
 
@@ -54,7 +54,7 @@ class AnimatedAssetRate extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return StreamBuilder<String>(
-      stream: rateStream?.map(_formatRate)?.distinct()?.where((r) => r != _lastFormattedRate),
+      stream: rateStream.map(_formatRate).distinct().where((r) => r != _lastFormattedRate),
       builder: (ctx, snapshot) {
         if (!snapshot.hasData) {
           return Container();
@@ -62,7 +62,7 @@ class AnimatedAssetRate extends StatelessWidget {
         debugPrint('RECEIVED RATE STREAM DATA: ${snapshot.data}');
 
         final prevVal = _lastFormattedRate;
-        final curVal = snapshot.data;
+        final curVal = snapshot.data!;
 
         final prevHundrethsPart = prevVal.substring(0, prevVal.indexOf('.'));
         final prevCentsPart = prevVal.substring(prevVal.indexOf('.') + 1);

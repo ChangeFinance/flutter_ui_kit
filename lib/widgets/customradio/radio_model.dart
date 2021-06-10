@@ -1,11 +1,11 @@
 import 'package:flutter_svg/flutter_svg.dart';
 
 class RadioModel {
-  bool isSelected;
+  bool? isSelected;
   bool isEnabled;
   final String text;
-  SvgPicture svgPicture;
-  final String textShortform;
+  SvgPicture? svgPicture;
+  final String? textShortform;
 
   RadioModel(
     this.text, {

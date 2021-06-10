@@ -13,7 +13,7 @@ import 'package:flutter_ui_kit/widgets/list_items/transaction_list_item_containe
 const _primaryAmountDecorationList = ['NO', 'BADGE', 'CROSS_OUT'];
 const _secondaryAmountDecorationList = ['NO', 'CROSS_OUT'];
 
-AmountDecoration _optionToAmountDecoration(String optionSelected) {
+AmountDecoration _optionToAmountDecoration(String? optionSelected) {
   switch (optionSelected) {
     case 'NO':
       return AmountDecoration.NO;
@@ -150,10 +150,10 @@ class ListItems extends StatelessWidget {
           );
         },
         widgetBuilder: (ctx, props) {
-          final String title = props['title'];
-          final String information = props['information'];
-          final String linkText = props['linkText'];
-          final String badgeText = props['badgeText'];
+          final String? title = props['title'];
+          final String? information = props['information'];
+          final String? linkText = props['linkText'];
+          final String? badgeText = props['badgeText'];
 
           return Container(
             width: double.infinity,

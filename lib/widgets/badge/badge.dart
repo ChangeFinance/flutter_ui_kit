@@ -9,11 +9,11 @@ class Badge extends StatelessWidget {
   static const double fontSize = 14.0;
   static const double padding = 10.0;
 
-  final String text;
-  final double minWidth;
-  final TextStyle textStyle;
-  final Color bgColor;
-  final VoidCallback onTap;
+  final String? text;
+  final double? minWidth;
+  final TextStyle? textStyle;
+  final Color? bgColor;
+  final VoidCallback? onTap;
 
   const Badge(this.text, {this.minWidth, this.textStyle, this.bgColor, this.onTap});
 
@@ -23,7 +23,7 @@ class Badge extends StatelessWidget {
 
     return Container(
         constraints: new BoxConstraints(
-          minWidth: minWidth,
+          minWidth: minWidth!,
         ),
         width: null,
         height: badgeHeight,
@@ -41,13 +41,13 @@ class Badge extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(10, badgeHeight / 4, 10, badgeHeight / 4),
                       child:
                       Shimmer.fromColors(
-                        key: new Key(text),
-                        baseColor: defaultTextStyle.color,
-                        highlightColor: bgColor,
+                        key: new Key(text!),
+                        baseColor: defaultTextStyle.color!,
+                        highlightColor: bgColor!,
                         loop: 1,
                         period: const Duration(milliseconds: 750),
                         child: Text(
-                          text,
+                          text!,
                           style: textStyle ?? defaultTextStyle,
                           textAlign: TextAlign.right
                         ),

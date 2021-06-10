@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../colors.dart';
 
-class ProgressBar extends StatelessWidget {
-  final Key progressKey;
+class ChgProgressBar extends StatelessWidget {
+  final Key? progressKey;
   final double progress;
 
-  const ProgressBar({@required this.progress, this.progressKey})
-      : assert(progress >= 0 && progress <= 1);
+  const ChgProgressBar({
+    required this.progress,
+    this.progressKey,
+  }) : assert(progress >= 0 && progress <= 1);
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +23,17 @@ class ProgressBar extends StatelessWidget {
           new Container(
             key: progressKey,
             color: AppColors.secondary,
-            constraints: new BoxConstraints.tightFor(
-                width: maxProgress * progress, height: 4.0),
+            constraints: BoxConstraints.tightFor(
+              width: maxProgress * progress,
+              height: 4.0,
+            ),
           )
         ],
       ),
-      constraints: BoxConstraints.tightFor(width: maxProgress, height: 4.0),
+      constraints: BoxConstraints.tightFor(
+        width: maxProgress,
+        height: 4.0,
+      ),
     );
   }
 }

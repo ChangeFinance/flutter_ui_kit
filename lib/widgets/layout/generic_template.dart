@@ -6,10 +6,10 @@ import 'app_bar.dart';
 
 class GenericTemplate extends StatelessWidget {
 
-  final Widget leadingWidget;
-  final List<Widget> tailingWidget;
+  final Widget? leadingWidget;
+  final List<Widget>? tailingWidget;
 
-  final Heading header;
+  final ChgHeading header;
   final Widget child;
   final Widget formSubmitAction;
 

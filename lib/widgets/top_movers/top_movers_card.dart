@@ -4,11 +4,11 @@ import 'package:flutter_ui_kit/theme.dart';
 import 'package:flutter_ui_kit/widgets.dart';
 
 class TopMoversCard extends StatelessWidget {
-  final String currencyName;
-  final String currencyCode;
-  final String percentage;
-  final bool isGrowing;
-  final VoidCallback onTap;
+  final String? currencyName;
+  final String? currencyCode;
+  final String? percentage;
+  final bool? isGrowing;
+  final VoidCallback? onTap;
 
   const TopMoversCard({this.currencyName, this.currencyCode, this.percentage, this.isGrowing, this.onTap});
 
@@ -24,8 +24,8 @@ class TopMoversCard extends StatelessWidget {
   }
 
   Widget _buildCard(BuildContext context) {
-    final color = isGrowing ? AppColor.green : AppColor.red;
-    return AppCard(
+    final color = isGrowing! ? AppColor.green : AppColor.red;
+    return ChgAppCard(
         color: AppColor.deepWhite,
         elevation: 2,
         borderRadius: 4,
@@ -41,12 +41,12 @@ class TopMoversCard extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            new Text(currencyName),
-                            new Text(currencyCode, style: theme.textTheme.bodyText2.copyWith(color: Colors.grey))
+                            new Text(currencyName!),
+                            new Text(currencyCode!, style: theme.textTheme.bodyText2!.copyWith(color: Colors.grey))
                           ]
                       )
                   ),
-                  new Text(percentage, style: theme.textTheme.headline3.copyWith(color: color))
+                  new Text(percentage!, style: theme.textTheme.headline3!.copyWith(color: color))
                 ]
             )
         )

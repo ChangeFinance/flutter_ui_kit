@@ -19,7 +19,7 @@ class SliverWidgets {
   }
 
   Widget appCard() {
-    return AppCard(
+    return ChgAppCard(
         color: AppColor.deepWhite,
         elevation: 2,
         margin: const EdgeInsets.all(6),
@@ -36,7 +36,7 @@ class SliverWidgets {
   }
 
   Widget bottomButton() {
-    return FilledButton('Make a deposit', fullWidth: true, onPressed: () {
+    return ChgFilledButton('Make a deposit', fullWidth: true, onPressed: () async {
       debugPrint('Hello you clicked');
     });
   }
@@ -49,7 +49,7 @@ class SliverWidgets {
     );
   }
 
-  Widget svgPicture() {
+  SvgPicture svgPicture() {
     return SvgPicture.asset('assets/update-app.svg',
         width: 80.0, height: 85.0);
   }

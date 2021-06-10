@@ -21,7 +21,7 @@ class TextPair extends StatelessWidget {
             padding: const EdgeInsets.only(top: 10.0),
             child: Text(
               body,
-              style: theme.bodyText1.copyWith(color: textColor),
+              style: theme.bodyText1!.copyWith(color: textColor),
             ))
       ],
     );

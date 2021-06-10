@@ -3,24 +3,24 @@ import 'package:flutter_ui_kit/color.dart';
 
 class InformationListItem extends StatelessWidget {
   final Widget icon;
-  final String title;
-  final String information;
-  final String badgeText;
-  final String linkText;
-  final VoidCallback linkAction;
+  final String? title;
+  final String? information;
+  final String? badgeText;
+  final String? linkText;
+  final VoidCallback? linkAction;
 
   const InformationListItem(
     this.linkText,
     this.badgeText, {
-    @required this.icon,
-    @required this.title,
-    @required this.information,
+    required this.icon,
+    required this.title,
+    required this.information,
     this.linkAction,
   });
 
-  bool get hasBadge => badgeText != null && badgeText.trim().isNotEmpty;
+  bool get hasBadge => badgeText != null && badgeText!.trim().isNotEmpty;
 
-  bool get hasLink => linkText != null && linkText.trim().isNotEmpty;
+  bool get hasLink => linkText != null && linkText!.trim().isNotEmpty;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class InformationListItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(
-              title,
+              title!,
               textAlign: TextAlign.start,
               style: titleStyle,
             ),
@@ -62,7 +62,7 @@ class InformationListItem extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          information,
+          information!,
           textAlign: TextAlign.start,
           style: informationStyle,
         ),
@@ -70,7 +70,7 @@ class InformationListItem extends StatelessWidget {
         hasLink
             ? GestureDetector(
                 child: Text(
-                  linkText,
+                  linkText!,
                   textAlign: TextAlign.start,
                   style: informationStyle.copyWith(color: AppColor.green),
                 ),
@@ -90,7 +90,7 @@ class InformationListItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       child: Center(
         child: Text(
-          badgeText,
+          badgeText!,
           style: badgeStyle,
           textAlign: TextAlign.center,
         ),

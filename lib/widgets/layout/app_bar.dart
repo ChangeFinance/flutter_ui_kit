@@ -4,9 +4,9 @@ import 'package:flutter_ui_kit/color.dart';
 
 
 class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final Widget leadingWidget;
-  final List<Widget> tailingWidget;
-  final Widget title;
+  final Widget? leadingWidget;
+  final List<Widget>? tailingWidget;
+  final Widget? title;
   final bool centerTitle;
   final bool implyLeading;
   final bool showProgress;

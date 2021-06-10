@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/story_book/expandable_story.dart';
 import 'package:flutter_ui_kit/story_book/prop_updater/bool_prop_updater.dart';
@@ -9,10 +10,11 @@ import 'package:flutter_ui_kit/story_book/prop_updater/string_prop_updater.dart'
 import 'package:flutter_ui_kit/story_book/props_explorer.dart';
 import 'package:flutter_ui_kit/widgets/filled_button.dart';
 import 'package:flutter_ui_kit/widgets/outlined_button.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/widgets/switcher_button.dart';
 import 'package:flutter_ui_kit/widgets/text_button.dart';
 import 'package:flutter_ui_kit/widgets/two_states_button.dart';
+
+import '../widgets.dart';
 
 class Buttons extends StatelessWidget {
   @override
@@ -83,7 +85,7 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          Function onPressed = () {};
+          Function? onPressed = () {};
 
           if (props['enabled'] == false) {
             onPressed = null;
@@ -95,12 +97,18 @@ class Buttons extends StatelessWidget {
             };
           }
 
-          const colors = [Colors.red, Colors.blue, Colors.purple, Colors.teal, Colors.brown];
+          const colors = [
+            Colors.red,
+            Colors.blue,
+            Colors.purple,
+            Colors.teal,
+            Colors.brown,
+          ];
           final randIndex = Random().nextInt(5);
 
-          return FilledButton(
+          return ChgFilledButton(
             props['text'],
-            onPressed: onPressed,
+            onPressed: onPressed as Future<void> Function()?,
             fullWidth: props['fullWidth'],
             narrow: props['narrow'],
             color: props['overrideColor'] ? colors[randIndex] : null,
@@ -162,7 +170,7 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          Function onPressed = () {};
+          Function? onPressed = () {};
 
           if (props['enabled'] == false) {
             onPressed = null;
@@ -178,9 +186,9 @@ class Buttons extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 10),
             color: props['alt'] ? AppColor.green : Colors.white,
-            child: OutlinedButton(
+            child: ChgOutlinedButton(
               props['text'],
-              onPressed: onPressed,
+              onPressed: onPressed as Future<void> Function()?,
               fullWidth: props['fullWidth'],
               narrow: props['narrow'],
               alt: props['alt'],
@@ -231,7 +239,7 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          Function onPressed = () {};
+          Function? onPressed = () {};
 
           if (props['enabled'] == false) {
             onPressed = null;
@@ -246,9 +254,9 @@ class Buttons extends StatelessWidget {
           return Container(
             width: double.infinity,
             color: props['alt'] ? AppColor.green : Colors.white,
-            child: TextButton(
+            child: ChgTextButton(
               props['text'],
-              onPressed: onPressed,
+              onPressed: onPressed as Future<void> Function()?,
               alt: props['alt'],
             ),
           );
@@ -286,7 +294,7 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          final List<String> labels = props['buttonLabels'];
+          final List<String>? labels = props['buttonLabels'];
           return Column(
             children: <Widget>[
               SwitcherButton(
@@ -352,8 +360,8 @@ class Buttons extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          Function onPressed = () {};
-          Function onRefreshRate = () {};
+          FutureCallback? onPressed = () async {};
+          Function? onRefreshRate = () async {};
 
           if (props['enabled'] == false) {
             onPressed = null;

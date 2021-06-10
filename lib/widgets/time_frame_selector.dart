@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/text.dart';
@@ -21,24 +22,24 @@ class TimeFrameHelper {
     '5Y': TimeFrame.FIVE_YEARS,
   };
 
-  static TimeFrame getKey(String timeFrame) {
+  static TimeFrame? getKey(String timeFrame) {
     return timeFrames[timeFrame];
   }
 
-  static String getValue(TimeFrame timeFrame) {
-    return timeFrames.entries.firstWhere((entry) => entry.value == timeFrame, orElse: () => null)?.key ?? 'ERROR';
+  static String getValue(TimeFrame? timeFrame) {
+    return timeFrames.entries.firstWhereOrNull((entry) => entry.value == timeFrame)?.key ?? 'ERROR';
   }
 }
 
 class TimeFrameSelector extends StatefulWidget {
-  final Callback onChange;
+  final Callback? onChange;
   final TimeFrame defaultTimeFrame;
   final TimeFrame maxTimeFrame;
-  final Color enabledTimeFrameColor;
+  final Color? enabledTimeFrameColor;
   final List<TimeFrame> exclude;
 
   const TimeFrameSelector({
-    Key key,
+    Key? key,
     this.exclude = const [TimeFrame.THREE_MONTHS, TimeFrame.SIX_MONTHS, TimeFrame.THREE_YEARS],
     this.defaultTimeFrame = TimeFrame.ONE_DAY,
     this.enabledTimeFrameColor,
@@ -51,19 +52,19 @@ class TimeFrameSelector extends StatefulWidget {
 }
 
 class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
-  TimeFrame selectedTimeFrame;
+  TimeFrame? selectedTimeFrame;
 
   @override
   void initState() {
     super.initState();
     selectedTimeFrame = widget.defaultTimeFrame;
-    widget.onChange(TimeFrameHelper.getValue(selectedTimeFrame));
+    widget.onChange!(TimeFrameHelper.getValue(selectedTimeFrame));
   }
 
   void _onPressedPeriod(TimeFrame selected) {
     setState(() {
       selectedTimeFrame = selected;
-      widget.onChange(TimeFrameHelper.getValue(selectedTimeFrame));
+      widget.onChange!(TimeFrameHelper.getValue(selectedTimeFrame));
     });
   }
 
@@ -72,12 +73,12 @@ class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
       _onPressedPeriod(selected);
     }
 
-    final checkedButton = FilledButton(TimeFrameHelper.getValue(selected),
+    final checkedButton = ChgFilledButton(TimeFrameHelper.getValue(selected),
         onPressed: onPressed,
         textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepWhite),
         color: widget.enabledTimeFrameColor,
         padding: const EdgeInsets.all(0.0));
-    final uncheckedButton = TextButton(
+    final uncheckedButton = ChgTextButton(
       TimeFrameHelper.getValue(selected),
       onPressed: onPressed,
       textStyle: AppText.graphTextStyle.copyWith(color: AppColor.deepBlack),
@@ -90,7 +91,7 @@ class TimeFrameSelectorWidgetState extends State<TimeFrameSelector> {
   }
 
   Expanded _buildDisableItem(TimeFrame selected) {
-    final uncheckedButton = TextButton(TimeFrameHelper.getValue(selected),
+    final uncheckedButton = ChgTextButton(TimeFrameHelper.getValue(selected),
         textStyle: AppText.graphTextStyle.copyWith(color: AppColor.semiGrey), padding: const EdgeInsets.all(0.0));
 
     return Expanded(flex: 1, child: Container(height: 22.0, child: uncheckedButton));

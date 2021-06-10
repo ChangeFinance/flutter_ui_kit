@@ -9,13 +9,13 @@ enum SvgIconColor {
 class SvgIcon extends StatelessWidget {
   final String path;
   final SvgIconColor color;
-  final Size size;
+  final Size? size;
 
   const SvgIcon({
-    @required this.path,
+    required this.path,
     this.color = SvgIconColor.theme,
     this.size,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -33,13 +33,13 @@ class SvgIcon extends StatelessWidget {
 class SvgNetworkIcon extends StatelessWidget {
   final String path;
   final SvgIconColor color;
-  final Size size;
+  final Size? size;
 
   const SvgNetworkIcon({
-    @required this.path,
+    required this.path,
     this.color = SvgIconColor.theme,
     this.size,
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

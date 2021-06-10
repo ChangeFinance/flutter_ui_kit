@@ -14,7 +14,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => FilledButton(buttonText, onPressed: () {}),
+      buildButton: () => ChgFilledButton(buttonText, onPressed: () async {}),
     );
 
     testOnPressedProp(
@@ -22,8 +22,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({FutureCallback onPressed}) =>
-          FilledButton(buttonText, onPressed: onPressed),
+      buildButton: ({FutureCallback? onPressed}) =>
+          ChgFilledButton(buttonText, onPressed: onPressed),
       underlyingMaterialButtonType: RaisedButton,
     );
 
@@ -32,8 +32,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool fullWidth}) =>
-          FilledButton(buttonText, onPressed: () {}, fullWidth: fullWidth),
+      buildButton: ({bool? fullWidth}) =>
+          ChgFilledButton(buttonText, onPressed: () async {}, fullWidth: fullWidth),
       underlyingMaterialButtonType: RaisedButton,
     );
 
@@ -42,8 +42,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool narrow}) =>
-          FilledButton(buttonText, onPressed: () {}, narrow: narrow),
+      buildButton: ({bool? narrow}) =>
+          ChgFilledButton(buttonText, onPressed: () async {}, narrow: narrow),
       underlyingMaterialButtonType: RaisedButton,
     );
 
@@ -52,8 +52,8 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({EdgeInsetsGeometry padding}) =>
-          FilledButton(buttonText, onPressed: () {}, padding: padding),
+      buildButton: ({EdgeInsetsGeometry? padding}) =>
+          ChgFilledButton(buttonText, onPressed: () async {}, padding: padding),
       underlyingMaterialButtonType: RaisedButton,
     );
 
@@ -62,9 +62,9 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({bool narrow, bool fullWidth}) => FilledButton(
+      buildButton: ({bool? narrow, bool? fullWidth}) => ChgFilledButton(
             buttonText,
-            onPressed: () {},
+            onPressed: () async {},
             narrow: narrow,
             fullWidth: fullWidth,
           ),
@@ -75,10 +75,10 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: ({TextStyle textStyle}) => FilledButton(
+      buildButton: ({TextStyle? textStyle}) => ChgFilledButton(
           buttonText,
           textStyle: textStyle,
-          onPressed: () {},
+          onPressed: () async {},
           narrow: true,
       ),
     );

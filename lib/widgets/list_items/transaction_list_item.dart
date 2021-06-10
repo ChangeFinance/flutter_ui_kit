@@ -6,46 +6,46 @@ import '../../color.dart';
 enum AmountDecoration { NO, BADGE, CROSS_OUT }
 
 class TransactionListItem extends StatelessWidget {
-  final Function onPressed;
-  final String amount;
-  final String secondAmount;
+  final Function? onPressed;
+  final String? amount;
+  final String? secondAmount;
   final Widget transactionIcon;
-  final String title;
-  final String subTitle;
+  final String? title;
+  final String? subTitle;
   final AmountDecoration amountDecoration;
   final AmountDecoration secondAmountDecoration;
-  final bool withDivider;
+  final bool? withDivider;
 
   static const paddingsAndIcon = 120.0;
   static const minRowWidth = 320.0;
 
   const TransactionListItem(
-      {@required this.onPressed,
-        @required this.amount,
-        @required this.transactionIcon,
-        @required this.title,
-        @required this.subTitle,
+      { required this.amount,
+        required this.transactionIcon,
+        required this.title,
+        required this.subTitle,
+        this.onPressed,
         this.secondAmount,
         this.amountDecoration = AmountDecoration.NO,
         this.secondAmountDecoration = AmountDecoration.NO,
         this.withDivider = false,
-        Key key})
+        Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final fixedTitle = title.replaceAll(RegExp(' +'), ' ');
+    final fixedTitle = title!.replaceAll(RegExp(' +'), ' ');
     final screenWidth = MediaQuery.of(context).size.width -
         MediaQuery.of(context).padding.horizontal;
     return GestureDetector(
-        onTap: onPressed,
+        onTap: onPressed as void Function()?,
         child: Container(
             decoration: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                      width: withDivider ? 1.0 : 0.0,
+                      width: withDivider! ? 1.0 : 0.0,
                       color:
-                      withDivider ? AppColor.lightestGrey : AppColor.deepWhite),
+                      withDivider! ? AppColor.lightestGrey : AppColor.deepWhite),
                 )),
             alignment: Alignment.centerLeft,
             width: screenWidth,
@@ -127,7 +127,7 @@ class TransactionListItem extends StatelessWidget {
     );
   }
 
-  TextBox _calcTextBox(BuildContext context, String text, TextStyle style) {
+  TextBox _calcTextBox(BuildContext context, String? text, TextStyle style) {
     final textWidget = TextSpan(text: text, style: style);
     // ignore: avoid_as
     final richTextWidget = Text.rich(textWidget).build(context) as RichText;
@@ -155,7 +155,7 @@ class TransactionListItem extends StatelessWidget {
       textBoxForAmountWidth = textBoxForAmountWidth + 8;
     }
 
-    if (secondAmount == null || secondAmount.isEmpty) {
+    if (secondAmount == null || secondAmount!.isEmpty) {
       return textBoxForAmountWidth;
     }
 
@@ -210,7 +210,7 @@ class TransactionListItem extends StatelessWidget {
         width: minWidth,
         constraints: BoxConstraints(maxWidth: maxWidth),
         child: Text(
-          subTitle,
+          subTitle!,
           textAlign: TextAlign.left,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -218,7 +218,7 @@ class TransactionListItem extends StatelessWidget {
         ));
   }
 
-  Size _textSize(String text, TextStyle style) {
+  Size _textSize(String? text, TextStyle style) {
     final textPainter = TextPainter(
         text: TextSpan(text: text, style: style),
         maxLines: 1,
@@ -242,7 +242,7 @@ class TransactionListItem extends StatelessWidget {
         constraints: BoxConstraints(maxWidth: maxAmountWidth),
         child: Padding(
             padding: const EdgeInsets.only(top: 2.0, right: 8.0),
-            child: Text(amount,
+            child: Text(amount!,
                 textAlign: TextAlign.right,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -269,7 +269,7 @@ class TransactionListItem extends StatelessWidget {
                       child: Padding(
                           padding: const EdgeInsets.only(bottom: 1.0, right: 0.0),
                           child: Text(
-                            amount,
+                            amount!,
                             textAlign: TextAlign.center,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -286,7 +286,7 @@ class TransactionListItem extends StatelessWidget {
         child: Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: Text(
-              secondAmount,
+              secondAmount!,
               textAlign: TextAlign.right,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,

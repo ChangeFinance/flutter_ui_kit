@@ -5,7 +5,7 @@ typedef FutureCallback = Future<void> Function();
 
 typedef EnabledSetter = void Function(bool enabled);
 
-class ButtonStyleConstants {
+class ChgButtonStyleConstants {
   static const double narrowVerticalPadding = 11.5;
   static const double wideVerticalPadding = 17.5;
   static const double horizontalPadding = 48.0;
@@ -21,40 +21,40 @@ mixin ButtonMixin {
   double matchParentWidth(BuildContext context) => MediaQuery.of(context).size.width;
 
   EdgeInsetsGeometry getPadding({bool narrow = false}) {
-    return narrow ? ButtonStyleConstants.narrowPadding : ButtonStyleConstants.widePadding;
+    return narrow ? ChgButtonStyleConstants.narrowPadding : ChgButtonStyleConstants.widePadding;
   }
 
   bool isDisabled({
-    bool enabled,
-    FutureCallback onPressed,
+    required bool enabled,
+    FutureCallback? onPressed,
   }) {
     return !enabled || onPressed == null;
   }
 
-  Color getTextColorOnWhiteBackground({bool enabled, bool pressing, FutureCallback onPressed}) {
+  Color getTextColorOnWhiteBackground({required bool enabled, bool? pressing, FutureCallback? onPressed}) {
     if (isDisabled(enabled: enabled, onPressed: onPressed)) {
       return AppColor.mediumGrey;
     }
-    return pressing ? AppColor.darkerGreen : AppColor.green;
+    return pressing! ? AppColor.darkerGreen : AppColor.green;
   }
 
-  double getFontSize({bool narrow, bool fullWidth = false}) {
+  double getFontSize({required bool narrow, bool? fullWidth = false}) {
     if (_isSmall(narrow: narrow, fullWidth: fullWidth)) {
-      return ButtonStyleConstants.smallFontSize;
+      return ChgButtonStyleConstants.smallFontSize;
     }
-    return ButtonStyleConstants.fontSize;
+    return ChgButtonStyleConstants.fontSize;
   }
 
   Future<void> disableButtonWhileOnPressedExecutes({
-    EnabledSetter setEnabled,
-    FutureCallback onPressed,
+    required EnabledSetter setEnabled,
+    required FutureCallback onPressed,
   }) async {
     setEnabled(false);
     await onPressed();
     setEnabled(true);
   }
 
-  bool _isSmall({bool narrow, bool fullWidth}) {
-    return narrow && !fullWidth;
+  bool _isSmall({required bool narrow, bool? fullWidth}) {
+    return narrow && !fullWidth!;
   }
 }

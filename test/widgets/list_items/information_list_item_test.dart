@@ -31,11 +31,11 @@ void main() {
       expect(find.text('BADGE'), findsOneWidget);
       expect(find.text('icon'), findsOneWidget);
 
-      final Text link = find.text('Link').evaluate().single.widget;
-      expect(link.style.color, AppColor.green);
+      final link = find.text('Link').evaluate().single.widget as Text;
+      expect(link.style!.color, AppColor.green);
 
-      final Container badgeContainer = find.byKey(const Key('informationListItemBadge')).evaluate().single.widget;
-      final BoxDecoration decoration = badgeContainer.decoration;
+      final badgeContainer = find.byKey(const Key('informationListItemBadge')).evaluate().single.widget as Container;
+      final decoration = badgeContainer.decoration as BoxDecoration;
       expect(decoration.color, AppColor.green);
     });
 

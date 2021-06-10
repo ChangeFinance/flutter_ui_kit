@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class PageTemplate extends StatefulWidget {
-  final Widget child;
-  final Widget bottomNavigationBar;
-  final Widget floatingActionButton;
-  final PreferredSizeWidget appBar;
+  final Widget? child;
+  final Widget? bottomNavigationBar;
+  final Widget? floatingActionButton;
+  final PreferredSizeWidget? appBar;
   final EdgeInsets padding;
-  final GlobalKey<ScaffoldState> scaffoldKey;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
   final bool dismissKeyboardOnTap;
 
   const PageTemplate({
@@ -45,7 +45,7 @@ class _PageTemplateState extends State<PageTemplate> {
                     behavior: HitTestBehavior.opaque,
                     onTap: _dismissKeyboard,
                     child: widget.child)
-                : widget.child,
+                : widget.child!,
           )),
       floatingActionButton: widget.floatingActionButton,
       bottomNavigationBar: widget.bottomNavigationBar,

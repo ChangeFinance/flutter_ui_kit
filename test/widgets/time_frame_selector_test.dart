@@ -22,17 +22,19 @@ void main() {
       await tester.pumpWidget(wrapInMaterialApp(
           TimeFrameSelector(onChange: onChangeTextField)
       ));
-      expect(find.byType(TextButton).evaluate().length, 5);
-      expect(find.byType(FilledButton).evaluate().length, 1);
-      final initFilledButton = tester.widget(find.byType(FilledButton));
-      final FilledButton initContainerWidget = initFilledButton;
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
+      expect(find.byType(ChgFilledButton).evaluate().length, 1);
+      final initFilledButton = tester.widget(find.byType(ChgFilledButton));
+      // ignore: avoid_as
+      final initContainerWidget = initFilledButton as ChgFilledButton;
       expect(initContainerWidget.text, '1D');
       await tester.tap(find.text('1Y'));
       await tester.pump();
-      expect(find.byType(TextButton).evaluate().length, 5);
-      expect(find.byType(FilledButton).evaluate().length, 1);
-      final widget = tester.widget(find.byType(FilledButton));
-      final FilledButton containerWidget = widget;
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
+      expect(find.byType(ChgFilledButton).evaluate().length, 1);
+      final widget = tester.widget(find.byType(ChgFilledButton));
+      // ignore: avoid_as
+      final containerWidget = widget as ChgFilledButton;
       expect(containerWidget.text, '1Y');
     });
 
@@ -45,12 +47,12 @@ void main() {
           TimeFrameSelector(key: timeFrameSelectorKey, onChange: onChangeTextField)
       ));
       expect(find.byType(TimeFrameSelector), findsOneWidget);
-      expect(find.byType(TextButton).evaluate().length, 5);
-      expect(find.byType(FilledButton).evaluate().length, 1);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
+      expect(find.byType(ChgFilledButton).evaluate().length, 1);
       await tester.tap(find.text('1Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame, TimeFrame.ONE_YEAR);
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame, TimeFrame.ONE_YEAR);
 
     });
 
@@ -61,7 +63,7 @@ void main() {
           TimeFrameSelector(maxTimeFrame: TimeFrame.FIVE_YEARS, onChange: onChangeTextField)
       ));
       expect(find.byType(TimeFrameSelector), findsOneWidget);
-      expect(find.byType(TextButton).evaluate().length, 5);
+      expect(find.byType(ChgTextButton).evaluate().length, 5);
       expect(find.text('1D'), findsOneWidget);
       expect(find.text('1W'), findsOneWidget);
       expect(find.text('1M'), findsOneWidget);
@@ -87,13 +89,13 @@ void main() {
       await tester.tap(find.text('1Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_YEAR);
 
       await tester.tap(find.text('5Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_YEAR);
     });
 
@@ -118,25 +120,25 @@ void main() {
       await tester.tap(find.text('1W'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_WEEK);
 
       await tester.tap(find.text('1M'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_MONTH);
 
       await tester.tap(find.text('1Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_MONTH);
 
       await tester.tap(find.text('5Y'));
       await tester.pump();
 
-      expect(timeFrameSelectorKey.currentState.selectedTimeFrame,
+      expect(timeFrameSelectorKey.currentState!.selectedTimeFrame,
           TimeFrame.ONE_MONTH);
     });
 

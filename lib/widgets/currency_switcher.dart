@@ -9,17 +9,17 @@ class CurrencyInfo {
   final String amount;
 
   CurrencyInfo({
-    @required this.symbol,
-    @required this.label,
+    required this.symbol,
+    required this.label,
     this.amount = '0',
     this.prefix = false
   });
 
   CurrencyInfo copyWith(
-      {String symbol,
-        String label,
-        bool prefix,
-        String amount
+      {String? symbol,
+        String? label,
+        bool? prefix,
+        String? amount
       }) {
     return CurrencyInfo(
         symbol: symbol ?? this.symbol,
@@ -32,29 +32,29 @@ class CurrencyInfo {
 
 class CurrencySwitcher extends StatefulWidget {
   final List<CurrencyInfo> currencyInfoList;
-  final List<String> amounts;
-  final Function(int) onSwitch;
-  final bool onlySwitchedAmount;
+  final List<String>? amounts;
+  final Function(int)? onSwitch;
+  final bool? onlySwitchedAmount;
   final bool hideSwitcher;
 
   CurrencySwitcher({
-        @required this.currencyInfoList,
-        @required this.amounts,
+        required this.currencyInfoList,
+        required this.amounts,
         this.onSwitch,
         this.onlySwitchedAmount = false,
         this.hideSwitcher = false,
       })
-      : assert(currencyInfoList != null && currencyInfoList.length == 2);
+      : assert(currencyInfoList.length == 2);
 
   @override
   _CurrencySwitcherState createState() => _CurrencySwitcherState();
 }
 
 class _CurrencySwitcherState extends State<CurrencySwitcher> {
-  List<String> get amounts => widget.amounts;
+  List<String>? get amounts => widget.amounts;
   List<CurrencyInfo> get infoList => widget.currencyInfoList;
 
-  Function(int) get onSwitch => widget.onSwitch;
+  Function(int)? get onSwitch => widget.onSwitch;
 
   int _currentIndex = 0;
 
@@ -98,21 +98,21 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
     Widget first = Container();
     Widget second = Container();
 
-    if (amounts.isNotEmpty) {
+    if (amounts!.isNotEmpty) {
       first = CurrencyDisplay(
           displayAsPrefix: infoList[1].prefix,
           currencySymbol: infoList[1].symbol,
-          amount: amounts[1],
+          amount: amounts![1],
           showCursor: _currentIndex == 0,
           size: _currentIndex == 0
               ? CurrencyDisplaySize.large
               : CurrencyDisplaySize.small);
     }
-    if (amounts.length > 1) {
+    if (amounts!.length > 1) {
       second = CurrencyDisplay(
           displayAsPrefix: infoList[0].prefix,
           currencySymbol: infoList[0].symbol,
-          amount: amounts[0],
+          amount: amounts![0],
           showCursor: _currentIndex == 1,
           size: _currentIndex == 1
               ? CurrencyDisplaySize.large
@@ -122,8 +122,8 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: _currentIndex == 0 ? [first, const SizedBox(height: 6,), widget.onlySwitchedAmount ? Container() : second]
-          : [second, const SizedBox(height: 6,), widget.onlySwitchedAmount ? Container() : first],
+      children: _currentIndex == 0 ? [first, const SizedBox(height: 6,), widget.onlySwitchedAmount! ? Container() : second]
+          : [second, const SizedBox(height: 6,), widget.onlySwitchedAmount! ? Container() : first],
     );
   }
 
@@ -131,7 +131,7 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
     setState(() {
       _currentIndex = index;
       if (onSwitch != null) {
-        onSwitch(index);
+        onSwitch!(index);
       }
     });
   }

@@ -9,10 +9,10 @@ class GaugeIndicator extends StatelessWidget {
   final double score;
 
   const GaugeIndicator({
-    @required this.width,
-    @required this.bearishThreshold,
-    @required this.bullishThreshold,
-    @required this.score
+    required this.width,
+    required this.bearishThreshold,
+    required this.bullishThreshold,
+    required this.score
   })
       :assert(width > 0),
        assert(bearishThreshold >= 0 && bearishThreshold < 1),

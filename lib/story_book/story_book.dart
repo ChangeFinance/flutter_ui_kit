@@ -3,13 +3,12 @@ import 'package:recase/recase.dart';
 
 class StoryBook extends StatelessWidget {
   final List<Widget> pages;
-  final String title;
+  final String? title;
 
   StoryBook({
-    @required this.pages,
+    required this.pages,
     this.title,
-  })  : assert(pages != null),
-        super();
+  })  : super();
 
   @override
   Widget build(BuildContext context) {

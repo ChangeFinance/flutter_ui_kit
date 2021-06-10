@@ -28,27 +28,27 @@ class AppTypography extends StatelessWidget {
         children: const [
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Heading('Heading 0   -  Bold; 40pt',
+            child: ChgHeading('Heading 0   -  Bold; 40pt',
                 headingType: HeadingType.HEADING_0),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Heading('Heading 1 - Bold; 30pt',
+            child: ChgHeading('Heading 1 - Bold; 30pt',
                 headingType: HeadingType.HEADING_1),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Heading('Heading 2 - Bold; 24pt',
+            child: ChgHeading('Heading 2 - Bold; 24pt',
                 headingType: HeadingType.HEADING_2),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Heading('Heading 3 - Bold; 16pt',
+            child: ChgHeading('Heading 3 - Bold; 16pt',
                 headingType: HeadingType.HEADING_3),
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Heading('Heading 4 - Book; 12pt',
+            child: ChgHeading('Heading 4 - Book; 12pt',
                 headingType: HeadingType.HEADING_4),
           ),
         ],

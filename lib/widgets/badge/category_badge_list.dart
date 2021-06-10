@@ -1,9 +1,10 @@
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_ui_kit/widgets/badge/category_badge.dart';
 
 class CategoryBadgeList extends StatefulWidget {
-  final List<CategoryBadge> models;
-  final Function(CategoryBadge selectedBadge) onChange;
+  final List<CategoryBadge>? models;
+  final Function(CategoryBadge? selectedBadge)? onChange;
   CategoryBadgeList({this.models, this.onChange});
 
   @override
@@ -14,17 +15,17 @@ class CategoryBadgeList extends StatefulWidget {
 
 class CategoryBadgeListState extends State<CategoryBadgeList> {
 
-  CategoryBadge selectedModel;
+  CategoryBadge? selectedModel;
   CategoryBadgeListState();
 
   @override
   Widget build(BuildContext context) {
-    final badges = widget.models.map((model) {
+    final badges = widget.models!.map((model) {
       final isSelected = model.name == selectedModel?.name;
-      void onTap (String name) {
+      void onTap (String? name) {
         setState(() {
           final previousSelectedName = selectedModel?.name;
-          selectedModel = widget.models.firstWhere((element) => element.name == name, orElse: ()=>null);
+          selectedModel = widget.models!.firstWhereOrNull((element) => element.name == name);
           if (selectedModel?.name != previousSelectedName) {
             widget.onChange?.call(selectedModel);
           }

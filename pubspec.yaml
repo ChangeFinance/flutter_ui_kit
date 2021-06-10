@@ -12,34 +12,37 @@ description: Flutter UI Kit @ Change
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 0.0.1
+publish_to: none
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: ^2.0.0
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_svg: ^0.19.0
-  flutter_cupertino_date_picker:
+  flutter_svg: ^0.22.0
+  flutter_cupertino_datetime_picker: ^2.0.0
+  intl: ^0.17.0
+  shimmer: ^2.0.0
+  animated_widgets: ^1.1.0
+  alpha2_countries:
     git:
-      url: https://github.com/imshashank/flutter-cupertino-date-picker
-      ref: master
-  intl: ^0.16.1
-  shimmer: ^1.0.1
-  animated_widgets: ^1.0.6
-  alpha2_countries: ^1.0.5
-  url_launcher: 5.0.3
-  rxdart: ^0.24.1
-  flare_flutter: 1.8.3
-  responsive_grid: ^1.1.1
+      ref: "flutter-v2"
+      url: "git://github.com/ChangeFinance/alpha2_countries.git"
+  url_launcher: ^6.0.6
+  rxdart: ^0.27.1
+  flare_flutter: ^3.0.1
+  responsive_grid: ^2.0.0
   characters: ^1.0.0
+  collection: ^1.15.0-nullsafety.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  recase: ^2.0.1
-  mockito: ^4.0.0
-  package_info: ^0.4.0+3
+  recase: ^4.0.0
+  mocktail: ^0.1.4
+  package_info: ^2.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

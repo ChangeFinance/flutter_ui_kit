@@ -16,9 +16,9 @@ void main() {
         width: 285.0,
         height: 215.0,
       );
-      final action = FilledButton(
+      final action = ChgFilledButton(
         'Button',
-        onPressed: () {},
+        onPressed: () async {},
         fullWidth: true,
         narrow: false,
       );

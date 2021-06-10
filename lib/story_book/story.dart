@@ -5,11 +5,9 @@ class Story extends StatelessWidget {
   final Widget child;
 
   const Story({
-    @required this.child,
-    @required this.title,
-  })  : assert(child != null),
-        assert(title != null),
-        super();
+    required this.child,
+    required this.title,
+  })  : super();
 
   @override
   Widget build(BuildContext context) {

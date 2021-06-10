@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../theme.dart';
 
-class Subhead extends StatelessWidget {
+class ChgSubHead extends StatelessWidget {
   final String data;
 
-  const Subhead(this.data);
+  const ChgSubHead(this.data);
 
   @override
   Widget build(BuildContext context) {

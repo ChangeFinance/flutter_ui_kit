@@ -6,7 +6,7 @@ class Shaker extends StatelessWidget {
   final Widget child;
   final Duration shakeDuration;
 
-  Shaker({@required this.canShake, @required this.child, @required this.shakeDuration});
+  Shaker({required this.canShake, required this.child, required this.shakeDuration});
 
   @override
   Widget build(BuildContext context) {

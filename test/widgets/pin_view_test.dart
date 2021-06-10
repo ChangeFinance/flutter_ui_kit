@@ -23,7 +23,7 @@ void main() {
 
       expect(find.byType(PinView), findsOneWidget);
       final pindotsFinder = find.byType(PinDot);
-      final pinDots = pindotsFinder.evaluate().map<PinDot>((e) => e.widget).toList();
+      final pinDots = pindotsFinder.evaluate().map<PinDot>((e) => e.widget as PinDot).toList();
       final activeDots = pinDots.where((pinDot) => pinDot.active).toList();
       final inactiveDots = pinDots.where((pinDot) => !pinDot.active).toList();
 

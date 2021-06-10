@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/widgets/change_app_icons.dart';
 import 'package:flutter_ui_kit/widgets/custom_checkbox.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../wrap_in_material_app.dart';
 
@@ -47,6 +47,6 @@ void main() {
 
     await tester.tap(find.text('Sample Checkbox'));
     await tester.pump();
-    verify(onCheckboxChanged(false)).called(1);
+    verify(() => onCheckboxChanged(false)).called(1);
   });
 }

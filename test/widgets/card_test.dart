@@ -12,7 +12,7 @@ void main() {
 
     testWidgets('renders child widget', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(
-          const AppCard(
+          const ChgAppCard(
             child: const Text('Text Content')
           )
         )
@@ -24,18 +24,18 @@ void main() {
     testWidgets('sets correct default properties', (WidgetTester tester) async {
       const child = Text('Text Content');
       await tester.pumpWidget(wrapInMaterialApp(
-          const AppCard(
+          const ChgAppCard(
               child: child
           )
         )
       );
 
       final widget = tester.widget(find.byType(underlyingWidget));
-      final Container containerWidget = widget;
+      final containerWidget = widget as Container;
       expect(containerWidget.margin, EdgeInsets.zero);
       expect(containerWidget.child, child);
 
-      final BoxDecoration decoration = containerWidget.decoration;
+      final decoration = containerWidget.decoration as BoxDecoration;
       expect(decoration.color, AppColor.deepWhite);
       expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(4)));
       expect(decoration.boxShadow, [const BoxShadow(
@@ -49,7 +49,7 @@ void main() {
     testWidgets('passes correct properties', (WidgetTester tester) async {
       const child = Text('Text Content');
       await tester.pumpWidget(wrapInMaterialApp(
-          const AppCard(
+          const ChgAppCard(
               child: child,
               elevation: 3,
               margin: EdgeInsets.all(11.0),
@@ -59,11 +59,11 @@ void main() {
       );
 
       final widget = tester.widget(find.byType(underlyingWidget));
-      final Container containerWidget = widget;
+      final containerWidget = widget as Container;
       expect(containerWidget.margin, const EdgeInsets.all(11.0));
       expect(containerWidget.child, child);
 
-      final BoxDecoration decoration = containerWidget.decoration;
+      final decoration = containerWidget.decoration as BoxDecoration;
       expect(decoration.color, AppColor.deepWhite);
       expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(1)));
       expect(decoration.boxShadow, [const BoxShadow(

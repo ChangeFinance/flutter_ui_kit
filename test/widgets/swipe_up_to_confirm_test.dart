@@ -7,7 +7,7 @@ import '../wrap_in_material_app.dart';
 void main() {
   group('swipe up to confirm view', () {
     group('swipe up to confirm view with enabled swipe mode', () {
-      MaterialApp widget;
+      late MaterialApp widget;
 
       setUp(() {
         final swipeUpView = SwipeUpToConfirmLayout(
@@ -53,7 +53,7 @@ void main() {
     });
 
     group('swipe up to confirm view with disabled swipe mode', () {
-      MaterialApp widget;
+      late MaterialApp widget;
       Function swipeUpCompleteAction;
 
       setUp(() {

@@ -11,28 +11,26 @@ import 'package:flutter/widgets.dart';
 // https://github.com/flutter/flutter/issues/17887
 class CustomFlexibleSpaceBar extends StatefulWidget {
   const CustomFlexibleSpaceBar({
-    Key key,
+    Key? key,
     this.title,
     this.background,
     this.centerTitle,
     this.titlePadding,
     this.collapseMode = CollapseMode.parallax,
-  }) : assert(collapseMode != null),
-       super(key: key);
+  }) : super(key: key);
 
-  final Widget title;
-  final Widget background;
-  final bool centerTitle;
+  final Widget? title;
+  final Widget? background;
+  final bool? centerTitle;
   final CollapseMode collapseMode;
-  final EdgeInsetsGeometry titlePadding;
+  final EdgeInsetsGeometry? titlePadding;
   static Widget createSettings({
-    @required double currentExtent,
-    @required Widget child,
-    double toolbarOpacity,
-    double minExtent,
-    double maxExtent,
+    required double currentExtent,
+    required Widget child,
+    double? toolbarOpacity,
+    double? minExtent,
+    double? maxExtent,
   }) {
-    assert(currentExtent != null);
     return FlexibleSpaceBarSettings(
       toolbarOpacity: toolbarOpacity ?? 1.0,
       minExtent: minExtent ?? currentExtent,
@@ -47,10 +45,9 @@ class CustomFlexibleSpaceBar extends StatefulWidget {
 }
 
 class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
-  bool _getEffectiveCenterTitle(ThemeData theme) {
+  bool? _getEffectiveCenterTitle(ThemeData theme) {
     if (widget.centerTitle != null)
       return widget.centerTitle;
-    assert(theme.platform != null);
     switch (theme.platform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
@@ -66,7 +63,6 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
     if (effectiveCenterTitle)
       return Alignment.bottomCenter;
     final textDirection = Directionality.of(context);
-    assert(textDirection != null);
     switch (textDirection) {
       case TextDirection.rtl:
         return Alignment.bottomRight;
@@ -94,11 +90,11 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
 
     final children = <Widget>[];
 
-    final deltaExtent = settings.maxExtent - settings.minExtent;
+    final deltaExtent = settings!.maxExtent - settings.minExtent;
 
     // 0.0 -> Expanded
     // 1.0 -> Collapsed to toolbar
-    final double t = (1.0 - (settings.currentExtent - settings.minExtent) / deltaExtent).clamp(0.0, 1.0);
+    final t = (1.0 - (settings.currentExtent - settings.minExtent) / deltaExtent).clamp(0.0, 1.0);
 
     // background image
     if (widget.background != null) {
@@ -112,13 +108,13 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
           left: 0.0,
           right: 0.0,
           height: settings.maxExtent,
-          child: widget.background,
+          child: widget.background!,
         ));
       }
     }
 
     if (widget.title != null) {
-      Widget title;
+      Widget? title;
       switch (defaultTargetPlatform) {
         case TargetPlatform.iOS:
           title = widget.title;
@@ -138,11 +134,11 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
       final theme = Theme.of(context);
       final opacity = settings.toolbarOpacity;
       if (opacity > 0.0) {
-        var titleStyle = theme.primaryTextTheme.headline6;
+        var titleStyle = theme.primaryTextTheme.headline6!;
         titleStyle = titleStyle.copyWith(
-          color: titleStyle.color.withOpacity(opacity)
+          color: titleStyle.color!.withOpacity(opacity)
         );
-        final effectiveCenterTitle = _getEffectiveCenterTitle(theme);
+        final effectiveCenterTitle = _getEffectiveCenterTitle(theme)!;
         final padding = widget.titlePadding ??
           EdgeInsetsDirectional.only(
             start: effectiveCenterTitle ? 0.0 : 72.0,
@@ -161,7 +157,7 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
               alignment: titleAlignment,
               child: DefaultTextStyle(
                 style: titleStyle,
-                child: title,
+                child: title!,
               ),
             ),
           ),

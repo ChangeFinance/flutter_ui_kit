@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 bool _isShowing = false;
-BuildContext _context, _dismissingContext;
+late BuildContext _context, _dismissingContext;
 bool _barrierDismissible = true, _showLogs = false;
 
 double _dialogElevation = 8.0, _borderRadius = 8.0;
@@ -16,23 +16,23 @@ Widget _progressWidget = Image.asset(
 );
 
 class ChangeProgressDialog {
-  _Body _dialog;
+  _Body? _dialog;
 
   ChangeProgressDialog(BuildContext context,
-      {bool isDismissible, bool showLogs}) {
+      {bool? isDismissible, bool? showLogs}) {
     _context = context;
     _barrierDismissible = isDismissible ?? true;
     _showLogs = showLogs ?? false;
   }
 
   void style(
-      {double progress,
-      double maxProgress,
-      Widget progressWidget,
-      Color backgroundColor,
-      double elevation,
-      double borderRadius,
-      Curve insetAnimCurve}) {
+      {double? progress,
+      double? maxProgress,
+      Widget? progressWidget,
+      Color? backgroundColor,
+      double? elevation,
+      double? borderRadius,
+      Curve? insetAnimCurve}) {
     if (_isShowing)
       return;
 
@@ -44,14 +44,14 @@ class ChangeProgressDialog {
   }
 
   void update(
-      {double progress,
-      double maxProgress,
-      Widget progressWidget,}) {
+      {double? progress,
+      double? maxProgress,
+      Widget? progressWidget,}) {
 
     _progressWidget = progressWidget ?? _progressWidget;
 
     if (_isShowing)
-      _dialog.update();
+      _dialog!.update();
   }
 
   bool isShowing() {

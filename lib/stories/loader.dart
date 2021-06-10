@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_kit/widgets/change_progress_dialog.dart';
 
-ChangeProgressDialog pr;
+late ChangeProgressDialog pr;
 
 class Loaders extends StatefulWidget {
   @override

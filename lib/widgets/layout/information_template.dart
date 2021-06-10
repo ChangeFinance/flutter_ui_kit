@@ -9,8 +9,8 @@ import 'package:flutter_ui_kit/widgets/text/heading_type.dart';
 import 'app_bar.dart';
 
 class InformationTemplate extends StatelessWidget {
-  final Widget leadingWidget;
-  final List<Widget> tailingWidget;
+  final Widget? leadingWidget;
+  final List<Widget>? tailingWidget;
   final SvgPicture picture;
   final String heading;
   final String body;
@@ -40,7 +40,7 @@ class InformationTemplate extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Heading(
+                    ChgHeading(
                       heading,
                       headingType: HeadingType.HEADING_2,
                       textAlign: TextAlign.left,

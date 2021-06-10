@@ -4,7 +4,7 @@ import '../colors.dart';
 
 class AmountSelectionButton extends StatelessWidget {
   final String text;
-  final Function onPressed;
+  final Function? onPressed;
 
   const AmountSelectionButton(this.text, {this.onPressed});
 
@@ -13,7 +13,7 @@ class AmountSelectionButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: GestureDetector(
-        onTap: onPressed,
+        onTap: onPressed as void Function()?,
         child: Container(
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,

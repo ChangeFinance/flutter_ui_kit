@@ -3,10 +3,10 @@ import 'package:flutter_ui_kit/color.dart';
 import 'package:flutter_ui_kit/widgets/card.dart';
 
 class Paper extends StatelessWidget {
-  final List<Widget> children;
-  final VoidCallback onTap;
-  final BoxDecoration decoration;
-  final EdgeInsets padding;
+  final List<Widget>? children;
+  final VoidCallback? onTap;
+  final BoxDecoration? decoration;
+  final EdgeInsets? padding;
 
   const Paper({this.children, this.onTap, this.decoration, this.padding});
 
@@ -22,7 +22,7 @@ class Paper extends StatelessWidget {
   }
 
   Widget _buildPaper(BuildContext context) {
-    return AppCard(
+    return ChgAppCard(
       color: AppColor.deepWhite,
         elevation: 2,
         margin: const EdgeInsets.fromLTRB(7.0, 1.0, 7.0, 6.0),
@@ -35,7 +35,7 @@ class Paper extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: children,
+            children: children!,
           ),
         ));
   }

@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
 
-class StreamCheckboxField extends StatelessWidget {
-  final Stream<bool> value;
-  final ValueChanged<bool> onChanged;
-  final Widget label;
-  final double height;
+class ChgStreamCheckboxField extends StatelessWidget {
+  final Stream<bool?>? value;
+  final ValueChanged<bool?>? onChanged;
+  final Widget? label;
+  final double? height;
 
-  const StreamCheckboxField({
-    this.value,
-    this.onChanged,
-    this.label,
-    this.height
-  });
+  const ChgStreamCheckboxField({this.value, this.onChanged, this.label, this.height});
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<bool>(
+    return StreamBuilder<bool?>(
       initialData: false,
       stream: value,
       builder: (context, snapshot) {
         return CheckboxField(
-          value: snapshot.data,
+          value: snapshot.data ?? false,
           onChanged: onChanged,
           label: label,
           boxHeight: height,
-          errorText: snapshot.error,
+          errorText: snapshot.error as String?,
         );
       },
     );
@@ -33,18 +28,12 @@ class StreamCheckboxField extends StatelessWidget {
 
 class CheckboxField extends StatelessWidget {
   final bool value;
-  final ValueChanged<bool> onChanged;
-  final Widget label;
-  final String errorText;
-  final double boxHeight;
+  final ValueChanged<bool?>? onChanged;
+  final Widget? label;
+  final String? errorText;
+  final double? boxHeight;
 
-  const CheckboxField({
-    this.value,
-    this.onChanged,
-    this.label,
-    this.errorText,
-    this.boxHeight
-  });
+  const CheckboxField({required this.value, this.onChanged, this.label, this.errorText, this.boxHeight});
 
   @override
   Widget build(BuildContext context) {
@@ -63,28 +52,35 @@ class CheckboxField extends StatelessWidget {
   Widget buildError(BuildContext context) {
     final theme = Theme.of(context);
     return Container(
-      constraints: const BoxConstraints.tightFor(width: double.infinity),
+      constraints: const BoxConstraints.tightFor(
+        width: double.infinity,
+      ),
       child: Text.rich(
         TextSpan(
           text: errorText,
-          style: TextStyle(color: theme.errorColor, fontSize: 12.0),
+          style: TextStyle(
+            color: theme.errorColor,
+            fontSize: 12.0,
+          ),
         ),
       ),
     );
   }
 
-  Widget buildCheckboxListTile(double boxHeight) {
+  Widget buildCheckboxListTile(double? boxHeight) {
     double height;
-    if(boxHeight == null) {
+    if (boxHeight == null) {
       height = 45.00;
     } else {
       height = boxHeight;
     }
     return Container(
-      constraints: BoxConstraints.tightFor(height: height),
+      constraints: BoxConstraints.tightFor(
+        height: height,
+      ),
       child: CheckboxListTile(
         // ignore: avoid_bool_literals_in_conditional_expressions
-        value: value ?? false,
+        value: value,
         onChanged: onChanged,
         controlAffinity: ListTileControlAffinity.leading,
         title: label,

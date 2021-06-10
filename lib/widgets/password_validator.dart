@@ -8,7 +8,7 @@ class PasswordValidator extends StatefulWidget {
   final List<Color> colorList;
 
   const PasswordValidator({
-    Key key,
+    Key? key,
     this.password = 'Password123*',
     this.hintList = const [
       'Try making it longer then 8 digits and adding capital characters that makes it difficult for others to guess.',
@@ -24,8 +24,7 @@ class PasswordValidator extends StatefulWidget {
       Colors.lightGreen,
       Colors.greenAccent
     ],
-  })  : assert(password != null),
-        super(key: key);
+  })  : super(key: key);
 
   @override
   _PasswordValidatorState createState() => _PasswordValidatorState();
@@ -57,31 +56,26 @@ class _PasswordValidatorState extends State<PasswordValidator> {
         {
           return 'Strength: ${widget.strengthList[0]}';
         }
-        break;
 
       case 2:
         {
           return 'Strength: ${widget.strengthList[1]}';
         }
-        break;
 
       case 3:
         {
           return 'Strength: ${widget.strengthList[2]}';
         }
-        break;
 
       case 4:
         {
           return 'Strength: ${widget.strengthList[3]}';
         }
-        break;
 
       case 5:
         {
           return 'Strength: ${widget.strengthList[4]}';
         }
-        break;
 
       default:
         {
@@ -97,31 +91,26 @@ class _PasswordValidatorState extends State<PasswordValidator> {
         {
           return widget.colorList[0];
         }
-        break;
 
       case 2:
         {
           return widget.colorList[1];
         }
-        break;
 
       case 3:
         {
           return widget.colorList[2];
         }
-        break;
 
       case 4:
         {
           return widget.colorList[3];
         }
-        break;
 
       case 5:
         {
           return widget.colorList[4];
         }
-        break;
 
       default:
         {

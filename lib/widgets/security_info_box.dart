@@ -5,9 +5,9 @@ import '../color.dart';
 import '../text.dart';
 
 class SecurityInfoBox extends StatelessWidget {
-  final String assetName;
-  final String infoHeader;
-  final String infoBody;
+  final String? assetName;
+  final String? infoHeader;
+  final String? infoBody;
 
   const SecurityInfoBox(this.assetName, this.infoHeader, this.infoBody);
 
@@ -24,7 +24,7 @@ class SecurityInfoBox extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 10.0),
                 child: Align(alignment: Alignment.topLeft, child:SvgPicture.asset(
-                  assetName,
+                  assetName!,
                   width: 24.0,
                   height: 24.0,
                 )),
@@ -36,11 +36,11 @@ class SecurityInfoBox extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 5),
                         child: Align(
                             alignment: Alignment.topLeft,
-                            child: Text(infoHeader,
+                            child: Text(infoHeader!,
                               style: AppText.body3,)
                         ),
                       ),
-                      Text(infoBody,
+                      Text(infoBody!,
                         style: AppText.body3SemiGray,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 15,),

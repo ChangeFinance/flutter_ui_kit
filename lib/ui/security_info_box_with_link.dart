@@ -9,8 +9,8 @@ class SecurityInfoBoxWithLink extends StatelessWidget {
   final String assetName;
   final String infoHeader;
   final String infoBody;
-  final String infoLink;
-  final String url;
+  final String? infoLink;
+  final String? url;
 
   const SecurityInfoBoxWithLink(this.assetName, this.infoHeader, this.infoBody, {this.infoLink, this.url});
 
@@ -55,9 +55,9 @@ class SecurityInfoBoxWithLink extends StatelessWidget {
                                 recognizer: new TapGestureRecognizer()
                                   ..onTap = () async {
                                     debugPrint('Help Center tapped');
-                                    if (await canLaunch(url)) {
+                                    if (await canLaunch(url!)) {
                                       debugPrint('Launching url');
-                                      await launch(url);
+                                      await launch(url!);
                                     } else {
                                       debugPrint('Could not launch url');
                                     }

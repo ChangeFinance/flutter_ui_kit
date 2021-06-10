@@ -31,10 +31,10 @@ class WizardUtilityPage extends StatelessWidget {
             Expanded(
               flex: 1,
               child: Container(
-                constraints: BoxConstraints(maxWidth: picture.width),
+                constraints: BoxConstraints(maxWidth: picture.width!),
                 child: Column(
                   children: <Widget>[
-                    Heading(
+                    ChgHeading(
                       heading,
                       headingType: HeadingType.HEADING_1,
                       textAlign: TextAlign.center,

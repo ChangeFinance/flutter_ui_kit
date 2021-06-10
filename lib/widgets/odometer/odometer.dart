@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
 import 'package:characters/characters.dart';
 import 'package:flutter_ui_kit/widgets/odometer/single_digit.dart';
@@ -6,16 +7,16 @@ import 'package:flutter_ui_kit/widgets/odometer/text_run.dart';
 // ignore: must_be_immutable
 class Odometer extends StatelessWidget {
   final List<TextRun> textRuns;
-  Size size;
+  Size? size;
 
-  Odometer(this.textRuns, {Key key}) :super(key: key);
+  Odometer(this.textRuns, {Key? key}) :super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
     size ??= _getSize(MediaQuery.of(context).textScaleFactor);
     return SizedOverflowBox(
-      size: size,
+      size: size!,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +69,7 @@ class Odometer extends StatelessWidget {
     final children = <Widget>[];
     var dotAdded = false;
     for (var i = 0; i < current.length; i++) {
-      int finalVal, initialVal;
+      int? finalVal, initialVal;
       if ('.' == current[i].key) {
         dotAdded = true;
       } else {
@@ -89,7 +90,7 @@ class Odometer extends StatelessWidget {
   }
 
   bool _hasDot(List<MapEntry<String, TextStyle>> l) =>
-      l.firstWhere((en) => en.key == ('.'), orElse: () => null) != null;
+      l.firstWhereOrNull((en) => en.key == ('.')) != null;
 
   bool _equalDotIndex(List<MapEntry<String, TextStyle>> l1, List<MapEntry<String, TextStyle>> l2) {
     if (!_hasDot(l1) && !_hasDot(l2)) {

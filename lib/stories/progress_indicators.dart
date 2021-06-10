@@ -73,10 +73,10 @@ class ProgressIndicators extends StatelessWidget {
           widgetBuilder: (context, props) {
             final double percentageFilled =
                 props['percentageFilled'];
-            final double roundedBorder = props['roundedBorder'];
-            final double height = props['height'];
-            final bool background = props['background'];
-            final String selectedOption = props['color'];
+            final double? roundedBorder = props['roundedBorder'];
+            final double? height = props['height'];
+            final bool? background = props['background'];
+            final String? selectedOption = props['color'];
 
             return Container(
               padding: const EdgeInsets.only(right: 20.0, left: 20.0),
@@ -92,37 +92,32 @@ class ProgressIndicators extends StatelessWidget {
     );
   }
 
-  Color optionToColor(String optionSelected) {
+  Color? optionToColor(String? optionSelected) {
     switch (optionSelected) {
       case 'Yellow':
         {
           return Colors.orange[400];
         }
-        break;
 
       case 'Blue':
         {
           return Colors.blue[300];
         }
-        break;
 
       case 'Green':
         {
           return Colors.greenAccent;
         }
-        break;
 
       case 'Red':
         {
           return Colors.red[300];
         }
-        break;
 
       default:
         {
           return Colors.red[200];
         }
-        break;
     }
   }
 }

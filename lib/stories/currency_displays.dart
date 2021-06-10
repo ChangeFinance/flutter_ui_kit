@@ -51,11 +51,11 @@ class CurrencyDisplays extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          double amount = props['amount'];
-          final String symbol = props['currencySymbol'];
+          double? amount = props['amount'];
+          final String? symbol = props['currencySymbol'];
           final bool amountIsNull = props['amountIsNull'];
           final bool isLarge = props['isLarge'];
-          final bool showCursor = props['showCursor'];
+          final bool? showCursor = props['showCursor'];
           if (amountIsNull) {
             amount = null;
           }
@@ -84,7 +84,7 @@ class CurrencyDisplays extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          final bool oneAmount = props['selectedCurrencyAmount'];
+          final bool? oneAmount = props['selectedCurrencyAmount'];
           return CurrencySwitcher(
             onlySwitchedAmount: oneAmount,
             amounts: const ['2012', '0.0045'],
@@ -114,8 +114,8 @@ class CurrencyDisplays extends StatelessWidget {
           );
         },
         widgetBuilder: (context, props) {
-          final double amount = props['amount'];
-          final String symbol = props['currencySymbol'];
+          final double? amount = props['amount'];
+          final String? symbol = props['currencySymbol'];
           return AssetRate(symbol, amount);
         },
       ),
@@ -166,6 +166,6 @@ class __AnimatedAssetRateStoryState extends State<_AnimatedAssetRateStory> {
   @override
   void dispose() {
     super.dispose();
-    rateStream?.close();
+    rateStream.close();
   }
 }

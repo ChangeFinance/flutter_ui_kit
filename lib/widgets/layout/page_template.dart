@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class PageTemplate extends StatelessWidget {
-  final Widget child;
-  final Widget bottomNavigationBar;
-  final Widget floatingActionButton;
-  final PreferredSizeWidget appBar;
+  final Widget? child;
+  final Widget? bottomNavigationBar;
+  final Widget? floatingActionButton;
+  final PreferredSizeWidget? appBar;
   final EdgeInsets padding;
-  final GlobalKey<ScaffoldState> scaffoldKey;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
 
   const PageTemplate(
       {this.child,

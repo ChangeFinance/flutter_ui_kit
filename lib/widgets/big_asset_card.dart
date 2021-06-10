@@ -8,16 +8,16 @@ class BigAssetCard extends StatelessWidget {
   final Widget icon;
   final String title;
   final String description;
-  final String tag;
+  final String? tag;
   final bool tagIsBadge;
 
   BigAssetCard(
-      {@required this.icon, @required this.title, @required this.description, this.tag, this.tagIsBadge = false});
+      {required this.icon, required this.title, required this.description, this.tag, this.tagIsBadge = false});
 
   @override
   Widget build(BuildContext context) {
     final descriptionStyle = TextStyles.style_20_30_regular.copyWith(color: Colors.black);
-    return AppCard(
+    return ChgAppCard(
       color: AppColor.deepWhite,
       elevation: 2,
       borderRadius: 4,
@@ -40,7 +40,7 @@ class BigAssetCard extends StatelessWidget {
               FittedBox(
                 child: SizedBox(
                   child: Text(description, style: descriptionStyle),
-                  height: descriptionStyle.height * descriptionStyle.fontSize,
+                  height: descriptionStyle.height! * descriptionStyle.fontSize!,
                 ),
               ),
               const Spacer(),
@@ -53,7 +53,7 @@ class BigAssetCard extends StatelessWidget {
   }
 
   Widget _buildTag() {
-    if (tag == null || tag.trim().isEmpty) {
+    if (tag == null || tag!.trim().isEmpty) {
       return Container();
     }
 
@@ -64,7 +64,7 @@ class BigAssetCard extends StatelessWidget {
     return FittedBox(
       child: SizedBox(
         height: 20,
-        child: Text(tag, style: TextStyles.style_14_20_regular.copyWith(color: AppColor.semiGrey)),
+        child: Text(tag!, style: TextStyles.style_14_20_regular.copyWith(color: AppColor.semiGrey)),
       ),
     );
   }
@@ -80,7 +80,7 @@ class BigAssetCard extends StatelessWidget {
         height: 20,
         child: Center(
           child: Text(
-            tag,
+            tag!,
             style: badgeStyle,
             textAlign: TextAlign.center,
           ),

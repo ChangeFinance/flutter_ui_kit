@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 enum BodyStyle { body1, body2, caption, title }
 
-class Body extends StatelessWidget {
+class ChgBody extends StatelessWidget {
   final String data;
-  final BodyStyle style;
+  final BodyStyle? style;
   final TextAlign textAlign;
 
-  const Body(this.data, {this.textAlign = TextAlign.start, this.style});
+  const ChgBody(
+    this.data, {
+    this.textAlign = TextAlign.start,
+    this.style,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +22,7 @@ class Body extends StatelessWidget {
     );
   }
 
-  TextStyle _textStyle(TextTheme textTheme) {
+  TextStyle? _textStyle(TextTheme textTheme) {
     switch (style) {
       case BodyStyle.title:
         return textTheme.headline6;

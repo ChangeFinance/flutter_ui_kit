@@ -3,37 +3,36 @@ import 'package:flutter/material.dart';
 
 import 'button_common.dart';
 
-class OutlinedButton extends StatefulWidget {
+class ChgOutlinedButton extends StatefulWidget {
   final String text;
-  final FutureCallback onPressed;
-  final bool fullWidth;
-  final bool narrow;
-  final EdgeInsetsGeometry padding;
-  final bool alt;
+  final FutureCallback? onPressed;
+  final bool? fullWidth;
+  final bool? narrow;
+  final EdgeInsetsGeometry? padding;
+  final bool? alt;
 
-  OutlinedButton(
+  ChgOutlinedButton(
     this.text, {
-    @required this.onPressed,
+    required this.onPressed,
     this.fullWidth = false,
     this.narrow = false,
     this.padding,
     this.alt = false,
-    Key key,
-  })  : assert(text != null),
-        super(key: key);
+    Key? key,
+  })  : super(key: key);
 
   @override
-  _OutlinedButtonState createState() => _OutlinedButtonState();
+  _ChgOutlinedButtonState createState() => _ChgOutlinedButtonState();
 }
 
-class _OutlinedButtonState extends State<OutlinedButton> with ButtonMixin {
+class _ChgOutlinedButtonState extends State<ChgOutlinedButton> with ButtonMixin {
   bool _enabled = true;
   bool _pressing = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: widget.fullWidth ? matchParentWidth(context) : null,
+      width: widget.fullWidth! ? matchParentWidth(context) : null,
       child: GestureDetector(
         onTapDown: (_) {
           setState(() => _pressing = true);
@@ -44,24 +43,24 @@ class _OutlinedButtonState extends State<OutlinedButton> with ButtonMixin {
         child: OutlineButton(
           child: Text(
             widget.text,
-            style: Theme.of(context).textTheme.bodyText2.copyWith(
-                  color: !widget.alt
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                  color: !widget.alt!
                       ? getTextColorOnWhiteBackground(
                           enabled: _enabled,
                           pressing: _pressing,
                           onPressed: widget.onPressed,
                         )
                       : (_enabled ? Colors.white : AppColor.mediumGrey),
-                  fontSize: getFontSize(narrow: widget.narrow, fullWidth: widget.fullWidth),
+                  fontSize: getFontSize(narrow: widget.narrow!, fullWidth: widget.fullWidth),
                 ),
           ),
           onPressed: isDisabled(enabled: _enabled, onPressed: widget.onPressed)
               ? null
-              : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed),
-          padding: widget.padding ?? getPadding(narrow: widget.narrow),
-          textColor: widget.alt ? Colors.white : AppColor.green,
-          borderSide: BorderSide(color: widget.alt ? Colors.white : AppColor.green),
-          highlightedBorderColor: widget.alt ? Colors.white : AppColor.green,
+              : () => disableButtonWhileOnPressedExecutes(setEnabled: _setEnabled, onPressed: widget.onPressed!),
+          padding: widget.padding ?? getPadding(narrow: widget.narrow!),
+          textColor: widget.alt! ? Colors.white : AppColor.green,
+          borderSide: BorderSide(color: widget.alt! ? Colors.white : AppColor.green),
+          highlightedBorderColor: widget.alt! ? Colors.white : AppColor.green,
           disabledBorderColor: AppColor.mediumGrey,
         ),
       ),

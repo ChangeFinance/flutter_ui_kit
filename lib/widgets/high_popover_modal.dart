@@ -42,23 +42,20 @@ class BottomSheet extends StatefulWidget {
   /// [ScaffoldState.showBottomSheet], for persistent bottom sheets, or by
   /// [showModalBottomSheet], for modal bottom sheets.
   const BottomSheet({
-    @required this.onClosing,
-    @required this.builder,
-    Key key,
+    required this.onClosing,
+    required this.builder,
+    Key? key,
     this.animationController,
     this.enableDrag = true,
     this.elevation = 0.0,
-  }) : assert(enableDrag != null),
-        assert(onClosing != null),
-        assert(builder != null),
-        assert(elevation != null && elevation >= 0.0),
+  }) : assert(elevation >= 0.0),
         super(key: key);
 
   /// The animation that controls the bottom sheet's position.
   ///
   /// The BottomSheet widget will manipulate the position of this animation, it
   /// is not just a passive observer.
-  final AnimationController animationController;
+  final AnimationController? animationController;
 
   /// Called when the bottom sheet begins to close.
   ///
@@ -90,7 +87,7 @@ class BottomSheet extends StatefulWidget {
   _BottomSheetState createState() => _BottomSheetState();
 
   /// Creates an animation controller suitable for controlling a [BottomSheet].
-  static AnimationController createAnimationController(TickerProvider vsync, {Duration customDuration}) {
+  static AnimationController createAnimationController(TickerProvider vsync, {Duration? customDuration}) {
     return AnimationController(
       duration: customDuration ?? _kBottomSheetDuration,
       debugLabel: 'BottomSheet',
@@ -104,16 +101,16 @@ class _BottomSheetState extends State<BottomSheet> {
   final GlobalKey _childKey = GlobalKey(debugLabel: 'BottomSheet child');
 
   double get _childHeight {
-    final RenderBox renderBox = _childKey.currentContext.findRenderObject();
+    final renderBox = _childKey.currentContext!.findRenderObject() as RenderBox;
     return renderBox.size.height;
   }
 
-  bool get _dismissUnderway => widget.animationController.status == AnimationStatus.reverse;
+  bool get _dismissUnderway => widget.animationController!.status == AnimationStatus.reverse;
 
   void _handleDragUpdate(DragUpdateDetails details) {
     if (_dismissUnderway)
       return;
-    widget.animationController.value -= details.primaryDelta / (_childHeight ?? details.primaryDelta);
+    widget.animationController!.value -= details.primaryDelta! / _childHeight;
   }
 
   void _handleDragEnd(DragEndDetails details) {
@@ -121,16 +118,16 @@ class _BottomSheetState extends State<BottomSheet> {
       return;
     if (details.velocity.pixelsPerSecond.dy > _kMinFlingVelocity) {
       final flingVelocity = -details.velocity.pixelsPerSecond.dy / _childHeight;
-      if (widget.animationController.value > 0.0)
-        widget.animationController.fling(velocity: flingVelocity);
+      if (widget.animationController!.value > 0.0)
+        widget.animationController!.fling(velocity: flingVelocity);
       if (flingVelocity < 0.0)
         widget.onClosing();
-    } else if (widget.animationController.value < _kCloseProgressThreshold) {
-      if (widget.animationController.value > 0.0)
-        widget.animationController.fling(velocity: -1.0);
+    } else if (widget.animationController!.value < _kCloseProgressThreshold) {
+      if (widget.animationController!.value > 0.0)
+        widget.animationController!.fling(velocity: -1.0);
       widget.onClosing();
     } else {
-      widget.animationController.forward();
+      widget.animationController!.forward();
     }
   }
 
@@ -189,9 +186,9 @@ class _ModalBottomSheetLayout extends SingleChildLayoutDelegate {
 }
 
 class _ModalBottomSheet<T> extends StatefulWidget {
-  const _ModalBottomSheet({ Key key, this.route }) : super(key: key);
+  const _ModalBottomSheet({ Key? key, this.route }) : super(key: key);
 
-  final _ModalBottomSheetRoute<T> route;
+  final _ModalBottomSheetRoute<T>? route;
 
   @override
   _ModalBottomSheetState<T> createState() => _ModalBottomSheetState<T>();
@@ -220,11 +217,11 @@ class _ModalBottomSheetState<T> extends State<_ModalBottomSheet<T>> {
       excludeFromSemantics: true,
       onTap: () => Navigator.pop(context),
       child: AnimatedBuilder(
-        animation: widget.route.animation,
-        builder: (BuildContext context, Widget child) {
+        animation: widget.route!.animation!,
+        builder: (BuildContext context, Widget? child) {
           // Disable the initial animation when accessible navigation is on so
           // that the semantics are added to the tree at the correct time.
-          final animationValue = mediaQuery.accessibleNavigation ? 1.0 : widget.route.animation.value;
+          final animationValue = mediaQuery.accessibleNavigation ? 1.0 : widget.route!.animation!.value;
           return Semantics(
             scopesRoute: true,
             namesRoute: true,
@@ -234,9 +231,9 @@ class _ModalBottomSheetState<T> extends State<_ModalBottomSheet<T>> {
               child: CustomSingleChildLayout(
                 delegate: _ModalBottomSheetLayout(animationValue),
                 child: BottomSheet(
-                  animationController: widget.route._animationController,
+                  animationController: widget.route!._animationController,
                   onClosing: () => Navigator.pop(context),
-                  builder: widget.route.builder,
+                  builder: widget.route!.builder!,
                 ),
               ),
             ),
@@ -254,13 +251,13 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
     this.barrierLabel,
     this.animationCurve,
     this.animationDuration,
-    RouteSettings settings,
+    RouteSettings? settings,
   }) : super(settings: settings);
 
-  final Cubic animationCurve;
-  final Duration animationDuration;
-  final WidgetBuilder builder;
-  final ThemeData theme;
+  final Cubic? animationCurve;
+  final Duration? animationDuration;
+  final WidgetBuilder? builder;
+  final ThemeData? theme;
 
   @override
   Duration get transitionDuration => _kBottomSheetDuration;
@@ -269,23 +266,23 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
   bool get barrierDismissible => true;
 
   @override
-  final String barrierLabel;
+  final String? barrierLabel;
 
   @override
   Color get barrierColor => Colors.black54;
 
   @override
-  Animation<double> get animation {
-    return animationCurve != null ? CurvedAnimation(parent: controller, curve: animationCurve) : super.animation;
+  Animation<double>? get animation {
+    return animationCurve != null ? CurvedAnimation(parent: controller!, curve: animationCurve!) : super.animation;
   }
 
-  AnimationController _animationController;
+  AnimationController? _animationController;
 
   @override
   AnimationController createAnimationController() {
     assert(_animationController == null);
-    _animationController = BottomSheet.createAnimationController(navigator.overlay, customDuration: animationDuration);
-    return BottomSheet.createAnimationController(navigator.overlay, customDuration: animationDuration);
+    _animationController = BottomSheet.createAnimationController(navigator!.overlay!, customDuration: animationDuration);
+    return BottomSheet.createAnimationController(navigator!.overlay!, customDuration: animationDuration);
   }
 
   @override
@@ -298,7 +295,7 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
       child: _ModalBottomSheet<T>(route: this),
     );
     if (theme != null)
-      bottomSheet = Theme(data: theme, child: bottomSheet);
+      bottomSheet = Theme(data: theme!, child: bottomSheet);
     return bottomSheet;
   }
 }
@@ -329,18 +326,16 @@ class _ModalBottomSheetRoute<T> extends PopupRoute<T> {
 ///  * [showBottomSheet] and [ScaffoldState.showBottomSheet], for showing
 ///    non-modal bottom sheets.
 ///  * <https://material.io/design/components/sheets-bottom.html#modal-bottom-sheet>
-Future<T> showModalBottomSheetCustom<T>({
-  @required BuildContext context,
-  @required WidgetBuilder builder,
-  Cubic animationCurve,
-  Duration animationDuration,
+Future<T?> showModalBottomSheetCustom<T>({
+  required BuildContext context,
+  required WidgetBuilder builder,
+  Cubic? animationCurve,
+  Duration? animationDuration,
 }) {
-  assert(context != null);
-  assert(builder != null);
   assert(debugCheckHasMaterialLocalizations(context));
   return Navigator.push(context, _ModalBottomSheetRoute<T>(
     builder: builder,
-    theme: Theme.of(context, shadowThemeOnly: true),
+    theme: Theme.of(context),
     barrierLabel: MaterialLocalizations
         .of(context)
         .modalBarrierDismissLabel,
@@ -387,10 +382,8 @@ Future<T> showModalBottomSheetCustom<T>({
 ///  * [Scaffold.of], for information about how to obtain the [BuildContext].
 ///  * <https://material.io/design/components/sheets-bottom.html#standard-bottom-sheet>
 PersistentBottomSheetController<T> showBottomSheet<T>({
-  @required BuildContext context,
-  @required WidgetBuilder builder,
+  required BuildContext context,
+  required WidgetBuilder builder,
 }) {
-  assert(context != null);
-  assert(builder != null);
   return Scaffold.of(context).showBottomSheet<T>(builder);
 }

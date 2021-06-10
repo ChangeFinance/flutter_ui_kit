@@ -6,13 +6,13 @@ import 'app_bar.dart';
 
 class TitledGenericTemplate extends StatelessWidget {
 
-  final Widget leadingWidget;
-  final List<Widget> tailingWidget;
+  final Widget? leadingWidget;
+  final List<Widget>? tailingWidget;
 
-  final Widget title;
-  final SvgPicture picture;
+  final Widget? title;
+  final SvgPicture? picture;
   final Widget child;
-  final Widget formSubmitAction;
+  final Widget? formSubmitAction;
 
   const TitledGenericTemplate(this.child, this.formSubmitAction, {this.leadingWidget, this.tailingWidget, this.title, this.picture,})
       : super();
@@ -21,7 +21,7 @@ class TitledGenericTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     final scrollChildren = <Widget>[];
     if (_prepareImage() != null) {
-      scrollChildren.add(_prepareImage());
+      scrollChildren.add(_prepareImage()!);
     }
     scrollChildren.add(child);
 
@@ -38,7 +38,7 @@ class TitledGenericTemplate extends StatelessWidget {
                 children: scrollChildren))),
             Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: formSubmitAction,
+                    child: formSubmitAction ?? const SizedBox.shrink(),
                   )
           ],
         ),
@@ -46,7 +46,7 @@ class TitledGenericTemplate extends StatelessWidget {
     );
   }
 
-  Widget _prepareImage() {
+  Widget? _prepareImage() {
     if (picture != null) {
       return Padding(
         padding: const EdgeInsets.only(bottom: 34.0),
