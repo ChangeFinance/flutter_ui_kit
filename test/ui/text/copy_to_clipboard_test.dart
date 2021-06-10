@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/ui/text/copy_to_clipboard.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../test_method_channel.dart';
 
@@ -30,7 +30,7 @@ void main() {
       expectMethodCall('Clipboard.setData', arguments: <String, Object>{
         'text': '123456',
       });
-      verify(onTapCallback.call());
+      verify(onTapCallback.call).called(1);
     });
   });
 }

@@ -10,8 +10,7 @@ class MultiValueBadge extends StatefulWidget {
   final Color? bgColor;
 
   MultiValueBadge(this.texts, {this.minWidth, this.textStyle, this.bgColor})
-  :assert(texts!=null),
-   assert(texts.isNotEmpty) {
+  : assert(texts.isNotEmpty) {
     createState();
   }
 

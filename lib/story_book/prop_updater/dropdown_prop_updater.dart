@@ -15,11 +15,7 @@ class DropdownPropUpdater extends StatefulWidget {
     required this.propKey,
     required this.options,
     Key? key,
-  })  : assert(props != null),
-        assert(updateProp != null),
-        assert(propKey != null),
-        assert(props[propKey] != null),
-        assert(options != null),
+  })  : assert(props[propKey] != null),
         assert(props[propKey] is String),
         super(key: key);
 

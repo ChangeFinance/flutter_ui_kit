@@ -21,7 +21,7 @@ class TitledGenericTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     final scrollChildren = <Widget>[];
     if (_prepareImage() != null) {
-      scrollChildren.add(_prepareImage());
+      scrollChildren.add(_prepareImage()!);
     }
     scrollChildren.add(child);
 
@@ -46,13 +46,13 @@ class TitledGenericTemplate extends StatelessWidget {
     );
   }
 
-  Widget _prepareImage() {
+  Widget? _prepareImage() {
     if (picture != null) {
       return Padding(
         padding: const EdgeInsets.only(bottom: 34.0),
         child: Align(alignment: Alignment.bottomCenter, child:picture),
       );
     }
-    return const SizedBox.shrink();
+    return null;
   }
 }

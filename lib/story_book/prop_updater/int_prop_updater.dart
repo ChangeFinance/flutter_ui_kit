@@ -15,10 +15,7 @@ class IntPropUpdater extends StatefulWidget {
     required this.propKey,
     this.hintText = '',
     Key? key,
-  })  : assert(props != null),
-        assert(updateProp != null),
-        assert(propKey != null),
-        assert(props[propKey] != null),
+  })  : assert(props[propKey] != null),
         assert(props[propKey] is int),
         super(key: key);
 

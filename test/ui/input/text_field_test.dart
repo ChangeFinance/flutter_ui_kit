@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_ui_kit/ui/input/text_field.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 class MockVoidFunction extends Mock implements Function {
   void call();
@@ -59,7 +59,7 @@ void main() {
 
       await tester.pumpWidget(widget);
       await tester.tap(find.byType(TextField));
-      verify(onFocusMockFunction.call());
+      verify(onFocusMockFunction.call).called(1);
     });
 
     testWidgets('on unfocus triggers onBlur', (WidgetTester tester) async {
@@ -73,7 +73,7 @@ void main() {
             }},
             focusNode: FocusNode(),
             labelText: 'Field',
-            onBlur: onBlurMockFunction,
+            onBlur: onBlurMockFunction.call,
           ),
         ),
       );
@@ -84,7 +84,7 @@ void main() {
       await tester.pump();
       textField.focusNode!.unfocus();
       await tester.pumpAndSettle();
-      verify(onBlurMockFunction.call());
+      verify(onBlurMockFunction.call).called(1);
     });
 
     testWidgets('on error shows error text', (WidgetTester tester) async {

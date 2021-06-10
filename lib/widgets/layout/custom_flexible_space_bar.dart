@@ -17,8 +17,7 @@ class CustomFlexibleSpaceBar extends StatefulWidget {
     this.centerTitle,
     this.titlePadding,
     this.collapseMode = CollapseMode.parallax,
-  }) : assert(collapseMode != null),
-       super(key: key);
+  }) : super(key: key);
 
   final Widget? title;
   final Widget? background;
@@ -32,7 +31,6 @@ class CustomFlexibleSpaceBar extends StatefulWidget {
     double? minExtent,
     double? maxExtent,
   }) {
-    assert(currentExtent != null);
     return FlexibleSpaceBarSettings(
       toolbarOpacity: toolbarOpacity ?? 1.0,
       minExtent: minExtent ?? currentExtent,
@@ -50,7 +48,6 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
   bool? _getEffectiveCenterTitle(ThemeData theme) {
     if (widget.centerTitle != null)
       return widget.centerTitle;
-    assert(theme.platform != null);
     switch (theme.platform) {
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
@@ -66,7 +63,6 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
     if (effectiveCenterTitle)
       return Alignment.bottomCenter;
     final textDirection = Directionality.of(context);
-    assert(textDirection != null);
     switch (textDirection) {
       case TextDirection.rtl:
         return Alignment.bottomRight;
@@ -89,16 +85,16 @@ class _CustomFlexibleSpaceBarState extends State<CustomFlexibleSpaceBar> {
 
   @override
   Widget build(BuildContext context) {
-    final settings = context.dependOnInheritedWidgetOfExactType<FlexibleSpaceBarSettings>()!;
+    final settings = context.dependOnInheritedWidgetOfExactType<FlexibleSpaceBarSettings>();
     assert(settings != null, 'A FlexibleSpaceBar must be wrapped in the widget returned by FlexibleSpaceBar.createSettings().');
 
     final children = <Widget>[];
 
-    final deltaExtent = settings.maxExtent - settings.minExtent;
+    final deltaExtent = settings!.maxExtent - settings.minExtent;
 
     // 0.0 -> Expanded
     // 1.0 -> Collapsed to toolbar
-    final double t = (1.0 - (settings.currentExtent - settings.minExtent) / deltaExtent).clamp(0.0, 1.0);
+    final t = (1.0 - (settings.currentExtent - settings.minExtent) / deltaExtent).clamp(0.0, 1.0);
 
     // background image
     if (widget.background != null) {

@@ -23,8 +23,8 @@ void main() {
       expect(find.text('Bought Bitcoin'), findsOneWidget);
       expect(find.text('+ 0.04 BTC'), findsOneWidget);
       final widget = tester.widget(find.byType(Container).at(2));
-      final Container containerWidget = widget as Container;
-      final BoxDecoration decoration = containerWidget.decoration as BoxDecoration;
+      final containerWidget = widget as Container;
+      final decoration = containerWidget.decoration as BoxDecoration;
       expect(decoration.color, AppColor.greenLight);
       expect(decoration.borderRadius, const BorderRadius.all(Radius.circular(12.0)));
     });
@@ -48,7 +48,7 @@ void main() {
       expect(find.text('+ 0.04 BTC'), findsOneWidget);
       expect(find.text('€122.84'), findsOneWidget);
       final widget = tester.widget(find.byType(Text).at(3));
-      final Text textWidget = widget as Text;
+      final textWidget = widget as Text;
       final decoration = textWidget.style!.decoration;
       expect(decoration, TextDecoration.lineThrough);
     });
@@ -69,8 +69,8 @@ void main() {
       expect(find.text('Bought Bitcoin'), findsOneWidget);
       expect(find.text('+ 0.04 BTC'), findsOneWidget);
       final widget = tester.widget(find.byType(Container).at(0));
-      final Container containerWidget = widget as Container;
-      final BoxDecoration decoration = containerWidget.decoration as BoxDecoration;
+      final containerWidget = widget as Container;
+      final decoration = containerWidget.decoration as BoxDecoration;
       expect(decoration.border!.bottom.color, AppColor.lightestGrey);
     });
 

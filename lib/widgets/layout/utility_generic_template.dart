@@ -59,7 +59,7 @@ class UtilityGenericTemplate extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: action ?? SizedBox.shrink(),
+              child: action ?? const SizedBox.shrink(),
             )
           ],
         ),

@@ -23,7 +23,7 @@ void main() {
       setUp: setUp,
       testWidgets: testWidgets,
       buttonText: buttonText,
-      buildButton: () => ChgTextButton(buttonText, onPressed: () {} as Future<void> Function()?),
+      buildButton: () => ChgTextButton(buttonText, onPressed: () async {}),
     );
 
     testOnPressedProp(
@@ -42,7 +42,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({EdgeInsetsGeometry? padding}) =>
-          ChgTextButton(buttonText, onPressed: () {} as Future<void> Function()?, padding: padding),
+          ChgTextButton(buttonText, onPressed: () async {}, padding: padding),
       underlyingMaterialButtonType: FlatButton,
     );
 
@@ -54,7 +54,7 @@ void main() {
       buildButton: ({TextStyle? textStyle}) => ChgTextButton(
         buttonText,
         textStyle: textStyle,
-        onPressed: () {} as Future<void> Function()?
+        onPressed: () async {}
       ),
     );
 

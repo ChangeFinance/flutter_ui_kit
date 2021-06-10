@@ -18,9 +18,7 @@ class AppSlider extends StatelessWidget {
       this.dotsPadding = const EdgeInsets.all(20.0),
       this.dotSize,
       this.distanceBetweenCenterOfDots,
-      this.onPageChanged})
-      : assert(slides != null),
-        assert(pageController != null);
+      this.onPageChanged});
 
   @override
   Widget build(BuildContext context) {

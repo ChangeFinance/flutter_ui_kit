@@ -48,10 +48,7 @@ class BottomSheet extends StatefulWidget {
     this.animationController,
     this.enableDrag = true,
     this.elevation = 0.0,
-  }) : assert(enableDrag != null),
-        assert(onClosing != null),
-        assert(builder != null),
-        assert(elevation != null && elevation >= 0.0),
+  }) : assert(elevation >= 0.0),
         super(key: key);
 
   /// The animation that controls the bottom sheet's position.
@@ -104,7 +101,7 @@ class _BottomSheetState extends State<BottomSheet> {
   final GlobalKey _childKey = GlobalKey(debugLabel: 'BottomSheet child');
 
   double get _childHeight {
-    final RenderBox renderBox = _childKey.currentContext!.findRenderObject() as RenderBox;
+    final renderBox = _childKey.currentContext!.findRenderObject() as RenderBox;
     return renderBox.size.height;
   }
 
@@ -113,7 +110,7 @@ class _BottomSheetState extends State<BottomSheet> {
   void _handleDragUpdate(DragUpdateDetails details) {
     if (_dismissUnderway)
       return;
-    widget.animationController!.value -= details.primaryDelta! / (_childHeight ?? details.primaryDelta!);
+    widget.animationController!.value -= details.primaryDelta! / _childHeight;
   }
 
   void _handleDragEnd(DragEndDetails details) {
@@ -335,8 +332,6 @@ Future<T?> showModalBottomSheetCustom<T>({
   Cubic? animationCurve,
   Duration? animationDuration,
 }) {
-  assert(context != null);
-  assert(builder != null);
   assert(debugCheckHasMaterialLocalizations(context));
   return Navigator.push(context, _ModalBottomSheetRoute<T>(
     builder: builder,
@@ -390,7 +385,5 @@ PersistentBottomSheetController<T> showBottomSheet<T>({
   required BuildContext context,
   required WidgetBuilder builder,
 }) {
-  assert(context != null);
-  assert(builder != null);
   return Scaffold.of(context).showBottomSheet<T>(builder);
 }

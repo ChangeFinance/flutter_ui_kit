@@ -5,7 +5,7 @@ import 'package:flutter_ui_kit/text.dart';
 import 'package:flutter_ui_kit/widgets/button_common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../wrap_in_material_app.dart';
 
@@ -45,7 +45,7 @@ void testOnPressedProp({
       completer = Completer<void>();
       future = completer.future;
       onPressed = FutureCallbackMock().call;
-      when(onPressed()).thenAnswer((_) => future);
+      when(onPressed).thenAnswer((_) => future);
     });
 
     testWidgets!('if onPressed is null should pass null to unrelying button',
@@ -63,7 +63,7 @@ void testOnPressedProp({
           .pumpWidget(wrapInMaterialApp(buildButton!(onPressed: onPressed)));
       await tester.tap(find.text(buttonText!));
       await tester.pump();
-      verify(onPressed()).called(1);
+      verify(onPressed).called(1);
     });
 
     testWidgets('tapping twice results in one call to onPressed',
@@ -74,7 +74,7 @@ void testOnPressedProp({
       await tester.pump();
       await tester.tap(find.text(buttonText));
       await tester.pump();
-      verify(onPressed()).called(1);
+      verify(onPressed).called(1);
     });
 
     testWidgets('when tapped disables underlying button until future completes',
@@ -152,13 +152,13 @@ void testNarrowProp({
   group('narrow prop', () {
     testWidgets!('if true renders smaller padding', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton!(narrow: true)));
-      final MaterialButton button = find.byType(underlyingMaterialButtonType!).evaluate().single.widget as MaterialButton;
+      final button = find.byType(underlyingMaterialButtonType!).evaluate().single.widget as MaterialButton;
       expect(button.padding, ChgButtonStyleConstants.narrowPadding);
     });
 
     testWidgets('if false renders larger padding', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton!(narrow: false)));
-      final MaterialButton button = find.byType(underlyingMaterialButtonType!).evaluate().single.widget as MaterialButton;
+      final button = find.byType(underlyingMaterialButtonType!).evaluate().single.widget as MaterialButton;
       expect(button.padding, ChgButtonStyleConstants.widePadding);
     });
   });
@@ -176,13 +176,13 @@ void testPaddingProp({
     testWidgets!('if padding is passed, overwrite default', (WidgetTester tester) async {
       const padding = const EdgeInsets.all(8.0);
       await tester.pumpWidget(wrapInMaterialApp(buildButton!(padding: padding)));
-      final MaterialButton button = find.byType(underlyingMaterialButtonType!).evaluate().single.widget as MaterialButton;
+      final button = find.byType(underlyingMaterialButtonType!).evaluate().single.widget as MaterialButton;
       expect(button.padding, padding);
     });
 
     testWidgets('if padding is null, defaults to', (WidgetTester tester) async {
       await tester.pumpWidget(wrapInMaterialApp(buildButton!(padding: null)));
-      final MaterialButton button =
+      final button =
           find.byType(underlyingMaterialButtonType!).evaluate().single.widget as MaterialButton;
       expect(button.padding!.vertical, 2 * ChgButtonStyleConstants.wideVerticalPadding);
     });
@@ -242,7 +242,7 @@ void testPressingState({
   group('pressing state', () {
     testWidgets!('when button is pressed it changes text color',
         (WidgetTester tester) async {
-      await tester.pumpWidget(wrapInMaterialApp(buildButton!(onPressed: () {})));
+      await tester.pumpWidget(wrapInMaterialApp(buildButton!(onPressed: () async {})));
       expect(tester.widget<Text>(find.text(buttonText!)).style!.color,
           AppColor.green);
       final gesture = await tester.createGesture();

@@ -33,7 +33,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({bool? fullWidth}) =>
-          ChgFilledButton(buttonText, onPressed: () {} as Future<void> Function()?, fullWidth: fullWidth),
+          ChgFilledButton(buttonText, onPressed: () async {}, fullWidth: fullWidth),
       underlyingMaterialButtonType: RaisedButton,
     );
 
@@ -43,7 +43,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({bool? narrow}) =>
-          ChgFilledButton(buttonText, onPressed: () {} as Future<void> Function()?, narrow: narrow),
+          ChgFilledButton(buttonText, onPressed: () async {}, narrow: narrow),
       underlyingMaterialButtonType: RaisedButton,
     );
 
@@ -53,7 +53,7 @@ void main() {
       testWidgets: testWidgets,
       buttonText: buttonText,
       buildButton: ({EdgeInsetsGeometry? padding}) =>
-          ChgFilledButton(buttonText, onPressed: () {} as Future<void> Function()?, padding: padding),
+          ChgFilledButton(buttonText, onPressed: () async {}, padding: padding),
       underlyingMaterialButtonType: RaisedButton,
     );
 
@@ -64,7 +64,7 @@ void main() {
       buttonText: buttonText,
       buildButton: ({bool? narrow, bool? fullWidth}) => ChgFilledButton(
             buttonText,
-            onPressed: () {} as Future<void> Function()?,
+            onPressed: () async {},
             narrow: narrow,
             fullWidth: fullWidth,
           ),
@@ -78,7 +78,7 @@ void main() {
       buildButton: ({TextStyle? textStyle}) => ChgFilledButton(
           buttonText,
           textStyle: textStyle,
-          onPressed: () {} as Future<void> Function()?,
+          onPressed: () async {},
           narrow: true,
       ),
     );

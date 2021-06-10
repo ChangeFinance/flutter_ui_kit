@@ -19,7 +19,7 @@ void main() {
       );
       final action = ChgFilledButton(
         'Update app',
-        onPressed: () {} as Future<void> Function()?,
+        onPressed: () async {},
         fullWidth: true,
         narrow: false,
       );

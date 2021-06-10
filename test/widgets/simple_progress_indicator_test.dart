@@ -19,10 +19,10 @@ void main() {
       await tester.pumpWidget(wrapInMaterialApp(
         const SimpleProgressIndicator()
       ));
-      final SimpleProgressIndicator progressIndicator = tester.element(find.byType(SimpleProgressIndicator)).widget as SimpleProgressIndicator;
-      final SizedBox sizedBox = tester.element(find.byType(SizedBox)).widget as SizedBox;
-      final LinearProgressIndicator linearProgressIndicator = tester.element(find.byType(LinearProgressIndicator)).widget as LinearProgressIndicator;
-      final ClipRRect clipRRect = tester.element(find.byType(ClipRRect)).widget as ClipRRect;
+      final progressIndicator = tester.element(find.byType(SimpleProgressIndicator)).widget as SimpleProgressIndicator;
+      final sizedBox = tester.element(find.byType(SizedBox)).widget as SizedBox;
+      final linearProgressIndicator = tester.element(find.byType(LinearProgressIndicator)).widget as LinearProgressIndicator;
+      final clipRRect = tester.element(find.byType(ClipRRect)).widget as ClipRRect;
       expect(sizedBox.height, 6.0);
       expect(clipRRect.borderRadius, BorderRadius.circular(0.0));
       expect(linearProgressIndicator.value, 0.4);
@@ -45,10 +45,10 @@ void main() {
           color: Colors.blue,
         )
       ));
-      final SimpleProgressIndicator progressIndicator = tester.element(find.byType(SimpleProgressIndicator)).widget as SimpleProgressIndicator;
-      final SizedBox sizedBox = tester.element(find.byType(SizedBox)).widget as SizedBox;
-      final LinearProgressIndicator linearProgressIndicator = tester.element(find.byType(LinearProgressIndicator)).widget as LinearProgressIndicator;
-      final ClipRRect clipRRect = tester.element(find.byType(ClipRRect)).widget as ClipRRect;
+      final progressIndicator = tester.element(find.byType(SimpleProgressIndicator)).widget as SimpleProgressIndicator;
+      final sizedBox = tester.element(find.byType(SizedBox)).widget as SizedBox;
+      final linearProgressIndicator = tester.element(find.byType(LinearProgressIndicator)).widget as LinearProgressIndicator;
+      final clipRRect = tester.element(find.byType(ClipRRect)).widget as ClipRRect;
       expect(sizedBox.height, 10.0);
       expect(clipRRect.borderRadius, BorderRadius.circular(10.0));
       expect(linearProgressIndicator.value, 0.9);

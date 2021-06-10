@@ -166,6 +166,6 @@ class __AnimatedAssetRateStoryState extends State<_AnimatedAssetRateStory> {
   @override
   void dispose() {
     super.dispose();
-    rateStream?.close();
+    rateStream.close();
   }
 }

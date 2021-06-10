@@ -44,7 +44,7 @@ class CurrencySwitcher extends StatefulWidget {
         this.onlySwitchedAmount = false,
         this.hideSwitcher = false,
       })
-      : assert(currencyInfoList != null && currencyInfoList.length == 2);
+      : assert(currencyInfoList.length == 2);
 
   @override
   _CurrencySwitcherState createState() => _CurrencySwitcherState();

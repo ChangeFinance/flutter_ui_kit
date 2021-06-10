@@ -34,8 +34,7 @@ class _PropsExplorerState extends State<PropsExplorer> {
 
   @override
   void initState() {
-    _props =
-        widget.initialProps != null ? widget.initialProps : <String, dynamic>{};
+    _props = widget.initialProps;
     super.initState();
   }
 

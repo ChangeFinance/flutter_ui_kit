@@ -98,31 +98,26 @@ class ProgressIndicators extends StatelessWidget {
         {
           return Colors.orange[400];
         }
-        break;
 
       case 'Blue':
         {
           return Colors.blue[300];
         }
-        break;
 
       case 'Green':
         {
           return Colors.greenAccent;
         }
-        break;
 
       case 'Red':
         {
           return Colors.red[300];
         }
-        break;
 
       default:
         {
           return Colors.red[200];
         }
-        break;
     }
   }
 }

@@ -14,8 +14,7 @@ class SimpleProgressIndicator extends StatefulWidget {
     this.height = 6.0,
     this.background = false,
     this.color = Colors.greenAccent,
-  }) : assert(percentageFilled != null),
-       assert(percentageFilled <= 100.0),
+  }) : assert(percentageFilled <= 100.0),
        super(key: key);
 
   @override

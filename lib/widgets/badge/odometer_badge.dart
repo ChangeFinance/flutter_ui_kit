@@ -60,7 +60,7 @@ class OdometerBadge extends StatelessWidget {
 
     return Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(badgeHeight / 1.5)), color: bgColor ?? AppColor.green),
+            borderRadius: BorderRadius.all(Radius.circular(badgeHeight / 1.5)), color: bgColor),
         child: GestureDetector(
             onTap: onTap,
             child: Row(
@@ -187,6 +187,6 @@ class OdometerBadge extends StatelessWidget {
     if (minWidth != null && w < minWidth!) {
       w = minWidth!;
     }
-    return Size(w!, h + 2);
+    return Size(w, h + 2);
   }
 }

@@ -7,9 +7,7 @@ class ExpandableStory extends StatelessWidget {
   const ExpandableStory({
     required this.child,
     required this.title,
-  })  : assert(child != null),
-        assert(title != null),
-        super();
+  })  : super();
 
   @override
   Widget build(BuildContext context) {

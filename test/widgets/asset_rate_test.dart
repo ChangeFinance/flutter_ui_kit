@@ -11,7 +11,7 @@ void main() {
       await tester.pumpWidget(wrapInMaterialApp(const AssetRate(symbol, rate)));
       expect(find.byType(Column), findsOneWidget);
       expect(find.byType(RichText), findsOneWidget);
-      final RichText richText = find.byType(RichText).evaluate().first.widget as RichText;
+      final richText = find.byType(RichText).evaluate().first.widget as RichText;
       final richTextText = richText.text.toPlainText();
       expect(richTextText, '€8,750.10');
     });
@@ -22,7 +22,7 @@ void main() {
       await tester.pumpWidget(wrapInMaterialApp(const AssetRate(symbol, rate)));
       expect(find.byType(Column), findsOneWidget);
       expect(find.byType(RichText), findsOneWidget);
-      final RichText richText = find.byType(RichText).evaluate().first.widget as RichText;
+      final richText = find.byType(RichText).evaluate().first.widget as RichText;
       final richTextText = richText.text.toPlainText();
       expect(richTextText, '€-8,701.48');
     });

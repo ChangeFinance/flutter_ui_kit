@@ -17,8 +17,7 @@ class ChgTextButton extends StatefulWidget {
     this.textStyle,
     this.alt = false,
     Key? key,
-  })  : assert(text != null),
-        super(key: key);
+  })  : super(key: key);
 
   @override
   _ChgTextButtonState createState() => _ChgTextButtonState();

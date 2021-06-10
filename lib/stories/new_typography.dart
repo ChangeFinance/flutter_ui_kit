@@ -146,7 +146,7 @@ class Typography extends StatelessWidget {
     final sz = textStyle.fontSize!.toInt();
     final lh = (sz * textStyle.height!).toInt();
     final lhPct = ((lh / sz) * 100).ceil();
-    final sp = ((textStyle.letterSpacing == null ?? textStyle.letterSpacing == 0.0
+    final sp = ((textStyle.letterSpacing == null
                 ? 0
                 : textStyle.letterSpacing! * TextStyles.letterSpacingConstant) *
             100)

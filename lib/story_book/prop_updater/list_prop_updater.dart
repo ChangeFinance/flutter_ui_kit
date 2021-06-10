@@ -19,13 +19,8 @@ class ListPropUpdater<T> extends StatefulWidget {
     required this.textToListConverter,
     this.hintText = '',
     Key? key,
-  })  : assert(props != null),
-        assert(updateProp != null),
-        assert(propKey != null),
-        assert(props[propKey] != null),
+  })  : assert(props[propKey] != null),
         assert(props[propKey] is List),
-        assert(listToTextConverter != null),
-        assert(textToListConverter != null),
         super(key: key);
 
   @override

@@ -8,8 +8,7 @@ class StoryBook extends StatelessWidget {
   StoryBook({
     required this.pages,
     this.title,
-  })  : assert(pages != null),
-        super();
+  })  : super();
 
   @override
   Widget build(BuildContext context) {

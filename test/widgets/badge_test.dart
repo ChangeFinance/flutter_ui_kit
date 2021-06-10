@@ -24,8 +24,8 @@ void main() {
       expect(find.byType(Shimmer), findsOneWidget);
       expect(find.text('Badge Content'), findsOneWidget);
       final widget = tester.widget(find.byType(Container));
-      final Container containerWidget = widget as Container;
-      final BoxDecoration decoration = containerWidget.decoration as BoxDecoration;
+      final containerWidget = widget as Container;
+      final decoration = containerWidget.decoration as BoxDecoration;
       expect(decoration.color, AppColor.green);
       expect(
           decoration.borderRadius, const BorderRadius.all(Radius.circular(15)));
@@ -49,8 +49,8 @@ void main() {
     expect(find.byType(Shimmer), findsOneWidget);
     expect(find.text('Badge Content1'), findsOneWidget);
     final widget = tester.widget(find.byType(Container));
-    final Container containerWidget = widget as Container;
-    final BoxDecoration decoration = containerWidget.decoration as BoxDecoration;
+    final containerWidget = widget as Container;
+    final decoration = containerWidget.decoration as BoxDecoration;
     expect(decoration.color, AppColor.green);
     expect(
         decoration.borderRadius, const BorderRadius.all(Radius.circular(15)));

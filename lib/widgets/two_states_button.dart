@@ -29,8 +29,7 @@ class TwoStatesButton extends StatefulWidget {
         this.textStyle,
         this.resetButtonOnBuild = false,
         Key? key,
-      })  : assert(initialText != null),
-        super(key: key);
+      })  : super(key: key);
 
   @override
   _TwoStatesButtonState createState() => _TwoStatesButtonState();

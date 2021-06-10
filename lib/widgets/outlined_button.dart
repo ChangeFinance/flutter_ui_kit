@@ -19,8 +19,7 @@ class ChgOutlinedButton extends StatefulWidget {
     this.padding,
     this.alt = false,
     Key? key,
-  })  : assert(text != null),
-        super(key: key);
+  })  : super(key: key);
 
   @override
   _ChgOutlinedButtonState createState() => _ChgOutlinedButtonState();

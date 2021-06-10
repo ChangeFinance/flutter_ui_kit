@@ -286,7 +286,7 @@ class Buttons extends StatelessWidget {
                 props: props,
                 updateProp: updateProp,
                 propKey: 'buttonLabels',
-                listToTextConverter: listToTextConverter as String Function<T>(List<T>),
+                listToTextConverter: listToTextConverter,
                 textToListConverter: textToListConverter,
                 hintText: 'comma-separated list of strings e.g EUR,BTC,USD',
               )

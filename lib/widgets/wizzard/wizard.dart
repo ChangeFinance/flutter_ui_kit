@@ -36,7 +36,7 @@ class _WizardState extends State<Wizard> {
   Widget build(BuildContext context) {
     return PageTemplate(
       appBar: MainAppBar(
-          implyLeading: leadingWidget != null,
+          implyLeading: true,
           leadingWidget: leadingWidget,
           tailingWidget: tailingWidget),
       child: Padding(

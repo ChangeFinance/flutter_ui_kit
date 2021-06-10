@@ -22,7 +22,7 @@ void main() {
     });
 
     tearDown(() {
-      value!.close();
+      value?.close();
     });
 
     testWidgets('chooses country', (WidgetTester tester) async {
