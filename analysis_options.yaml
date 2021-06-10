@@ -7,6 +7,8 @@ analyzer:
     # treat missing returns as a warning (not a hint)
     missing_return: ignore
     prefer_const_constructors_in_immutables: ignore
+    deprecated_member_use: ignore
+    deprecated_member_use_from_same_package: ignore
   exclude:
     - 'lib/generated/**'
     - 'lib/charts/**'
@@ -17,7 +19,6 @@ linter:
     - always_put_required_named_parameters_first
     - always_require_non_null_named_parameters
     - annotate_overrides
-    - avoid_as
     - avoid_bool_literals_in_conditional_expressions
     - avoid_catches_without_on_clauses
     - avoid_catching_errors
